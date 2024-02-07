@@ -23,9 +23,9 @@ env:
   KUBECONFIG: "./kubeconfig"
 
 includes:
-  packer:
-    aliases: ["pack"]
-    taskfile: ./.taskfiles/Packer/Taskfile.yaml
+  ansible:
+    aliases: ["ans", "ansible"]
+    taskfile: ./.taskfiles/Ansible/Taskfile.yaml
   utilities:
     aliases: ["util"]
     taskfile: ./.taskfiles/Utilities/Taskfile.yaml
@@ -64,13 +64,12 @@ tasks:
     cmds:
       - task: .template
       - task: sops:encrypt
-      - task: packer:encrypt
       - task: terraform:encrypt
       - task: .validate
 
   .template:
     internal: true
-    cmd: ./.venv/bin/makejinja
+    cmd: makejinja
     preconditions:
       - { msg: "Missing virtual environment", sh: "test -d {{.ROOT_DIR}}/.venv" }
       - { msg: "Missing Makejinja config file", sh: "test -f {{.MAKEJINJA_CONFIG_FILE}}" }
@@ -81,3 +80,14 @@ tasks:
     internal: true
     cmds:
       - task: kubernetes:kubeconform
+
+  remove-ssh:
+    desc: Remove SSH keys
+    cmds:
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.100"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.101"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.102"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.150"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.151"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.152"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.153"

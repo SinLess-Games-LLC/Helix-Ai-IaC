@@ -17,7 +17,6 @@
     "direnv": "direnv allow",
     "clone zsh-autosuggestions": "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions",
     "clone zsh-syntax-highlighting": "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting",
-    "packer-proxmox": "packer plugins install github.com/hashicorp/proxmox",
     "upgrade-pip": "python3 -m pip install --upgrade pip setuptools wheel",
     "install-python-requirements": "python3 -m pip install -r ./requirements.txt",
     "install-ansible-requirements": "ansible-galaxy install --role-file ./requirements.yaml",

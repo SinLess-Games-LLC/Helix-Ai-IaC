@@ -1,0 +1,26 @@
+pm_api_url: ENC[AES256_GCM,data:/EFH/IHWhxa2sRpzJnMy9RLJ1HQv+EEbDFL7Z/C9Yxd6KLVf,iv:yyXxigf8w9dhtCbwDqAEeKYW+UrjDO8mry//UzcCk+I=,tag:PLPcLuXeSLiVpbC1c/Bq/g==,type:str]
+cloudinit_template_name: ENC[AES256_GCM,data:/khP7G+Dlll4CY8qqyMz4pwqk1BSlCrvZJxunA==,iv:g9TCyI1vKfRJW1socqR4O/6FYjdOkL04OoyGxGE4j/Y=,tag:fkTau/YkkAfjtlWe551aog==,type:str]
+proxmox_node: ENC[AES256_GCM,data:xr+u,iv:kghF228kuxWiJX7j0Q6lybeCdKAPobnNpeVbKlUbaH0=,tag:1/b9qvyH7js9XhD9BmlUwQ==,type:str]
+ssh_key: ENC[AES256_GCM,data:pvUEvhL0CxzWBKqJ8soTd4nhGT+Ln5eyr6nhpN4ajRZRgba7lhaBlnJsscjkQsgxPWDmTBiAm1Z3eenPC+8M1227rTnWoF6PEt0QL9X+p0+Ze8Xfo/k5MaNj5276vEAnQWxPbxAVcmHf,iv:YQcVMdDwRX9iSTbzAPKIxdbgXHCzxr002X3TryZOT4Y=,tag:9bfJdtnKhVt0yuuT81owyQ==,type:str]
+pm_api_token_id: ENC[AES256_GCM,data:jRH0W3R1shvkWbjiGxOUsI4Kncg4pIk=,iv:LH+KQUTnZDHlTIlHkZQs3hLnWKUWypqVavFoFYeVMgo=,tag:9fz8T0DzOEjkUHdPOdGIfw==,type:str]
+pm_api_token_secret: ENC[AES256_GCM,data:K/sALSRPP+GCclpfBfJPT88oM0rd+YVqcFhq6878rAGDwNq2,iv:xNR7Nnxv/nACYuSLss+m2FzQFcVL0JqYB8PiibHlRFE=,tag:HZlmygs432d8lYC4Iqmtpw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age195rdta0e2jx49x3djpcchyc2gdslv3kdedsnzeu23xmtwremk93qpwvseu
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA0dTRQeHVBUVhONi9neHJ4
+            VTh6eHBQTlRHVDRSWm5YU0N3bWxpMS9sT1RBCjZ2VmhYcytkN1IzMDMwS1VkQU1O
+            L1Zib3Y2Ly8wY2pZT1BFa2U0QlBOYlkKLS0tIHIrcVE3cjEwK1JoUlQwYTBIK09G
+            bnhCK0ZwTldDaWEwS29XTGRUa2hpUEkK/7v2HQsbsXmKy4cP9nSw8Gy0KouwcPVv
+            cV/3vqh+T3/COi2eJErqBRbXlUUtEqFejI+3xoVNi6Vi8ik6vGSOPQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-02-07T04:08:38Z"
+    mac: ENC[AES256_GCM,data:Ss6MnLDmc0PrdE/6hA7i6zQX3eT59/1K+GT+dwFEMMy8UyuGxTkV65mgVmJmweGWH0VtLofgS1hy8/+JVF57dW2krlLzhvOhfS5tzEkDerjSApb7M4IzdJQnBUBnxnHJ+qo2obpPBblYKX2XbmnYnWjW3Wx6CIw8tPpgkEaiXZE=,iv:AI8bAciMTF08XMtccjtL2UkNoE7gHyJPVTEpCfwKsgU=,tag:KrFj0UNDMI8ToPHRWR4bCw==,type:str]
+    pgp: []
+    unencrypted_suffix: _unencrypted
+    version: 3.8.1
