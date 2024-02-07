@@ -41,3 +41,11 @@ wiki
 *.log
 
 .ssh/
+
+Terraform/.terraform.lock.hcl
+
+Terraform/terraform.tfstate
+
+Terraform/tfplan
+
+Terraform/variables.auto.tfvars.json
