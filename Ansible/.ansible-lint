@@ -2,6 +2,7 @@ skip_list:
   - yaml[commas]
   - yaml[line-length]
   - var-naming
+  - name[template]
 warn_list:
   - command-instead-of-shell
   - deprecated-command-syntax

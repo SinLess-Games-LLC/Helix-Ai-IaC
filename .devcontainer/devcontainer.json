@@ -8,8 +8,8 @@
     "dockerfile": "./Dockerfile"
   },
   "containerEnv": {
-    "KUBECONFIG": "/workspaces/Archetecture/kubeconfig",
-    "SOPS_AGE_KEY_FILE": "/workspaces/Archetecture/.age.key"
+    "KUBECONFIG": "./kubeconfig",
+    "SOPS_AGE_KEY_FILE": "./age.key"
   },
 	"privileged": true,
   "postCreateCommand": {

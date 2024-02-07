@@ -101,7 +101,7 @@
     content: |
       export ZSH="/home/{% raw %}{{ ansible_user }}{% endraw %}/.oh-my-zsh"
       ZSH_THEME="strug"
-      plugins=(git zsh-autosuggestions zsh-completions zsh-syntax-highlighting git ansible aws colorize bundler dotenv docker docker-compose direnv fluxcd git-flow git-commit git-extras gitignore helm istioctl kubectl sudo suse systemd terraform vagrant vault vscode zsh-interactive-cd)
+      plugins=(git zsh-autosuggestions zsh-completions zsh-syntax-highlighting git docker docker-compose helm istioctl sudo systemd zsh-interactive-cd)
       source $ZSH/oh-my-zsh.sh
     dest: /home/{% raw %}{{ ansible_user }}{% endraw %}/.zshrc
     owner: "{% raw %}{{ ansible_user }}{% endraw %}"

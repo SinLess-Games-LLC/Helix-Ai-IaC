@@ -55,7 +55,10 @@
             name: resolvconf
             state: stopped
             enabled: false
-        # https://github.com/onedr0p/cluster-template/discussions/635
+        # This can cause an error when you have not run this playbook before
+        # All that needs to be done is to comment out the following 4 lines
+        # If it errors out and the step is commented out then you can uncomment the step and rerun
+        # if it errors with it commented out and uncommented then there is a different problem
         - name: Network Configuration | Remove immutable flag from /etc/resolv.conf
           ansible.builtin.file:
             attributes: -i
@@ -75,7 +78,8 @@
               nameserver 1.1.1.1
               nameserver 8.8.8.8
               search {{ ansible_host }}.local
-        - name: start resolvconf service
+
+        - name: Start resolvconf service
           ansible.builtin.systemd:
             name: resolvconf
             state: started
