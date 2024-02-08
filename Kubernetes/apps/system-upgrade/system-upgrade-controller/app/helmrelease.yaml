@@ -32,7 +32,7 @@ spec:
               repository: docker.io/rancher/system-upgrade-controller
               tag: v0.13.2
             env:
-              SYSTEM_UPGRADE_CONTROLLER_DEBUG: false
+              SYSTEM_UPGRADE_CONTROLLER_DEBUG: true
               SYSTEM_UPGRADE_CONTROLLER_THREADS: 2
               SYSTEM_UPGRADE_JOB_ACTIVE_DEADLINE_SECONDS: 900
               SYSTEM_UPGRADE_JOB_BACKOFF_LIMIT: 900
