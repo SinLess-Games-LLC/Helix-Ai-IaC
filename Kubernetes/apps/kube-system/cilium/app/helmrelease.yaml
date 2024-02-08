@@ -79,7 +79,9 @@ spec:
       enabled: true
     loadBalancer:
       algorithm: maglev
-      mode: dsr
+      # -- mode is the operation mode of load balancing for remote backends
+      # e.g. snat, dsr, hybrid
+      mode: hybrid
     localRedirectPolicy: true
     operator:
       replicas: 1
