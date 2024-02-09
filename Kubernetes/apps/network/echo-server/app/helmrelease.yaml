@@ -95,7 +95,7 @@ spec:
         enabled: true
         className: internal
         hosts:
-          - host: &host "{{ .Release.Name }-internal.${SECRET_DOMAIN_1}"
+          - host: &host "{{ .Release.Name }}-internal.${SECRET_DOMAIN_1}"
             paths:
               - path: /
                 service:
