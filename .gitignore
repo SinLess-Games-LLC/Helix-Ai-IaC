@@ -42,3 +42,5 @@ wiki
 *.log
 
 .ssh/
+
+Terraform/terraform.tfstate.backup

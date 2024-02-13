@@ -253,12 +253,6 @@ You have two different options for setting up your local workstation.
 
     ```sh
     kubectl get nodes -o wide
-    ```
-
-    example:
-
-    ```sh
-    kubectl get nodes -o wide
     # NAME           STATUS   ROLES                       AGE     VERSION
     # k8s-0          Ready    control-plane,etcd,master   1h      v1.29.1
     # k8s-1          Ready    worker                      1h      v1.29.1

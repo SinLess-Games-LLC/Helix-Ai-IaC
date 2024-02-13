@@ -8,12 +8,6 @@ RUN sudo apt-get update -y --fix-missing \
 # Default powerline10k theme, no plugins installed
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
-# Clone zsh-autosuggestions plugin
-RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-/root/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-# Clone zsh-syntax-highlighting plugin
-RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-/root/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
 # Copy ssh keys
 COPY .ssh /root/.ssh
 
