@@ -265,11 +265,11 @@ You have two different options for setting up your local workstation.
 1. Verify Flux can be installed
 
     ```sh
-    flux check --pre
-    # ► checking prerequisites
-    # ✔ kubectl 1.27.3 >=1.18.0-0
-    # ✔ Kubernetes 1.27.3+k3s1 >=1.16.0-0
-    # ✔ prerequisites checks passed
+    ╭─vscode@305f95868fff in /workspaces/Helix-Ai-IaC on master ✔ (origin/master)
+    ╰$ flux check --pre
+    ► checking prerequisites
+    ✔ Kubernetes 1.29.1+k3s2 >=1.26.0-0
+    ✔ prerequisites checks passed
     ```
 
 2. Install Flux and sync the cluster to the Git repository
