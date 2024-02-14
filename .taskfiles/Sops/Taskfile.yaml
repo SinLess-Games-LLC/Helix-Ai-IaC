@@ -20,15 +20,14 @@ tasks:
     desc: Encrypt all Kubernetes SOPS secrets that are not already encrypted
     cmds:
       - for: { var: file }
-        task: .encrypt-file
+        task: encrypt-file
         vars:
           file: "{{.ITEM}}"
     vars:
       file:
         sh: find "{{.KUBERNETES_DIR}}" -type f -name "*.sops.*" -exec grep -L "ENC\[AES256_GCM" {} \;
 
-  .encrypt-file:
-    internal: true
+  encrypt-file:
     cmd: sops --encrypt --in-place {{.file}}
     requires:
       vars: ["file"]
@@ -36,8 +35,7 @@ tasks:
       - { msg: "Missing Sops config file", sh: "test -f {{.SOPS_CONFIG_FILE}}" }
       - { msg: "Missing Sops Age key file", sh: "test -f {{.SOPS_AGE_FILE}}" }
 
-  .decrypt-file:
-    internal: true
+  decrypt-file:
     cmd: sops --decrypt --in-place {{.file}}
     requires:
       vars: ["file"]
