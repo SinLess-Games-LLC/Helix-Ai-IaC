@@ -1,0 +1,51 @@
+- name: Network Configuration
+  notify: Reboot
+  block:
+    - name: Network Configuration | Set hostname
+      ansible.builtin.hostname:
+        name: "{{ inventory_hostname }}"
+    - name: Network Configuration | Update hosts
+      ansible.builtin.copy:
+        content: |
+          127.0.0.1 localhost
+          127.0.1.1 {{ inventory_hostname }}
+          # The following lines are desirable for IPv6 capable hosts
+          ::1     localhost ip6-localhost ip6-loopback
+          ff02::1 ip6-allnodes
+          ff02::2 ip6-allrouters
+        dest: /etc/hosts
+        mode: preserve
+    - name: Stop resolvconf service
+      ansible.builtin.systemd:
+        name: resolvconf
+        state: stopped
+        enabled: false
+    # This can cause an error when you have not run this playbook before
+    # All that needs to be done is to comment out the following 4 lines
+    # If it errors out and the step is commented out then you can uncomment the step and rerun
+    # if it errors with it commented out and uncommented then there is a different problem
+    # - name: Network Configuration | Remove immutable flag from /etc/resolv.conf
+    #   ansible.builtin.file:
+    #     attributes: -i
+    #     path: /etc/resolv.conf
+    - name: Network Configuration | Remove /etc/resolv.conf
+      ansible.builtin.file:
+        attributes: -i
+        path: /etc/resolv.conf
+        state: absent
+    - name: Network Configuration | Add custom /etc/resolv.conf
+      ansible.builtin.copy:
+        attributes: +i
+        mode: '0644'
+        dest: /etc/resolv.conf
+        content: |
+          nameserver 192.168.86.80
+          nameserver 1.1.1.1
+          nameserver 8.8.8.8
+          search {{ ansible_host }}.local
+
+    - name: Start resolvconf service
+      ansible.builtin.systemd:
+        name: resolvconf
+        state: started
+        enabled: true
