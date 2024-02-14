@@ -1,10 +1,10 @@
 ---
 originRequest:
-  originServerName: "external.${SECRET_DOMAIN_}"
+  originServerName: "external.${SECRET_DOMAIN1}"
 
 ingress:
-  - hostname: "${SECRET_DOMAIN_}"
+  - hostname: "${SECRET_DOMAIN1}"
     service: https://ingress-nginx-external-controller.network.svc.cluster.local:443
-  - hostname: "*.${SECRET_DOMAIN_}"
+  - hostname: "*.${SECRET_DOMAIN1}"
     service: https://ingress-nginx-external-controller.network.svc.cluster.local:443
   - service: http_status:404
