@@ -45,10 +45,6 @@ spec:
         operator: DoesNotExist
       - key: node-role.kubernetes.io/etcd
         operator: DoesNotExist
-      - key: node-role.kubernetes.io/master
-        operator: DoesNotExist
-      - key: node-role.kubernetes.io/worker
-        operator: Exists
   prepare:
     image: rancher/k3s-upgrade
     args: ["prepare", "server"]
