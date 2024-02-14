@@ -31,7 +31,7 @@ spec:
       replicaCount: 1
       service:
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: "external.${SECRET_DOMAIN1}"
+          external-dns.alpha.kubernetes.io/hostname: "external.${SECRET-DOMAIN-1}"
           io.cilium/lb-ipam-ips: "192.168.86.202"
         externalTrafficPolicy: Cluster
       ingressClassResource:
@@ -70,7 +70,7 @@ spec:
           namespaceSelector:
             any: true
       extraArgs:
-        default-ssl-certificate: "network/${SECRET_DOMAIN1/./-}-staging-tls"
+        default-ssl-certificate: "network/${SECRET-DOMAIN-1/./-}-staging-tls"
       topologySpreadConstraints:
         - maxSkew: 1
           topologyKey: kubernetes.io/hostname

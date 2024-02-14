@@ -40,7 +40,7 @@ spec:
     sources: ["crd", "ingress"]
     txtPrefix: k8s.
     txtOwnerId: default
-    domainFilters: ["${SECRET_DOMAIN1}"]
+    domainFilters: ["${SECRET-DOMAIN-1}"]
     serviceMonitor:
       enabled: true
     podAnnotations:

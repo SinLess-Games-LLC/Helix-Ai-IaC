@@ -71,13 +71,13 @@ spec:
           enabled: true
           className: internal
           hosts:
-            - "hubble.${SECRET_DOMAIN1}"
+            - "hubble.${SECRET-DOMAIN-1}"
           tls:
             - hosts:
-                - "hubble.${SECRET_DOMAIN1}"
+                - "hubble.${SECRET-DOMAIN-1}"
     ipam:
       mode: kubernetes
-    ipv4NativeRoutingCIDR: "${CLUSTER_CIDR}"
+    ipv4NativeRoutingCIDR: "${CLUSTER-CIDR}"
     k8sServiceHost: 127.0.0.1
     k8sServicePort: 6444
     kubeProxyReplacement: true

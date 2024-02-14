@@ -67,7 +67,7 @@ spec:
           namespaceSelector:
             any: true
       extraArgs:
-        default-ssl-certificate: "network/${SECRET_DOMAIN1/./-}-staging-tls"
+        default-ssl-certificate: "network/${SECRET-DOMAIN-1/./-}-staging-tls"
       topologySpreadConstraints:
         - maxSkew: 1
           topologyKey: kubernetes.io/hostname
