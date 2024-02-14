@@ -9,7 +9,7 @@
       prompt: |-
         Are you sure you want to nuke this cluster?
         Type 'YES I WANT TO DESTROY THIS CLUSTER' to proceed
-      default: "n"
+      default: 'n'
       private: false
   pre_tasks:
     - name: Check for confirmation
@@ -36,20 +36,20 @@
       block:
         - name: Networking | Delete Cilium links
           ansible.builtin.command:
-            cmd: "ip link delete {{ item }}"
-            removes: "/sys/class/net/{{ item }}"
-          loop: ["cilium_host", "cilium_net", "cilium_vxlan"]
+            cmd: 'ip link delete {{ item }}'
+            removes: '/sys/class/net/{{ item }}'
+          loop: ['cilium_host', 'cilium_net', 'cilium_vxlan']
         - name: Networking | Flush iptables
           ansible.builtin.iptables:
-            table: "{{ item }}"
+            table: '{{ item }}'
             flush: true
-          loop: ["filter", "nat", "mangle", "raw"]
+          loop: ['filter', 'nat', 'mangle', 'raw']
         - name: Networking | Flush ip6tables
           ansible.builtin.iptables:
-            table: "{{ item }}"
+            table: '{{ item }}'
             flush: true
             ip_version: ipv6
-          loop: ["filter", "nat", "mangle", "raw"]
+          loop: ['filter', 'nat', 'mangle', 'raw']
         - name: Networking | Delete CNI directory
           ansible.builtin.file:
             path: /etc/cni/net.d
@@ -86,9 +86,9 @@
         - k3s_install_hard_links
         - not ansible_check_mode
       ansible.builtin.file:
-        path: "{{ k3s_install_dir }}/{{ item }}"
+        path: '{{ k3s_install_dir }}/{{ item }}'
         state: absent
-      loop: ["kubectl", "crictl", "ctr"]
+      loop: ['kubectl', 'crictl', 'ctr']
 
     - name: Remove local storage path
       ansible.builtin.file:

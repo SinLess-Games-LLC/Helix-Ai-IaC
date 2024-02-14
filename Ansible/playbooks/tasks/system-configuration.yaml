@@ -10,17 +10,18 @@
 
     - name: System Configuration | Disable swap
       ansible.posix.mount:
-        name: "{{ item }}"
+        name: '{{ item }}'
         fstype: swap
         state: absent
-      loop: ["none", "swap"]
+      loop: ['none', 'swap']
 
     - name: System Configuration | Create Kernel modules
       ansible.builtin.copy:
-        dest: "/etc/modules-load.d/{{ item }}.conf"
-        mode: "0644"
-        content: "{{ item }}"
-      loop: ["br_netfilter", "ceph", "ip_vs", "ip_vs_rr", "nbd", "overlay", "rbd"]
+        dest: '/etc/modules-load.d/{{ item }}.conf'
+        mode: '0644'
+        content: '{{ item }}'
+      loop:
+        ['br_netfilter', 'ceph', 'ip_vs', 'ip_vs_rr', 'nbd', 'overlay', 'rbd']
       register: modules_status
 
     - name: System Configuration | Reload Kernel modules # noqa: no-changed-when no-handler
@@ -31,11 +32,11 @@
 
     - name: System Configuration | Sysctl
       ansible.posix.sysctl:
-        name: "{{ item.key }}"
-        value: "{{ item.value }}"
+        name: '{{ item.key }}'
+        value: '{{ item.value }}'
         sysctl_file: /etc/sysctl.d/99-kubernetes.conf
         reload: true
-      with_dict: "{{ sysctl_config }}"
+      with_dict: '{{ sysctl_config }}'
       vars:
         sysctl_config:
           fs.inotify.max_queued_events: 65536

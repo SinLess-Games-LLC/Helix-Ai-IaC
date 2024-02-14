@@ -32,7 +32,7 @@
         patch:
           - op: add
             path: /metadata/annotations/helmcharts.helm.cattle.io~1unmanaged
-            value: "true"
+            value: 'true'
 
     - name: Cilium | Delete the Cilium HelmChart CR
       when: cilium_helmchart.resources | count > 0

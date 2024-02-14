@@ -16,7 +16,7 @@
 - name: Change user shell to zsh
   become: true
   ansible.builtin.user:
-    name: "{{ ansible_user }}"
+    name: '{{ ansible_user }}'
     shell: /bin/zsh
 
 - name: Install Oh My Zsh # noqa: latest
@@ -51,6 +51,6 @@
       plugins=(git zsh-autosuggestions zsh-completions zsh-syntax-highlighting git docker docker-compose helm istioctl sudo systemd zsh-interactive-cd)
       source /home/{{ ansible_user }}/.oh-my-zsh/oh-my-zsh.sh
     dest: /home/{{ ansible_user }}/.zshrc
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
     mode: '0644'

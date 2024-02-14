@@ -4,7 +4,7 @@ kind: Plan
 metadata:
   name: controllers
 spec:
-  version: "${KUBE_VERSION}"
+  version: '${KUBE_VERSION}'
   upgrade:
     image: rancher/k3s-upgrade
   serviceAccountName: system-upgrade
@@ -36,7 +36,7 @@ kind: Plan
 metadata:
   name: workers
 spec:
-  version: "${KUBE_VERSION}"
+  version: '${KUBE_VERSION}'
   serviceAccountName: system-upgrade
   concurrency: 1
   nodeSelector:
@@ -47,6 +47,6 @@ spec:
         operator: DoesNotExist
   prepare:
     image: rancher/k3s-upgrade
-    args: ["prepare", "server"]
+    args: ['prepare', 'server']
   upgrade:
     image: rancher/k3s-upgrade

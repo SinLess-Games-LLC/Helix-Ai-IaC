@@ -18,7 +18,7 @@
       block:
         - name: Locale | Set timezone
           community.general.timezone:
-            name: "America/Denver"
+            name: 'America/Denver'
 
     - name: Install Zsh
       ansible.builtin.include_tasks: tasks/zsh.yaml

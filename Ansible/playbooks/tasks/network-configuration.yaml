@@ -3,7 +3,7 @@
   block:
     - name: Network Configuration | Set hostname
       ansible.builtin.hostname:
-        name: "{{ inventory_hostname }}"
+        name: '{{ inventory_hostname }}'
     - name: Network Configuration | Update hosts
       ansible.builtin.copy:
         content: |

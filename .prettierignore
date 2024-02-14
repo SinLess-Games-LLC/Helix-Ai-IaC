@@ -1,0 +1,5 @@
+/.ssh/
+/.task/
+/.venv/
+
+kubeconfig

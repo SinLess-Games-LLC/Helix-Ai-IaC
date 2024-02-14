@@ -6,9 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   interval: 30m
-  url: "https://github.com/SinLess-Games-LLC/Helix-Ai-IaC.git"
+  url: 'https://github.com/SinLess-Games-LLC/Helix-Ai-IaC.git'
   ref:
-    branch: "master"
+    branch: 'master'
   ignore: |
     # exclude all
     /*

@@ -19,39 +19,39 @@ spec:
         - name: kube-vip
           image: ghcr.io/kube-vip/kube-vip:v0.6.4
           imagePullPolicy: IfNotPresent
-          args: ["manager"]
+          args: ['manager']
           env:
             - name: address
-              value: "192.168.86.200"
+              value: '192.168.86.200'
             - name: vip_arp
-              value: "true"
+              value: 'true'
             - name: lb_enable
-              value: "true"
+              value: 'true'
             - name: port
-              value: "6443"
+              value: '6443'
             - name: vip_cidr
-              value: "32"
+              value: '32'
             - name: cp_enable
-              value: "true"
+              value: 'true'
             - name: cp_namespace
               value: kube-system
             - name: vip_ddns
-              value: "false"
+              value: 'false'
             - name: svc_enable
-              value: "false"
+              value: 'false'
             - name: vip_leaderelection
-              value: "true"
+              value: 'true'
             - name: vip_leaseduration
-              value: "15"
+              value: '15'
             - name: vip_renewdeadline
-              value: "10"
+              value: '10'
             - name: vip_retryperiod
-              value: "2"
+              value: '2'
             - name: prometheus_server
               value: :2112
           securityContext:
             capabilities:
-              add: ["NET_ADMIN", "NET_RAW", "SYS_TIME"]
+              add: ['NET_ADMIN', 'NET_RAW', 'SYS_TIME']
       hostAliases:
         - hostnames:
             - kubernetes

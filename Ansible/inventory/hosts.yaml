@@ -3,27 +3,26 @@ kubernetes:
   children:
     master:
       hosts:
-        "k8s-master-1":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.100"
-        "k8s-master-2":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.101"
-        "k8s-master-3":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.102"
+        'k8s-master-1':
+          ansible_user: 'sinless777'
+          ansible_host: '192.168.86.100'
+        'k8s-master-2':
+          ansible_user: 'sinless777'
+          ansible_host: '192.168.86.101'
+        'k8s-master-3':
+          ansible_user: 'sinless777'
+          ansible_host: '192.168.86.102'
     worker:
       hosts:
-        "k8s-worker-1":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.150"
-        "k8s-worker-2":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.151"
-        "k8s-worker-3":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.152"
-        "k8s-worker-4":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.153"
-
+        'k8s-worker-1':
+          ansible_user: 'sinless777'
+          ansible_host: '192.168.86.150'
+        'k8s-worker-2':
+          ansible_user: 'sinless777'
+          ansible_host: '192.168.86.151'
+        'k8s-worker-3':
+          ansible_user: 'sinless777'
+          ansible_host: '192.168.86.152'
+        'k8s-worker-4':
+          ansible_user: 'sinless777'
+          ansible_host: '192.168.86.153'
