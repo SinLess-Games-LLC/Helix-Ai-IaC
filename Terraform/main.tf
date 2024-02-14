@@ -26,7 +26,7 @@ resource "proxmox_vm_qemu" "k8s-masters" {
   desc = "Kubernetes Master Node${count.index + 1}, created by Terraform on ${local.buildtime}"
   target_node = var.proxmox_node
   clone = var.cloudinit_template_name
-  full_clone = false
+  onboot = true
   agent = 1
   os_type = "cloud-init"
   cores = 4
@@ -70,7 +70,7 @@ resource "proxmox_vm_qemu" "k8s-workers" {
   desc = "Kubernetes Worker Node ${count.index + 1}, created by Terraform on ${local.buildtime}"
   target_node = var.proxmox_node
   clone = var.cloudinit_template_name
-  full_clone = false
+  onboot = true
   agent = 1
   os_type = "cloud-init"
   cores = 4
