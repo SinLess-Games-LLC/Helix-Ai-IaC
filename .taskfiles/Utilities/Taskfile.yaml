@@ -1,9 +1,8 @@
 ---
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
-version: "3"
+version: '3'
 
 tasks:
-
   direnv:
     desc: Run direnv hooks
     cmd: direnv allow .
@@ -14,14 +13,15 @@ tasks:
   venv:
     desc: Set up virtual environment
     cmds:
-      - "{{.PYTHON_BIN}} -m venv {{.ROOT_DIR}}/.venv"
+      - '{{.PYTHON_BIN}} -m venv {{.ROOT_DIR}}/.venv'
       - .venv/bin/python3 -m pip install --upgrade pip setuptools wheel
       - .venv/bin/python3 -m pip install --upgrade --requirement "{{.PIP_REQUIREMENTS_FILE}}"
     sources:
-      - "{{.PIP_REQUIREMENTS_FILE}}"
+      - '{{.PIP_REQUIREMENTS_FILE}}'
     generates:
-      - "{{.ROOT_DIR}}/.venv/pyvenv.cfg"
+      - '{{.ROOT_DIR}}/.venv/pyvenv.cfg'
     preconditions:
-      - { msg: "Missing Pip requirements file", sh: "test -f {{.PIP_REQUIREMENTS_FILE}}" }
-
-
+      - {
+          msg: 'Missing Pip requirements file',
+          sh: 'test -f {{.PIP_REQUIREMENTS_FILE}}',
+        }
