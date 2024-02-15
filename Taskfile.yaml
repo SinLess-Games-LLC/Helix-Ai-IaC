@@ -1,47 +1,46 @@
 ---
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
-version: "3"
+version: '3'
 
 vars:
   # Directories
-  ANSIBLE_DIR: "{{.ROOT_DIR}}/Ansible"
-  BOOTSTRAP_DIR: "{{.ROOT_DIR}}/bootstrap"
-  KUBERNETES_DIR: "{{.ROOT_DIR}}/Kubernetes"
-  PACKER_DIR: "{{.ROOT_DIR}}/Packer"
+  ANSIBLE_DIR: '{{.ROOT_DIR}}/Ansible'
+  BOOTSTRAP_DIR: '{{.ROOT_DIR}}/bootstrap'
+  KUBERNETES_DIR: '{{.ROOT_DIR}}/Kubernetes'
+  PACKER_DIR: '{{.ROOT_DIR}}/Packer'
   # Files
-  BOOTSTRAP_CONFIG_FILE: "{{.BOOTSTRAP_DIR}}/vars/config.yaml"
-  KUBECONFIG_FILE: "{{.ROOT_DIR}}/kubeconfig"
-  MAKEJINJA_CONFIG_FILE: "{{.ROOT_DIR}}/makejinja.toml"
-  PIP_REQUIREMENTS_FILE: "{{.ROOT_DIR}}/requirements.txt"
-  SOPS_AGE_FILE: "{{.ROOT_DIR}}/.age.key"
+  BOOTSTRAP_CONFIG_FILE: '{{.BOOTSTRAP_DIR}}/vars/config.yaml'
+  KUBECONFIG_FILE: '{{.ROOT_DIR}}/kubeconfig'
+  MAKEJINJA_CONFIG_FILE: '{{.ROOT_DIR}}/makejinja.toml'
+  PIP_REQUIREMENTS_FILE: '{{.ROOT_DIR}}/requirements.txt'
+  SOPS_AGE_FILE: '{{.ROOT_DIR}}/.age.key'
   # Binaries
   PYTHON_BIN: python3
   # Python
-  PYTHONDONTWRITEBYTECODE: "1"
+  PYTHONDONTWRITEBYTECODE: '1'
 
 env:
-  KUBECONFIG: "./kubeconfig"
+  KUBECONFIG: './kubeconfig'
 
 includes:
   packer:
-    aliases: ["pack"]
+    aliases: ['pack']
     taskfile: ./.taskfiles/Packer/Taskfile.yaml
   utilities:
-    aliases: ["util"]
+    aliases: ['util']
     taskfile: ./.taskfiles/Utilities/Taskfile.yaml
   repository:
-    aliases: ["repo"]
+    aliases: ['repo']
     taskfile: ./.taskfiles/Repo/Taskfile.yaml
   kubernetes:
-    aliases: ["k8s", "k0s", "k3s"]
+    aliases: ['k8s', 'k0s', 'k3s']
     taskfile: .taskfiles/Kubernetes/Taskfile.yaml
   terraform:
-    aliases: ["tf"]
+    aliases: ['tf']
     taskfile: ./.taskfiles/Terraform/Taskfile.yaml
   sops: .taskfiles/Sops/Taskfile.yaml
 
 tasks:
-
   default: task -l
 
   init:
@@ -60,7 +59,7 @@ tasks:
   configure:
     desc: Configure repository from bootstrap vars
     prompt: Any conflicting config in the root kubernetes and ansible directories will be overwritten... continue?
-    deps: ["utilities:direnv", "utilities:venv", "init"]
+    deps: ['utilities:direnv', 'utilities:venv', 'init']
     cmds:
       - task: .template
       - task: sops:encrypt
@@ -72,10 +71,22 @@ tasks:
     internal: true
     cmd: ./.venv/bin/makejinja
     preconditions:
-      - { msg: "Missing virtual environment", sh: "test -d {{.ROOT_DIR}}/.venv" }
-      - { msg: "Missing Makejinja config file", sh: "test -f {{.MAKEJINJA_CONFIG_FILE}}" }
-      - { msg: "Missing Makejinja plugin file", sh: "test -f {{.BOOTSTRAP_DIR}}/scripts/plugin.py" }
-      - { msg: "Missing bootstrap config file", sh: "test -f {{.BOOTSTRAP_CONFIG_FILE}}" }
+      - {
+          msg: 'Missing virtual environment',
+          sh: 'test -d {{.ROOT_DIR}}/.venv',
+        }
+      - {
+          msg: 'Missing Makejinja config file',
+          sh: 'test -f {{.MAKEJINJA_CONFIG_FILE}}',
+        }
+      - {
+          msg: 'Missing Makejinja plugin file',
+          sh: 'test -f {{.BOOTSTRAP_DIR}}/scripts/plugin.py',
+        }
+      - {
+          msg: 'Missing bootstrap config file',
+          sh: 'test -f {{.BOOTSTRAP_CONFIG_FILE}}',
+        }
 
   .validate:
     internal: true

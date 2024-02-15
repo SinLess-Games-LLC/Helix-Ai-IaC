@@ -39,14 +39,14 @@ gitops:
       branch: main
   flux:
     # Flux github webhook token (openssl rand -hex 12)
-    github_webhook_token: ""
+    github_webhook_token: ''
 
 #############################################################
 # Encryption
 #############################################################
 encryption:
   # Age Public Key (e.g. age15uzrw396e67z9wdzsxzdk7ka0g2gr3l460e0slaea563zll3hdfqwqxdta)
-  age_public_key: ""
+  age_public_key: ''
 
 #############################################################
 # Cloudflare
@@ -95,7 +95,7 @@ cloudflare:
 #############################################################
 kubernetes:
   # The name of your cluster, this is used to name the cluster in the kubeconfig file
-  cluster_name: ""
+  cluster_name: ''
   # CIDR your nodes are on (e.g. 192.168.1.0/24)
   node_cidr:
   # The IP address of the Kube API, choose an available IP in your nodes network that is not being used
@@ -126,42 +126,42 @@ kubernetes:
 # Proxmox
 #############################################################
 proxmox:
-    # This is the ip address of the proxmox server
-    ip:
-    # This is the port of the proxmox server
-    # (Advanced) If you are using a non-standard port for the proxmox api (default is 8006
-    port:
-    api_tokens:
-      terraform:
-        token_id:
-        token_secret:
-    # This is the node name of the proxmox server
-    # (default is pve)
-    node_name: "pve"
+  # This is the ip address of the proxmox server
+  ip:
+  # This is the port of the proxmox server
+  # (Advanced) If you are using a non-standard port for the proxmox api (default is 8006
+  port:
+  api_tokens:
+    terraform:
+      token_id:
+      token_secret:
+  # This is the node name of the proxmox server
+  # (default is pve)
+  node_name: 'pve'
 
 #############################################################
 # SSH
 #############################################################
 ssh:
   # This is the username to use for the ssh connection
-  username: ""
+  username: ''
   password:
     # This is the password to use for the ssh connection
-    raw: ""
+    raw: ''
     # This is the encrypted password to use for the ssh connection
     # generaate using (openssl passwd -6 -salt $(openssl rand -hex 8) "password")
-    encrypted: ""
+    encrypted: ''
   authorized_keys:
     # - ssh-ed25519 xxxxxxxxxxxxxxxxxxxx ********@google.com
     # - ssh-256 xxxxxxxxxxxxxxxxxxxx ********@google.com
   # This is the path to the private key to use for the ssh connection
   # it is recommended to place the ssh key in the .ssh folder of this repo
   # Make sure to app the file name to the gitignore file so that it is not uploaded to github
-  private_key_file: ""
+  private_key_file: ''
   # This is the path to the public key to use for the ssh connection
   # it is recommended to place the ssh key in the .ssh folder of this repo
   # Make sure to app the file name to the gitignore file so that it is not uploaded to github
-  public_key_file: ""
+  public_key_file: ''
 
 #############################################################
 # Bootstrap Nodes
@@ -173,7 +173,7 @@ bootstrap_nodes:
     #   name:      # name of the master node (must match [a-z0-9-]+)
     #   address:   # ip address of the master node
     #   username:  # ssh username of the master node
-  worker: # set to [] or omit if no workers are needed
+  worker:# set to [] or omit if no workers are needed
     # - id:        # Id of the worker node vm
     #   name:      # name of the worker node (must match [a-z0-9-]+)
     #   address:   # ip address of the worker node

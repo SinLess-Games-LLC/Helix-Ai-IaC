@@ -3,13 +3,12 @@
 # https://github.com/onedr0p/flux-cluster-template/blob/main/.taskfiles/Sops/Taskfile.yaml
 #
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
-version: "3"
+version: '3'
 
 vars:
-  SOPS_CONFIG_FILE: "{{.ROOT_DIR}}/.sops.yaml"
+  SOPS_CONFIG_FILE: '{{.ROOT_DIR}}/.sops.yaml'
 
 tasks:
-
   age-keygen:
     desc: Initialize Age Key for Sops
     cmd: age-keygen --output {{.SOPS_AGE_FILE}}
@@ -22,7 +21,7 @@ tasks:
       - for: { var: file }
         task: .encrypt-file
         vars:
-          file: "{{.ITEM}}"
+          file: '{{.ITEM}}'
     vars:
       file:
         sh: find "{{.KUBERNETES_DIR}}" -type f -name "*.sops.*" -exec grep -L "ENC\[AES256_GCM" {} \;
@@ -31,19 +30,19 @@ tasks:
     internal: true
     cmd: sops --encrypt --in-place {{.file}}
     requires:
-      vars: ["file"]
+      vars: ['file']
     preconditions:
-      - { msg: "Missing Sops config file", sh: "test -f {{.SOPS_CONFIG_FILE}}" }
-      - { msg: "Missing Sops Age key file", sh: "test -f {{.SOPS_AGE_FILE}}" }
+      - { msg: 'Missing Sops config file', sh: 'test -f {{.SOPS_CONFIG_FILE}}' }
+      - { msg: 'Missing Sops Age key file', sh: 'test -f {{.SOPS_AGE_FILE}}' }
 
   .decrypt-file:
     internal: true
     cmd: sops --decrypt --in-place {{.file}}
     requires:
-      vars: ["file"]
+      vars: ['file']
     preconditions:
-      - { msg: "Missing Sops config file", sh: "test -f {{.SOPS_CONFIG_FILE}}" }
-      - { msg: "Missing Sops Age key file", sh: "test -f {{.SOPS_AGE_FILE}}" }
+      - { msg: 'Missing Sops config file', sh: 'test -f {{.SOPS_CONFIG_FILE}}' }
+      - { msg: 'Missing Sops Age key file', sh: 'test -f {{.SOPS_AGE_FILE}}' }
 
   .reset:
     internal: true

@@ -20,7 +20,6 @@ autoscaling:
 
 ## Storage
 
-
 ## setup zsh
 
 ```bash

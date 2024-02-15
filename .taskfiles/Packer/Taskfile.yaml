@@ -1,6 +1,6 @@
 ---
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
-version: "3"
+version: '3'
 
 vars:
   YAML_FILE: ./Packer/variables.sops.yaml
@@ -30,7 +30,7 @@ tasks:
       - packer build -var-file="{{.VAR_FILE}}" ./Packer/VM-template/ubuntu-server-23.10.pkr.hcl
     preconditions:
       - cmds:
-        - task validate
+          - task validate
 
   build:masters:
     desc: Build VM template
@@ -41,7 +41,7 @@ tasks:
       - packer build -var-file="{{.VAR_FILE}}" ./Packer/Master-Nodes/master-nodes.pkr.hcl
     preconditions:
       - cmds:
-        - task validate:masters
+          - task validate:masters
 
   encrypt:
     desc: Encrypt all Packer SOPS secrets that are not already encrypted
@@ -49,7 +49,7 @@ tasks:
       - for: { var: file }
         task: .encrypt-file
         vars:
-          file: "{{.ITEM}}"
+          file: '{{.ITEM}}'
     vars:
       file:
         sh: find "{{.PACKER_DIR}}" -type f -name "*.sops.*" -exec grep -L "ENC\[AES256_GCM" {} \;
@@ -60,28 +60,25 @@ tasks:
       - for: { var: file }
         task: .decrypt-file
         vars:
-          file: "{{.ITEM}}"
+          file: '{{.ITEM}}'
     vars:
       file:
         sh: find "{{.PACKER_DIR}}" -type f -name "*.sops.*" -exec grep -l "ENC\[AES256_GCM" {} \;
-
 
   .encrypt-file:
     internal: true
     cmd: SOPS_AGE_KEY_FILE={{.SOPS_AGE_FILE}} sops --encrypt --in-place {{.file}}
     requires:
-      vars: ["file"]
+      vars: ['file']
     preconditions:
-      - { msg: "Missing Sops config file", sh: "test -f {{.SOPS_CONFIG_FILE}}" }
-      - { msg: "Missing Sops Age key file", sh: "test -f {{.SOPS_AGE_FILE}}" }
+      - { msg: 'Missing Sops config file', sh: 'test -f {{.SOPS_CONFIG_FILE}}' }
+      - { msg: 'Missing Sops Age key file', sh: 'test -f {{.SOPS_AGE_FILE}}' }
 
   .decrypt-file:
     internal: true
     cmd: SOPS_AGE_KEY_FILE={{.SOPS_AGE_FILE}} sops --decrypt --in-place {{.file}}
     requires:
-      vars: ["file"]
+      vars: ['file']
     preconditions:
-      - { msg: "Missing Sops config file", sh: "test -f {{.SOPS_CONFIG_FILE}}" }
-      - { msg: "Missing Sops Age key file", sh: "test -f {{.SOPS_AGE_FILE}}" }
-
-
+      - { msg: 'Missing Sops config file', sh: 'test -f {{.SOPS_CONFIG_FILE}}' }
+      - { msg: 'Missing Sops Age key file', sh: 'test -f {{.SOPS_AGE_FILE}}' }

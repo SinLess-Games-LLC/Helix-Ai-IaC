@@ -1,11 +1,11 @@
 ---
-name: "Label Sync"
+name: 'Label Sync'
 
 on:
   workflow_dispatch:
   push:
-    branches: ["master"]
-    paths: [".github/labels.yaml"]
+    branches: ['master']
+    paths: ['.github/labels.yaml']
 
 jobs:
   label-sync:
