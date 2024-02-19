@@ -9,22 +9,23 @@
   },
   "containerEnv": {
     "KUBECONFIG": "/workspaces/Archetecture/kubeconfig",
-    "SOPS_AGE_KEY_FILE": "/workspaces/Archetecture/.age.key"
+    "SOPS_AGE_KEY_FILE": "/workspaces/Archetecture/age.key"
   },
   "privileged": true,
   "postCreateCommand": {
-    "enable git indicators": "git config devcontainers-theme.show-dirty 1",
-    "direnv": "direnv allow",
     "clone zsh-autosuggestions": "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions",
     "clone zsh-syntax-highlighting": "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting",
-    "packer-proxmox": "packer plugins install github.com/hashicorp/proxmox",
+    "clone envrc plugin": "git clone https://github.com/fabiogibson/envrc-zsh-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/envrc",
+    "zsh plugins": "sed -i 's/plugins=(git)/plugins=(git envrc git-extras history mvn web-search ansible aws docker docker-compose fluxcd helm kubectl sudo suse systemd terraform zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc",
+    "zsh theme": "sed -i 's/ZSH_THEME=\"devcontainers\"/ZSH_THEME=\"strug\"/g' ~/.zshrc",
+    "ssh1": "cp ./.ssh/id_ed25519 ~/.ssh/id_ed25519 && cp ./.ssh/id_ed25519.pub ~/.ssh/id_ed25519.pub"
+  },
+  "postStartCommand": {
     "upgrade-pip": "python3 -m pip install --upgrade pip setuptools wheel",
     "install-python-requirements": "python3 -m pip install -r ./requirements.txt",
     "install-ansible-requirements": "ansible-galaxy install --role-file ./requirements.yaml",
-    "zsh plugins": "sed -i 's/plugins=(git)/plugins=(git ansible aws docker docker-compose fluxcd helm kubectl sudo suse systemd terraform zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc",
-    "zsh theme": "sed -i 's/ZSH_THEME=\"devcontainers\"/ZSH_THEME=\"strug\"/g' ~/.zshrc",
-    "ssh1": "cp ./.ssh/id_ed25519 ~/.ssh/id_ed25519 && cp ./.ssh/id_ed25519.pub ~/.ssh/id_ed25519.pub",
-    "ssh2": "chmod 600 ~/.ssh/id_ed25519"
+    // sudo is required to change permissions
+    "ssh2": "sudo chmod 600 ~/.ssh/id_ed25519"
   },
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
@@ -101,33 +102,7 @@
         // change terminal fonnt size to 18
         "terminal.integrated.fontSize": 18
       },
-      "extensions": [
-        "wholroyd.jinja",
-        "signageos.signageos-vscode-sops",
-        "ms-kubernetes-tools.vscode-kubernetes-tools",
-        "esbenp.prettier-vscode",
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "redhat.ansible",
-        "redhat.vscode-yaml",
-        "amazonwebservices.aws-toolkit-vscode",
-        "hashicorp.terraform",
-        "hashicorp.hcl",
-        "eamodio.gitlens",
-        "DavidAnson.vscode-markdownlint",
-        "mrmlnc.vscode-json5",
-        "mikestead.dotenv",
-        "ms-vscode-remote.remote-containers",
-        "EditorConfig.EditorConfig",
-        "fcrespo82.markdown-table-formatter",
-        "PsykoSoldi3r.vscode-git-flow",
-        "CodeReviewer14.cyber77-vscode",
-        "mitchdenny.ecdc",
-        "albert.TabOut",
-        "hediet.vscode-drawio",
-        "ms-azuretools.vscode-docker",
-        "tamasfe.even-better-toml"
-      ]
+      "extensions": []
     }
   }
 }
