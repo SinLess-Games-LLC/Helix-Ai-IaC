@@ -59,7 +59,6 @@ tasks:
     cmds:
       - task: .template
       - task: sops:encrypt
-      - task: packer:encrypt
       - task: terraform:encrypt
       - task: .validate
 

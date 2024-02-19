@@ -3,10 +3,6 @@
 version: '3'
 
 env:
-  PATH: '{{.ROOT_DIR}}/.venv/bin:$PATH'
-  VIRTUAL_ENV: '{{.ROOT_DIR}}/.venv'
-  ANSIBLE_COLLECTIONS_PATH: '{{.ROOT_DIR}}/.venv/galaxy'
-  ANSIBLE_ROLES_PATH: '{{.ROOT_DIR}}/.venv/galaxy/ansible_roles'
   ANSIBLE_VARS_ENABLED: 'host_group_vars'
   ANSIBLE_LOCALHOST_WARNING: 'False'
   ANSIBLE_INVENTORY_UNPARSED_WARNING: 'False'
@@ -21,8 +17,8 @@ tasks:
   deps:
     desc: Set up Ansible dependencies
     cmds:
-      - .venv/bin/python3 -m pip install --upgrade --requirement "{{.ANSIBLE_PIP_REQUIREMENTS_FILE}}"
-      - .venv/bin/ansible-galaxy install --role-file "{{.ANSIBLE_REQUIREMENTS_FILE}}" {{if eq .force "true"}}--force{{end}}
+      - python3 -m pip install --upgrade --requirement "{{.ANSIBLE_PIP_REQUIREMENTS_FILE}}"
+      - ansible-galaxy install --role-file "{{.ANSIBLE_REQUIREMENTS_FILE}}" {{if eq .force "true"}}--force{{end}}
     preconditions:
       - {
           msg: 'Missing Ansible requirements file',
@@ -35,9 +31,6 @@ tasks:
     sources:
       - '{{.ANSIBLE_REQUIREMENTS_FILE}}'
       - '{{.ANSIBLE_PIP_REQUIREMENTS_FILE}}'
-    generates:
-      - '{{.VIRTUAL_ENV}}/bin/ansible'
-      - '{{.VIRTUAL_ENV}}/bin/ansible-galaxy'
     vars:
       force: '{{.force | default "true"}}'
 
@@ -48,7 +41,7 @@ tasks:
         playbook: Playbook to run (required)
     prompt: Run Ansible playbook '{{.playbook}}'... continue?
     deps: ['deps']
-    cmd: '{{.VIRTUAL_ENV}}/bin/ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} {{.ANSIBLE_DIR}}/playbooks/{{.playbook}}.yaml {{.CLI_ARGS}}'
+    cmd: 'ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} {{.ANSIBLE_DIR}}/playbooks/{{.playbook}}.yaml {{.CLI_ARGS}}'
     requires:
       vars: ['playbook']
     preconditions:
@@ -60,7 +53,7 @@ tasks:
   list:
     desc: List all the hosts
     deps: ['deps']
-    cmd: '{{.VIRTUAL_ENV}}/bin/ansible kubernetes --inventory {{.ANSIBLE_INVENTORY_FILE}} --list-hosts'
+    cmd: 'ansible kubernetes --inventory {{.ANSIBLE_INVENTORY_FILE}} --list-hosts'
     preconditions:
       - {
           msg: 'Missing Ansible inventory file',
@@ -70,7 +63,7 @@ tasks:
   ping:
     desc: Ping all the hosts
     deps: ['deps']
-    cmd: "{{.VIRTUAL_ENV}}/bin/ansible kubernetes --inventory {{.ANSIBLE_INVENTORY_FILE}} --one-line -m 'ping'"
+    cmd: "ansible kubernetes --inventory {{.ANSIBLE_INVENTORY_FILE}} --one-line -m 'ping'"
     preconditions:
       - {
           msg: 'Missing Ansible inventory file',
@@ -80,7 +73,7 @@ tasks:
   uptime:
     desc: Uptime of all the hosts
     deps: ['deps']
-    cmd: "{{.VIRTUAL_ENV}}/bin/ansible kubernetes --inventory {{.ANSIBLE_INVENTORY_FILE}} --one-line -a 'uptime'"
+    cmd: "ansible kubernetes --inventory {{.ANSIBLE_INVENTORY_FILE}} --one-line -a 'uptime'"
     preconditions:
       - {
           msg: 'Missing Ansible inventory file',
@@ -90,7 +83,7 @@ tasks:
   lint:
     desc: Lint Ansible
     deps: ['deps']
-    cmd: '{{.VIRTUAL_ENV}}/bin/ansible-lint --config-file {{.ANSIBLE_LINT_FILE}} {{.ANSIBLE_DIR}}/**/*.yaml'
+    cmd: 'ansible-lint --config-file {{.ANSIBLE_LINT_FILE}} {{.ANSIBLE_DIR}}/**/*.yaml'
     preconditions:
       - {
           msg: 'Missing Ansible lint file',

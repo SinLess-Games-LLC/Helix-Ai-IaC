@@ -8,15 +8,18 @@
     "dockerfile": "./Dockerfile"
   },
   "containerEnv": {
-    "KUBECONFIG": "/workspaces/Archetecture/kubeconfig",
-    "SOPS_AGE_KEY_FILE": "/workspaces/Archetecture/age.key"
+    "KUBECONFIG": "/workspaces/Helix-Ai-IaC/kubeconfig",
+    "SOPS_AGE_KEY_FILE": "/workspaces/Helix-Ai-IaC/.age.key"
   },
   "privileged": true,
   "postCreateCommand": {
     "clone zsh-autosuggestions": "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions",
     "clone zsh-syntax-highlighting": "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting",
     "clone envrc plugin": "git clone https://github.com/fabiogibson/envrc-zsh-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/envrc",
+    // This is to add the plugins to the zshrc file
     "zsh plugins": "sed -i 's/plugins=(git)/plugins=(git envrc git-extras history mvn web-search ansible aws docker docker-compose fluxcd helm kubectl sudo suse systemd terraform zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc",
+    // to change the zsh theme, change the value of strug to the desired theme
+    // If you need to install the theme do it before this step.
     "zsh theme": "sed -i 's/ZSH_THEME=\"devcontainers\"/ZSH_THEME=\"strug\"/g' ~/.zshrc",
     "ssh1": "cp ./.ssh/id_ed25519 ~/.ssh/id_ed25519 && cp ./.ssh/id_ed25519.pub ~/.ssh/id_ed25519.pub"
   },
@@ -102,7 +105,12 @@
         // change terminal fonnt size to 18
         "terminal.integrated.fontSize": 18
       },
-      "extensions": []
+      "extensions": [
+        "samuelcolvin.jinjahtml",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "signageos.signageos-vscode-sops",
+        "GitHub.copilot"
+      ]
     }
   }
 }

@@ -1,0 +1,33 @@
+---
+- name: Prepare System
+  hosts: kubernetes
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  pre_tasks:
+    - name: Pausing for 5 seconds...
+      ansible.builtin.pause:
+        seconds: 5
+    - name: Populate service facts
+      ansible.builtin.service_facts:
+  tasks:
+    - name: Set up passwordless sudo
+      ansible.builtin.include_tasks: tasks/passwordless-sudo.yaml
+
+    - name: Locale
+      block:
+        - name: Locale | Set timezone
+          community.general.timezone:
+            name: "America/Denver"
+
+    - name: Install Zsh
+      ansible.builtin.include_tasks: tasks/zsh.yaml
+
+    - name: Install Packages
+      ansible.builtin.include_tasks: tasks/install-packages.yaml
+
+    - name: Network Configuration
+      ansible.builtin.include_tasks: tasks/network-configuration.yaml
+
+    - name: System Configuration
+      ansible.builtin.include_tasks: tasks/system-configuration.yaml

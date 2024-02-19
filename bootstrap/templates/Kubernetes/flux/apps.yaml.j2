@@ -10,7 +10,7 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: {{ kubernetes.cluster_name }}
   decryption:
     provider: sops
     secretRef:

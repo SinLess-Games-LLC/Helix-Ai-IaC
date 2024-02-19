@@ -68,9 +68,9 @@ spec:
             any: true
       extraArgs:
         {% if cloudflare.tunnels[0].ssl.acme_production_enabled %}
-        default-ssl-certificate: "network/${SECRET_DOMAIN_1/./-}-production-tls"
+        default-ssl-certificate: "network/${SECRET_DOMAIN/./-}-production-tls"
         {% else %}
-        default-ssl-certificate: "network/${SECRET_DOMAIN_1/./-}-staging-tls"
+        default-ssl-certificate: "network/${SECRET_DOMAIN/./-}-staging-tls"
         {% endif %}
       topologySpreadConstraints:
         - maxSkew: 1

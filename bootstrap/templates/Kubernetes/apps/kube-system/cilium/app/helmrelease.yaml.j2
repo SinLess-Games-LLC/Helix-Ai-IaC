@@ -64,10 +64,10 @@ spec:
           enabled: true
           className: internal
           hosts:
-            - "hubble.${SECRET_DOMAIN_1}"
+            - "hubble.${SECRET_DOMAIN}"
           tls:
             - hosts:
-                - "hubble.${SECRET_DOMAIN_1}"
+                - "hubble.${SECRET_DOMAIN}"
     ipam:
       mode: kubernetes
     ipv4NativeRoutingCIDR: "${CLUSTER_CIDR}"

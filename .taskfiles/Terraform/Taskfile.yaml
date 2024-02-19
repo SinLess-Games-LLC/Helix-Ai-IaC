@@ -23,15 +23,43 @@ tasks:
 
   plan:
     desc: Generate Terraform execution plan
+    preconditions:
+      - { msg: 'Missing Terraform directory', sh: 'test -d {{.TERRAFORM_DIR}}' }
     cmd: terraform -chdir={{.TERRAFORM_DIR}} plan -out=tfplan -input=false
 
   apply:
     desc: Apply Terraform changes
+    preconditions:
+      - { msg: 'Missing Terraform directory', sh: 'test -d {{.TERRAFORM_DIR}}' }
+      - { msg: 'Missing Terraform plan file', sh: 'test -f {{.TERRAFORM_DIR}}/tfplan' }
     cmd: terraform -chdir={{.TERRAFORM_DIR}} apply -input=false tfplan
+
+  deploy:
+    desc: Deploy the VMs for the Cluster
+    # require init task to be run first
+    preconditions:
+      - task tf:init
+      - task tf:plan
+      - { msg: 'Missing Terraform directory', sh: 'test -d {{.TERRAFORM_DIR}}' }
+      - { msg: 'Missing Terraform plan file', sh: 'test -f {{.TERRAFORM_DIR}}/tfplan' }
+    cmds:
+      - terraform -chdir={{.TERRAFORM_DIR}} apply -input=false tfplan
 
   destroy:
     desc: Destroy Terraform resources
-    cmd: terraform -chdir={{.TERRAFORM_DIR}} destroy
+    preconditions:
+      - { msg: 'Missing Terraform directory', sh: 'test -d {{.TERRAFORM_DIR}}' }
+      - { msg: 'Missing Terraform plan file', sh: 'test -f {{.TERRAFORM_DIR}}/tfplan' }
+      - { msg: 'Missing Terraform state file', sh: 'test -f {{.TERRAFORM_DIR}}/terraform.tfstate' }
+    cmds: 
+    - terraform -chdir={{.TERRAFORM_DIR}} destroy
+    - rm -f {{.TERRAFORM_DIR}}/tfplan
+    - rm -f {{.TERRAFORM_DIR}}/terraform.tfstate
+    - rm -f {{.TERRAFORM_DIR}}/terraform.tfstate.backup
+    - rm -f {{.TERRAFORM_DIR}}/variables.auto.tfvars.json
+    - rm -f {{.TERRAFORM_DIR}}/.terraform.tfstate.lock.info
+    - rm -f {{.TERRAFORM_DIR}}/.terraform.lock.hcl
+    - sudo rm -rf {{.TERRAFORM_DIR}}/.terraform
 
   encrypt:
     desc: Encrypt all Terraform SOPS secrets that are not already encrypted

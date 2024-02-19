@@ -40,7 +40,6 @@ wiki
 
 *.log
 
-.ssh/
 
 Terraform/.terraform.lock.hcl
 
