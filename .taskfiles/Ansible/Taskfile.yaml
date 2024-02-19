@@ -20,7 +20,6 @@ vars:
 tasks:
   deps:
     desc: Set up Ansible dependencies
-    deps: [':utilities:venv']
     cmds:
       - .venv/bin/python3 -m pip install --upgrade --requirement "{{.ANSIBLE_PIP_REQUIREMENTS_FILE}}"
       - .venv/bin/ansible-galaxy install --role-file "{{.ANSIBLE_REQUIREMENTS_FILE}}" {{if eq .force "true"}}--force{{end}}

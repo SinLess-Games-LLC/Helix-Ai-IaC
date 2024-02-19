@@ -7,13 +7,12 @@ vars:
   ANSIBLE_DIR: '{{.ROOT_DIR}}/Ansible'
   BOOTSTRAP_DIR: '{{.ROOT_DIR}}/bootstrap'
   KUBERNETES_DIR: '{{.ROOT_DIR}}/Kubernetes'
-  PACKER_DIR: '{{.ROOT_DIR}}/Packer'
   # Files
   BOOTSTRAP_CONFIG_FILE: '{{.BOOTSTRAP_DIR}}/vars/config.yaml'
   KUBECONFIG_FILE: '{{.ROOT_DIR}}/kubeconfig'
   MAKEJINJA_CONFIG_FILE: '{{.ROOT_DIR}}/makejinja.toml'
   PIP_REQUIREMENTS_FILE: '{{.ROOT_DIR}}/requirements.txt'
-  SOPS_AGE_FILE: '{{.ROOT_DIR}}/.age.key'
+  SOPS_AGE_FILE: '{{.ROOT_DIR}}/age.key'
   # Binaries
   PYTHON_BIN: python3
   # Python
@@ -23,9 +22,6 @@ env:
   KUBECONFIG: './kubeconfig'
 
 includes:
-  packer:
-    aliases: ['pack']
-    taskfile: ./.taskfiles/Packer/Taskfile.yaml
   utilities:
     aliases: ['util']
     taskfile: ./.taskfiles/Utilities/Taskfile.yaml
@@ -59,7 +55,7 @@ tasks:
   configure:
     desc: Configure repository from bootstrap vars
     prompt: Any conflicting config in the root kubernetes and ansible directories will be overwritten... continue?
-    deps: ['utilities:direnv', 'utilities:venv', 'init']
+    deps: ['utilities:direnv', 'init']
     cmds:
       - task: .template
       - task: sops:encrypt
@@ -69,12 +65,8 @@ tasks:
 
   .template:
     internal: true
-    cmd: ./.venv/bin/makejinja
+    cmd: makejinja
     preconditions:
-      - {
-          msg: 'Missing virtual environment',
-          sh: 'test -d {{.ROOT_DIR}}/.venv',
-        }
       - {
           msg: 'Missing Makejinja config file',
           sh: 'test -f {{.MAKEJINJA_CONFIG_FILE}}',
