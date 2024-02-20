@@ -48,3 +48,5 @@ Terraform/terraform.tfstate
 Terraform/tfplan
 
 Terraform/variables.auto.tfvars.json
+
+.ssh/.ssh

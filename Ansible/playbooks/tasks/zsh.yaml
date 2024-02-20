@@ -1,0 +1,56 @@
+# taken from: https://www.lorenzobettini.it/2023/07/my-ansible-role-for-oh-my-zsh-and-other-cli-programs/
+---
+# tasks file for oh_my_zsh
+- name: Install Git
+  become: true
+  ansible.builtin.package:
+    state: present
+    name: git
+
+- name: Install ZSH
+  become: true
+  ansible.builtin.package:
+    name: zsh
+    state: present
+
+- name: Install Oh My Zsh # noqa: latest
+  ansible.builtin.git:
+    repo: https://github.com/ohmyzsh/ohmyzsh.git
+    dest: /home/{{ ansible_user }}/.oh-my-zsh
+    depth: 1
+
+- name: Install zsh-autosuggestions plugin # noqa: latest
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: /home/{{ ansible_user }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    depth: 1
+
+- name: Install zsh-completions plugin # noqa: latest
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-completions
+    dest: /home/{{ ansible_user }}/.oh-my-zsh/custom/plugins/zsh-completions
+    depth: 1
+
+- name: Install zsh-syntax-highlighting plugin # noqa: latest
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: /home/{{ ansible_user }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+    depth: 1
+
+- name: Change user shell to zsh
+  become: true
+  ansible.builtin.user:
+    name: "{{ ansible_user }}"
+    shell: /bin/zsh
+
+- name: Create ~/.zshrc
+  ansible.builtin.copy:
+    content: |
+      export ZSH="/home/{{ ansible_user }}/.oh-my-zsh"
+      ZSH_THEME="strug"
+      plugins=(git zsh-autosuggestions zsh-completions zsh-syntax-highlighting git ansible aws colorize bundler dotenv docker docker-compose direnv fluxcd git-flow git-commit git-extras gitignore helm istioctl kubectl sudo suse systemd terraform vagrant vault vscode zsh-interactive-cd)
+      source $ZSH/oh-my-zsh.sh
+    dest: /home/{{ ansible_user }}/.zshrc
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0644'

@@ -6,14 +6,6 @@
 # system
 #############################################################
 system:
-  # The CIDR of the network your nodes are on (e.g. 192.168.1.0/24)
-  cidr:
-  # The IP address of the gateway on your network
-  gateway_addr:
-  # The IP address of the DNS server on your network  nameserver: 192.168.86.80
-  nameserver:
-  # Choose your timezone (e.g. America/New_York)
-  timezone: America/Denver
   # The DNS server to use for the cluster, this can be an existing local DNS server or a public one
   # If using a local DNS server make sure it meets the following requirements:
   #   1. your nodes can reach it
@@ -22,6 +14,18 @@ system:
   dns_servers:
     - 1.1.1.1
     - 8.8.8.8
+  extra_packages:
+    - automake
+    - autoconf
+    - m4
+  # The CIDR of the network your nodes are on (e.g. 192.168.1.0/24)
+  cidr:
+  # The IP address of the gateway on your network
+  gateway_addr:
+  # The IP address of the DNS server on your network  nameserver: 192.168.86.80
+  nameserver:
+  # Choose your timezone (e.g. America/New_York)
+  timezone: America/Denver
 
 #############################################################
 # GitOps
@@ -95,6 +99,7 @@ cloudflare:
 #############################################################
 kubernetes:
   # The name of your cluster, this is used to name the cluster in the kubeconfig file
+  # Must be a lowercase RFC 1123 subdomain must consist of lower case alphanumeric characters, '-' or '.'
   cluster_name: ''
   # CIDR your nodes are on (e.g. 192.168.1.0/24)
   node_cidr:

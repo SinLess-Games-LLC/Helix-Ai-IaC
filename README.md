@@ -238,7 +238,6 @@ You have two different options for setting up your local workstation.
 3. Install Kubernetes depending on the distribution you chose
 
    ```sh
-   # Install k3s
    task ansible:run playbook=cluster-installation
    ```
 

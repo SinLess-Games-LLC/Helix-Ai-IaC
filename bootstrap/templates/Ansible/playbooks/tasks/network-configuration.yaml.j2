@@ -1,0 +1,62 @@
+- name: Network Configuration
+  block:
+    - name: Network Configuration | Set hostname
+      ansible.builtin.hostname:
+        name: "{% raw %}{{ inventory_hostname }}{% endraw %}"
+
+    - name: Network Configuration | Update hosts
+      ansible.builtin.copy:
+        content: |
+          127.0.0.1 localhost
+          127.0.1.1 {% raw %}{{ inventory_hostname }}{% endraw %}
+
+          # The following lines are desirable for IPv6 capable hosts
+          ::1     localhost ip6-localhost ip6-loopback
+          ff02::1 ip6-allnodes
+          ff02::2 ip6-allrouters
+        dest: /etc/hosts
+        mode: preserve
+
+    - name: Network Configuration | Stop resolvconf service
+      ansible.builtin.systemd:
+        name: resolvconf
+        state: stopped
+        enabled: false
+
+    # This is a finicky step if it errors out at this step
+    # On the first run on a fresh VM it is commented out, After that this step needs to be uncommented if you plan to run it again
+    # If it is not commented out comment it out and run the playbook again
+    # If it is commented out and the playbook fails at this step uncomment it and run the playbook again
+    # if the error persists after trying to run it with it both commented out and uncommented out  then you have a different problem
+    # - name: Network Configuration | Remove immutable flag from /etc/resolv.conf
+    #   ansible.builtin.file:
+    #     attributes: -i
+    #     path: /etc/resolv.conf
+        
+    - name: Network Configuration | Remove /etc/resolv.conf
+      ansible.builtin.file:
+        attributes: -i
+        path: /etc/resolv.conf
+        state: absent
+
+    - name: Network Configuration | Add custom /etc/resolv.conf
+      ansible.builtin.copy:
+        attributes: +i
+        mode: '0644'
+        dest: /etc/resolv.conf
+        content: |
+          {% for item in system.dns_servers %}
+          nameserver {{ item }}
+          {% endfor %}
+          search {% raw %}{{ ansible_host }}{% endraw %}.local
+    
+    - name: Network Configuration | Start resolvconf service
+      ansible.builtin.systemd:
+        name: resolvconf
+        state: started
+        enabled: true
+    
+    - name: Network Configuration | Reboot
+      ansible.builtin.reboot:
+        msg: Rebooting hosts
+        reboot_timeout: 3600

@@ -1,0 +1,47 @@
+- name: System Configuration
+  block:
+    - name: System Configuration | Disable apparmor
+      when: ansible_facts.services['apparmor.service'] is defined
+      ansible.builtin.systemd:
+        name: apparmor
+        state: stopped
+        masked: true
+                
+    - name: System Configuration | Disable swap
+      ansible.posix.mount:
+        name: "{{ item }}"
+        fstype: swap
+        state: absent
+      loop: ["none", "swap"]
+
+    - name: System Configuration | Create Kernel modules
+      ansible.builtin.copy:
+        dest: "/etc/modules-load.d/{{ item }}.conf"
+        mode: "0644"
+        content: "{{ item }}"
+      loop: ["br_netfilter", "ceph", "ip_vs", "ip_vs_rr", "nbd", "overlay", "rbd"]
+      register: modules_status
+
+    - name: System Configuration | Reload Kernel modules # noqa: no-changed-when no-handler
+      when: modules_status.changed
+      ansible.builtin.systemd:
+        name: systemd-modules-load
+        state: restarted
+
+    - name: System Configuration | Sysctl
+      ansible.posix.sysctl:
+        name: "{{ item.key }}"
+        value: "{{ item.value }}"
+        sysctl_file: /etc/sysctl.d/99-kubernetes.conf
+        reload: true
+      with_dict: "{{ sysctl_config }}"
+      vars:
+        sysctl_config:
+          fs.inotify.max_queued_events: 65536
+          fs.inotify.max_user_watches: 524288
+          fs.inotify.max_user_instances: 8192
+
+    - name: System Configuration | Reboot
+      ansible.builtin.reboot:
+        msg: Rebooting hosts
+        reboot_timeout: 3600

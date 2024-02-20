@@ -12,7 +12,7 @@ vars:
   KUBECONFIG_FILE: '{{.ROOT_DIR}}/kubeconfig'
   MAKEJINJA_CONFIG_FILE: '{{.ROOT_DIR}}/makejinja.toml'
   PIP_REQUIREMENTS_FILE: '{{.ROOT_DIR}}/requirements.txt'
-  SOPS_AGE_FILE: '{{.ROOT_DIR}}/age.key'
+  SOPS_AGE_FILE: '{{.ROOT_DIR}}/.age.key'
   # Binaries
   PYTHON_BIN: python3
   # Python
@@ -34,7 +34,9 @@ includes:
   terraform:
     aliases: ['tf']
     taskfile: ./.taskfiles/Terraform/Taskfile.yaml
+  ansible: ./.taskfiles/Ansible/Taskfile.yaml
   sops: .taskfiles/Sops/Taskfile.yaml
+  flux: .taskfiles/Flux/Taskfile.yaml
 
 tasks:
   default: task -l
@@ -83,3 +85,23 @@ tasks:
     internal: true
     cmds:
       - task: kubernetes:kubeconform
+
+  remove-ssh:
+    desc: Remove SSH known hosts
+    cmds:
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.100"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.101"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.102"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.103"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.104"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.105"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.150"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.151"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.152"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.153"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.154"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.155"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.156"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.157"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.158"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.159"
