@@ -13,7 +13,7 @@ spec:
     # exclude all
     /*
     # include kubernetes directory
-    !/kubernetes
+    !/Kubernetes
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
