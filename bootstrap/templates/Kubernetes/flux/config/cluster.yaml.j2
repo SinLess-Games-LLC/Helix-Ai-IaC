@@ -6,14 +6,14 @@ metadata:
   namespace: flux-system
 spec:
   interval: 30m
-  url: "https://github.com/{{ gitops.github.username }}/{{ gitops.github.repository.name }}.git"
+  url: "https://github.com/{{ gitops.github.username }}/{{ gitops.github.repository.name }}"
   ref:
     branch: "{{ gitops.github.repository.branch|default('main', true) }}"
   ignore: |
     # exclude all
     /*
     # include kubernetes directory
-    !/kubernetes
+    !/Kubernetes
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
