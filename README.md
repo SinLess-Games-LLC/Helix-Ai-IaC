@@ -273,7 +273,6 @@ You have two different options for setting up your local workstation.
    ```sh
    flux check --pre
    # ► checking prerequisites
-   # ✔ kubectl 1.27.3 >=1.18.0-0
    # ✔ Kubernetes 1.27.3+k3s1 >=1.16.0-0
    # ✔ prerequisites checks passed
    ```
