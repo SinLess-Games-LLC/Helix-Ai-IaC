@@ -8,6 +8,6 @@ resources:
 configMapGenerator:
   - name: cloudflared-configmap
     files:
-      - ./configs/config.yaml
+      - ./Kubernetes/apps/network/cloudflared/app/configs/config.yaml
 generatorOptions:
   disableNameSuffixHash: true
