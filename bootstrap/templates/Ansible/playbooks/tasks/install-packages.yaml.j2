@@ -6,9 +6,9 @@
 
     - name: Packages | Display Warning
       ansible.builtin.pause:
-        seconds: 5
+        seconds: 3
         prompt: |
-          This will install the required and user packages onto each VM.
+          The next step will install the required packages and the user specified packages onto each VM.
 
           Please note that this may take a while as it is installing a minimum of 40 packages plus whatever the user added
 
