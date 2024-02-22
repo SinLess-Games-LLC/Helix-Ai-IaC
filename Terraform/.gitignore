@@ -3,4 +3,3 @@ variables.auto.tfvars.json
 .terraform.tfstate.lock.info
 terraform.tfstate
 tfplan
-/.terraform/
