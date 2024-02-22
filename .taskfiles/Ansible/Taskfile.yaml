@@ -89,3 +89,10 @@ tasks:
           msg: 'Missing Ansible lint file',
           sh: 'test -f {{.ANSIBLE_LINT_FILE}}',
         }
+  
+  deploy:
+    desc: Deploy the cluster
+    deps: ['deps', 'ping']
+    cmds:
+      - 'ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} {{.ANSIBLE_DIR}}/playbooks/cluster-prepare.yaml {{.CLI_ARGS}}'
+      - 'ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} {{.ANSIBLE_DIR}}/playbooks/cluster-installation.yaml {{.CLI_ARGS}}'
