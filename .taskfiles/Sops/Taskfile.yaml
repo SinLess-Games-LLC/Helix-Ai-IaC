@@ -34,6 +34,14 @@ tasks:
     preconditions:
       - { msg: 'Missing Sops config file', sh: 'test -f {{.SOPS_CONFIG_FILE}}' }
       - { msg: 'Missing Sops Age key file', sh: 'test -f {{.SOPS_AGE_FILE}}' }
+  
+  decrypt:
+    desc: Decrypt file with Sops
+    cmds:
+      - for: { var: file }
+        task: .decrypt-file
+        vars:
+          file: '{{.ITEM}}'
 
   .decrypt-file:
     internal: true
