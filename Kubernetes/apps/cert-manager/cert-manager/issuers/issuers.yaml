@@ -13,7 +13,6 @@ spec:
           cloudflare:
             apiTokenSecretRef:
               name: cert-manager-secret
-              namespace: cert-manager
               key: api-token
         selector:
           dnsZones:
@@ -34,7 +33,6 @@ spec:
           cloudflare:
             apiTokenSecretRef:
               name: cert-manager-secret
-              namespace: cert-manager
               key: api-token
         selector:
           dnsZones:
