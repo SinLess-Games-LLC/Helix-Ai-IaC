@@ -5,6 +5,8 @@ metadata:
   name: consul
   namespace: network
 spec:
+  dependsOn:
+    - name: consul-tls-cert
   interval: 30m
   chart:
     spec:
@@ -36,8 +38,9 @@ spec:
       datacenter: "Helix-Ai-DC1"
       # Enables ACLs across the cluster to secure access to data and APIs.
       acls:
+        enabled: false
         # If true, automatically manage ACL tokens and policies for all Consul components.
-        manageSystemACLs: true
+        manageSystemACLs: false
       # Exposes Prometheus metrics for the Consul service mesh and sidecars.
       metrics:
         enabled: true
@@ -47,35 +50,46 @@ spec:
         agentMetricsRetentionTime: "1m"
       # One of "debug", "info", "warn", or "error".
       logLevel: "info"
-      logJSON: true
+      logJSON: false
       domain: "${SECRET_DOMAIN}"
     
     # Configures values that configure the Consul server cluster.
     server:
       enabled: true
       # The number of server agents to run. This determines the fault tolerance of the cluster.
-      replicas: 1
+      replicas: 3
+      bootstrapExpect: 3
+
+
+      serverCert:
+        secretName: consul-tls-cert
+        secretKey: tls.crt
+        secretKeySecret: tls.key
     
     ui:
       enabled: true
+      service:
+        enabled: true
+      ingress:
+        hosts:
+          - address: "consul.${SECRET_DOMAIN}"
+        tls:
+          - hosts:
+            - "consul.${SECRET_DOMAIN}"
       # Enables displaying metrics in the Consul UI.
       metrics:
         enabled: true
         # The metrics provider specification.
         provider: "prometheus"
         # The URL of the prometheus metrics server.
-        baseURL: http://prometheus-server.default.svc.cluster.local
+        baseURL: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
 
     # Configures and installs the automatic Consul Connect sidecar injector.
     connectInject:
+      # Enables metrics for Consul Connect sidecars.
       enabled: true
-        # Enables metrics for Consul Connect sidecars.
+      # The number of deployment replicas.
+      replicas: 2
       metrics:
         defaultEnabled: true
-
-    ingress:
-      hosts:
-        - address: "consul.${SECRET_DOMAIN}"
-      tls:
-        - hosts:
-          - "consul.${SECRET_DOMAIN}"
+        defaultEnableMerging: true

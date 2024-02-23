@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: consul-tls-cert
+  namespace: network
+spec:
+  secretName: consul-tls-cert
+  commonName: consul.${SECRET_DOMAIN}
+  dnsNames: 
+    - consul.${SECRET_DOMAIN}
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+    group: cert-manager.io

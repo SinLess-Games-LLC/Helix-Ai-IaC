@@ -24,8 +24,14 @@ spec:
     keepHistory: false
   values:
     localprovisioner:
+      replicas: 3
       hostpathClass:
         enabled: true
         name: openebs-hostpath
-        isDefaultClass: false
-        basePath: /var/openebs/local
+        isDefaultClass: true
+      basePath: /var/openebs/local
+      enableDeviceClass: true
+      enableHostpathClass: true
+    loki-stack:
+      enabled: true
+
