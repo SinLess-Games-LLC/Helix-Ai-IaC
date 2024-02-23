@@ -10,5 +10,4 @@ resources:
   - ./jetstack.yaml
   - ./metrics-server.yaml
   - ./openebs.yaml
-  - ./prometheus.yaml
   - ./stakater.yaml
