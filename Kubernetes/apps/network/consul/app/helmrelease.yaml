@@ -59,7 +59,8 @@ spec:
       # The number of server agents to run. This determines the fault tolerance of the cluster.
       replicas: 3
       bootstrapExpect: 3
-
+      storageClass: "openebs-hostpath"
+      storageSize: "1Gi"
 
       serverCert:
         secretName: consul-tls-cert

@@ -29,9 +29,12 @@ spec:
         enabled: true
         name: openebs-hostpath
         isDefaultClass: true
-      basePath: /var/openebs/local
-      enableDeviceClass: true
-      enableHostpathClass: true
+        basePath: "/var/openebs/local/hostpath"
+      deviceClass:
+        enabled: true
+        name: openebs-device
+        isDefaultClass: false
+        basePath: "/var/openebs/local/device"
     loki-stack:
       enabled: true
 
