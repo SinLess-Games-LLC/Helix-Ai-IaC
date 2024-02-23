@@ -28,7 +28,8 @@
     "install-python-requirements": "python3 -m pip install -r ./requirements.txt",
     "install-ansible-requirements": "ansible-galaxy install --role-file ./requirements.yaml",
     // sudo is required to change permissions
-    "ssh2": "sudo chmod 600 ~/.ssh/id_ed25519"
+    "ssh2": "sudo chmod 600 ~/.ssh/id_ed25519",
+    "install K9S": "go install github.com/derailed/k9s@latest"
   },
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
@@ -54,10 +55,12 @@
     /**
      * Languages
      * - python
+     * - go
      */
     "ghcr.io/devcontainers/features/python:1": {
       "version": "3.12"
     },
+    "ghcr.io/devcontainers/features/go:1": {},
     /**
      * Kubernetes tools
      * - kubectl
