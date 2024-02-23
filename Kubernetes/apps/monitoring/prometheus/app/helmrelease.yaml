@@ -53,8 +53,8 @@ spec:
         ingressClassName: internal
         admin:
           existingSecret: grafana-login
-          userKey: username
-          passwordKey: password
+          userKey: admin-user
+          passwordKey: admin-password
         hosts:
           - "grafana.${SECRET_DOMAIN}"
         tls:
