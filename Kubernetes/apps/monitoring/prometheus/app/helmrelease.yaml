@@ -47,14 +47,13 @@ spec:
     grafana:
       defaultDashboardsEnabled: true
       defaultDashboardsTimezone: ${TIMEZONE}
-      
+      admin:
+        existingSecret: grafana-login
+        userKey: admin-user
+        passwordKey: admin-password
       ingress:
         enabled: true
         ingressClassName: internal
-        admin:
-          existingSecret: grafana-login
-          userKey: admin-user
-          passwordKey: admin-password
         hosts:
           - "grafana.${SECRET_DOMAIN}"
         tls:
