@@ -1,0 +1,15 @@
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: discord-alert
+  namespace: flux-system
+spec:
+  summary: "Kubernetes cluster alert"
+  eventSeverity: error
+  providerRef:
+    name: discord
+  eventSources:
+    - kind: HelmRepository
+      name: '*'
+    - kind: HelmRelease
+      name: '*'
