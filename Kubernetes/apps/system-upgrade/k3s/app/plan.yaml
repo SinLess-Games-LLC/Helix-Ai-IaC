@@ -30,6 +30,15 @@ spec:
       operator: Exists
     - key: CriticalAddonsOnly
       operator: Exists
+    - key: kubernetes.io/arch
+      operator: Exists
+      value: amd64
+    - key: kubernetes.io/os 
+      operator: Exists
+      value: debian
+    - key: kubernetes.io/description
+      operator: Exists
+      value: k3s Control Plane
 ---
 apiVersion: upgrade.cattle.io/v1
 kind: Plan
@@ -43,6 +52,20 @@ spec:
     matchExpressions:
       - key: node-role.kubernetes.io/control-plane
         operator: DoesNotExist
+  tolerations:
+    - key: node-role.kubernetes.io/etcd
+      operator: DoesNotExist
+    - key: node-role.kubernetes.io/master
+      operator: DoesNotExist
+    - key: kubernetes.io/arch
+      operator: Exists
+      value: amd64
+    - key: kubernetes.io/os 
+      operator: Exists
+      value: debian
+    - key: kubernetes.io/description
+      operator: Exists
+      value: k3s Worker
   prepare:
     image: rancher/k3s-upgrade
     args: ['prepare', 'server']
