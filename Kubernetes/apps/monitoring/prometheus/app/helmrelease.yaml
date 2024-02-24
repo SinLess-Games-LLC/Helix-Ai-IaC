@@ -33,6 +33,14 @@ spec:
   values:
     alertmanager:
       enabled: true
+      ingress:
+        enabled: true
+        ingressClassName: internal
+        hosts:
+          - "alertmanager.${SECRET_DOMAIN}"
+        tls:
+          - hosts:
+              - "alertmanager.${SECRET_DOMAIN}"
     prometheus:
       prometheusSpec:
         retention: 24h
@@ -44,6 +52,14 @@ spec:
         podMonitorSelector:
           matchLabels:
             app.kubernetes.io/component: monitoring
+      ingress:
+        enabled: true
+        ingressClassName: internal
+        hosts:
+          - "prometheus.${SECRET_DOMAIN}"
+        tls:
+          - hosts:
+              - "prometheus.${SECRET_DOMAIN}"
     grafana:
       defaultDashboardsEnabled: true
       defaultDashboardsTimezone: ${TIMEZONE}
