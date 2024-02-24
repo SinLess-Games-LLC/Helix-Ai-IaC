@@ -7,10 +7,13 @@
 - [ ] jaeger tracing [https://github.com/jaegertracing/jaeger-operator]
 - [ ] HA pihole
 - [ ] Auto scaling (vertical and horizontal)
-- [ ] CI/CD
-- [ ] Message broker (Kafka)
+- [ ] CI/CD (Github actions)
+- [ ] Message broker (Cloud Events)
 - [ ] Caching (Redis)
 - [ ] Data storage (Mysql, S3)
 - [ ] Monitoring (Prometheus, Grafana)
-- [ ] weave scope and weave gitops
 - [ ] chaos engineering (chaos mesh)
+- [ ] Service mesh (Istio)
+- [ ] Falco
+- [ ] Thanos
+- [ ] Tracing (Grafana Tempo)
