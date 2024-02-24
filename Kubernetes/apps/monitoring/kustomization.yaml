@@ -5,4 +5,5 @@ resources:
   - ./namespace.yaml
   - ./prometheus/ks.yaml
   - ./loki/ks.yaml
+  - ./tempo/ks.yaml
   - ./configs
