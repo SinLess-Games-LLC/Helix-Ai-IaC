@@ -13,3 +13,9 @@ spec:
       name: '*'
     - kind: HelmRelease
       name: '*'
+    - kind: Elasticsearch
+      name: '*'
+    - kind: Kibana
+      name: '*'
+    - kind: Kustomization
+      name: '*'
