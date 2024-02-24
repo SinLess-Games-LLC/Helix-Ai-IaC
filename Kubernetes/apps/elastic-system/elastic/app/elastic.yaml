@@ -2,7 +2,7 @@ apiVersion: elasticsearch.k8s.elastic.co/v1beta1
 kind: Elasticsearch
 metadata:
   name: elasticsearch
-  namespace: elastic-system
+  namespace: helix-ai
 spec:
   version: 7.10.0
   updateStrategy:
