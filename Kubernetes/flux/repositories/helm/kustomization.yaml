@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./bjw-s.yaml
   - ./cilium.yaml
+  - ./elastic.yaml
   - ./external-dns.yaml
   - ./grafana.yaml
   - ./hashicorp.yaml
@@ -13,4 +14,3 @@ resources:
   - ./metrics-server.yaml
   - ./openebs.yaml
   - ./stakater.yaml
-  - ./vm-ware.yaml
