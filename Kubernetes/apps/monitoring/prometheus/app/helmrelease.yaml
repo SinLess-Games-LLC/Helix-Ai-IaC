@@ -32,6 +32,7 @@ spec:
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
   values:
     alertmanager:
+      replicas: 1
       enabled: true
       ingress:
         enabled: true
@@ -42,6 +43,7 @@ spec:
           - hosts:
               - "alertmanager.${SECRET_DOMAIN}"
     prometheus:
+      replicas: 1
       prometheusSpec:
         retention: 24h
         resources:
@@ -61,6 +63,7 @@ spec:
           - hosts:
               - "prometheus.${SECRET_DOMAIN}"
     grafana:
+      replicas: 1
       defaultDashboardsEnabled: true
       defaultDashboardsTimezone: ${TIMEZONE}
       admin:
