@@ -4,72 +4,26 @@ metadata:
   name: elasticsearch
   namespace: helix-ai
 spec:
-  version: 7.10.0
+  version: "8.12.2"
   updateStrategy:
     changeBudget:
       maxSurge: 1
       maxUnavailable: 1
   nodeSets:
-  - name: elastic-01
-    count: 1
-    config:
-      node.master: true
-      node.data: true
-      node.ingest: true
-      node.store.allow_mmap: false
-    podTemplate:
-      spec:
-        containers:
-        - name: elasticsearch
-          resources:
-            requests:
-              memory: 4Gi
-              cpu: 1
-            limits:
-              memory: 4Gi
-              cpu: 1
-          volumeMounts:
-          - name: elasticsearch-data
-            mountPath: /usr/share/elasticsearch/data
-  - name: elastic-02
-    count: 1
-    config:
-      node.master: true
-      node.data: true
-      node.ingest: true
-      node.store.allow_mmap: false
-    podTemplate:
-      spec:
-        containers:
-        - name: elasticsearch
-          resources:
-            requests:
-              memory: 4Gi
-              cpu: 1
-            limits:
-              memory: 4Gi
-              cpu: 1
-          volumeMounts:
-          - name: elasticsearch-data
-            mountPath: /usr/share/elasticsearch/data
-  - name: elastic-03
-    count: 1
-    config:
-      node.master: true
-      node.data: true
-      node.ingest: true
-      node.store.allow_mmap: false
-    podTemplate:
-      spec:
-        containers:
-        - name: elasticsearch
-          resources:
-            requests:
-              memory: 4Gi
-              cpu: 1
-            limits:
-              memory: 4Gi
-              cpu: 1
-          volumeMounts:
-          - name: elasticsearch-data
-            mountPath: /usr/share/elasticsearch/data
+    - name: masters
+      count: 3
+      config:
+        # On Elasticsearch versions before 7.9.0, replace the node.roles configuration with the following:
+        # node.master: true
+        node.roles: ["master"]
+        xpack.ml.enabled: true
+    - name: data
+      count: 7
+      config:
+        # On Elasticsearch versions before 7.9.0, replace the node.roles configuration with the following:
+        # node.master: false
+        # node.data: true
+        # node.ingest: true
+        # node.ml: true
+        # node.transform: true
+        node.roles: ["data", "ingest", "ml", "transform"]
