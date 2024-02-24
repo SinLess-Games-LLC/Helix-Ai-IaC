@@ -71,12 +71,14 @@
      * - kubeconform
      * - kubectl-helm
      * - kustomize
+     * - istioctl
      */
     "ghcr.io/jsburckhardt/devcontainer-features/flux:1": {},
     "ghcr.io/rio/features/kustomize:1": {},
     "ghcr.io/gickis/devcontainer-features/kubeconform:1": {},
     "ghcr.io/devcontainers-contrib/features/kubectl-asdf:2": {},
     "ghcr.io/audacioustux/devcontainers/cilium:1": {},
+    "ghcr.io/devcontainers-contrib/features/istioctl:1": {},
     /**
      * Common utils
      * - zsh
@@ -112,7 +114,8 @@
         "samuelcolvin.jinjahtml",
         "ms-kubernetes-tools.vscode-kubernetes-tools",
         "signageos.signageos-vscode-sops",
-        "GitHub.copilot"
+        "GitHub.copilot",
+        "BenjaminBenais.copilot-theme"
       ]
     }
   }
