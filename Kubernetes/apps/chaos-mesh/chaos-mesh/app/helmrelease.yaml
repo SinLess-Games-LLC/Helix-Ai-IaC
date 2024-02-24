@@ -1,0 +1,52 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: chaos-mesh
+  namespace: chaos-mesh
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: chaos-mesh
+      version: 2.6.3
+      sourceRef:
+        kind: HelmRepository
+        name: chaos-mesh
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    TIMEZONE: ${TIMEZONE}
+    controllerManager:
+      # running chaos-controller-manager on host network
+      hostNetwork: false
+      # Allow testing on `hostNetwork` pods. This is Dangerous. Please run only as temporary solution.
+      allowHostNetworkTesting: false
+    dashboard:
+      create: true
+      rootUrl: "chaos-mesh.${SECRET_DOMAIN}"
+      ingress:
+        enabled: true
+        certManager: true
+        hosts:
+          - chaos-mesh.${SECRET_DOMAIN}
+        paths:
+          - /
+        tls:
+          - hosts:
+              - chaos-mesh.${SECRET_DOMAIN}
+    prometheus:
+      create: true
+    
+    webhook:
+      certManager:
+        # Setup the webhook using cert-manager
+        enabled: true
