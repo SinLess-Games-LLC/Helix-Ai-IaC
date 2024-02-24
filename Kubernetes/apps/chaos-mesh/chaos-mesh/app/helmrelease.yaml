@@ -36,12 +36,11 @@ spec:
       ingress:
         enabled: true
         certManager: true
+        ingressClassName: "internal"
         hosts:
-          - chaos-mesh.${SECRET_DOMAIN}
-        paths:
-          - /
-        tls:
-          - hosts:
+          - name: chaos-mesh.${SECRET_DOMAIN}
+            tls: true
+            tlsHosts:
               - chaos-mesh.${SECRET_DOMAIN}
     prometheus:
       create: true
