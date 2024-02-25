@@ -12,8 +12,8 @@
 - [ ] Caching (Redis)
 - [ ] Data storage (Mysql, S3)
 - [ ] Monitoring (Prometheus, Grafana)
-- [ ] chaos engineering (chaos mesh)
-- [ ] Service mesh (Istio)
+- [x] chaos engineering (chaos mesh)
+- [x] Service mesh (Istio)
 - [ ] Falco
 - [ ] Thanos
-- [ ] Tracing (Grafana Tempo)
+- [x] Tracing (Grafana Tempo)
