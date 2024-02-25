@@ -33,6 +33,10 @@ spec:
     dashboard:
       create: true
       rootUrl: "chaos-mesh.${SECRET_DOMAIN}"
+      persistentVolume:
+        enabled: true
+        storageClassName: "openebs-hostpath"
+        size: "1Gi"
       ingress:
         enabled: true
         certManager: true
