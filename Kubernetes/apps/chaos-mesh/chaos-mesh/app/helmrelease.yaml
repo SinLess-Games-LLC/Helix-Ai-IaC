@@ -43,7 +43,7 @@ spec:
             tlsHosts:
               - chaos-mesh.${SECRET_DOMAIN}
     prometheus:
-      create: true
+      create: false
     
     webhook:
       certManager:
