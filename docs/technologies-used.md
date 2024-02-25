@@ -32,7 +32,7 @@ To learn about the CNCF project metrics, please visit the [CNCF Metrics](https:/
 
 ## Service Mesh:
 
-- :x: | **[Istio](https://istio.io/latest/docs/) [ *CNCF Graduated* ]:** Istio is an open-source service mesh platform that provides a uniform way to connect, secure, and monitor microservices. It provides a rich set of features for managing traffic, including load balancing, routing, and fault tolerance, making it suitable for a wide range of use cases. Istio supports mutual TLS, access control, and observability, making it suitable for secure and reliable deployments. It also provides a rich ecosystem of tools and integrations, making it easy to extend and customize Istio for specific requirements. Overall, Istio is a popular choice for microservices architectures due to its flexibility, reliability, and ease of use.
+- :heavy_check_mark: | **[Istio](https://istio.io/latest/docs/) [ *CNCF Graduated* ]:** Istio is an open-source service mesh platform that provides a uniform way to connect, secure, and monitor microservices. It provides a rich set of features for managing traffic, including load balancing, routing, and fault tolerance, making it suitable for a wide range of use cases. Istio supports mutual TLS, access control, and observability, making it suitable for secure and reliable deployments. It also provides a rich ecosystem of tools and integrations, making it easy to extend and customize Istio for specific requirements. Overall, Istio is a popular choice for microservices architectures due to its flexibility, reliability, and ease of use.
 
 ## Service Proxy:
 
@@ -80,15 +80,15 @@ To learn about the CNCF project metrics, please visit the [CNCF Metrics](https:/
 
 - :heavy_check_mark: | **[Jaeger](https://www.jaegertracing.io/docs/1.18/) [ *CNCF Graduated* ]:** Jaeger, inspired by Dapper and OpenZipkin, is a distributed tracing system released as open source by Uber Technologies. It is used for monitoring and troubleshooting microservices-based distributed systems, including distributed context propagation, distributed transaction monitoring, root cause analysis, service dependency analysis, and performance and latency optimization.
 
-- :x: | **[Grafana Tempo](https://grafana.com/docs/tempo/latest/) [ *CNCF Platinum* ]:** Grafana Tempo is a high-volume, minimal dependency distributed tracing backend. It includes Grafana Loki for storage and emphasizes simplicity and speed.
+- :heavy_check_mark: | **[Grafana Tempo](https://grafana.com/docs/tempo/latest/) [ *CNCF Platinum* ]:** Grafana Tempo is a high-volume, minimal dependency distributed tracing backend. It includes Grafana Loki for storage and emphasizes simplicity and speed.
 
 ## Chaos Engineering:
 
-- :x: | **[Chaos Mesh](https://chaos-mesh.org/) [ *CNCF Incubating* ]:** Chaos Mesh is a cloud-native Chaos Engineering platform that orchestrates chaos on Kubernetes environments. It provides a set of tools for injecting faults and monitoring the impact on the system, allowing teams to proactively identify and fix potential issues before they impact users.
+- :heavy_check_mark: | **[Chaos Mesh](https://chaos-mesh.org/) [ *CNCF Incubating* ]:** Chaos Mesh is a cloud-native Chaos Engineering platform that orchestrates chaos on Kubernetes environments. It provides a set of tools for injecting faults and monitoring the impact on the system, allowing teams to proactively identify and fix potential issues before they impact users.
 
 ## Logging:
 
-- :x: | **[Grafana Loki](https://grafana.com/docs/loki/latest/) [ *CNCF Platinum* ]:** Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus. It is designed to be very cost-effective and easy to operate, as it does not index the contents of the logs, but rather a set of labels for each log stream.
+- :heavy_check_mark: | **[Grafana Loki](https://grafana.com/docs/loki/latest/) [ *CNCF Platinum* ]:** Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus. It is designed to be very cost-effective and easy to operate, as it does not index the contents of the logs, but rather a set of labels for each log stream.
 
 ## Feature Flags:
 
