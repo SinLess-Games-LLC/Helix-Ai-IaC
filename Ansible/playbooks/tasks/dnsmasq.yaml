@@ -1,0 +1,102 @@
+- name: Dnsmasq configuration
+  vars:
+    pathed_dns_entries: []
+    x_dns_entries: []
+    y_dns_entries: []
+    modified_dns_entries: []
+  block:
+    - name: Check if /etc/dnsmasq.d directory exists
+      ansible.builtin.stat:
+        path: /etc/dnsmasq.d
+      register: dnsmasq_dir
+
+    - name: Create /etc/dnsmasq.d directory
+      ansible.builtin.file:
+        path: /etc/dnsmasq.d
+        state: directory
+      when: not dnsmasq_dir.stat.exists
+
+    - name: Include 
+      include_vars:
+       file: ./variables/dns.yaml
+      tags: dns_entries
+
+    - name: Modify dns_entries
+      set_fact:
+        pathed_dns_entries: "{{ pathed_dns_entries + [{'domain': item.domain, 'ip': item.ip, 'path': '/etc/dnsmasq.d/99-' + item.name + '-gateway-forward.conf'}] }}"
+      loop: "{{ dns_entries }}"
+      when: dns_entries|length > 0
+
+    - name: clean dns entries
+      block:
+        - name: Check if /etc/dnsmasq.d/ gateway forward conf exists
+          ansible.builtin.stat:
+            path: "{{ item.path }}"
+          loop: "{{ pathed_dns_entries }}"
+          register: dnsmasq_forward_conf
+
+        - name: "/etc/dnsmasq.d/ gateway forward conf exists"
+          set_fact:
+            x_dns_entries: "{{ x_dns_entries + [{'exists': item.stat.exists, 'domain': item.item.domain, 'ip': item.item.ip, 'path': item.item.path}] }}"
+          loop: "{{ dnsmasq_forward_conf.results }}"
+          when: item.stat.exists == true
+
+        - name: "/etc/dnsmasq.d/ gateway forward conf does not exist"
+          set_fact:
+            y_dns_entries: "{{ y_dns_entries + [{'exists': item.stat.exists, 'domain': item.item.domain, 'ip': item.item.ip, 'path': item.item.path}] }}"
+          loop: "{{ dnsmasq_forward_conf.results }}"
+          when: item.stat.exists == false
+
+        - name: Merge x_dns_entries and y_dns_entries
+          set_fact:
+            modified_dns_entries: "{{ modified_dns_entries + [{'exists': item.exists, 'domain': item.domain, 'ip': item.ip, 'path': item.path}] }}"
+          loop: "{{ x_dns_entries + y_dns_entries }}"
+          when: x_dns_entries|length > 0 and y_dns_entries|length > 0
+
+        - name: Set modified_dns_entries to x_dns_entries
+          set_fact:
+            modified_dns_entries: "{{ x_dns_entries }}"
+          when: x_dns_entries|length > 0 and y_dns_entries|length == 0
+
+        - name: Set modified_dns_entries to y_dns_entries
+          set_fact:
+            modified_dns_entries: "{{ y_dns_entries }}"
+          when: x_dns_entries|length == 0 and y_dns_entries|length > 0
+
+        - name: Display modified_dns_entries
+          debug:
+            var: modified_dns_entries
+
+    - name: Create files
+      block:
+        - name: Create /etc/dnsmasq.d/ gateway forward conf | Update
+          when: item.exists == true and modified_dns_entries|length > 0
+          ansible.builtin.copy:
+            content: |
+              server=/{{ item.domain }}/{{ item.ip }}
+            dest: "{{ item.path }}"
+          loop: "{{ modified_dns_entries }}"
+
+        - name: Create /etc/dnsmasq.d/ gateway forward conf | Create
+          when: item.exists == false and modified_dns_entries|length > 0
+          ansible.builtin.copy:
+            content: |
+              server=/{{ item.domain }}/{{ item.ip }}
+            dest: "{{ item.path }}"
+          loop: "{{ modified_dns_entries }}"
+
+    - name: Restart pihole dnsmasq
+      ansible.builtin.command: pihole restartdns
+      when: modified_dns_entries|length > 0
+
+    
+- name: Restart VM
+  ansible.builtin.reboot:
+    msg: Rebooting hosts
+    reboot_timeout: 3600
+  when: modified_dns_entries|length > 0
+
+
+
+        
+

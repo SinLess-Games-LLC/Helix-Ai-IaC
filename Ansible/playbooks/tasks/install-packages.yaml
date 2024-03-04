@@ -24,7 +24,7 @@
           - cloud-image-utils
           - conntrack
           - curl
-          - curl
+          - jq
           - curtain
           - dirmngr
           - gdisk

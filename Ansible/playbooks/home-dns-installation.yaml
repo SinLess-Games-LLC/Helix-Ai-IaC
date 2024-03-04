@@ -1,0 +1,107 @@
+---
+- name: Pihole Installation
+  hosts: pihole
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  pre_tasks:
+    - name: Pausing for 5 seconds...
+      ansible.builtin.pause:
+        seconds: 5
+  tasks:
+    - name: update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Set up passwordless sudo
+      ansible.builtin.include_tasks: tasks/passwordless-sudo.yaml
+    
+    - name: Install required packages
+      ansible.builtin.include_tasks: tasks/install-packages.yaml
+      when: ansible_os_family == "Debian"
+
+    - name: Install ZSH
+      ansible.builtin.include_tasks: tasks/zsh.yaml
+      when: ansible_os_family == "Debian"
+
+    - name: Install Pi-hole
+      ansible.builtin.include_tasks: tasks/install-pihole.yaml
+
+    - name: Install Adlists
+      ansible.builtin.include_tasks: tasks/install-adlists.yaml
+      when: ansible_os_family == "Debian"
+
+    - name: Change Pihole password
+      ansible.builtin.command: "pihole -a -p Shellshocker93"
+
+    - name: Dnsmasq Configuration
+      ansible.builtin.include_tasks: tasks/dnsmasq.yaml
+      when: ansible_os_family == "Debian"
+
+    - name: Install Gravity Sync
+      notify: Restart VM
+      block: 
+        - name: Download Gravity Sync installation script
+          ansible.builtin.get_url:
+            url: https://raw.githubusercontent.com/vmstan/gs-install/main/gs-install.sh
+            dest: /tmp/gs-install.sh
+
+        - name: Run Gravity Sync installation script
+          ansible.builtin.command: "bash /tmp/gs-install.sh"
+
+    - name: network configuration
+      notify: Restart VM
+      block:
+        # This is a finicky step if it errors out at this step
+        # On the first run on a fresh VM it is commented out, After that this step needs to be uncommented if you plan to run it again
+        # If it is not commented out comment it out and run the playbook again
+        # If it is commented out and the playbook fails at this step uncomment it and run the playbook again
+        # if the error persists after trying to run it with it both commented out and uncommented out  then you have a different problem
+        # - name: Network Configuration | Remove immutable flag from /etc/resolv.conf
+        #   ansible.builtin.file:
+        #     attributes: -i
+        #     path: /etc/resolv.conf
+            
+        - name: Network Configuration | Remove /etc/resolv.conf
+          ansible.builtin.file:
+            attributes: -i
+            path: /etc/resolv.conf
+            state: absent
+
+        - name: Network Configuration | Add custom /etc/resolv.conf
+          block:
+            - name: Network Configuration | Set hostname
+              ansible.builtin.copy:
+                dest: /etc/resolv.conf
+                content: |
+                  nameserver 192.168.86.80
+                  nameserver 1.1.1.1
+                  nameserver 1.0.0.1
+                  search {{ ansible_host }}.local.sinlessgamesllc.com
+              when: inventory_hostname != "pihole-1"
+            
+            - name: Network Configuration | Set hostname
+              ansible.builtin.copy:
+                dest: /etc/resolv.conf
+                content: |
+                  nameserver 127.0.0.1
+                  nameserver 1.1.1.1
+                  nameserver 1.0.0.1
+                  search {{ ansible_host }}.local.sinlessgamesllc.com
+              when: inventory_hostname == "pihole-1"
+
+        
+        - name: Network Configuration | Start resolvconf service
+          ansible.builtin.systemd:
+            name: resolvconf
+            state: started
+            enabled: true
+
+  handlers:
+    - name: Restart VM
+      ansible.builtin.reboot:
+        msg: Rebooting hosts
+        reboot_timeout: 3600
+
+    
