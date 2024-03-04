@@ -108,7 +108,8 @@
         },
         "terminal.integrated.defaultProfile.linux": "zsh",
         // change terminal fonnt size to 18
-        "terminal.integrated.fontSize": 18
+        "terminal.integrated.fontSize": 18,
+        "files.autoSave": "onFocusChange"
       },
       "extensions": [
         "samuelcolvin.jinjahtml",

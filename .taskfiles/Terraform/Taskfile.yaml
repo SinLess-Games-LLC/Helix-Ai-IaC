@@ -36,13 +36,9 @@ tasks:
 
   deploy:
     desc: Deploy the VMs for the Cluster
-    # require init task to be run first
-    preconditions:
+    cmds:
       - task tf:init
       - task tf:plan
-      - { msg: 'Missing Terraform directory', sh: 'test -d {{.TERRAFORM_DIR}}' }
-      - { msg: 'Missing Terraform plan file', sh: 'test -f {{.TERRAFORM_DIR}}/tfplan' }
-    cmds:
       - terraform -chdir={{.TERRAFORM_DIR}} apply -input=false tfplan
 
   destroy:

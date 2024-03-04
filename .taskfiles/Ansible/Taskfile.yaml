@@ -40,7 +40,7 @@ tasks:
       Args:
         playbook: Playbook to run (required)
     prompt: Run Ansible playbook '{{.playbook}}'... continue?
-    deps: ['deps', 'ping']
+    deps: ['deps']
     cmd: 'ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} {{.ANSIBLE_DIR}}/playbooks/{{.playbook}}.yaml {{.CLI_ARGS}}'
     requires:
       vars: ['playbook']
