@@ -89,6 +89,9 @@ tasks:
   remove-ssh:
     desc: Remove SSH known hosts
     cmds:
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.80"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.81"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.82"
       - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.100"
       - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.101"
       - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.102"

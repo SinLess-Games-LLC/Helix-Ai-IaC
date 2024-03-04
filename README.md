@@ -323,7 +323,7 @@ The `external-dns` application created in the `networking` namespace will handle
 
 #### 🏠 Home DNS
 
-`k8s_gateway` will provide DNS resolution to external Kubernetes resources (i.e. points of entry to the cluster) from any device that uses your home DNS server. For this to work, your home DNS server must be configured to forward DNS queries for `${bootstrap_cloudflare_domain}` to `${bootstrap_k8s_gateway_addr}` instead of the upstream DNS server(s) it normally uses. This is a form of **split DNS** (aka split-horizon DNS / conditional forwarding).
+`k8s_gateway` will provide DNS resolution to external Kubernetes resources (i.e. points of entry to the cluster) from any device that uses your home DNS server. For this to work, your home DNS server must be configured to forward DNS queries for `${bootstrap_cloudflare_domain}` to `${kubernetes.k8s_gateway_addr}` instead of the upstream DNS server(s) it normally uses. This is a form of **split DNS** (aka split-horizon DNS / conditional forwarding).
 
 > [!TIP]
 > Below is how to configure a Pi-hole for split DNS. Other platforms should be similar.
@@ -332,7 +332,7 @@ The `external-dns` application created in the `networking` namespace will handle
 >
 >    ```sh
 >    # /etc/dnsmasq.d/99-k8s-gateway-forward.conf
->    server=/${bootstrap_cloudflare_domain}/${bootstrap_k8s_gateway_addr}
+>    server=/${bootstrap_cloudflare_domain}/${kubernetes.k8s_gateway_addr}
 >    ```
 >
 > 2. Restart dnsmasq on the server.

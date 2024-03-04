@@ -1,0 +1,4 @@
+dns_entries: []
+  # - name: k8s
+  #   domain: "helixaibot.com"
+  #   ip: "192.168.86.201"
