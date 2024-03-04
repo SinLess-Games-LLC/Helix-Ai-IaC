@@ -27,3 +27,12 @@ kubernetes:
           ansible_user: "sinless777"
           ansible_host: "192.168.86.153"
 
+pihole:
+  hosts:
+    "pihole-1":
+      ansible_user: "sinless777"
+      ansible_host: "192.168.86.80"
+    "pihole-2":
+      ansible_user: "sinless777"
+      ansible_host: "192.168.86.81"
+    
