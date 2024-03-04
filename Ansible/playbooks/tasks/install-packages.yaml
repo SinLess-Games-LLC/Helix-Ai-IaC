@@ -4,6 +4,9 @@
       ansible.builtin.apt:
         update_cache: true
 
+    - name: regen update_cache
+      ansible.builtin.command: "sudo dpkg --configure -a"
+
     - name: Packages | Display Warning
       ansible.builtin.pause:
         seconds: 3
