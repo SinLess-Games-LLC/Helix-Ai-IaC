@@ -1,4 +1,3 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -25,85 +24,53 @@ spec:
     keepHistory: false
   values:
     global:
-      # The default log level to apply to all components which do not otherwise override this setting.
-      # It is recommended to generally not set this below "info" unless actively debugging due to logging verbosity.
-      # One of "debug", "info", "warn", or "error".
-      # @type: string
-      logLevel: "info"
-      # Enable all component logs to be output in JSON format.
-      # @type: boolean
+      logLevel: info
       logJSON: false
-      # The domain Consul will answer DNS queries for
-      # (Refer to [`-domain`](https://developer.hashicorp.com/consul/docs/agent/config/cli-flags#_domain)) and the domain services synced from
-      # Consul into Kubernetes will have, e.g. `service-name.service.consul`.
-      domain: "${SECRET_DOMAIN}"
-      # The consul image version.
+      domain: ${SECRET_DOMAIN}
       image: docker.mirror.hashicorp.services/hashicorppreview/consul:1.18.0
-      # The name of the datacenter that the agents should register as.
-      datacenter: "Helix-Ai-DC1"
-      # Controls whether pod security policies are created for the Consul components
-      # created by this chart. Refer to https://kubernetes.io/docs/concepts/policy/pod-security-policy/.
+      datacenter: Helix-Ai-DC1
       enablePodSecurityPolicies: false
-      # Enables ACLs across the cluster to secure access to data and APIs.
       acls:
-        # If true, automatically manage ACL tokens and policies for all Consul components.
         manageSystemACLs: true
-      # Exposes Prometheus metrics for the Consul service mesh and sidecars.
       metrics:
         enabled: false
-        # Enables Consul servers and clients metrics.
         enableAgentMetrics: true
-        # Configures the retention time for metrics in Consul servers and clients.
-        agentMetricsRetentionTime: "1m"
-      # One of "debug", "info", "warn", or "error".
-      tls: 
+        agentMetricsRetentionTime: 1m
+      tls:
         caCert:
           secretName: helixaibot-com-production-tls
           secretKey: tls.crt
         caKey:
           secretName: helixaibot-com-production-tls
           secretKey: tls.key
-
-    server: 
+    server:
       replicas: 3
       bootstrapExpect: 3
-      storageClass: "openebs-hostpath"
-      
-    ui: 
+      storageClass: openebs-hostpath
+    ui:
       enabled: true
       service:
         enabled: true
       ingress:
-        enabled: true 
+        enabled: true
         ingressClassName: internal
         pathType: Prefix
         hosts:
           - host: consul.${SECRET_DOMAIN}
             paths:
               - /
-
-        tls: 
+        tls:
           - hosts:
-              -  consul.${SECRET_DOMAIN}
+              - consul.${SECRET_DOMAIN}
             secretName: helixaibot-com-production-tls
-
     connectInject:
-      # True if you want to enable connect injection. Set to "-" to inherit from
-      # global.enabled.
       enabled: true
       apiGateway:
-        # Enables Consul on Kubernetes to manage the CRDs used for Gateway API.
-        # Setting this to true will install the CRDs used for the Gateway API when Consul on Kubernetes is installed.
-        # These CRDs can clash with existing Gateway API CRDs if they are already installed in your cluster.
-        # If this setting is false, you will need to install the Gateway API CRDs manually.
         manageExternalCRDs: true
-
-        # Enables Consul on Kubernets to manage only the non-standard CRDs used for Gateway API. If manageExternalCRDs is true
-        # then all CRDs will be installed; otherwise, if manageNonStandardCRDs is true then only TCPRoute, GatewayClassConfig and MeshService
-        # will be installed.
         manageNonStandardCRDs: true
       namespaceSelector: |
         matchLabels:
           connect-inject: enabled
       cni:
         enabled: true
+Transform: AWS::Serverless-2016-10-31
