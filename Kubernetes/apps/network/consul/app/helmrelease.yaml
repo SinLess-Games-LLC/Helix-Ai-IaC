@@ -47,6 +47,9 @@ spec:
       replicas: 5
       bootstrapExpect: 5
       storageClass: openebs-hostpath
+      serverCert:
+        secretName: helixaibot-com-production-tls
+        secretKey: tls.crt
     ui:
       enabled: true
       service:
@@ -63,4 +66,13 @@ spec:
           - hosts:
               - consul.${SECRET_DOMAIN}
             secretName: helixaibot-com-production-tls
-    
+    connectInject:
+      enabled: true
+      apiGateway:
+        manageExternalCRDs: true
+        manageNonStandardCRDs: true
+      namespaceSelector: |
+        matchLabels:
+          connect-inject: enabled
+      cni:
+        enabled: true
