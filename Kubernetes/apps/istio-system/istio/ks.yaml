@@ -9,7 +9,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./Kubernetes/apps/flux-system/webhooks/app
+  path: ./Kubernetes/apps/istio-system/istio/app
   prune: true
   sourceRef:
     kind: GitRepository
