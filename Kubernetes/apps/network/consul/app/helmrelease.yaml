@@ -46,7 +46,7 @@ spec:
       datacenter: "Helix-Ai-DC1"
       # Controls whether pod security policies are created for the Consul components
       # created by this chart. Refer to https://kubernetes.io/docs/concepts/policy/pod-security-policy/.
-      enablePodSecurityPolicies: true
+      enablePodSecurityPolicies: false
       # Enables ACLs across the cluster to secure access to data and APIs.
       acls:
         # If true, automatically manage ACL tokens and policies for all Consul components.
