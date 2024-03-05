@@ -102,4 +102,4 @@ spec:
     connectInject:
       # True if you want to enable connect injection. Set to "-" to inherit from
       # global.enabled.
-      enabled: false
+      enabled: true
