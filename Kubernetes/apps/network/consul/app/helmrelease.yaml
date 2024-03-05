@@ -44,8 +44,8 @@ spec:
           secretName: helixaibot-com-production-tls
           secretKey: tls.key
     server:
-      replicas: 3
-      bootstrapExpect: 3
+      replicas: 5
+      bootstrapExpect: 5
       storageClass: openebs-hostpath
     ui:
       enabled: true
