@@ -62,11 +62,6 @@ spec:
       storageClass: "openebs-hostpath"
       storageSize: "1Gi"
 
-      serverCert:
-        secretName: consul-tls-cert
-        sercretNamespace: network
-        secretKey: tls.crt
-        secretKeySecret: tls.key
     
     ui:
       enabled: true
