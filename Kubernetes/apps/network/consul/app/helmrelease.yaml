@@ -91,6 +91,9 @@ spec:
                 pathType: "Prefix"
         tls: 
           - hosts:
-              - "consul.${SECRET_DOMAIN}"
+              - host: "consul.${SECRET_DOMAIN}"
+                paths:
+                  - path: "/"
+                    pathType: "Prefix"
             secretName: helixaibot-com-production-tls
     
