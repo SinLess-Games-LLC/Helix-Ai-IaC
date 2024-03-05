@@ -5,8 +5,6 @@ metadata:
   name: consul
   namespace: network
 spec:
-  dependsOn:
-    - name: consul-tls-cert
   interval: 30m
   chart:
     spec:
