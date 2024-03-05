@@ -65,6 +65,7 @@ spec:
       enabled: true
       service:
         enabled: true
+      ingressClassName: "internal"
       ingress:
         hosts:
           - address: "consul.${SECRET_DOMAIN}"
