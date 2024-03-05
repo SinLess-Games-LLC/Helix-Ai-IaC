@@ -64,6 +64,7 @@ spec:
 
       serverCert:
         secretName: consul-tls-cert
+        sercretNamespace: network
         secretKey: tls.crt
         secretKeySecret: tls.key
     
