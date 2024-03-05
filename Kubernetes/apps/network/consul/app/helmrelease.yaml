@@ -71,5 +71,3 @@ spec:
       namespaceSelector: |
         matchLabels:
           connect-inject: enabled
-      cni:
-        enabled: true
