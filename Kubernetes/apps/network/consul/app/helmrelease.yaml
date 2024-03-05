@@ -65,9 +65,12 @@ spec:
             secretName: helixaibot-com-production-tls
     connectInject:
       enabled: true
+      aclInjectToken:
+        secretName: "consul-${SECRET_DOMAIN/./-}-production-tls"
+        secretKey: tls.crt
       apiGateway:
         manageExternalCRDs: true
-        manageNonStandardCRDs: true
+        manageNonStandardCRDs: false
       namespaceSelector: |
         matchLabels:
           connect-inject: enabled

@@ -12,3 +12,4 @@ spec:
   commonName: "consul.${SECRET_DOMAIN}"
   dnsNames:
     - "consul.${SECRET_DOMAIN}"
+  
