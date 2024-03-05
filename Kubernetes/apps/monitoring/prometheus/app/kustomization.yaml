@@ -5,4 +5,3 @@ resources:
   - ./helmrelease.yaml
   - ./secret.sops.yaml
   - ./config.yaml
-  - ./istio-config.yaml
