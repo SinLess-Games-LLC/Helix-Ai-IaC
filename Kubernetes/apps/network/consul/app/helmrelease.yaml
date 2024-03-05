@@ -73,7 +73,8 @@ spec:
       enabled: true
       service:
         enabled: true
-      ingress: 
+      ingress:
+        enabled: true 
         ingressClassName: internal
         hosts:
           - consul.${SECRET_DOMAIN}
