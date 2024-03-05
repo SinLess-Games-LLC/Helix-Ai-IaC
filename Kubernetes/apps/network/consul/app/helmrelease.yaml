@@ -94,7 +94,7 @@ spec:
     # Configures and installs the automatic Consul Connect sidecar injector.
     connectInject:
       # Enables metrics for Consul Connect sidecars.
-      enabled: true
+      enabled: false
       replicas: 2
       image: hashicorp/consul-k8s:0.25.0
       namespaceSelector: |
