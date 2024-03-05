@@ -103,3 +103,10 @@ spec:
       # True if you want to enable connect injection. Set to "-" to inherit from
       # global.enabled.
       enabled: true
+      namespaceSelector: |
+        matchLabels:
+          connect-inject: enabled
+        matchExpressions:
+          - key: "kubernetes.io/metadata.name"
+            operator: "NotIn"
+            values: ["kube-system","local-path-storage","openebs"]
