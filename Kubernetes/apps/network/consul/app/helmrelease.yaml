@@ -63,11 +63,4 @@ spec:
           - hosts:
               - consul.${SECRET_DOMAIN}
             secretName: helixaibot-com-production-tls
-    connectInject:
-      enabled: true
-      apiGateway:
-        manageExternalCRDs: true
-        manageNonStandardCRDs: true
-      namespaceSelector: |
-        matchLabels:
-          connect-inject: enabled
+    
