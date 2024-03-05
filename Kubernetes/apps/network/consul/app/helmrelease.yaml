@@ -65,10 +65,18 @@ spec:
       enabled: true
       service:
         enabled: true
-      ingressClassName: "internal"
       ingress:
+        enabled: true
         hosts:
-          - address: "consul.${SECRET_DOMAIN}"
+          - host: "consul.${SECRET_DOMAIN}"
+            paths:
+              - path: "/"
+                pathType: Prefix
+                backend:
+                  service:
+                    name: "consul-ui"
+                    port:
+                      number: 80
         tls:
           - hosts:
             - "consul.${SECRET_DOMAIN}"
