@@ -25,9 +25,6 @@ spec:
     keepHistory: false
   values:
     global:
-      # The main enabled/disabled setting.
-      # If true, servers, clients, Consul DNS and the Consul UI will be enabled.
-      enabled: true
       # The default log level to apply to all components which do not otherwise override this setting.
       # It is recommended to generally not set this below "info" unless actively debugging due to logging verbosity.
       # One of "debug", "info", "warn", or "error".
@@ -106,3 +103,8 @@ spec:
       # then all CRDs will be installed; otherwise, if manageNonStandardCRDs is true then only TCPRoute, GatewayClassConfig and MeshService
       # will be installed.
       manageNonStandardCRDs: true
+
+    connectInject:
+      # True if you want to enable connect injection. Set to "-" to inherit from
+      # global.enabled.
+      enabled: false
