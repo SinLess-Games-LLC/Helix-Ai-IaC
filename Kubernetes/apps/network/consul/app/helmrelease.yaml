@@ -70,7 +70,6 @@ spec:
     server: 
       replicas: 3
       bootstrapExpect: 3
-      storage: 10Gi
       storageClass: "openebs-hostpath"
 
       exposeService:
