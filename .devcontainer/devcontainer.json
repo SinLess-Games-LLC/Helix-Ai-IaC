@@ -74,6 +74,7 @@
      * - istioctl
      */
     "ghcr.io/jsburckhardt/devcontainer-features/flux:1": {},
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
     "ghcr.io/rio/features/kustomize:1": {},
     "ghcr.io/gickis/devcontainer-features/kubeconform:1": {},
     "ghcr.io/devcontainers-contrib/features/kubectl-asdf:2": {},
