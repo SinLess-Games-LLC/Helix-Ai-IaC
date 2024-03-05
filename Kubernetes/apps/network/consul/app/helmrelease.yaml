@@ -28,21 +28,31 @@ spec:
       # The main enabled/disabled setting.
       # If true, servers, clients, Consul DNS and the Consul UI will be enabled.
       enabled: true
-      # The prefix used for all resources created in the Helm chart.
-      name: consul
+      # The default log level to apply to all components which do not otherwise override this setting.
+      # It is recommended to generally not set this below "info" unless actively debugging due to logging verbosity.
+      # One of "debug", "info", "warn", or "error".
+      # @type: string
+      logLevel: "info"
+
+      # Enable all component logs to be output in JSON format.
+      # @type: boolean
+      logJSON: false
+      # The domain Consul will answer DNS queries for
+      # (Refer to [`-domain`](https://developer.hashicorp.com/consul/docs/agent/config/cli-flags#_domain)) and the domain services synced from
+      # Consul into Kubernetes will have, e.g. `service-name.service.consul`.
       domain: "${SECRET_DOMAIN}"
       # The consul image version.
-      image: hashicorp/consul:1.16.0
+      image: docker.mirror.hashicorp.services/hashicorppreview/consul:1.18.0
       # The name of the datacenter that the agents should register as.
       datacenter: "Helix-Ai-DC1"
       # Controls whether pod security policies are created for the Consul components
       # created by this chart. Refer to https://kubernetes.io/docs/concepts/policy/pod-security-policy/.
-      enablePodSecurityPolicies: true
+      enablePodSecurityPolicies: false
       # Enables ACLs across the cluster to secure access to data and APIs.
       acls:
         enabled: false
         # If true, automatically manage ACL tokens and policies for all Consul components.
-        manageSystemACLs: true
+        manageSystemACLs: false
       # Exposes Prometheus metrics for the Consul service mesh and sidecars.
       metrics:
         enabled: true
@@ -51,8 +61,6 @@ spec:
         # Configures the retention time for metrics in Consul servers and clients.
         agentMetricsRetentionTime: "1m"
       # One of "debug", "info", "warn", or "error".
-      logLevel: "info"
-      logJSON: false
       tls: 
         caCert:
           secretName: helixaibot-com-production-tls
