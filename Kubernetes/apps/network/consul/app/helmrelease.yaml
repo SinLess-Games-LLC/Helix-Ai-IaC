@@ -76,6 +76,7 @@ spec:
       ingress:
         enabled: true 
         ingressClassName: internal
+        pathType: Prefix
         hosts:
           - host: consul.${SECRET_DOMAIN}
             paths:
