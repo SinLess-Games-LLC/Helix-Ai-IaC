@@ -73,4 +73,3 @@ spec:
           connect-inject: enabled
       cni:
         enabled: true
-Transform: AWS::Serverless-2016-10-31
