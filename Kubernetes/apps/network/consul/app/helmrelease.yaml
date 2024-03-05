@@ -59,7 +59,6 @@ spec:
       bootstrapExpect: 3
       storageClass: "openebs-hostpath"
       storageSize: "1Gi"
-
     
     ui:
       enabled: true
@@ -96,6 +95,8 @@ spec:
     connectInject:
       # Enables metrics for Consul Connect sidecars.
       enabled: true
+      replicas: 2
+      image: hashicorp/consul-k8s:0.25.0
       namespaceSelector: |
         matchLabels:
           connect-inject : enabled
