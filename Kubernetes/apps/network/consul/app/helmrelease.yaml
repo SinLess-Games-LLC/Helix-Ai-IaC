@@ -83,14 +83,22 @@ spec:
         # The metrics provider specification.
         provider: "prometheus"
         # The URL of the prometheus metrics server.
-        baseURL: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+        baseURL: "https://prometheus.${SECRET_DOMAIN}"
+
+    cni:
+      enabled: true
+      logLevel: info
 
     # Configures and installs the automatic Consul Connect sidecar injector.
     connectInject:
       # Enables metrics for Consul Connect sidecars.
       enabled: true
-      # The number of deployment replicas.
-      replicas: 2
+      namespaceSelector: |
+        matchLabels:
+          connect-inject : enabled
+      apiGateway:
+        manageExternalCRDs: false
+        manageNonStandardCRDs: true
       metrics:
         defaultEnabled: true
         defaultEnableMerging: true
