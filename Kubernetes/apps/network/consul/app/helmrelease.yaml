@@ -70,13 +70,6 @@ spec:
       exposeService:
         enabled: true
         type: "LoadBalancer"
-    
-    externalServers:
-      enabled: true
-      hosts:
-        - "consul-1.${SECRET_DOMAIN}"
-        - "consul-2.${SECRET_DOMAIN}"
-        - "consul-3.${SECRET_DOMAIN}"
       
     ui: 
       enabled: true
