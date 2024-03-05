@@ -105,7 +105,3 @@ spec:
       namespaceSelector: |
         matchLabels:
           connect-inject: enabled
-        matchExpressions:
-          - key: "kubernetes.io/metadata.name"
-            operator: "NotIn"
-            values: ["kube-system","local-path-storage","openebs"]
