@@ -100,4 +100,4 @@ spec:
       # Enables Consul on Kubernets to manage only the non-standard CRDs used for Gateway API. If manageExternalCRDs is true
       # then all CRDs will be installed; otherwise, if manageNonStandardCRDs is true then only TCPRoute, GatewayClassConfig and MeshService
       # will be installed.
-      manageNonStandardCRDs: false
+      manageNonStandardCRDs: true
