@@ -29,13 +29,8 @@ spec:
       domain: ${SECRET_DOMAIN}
       image: docker.mirror.hashicorp.services/hashicorppreview/consul:1.18.0
       datacenter: Helix-Ai-DC1
-      enablePodSecurityPolicies: false
-      acls:
-        manageSystemACLs: true
-      metrics:
-        enabled: false
-        enableAgentMetrics: true
-        agentMetricsRetentionTime: 1m
+      peering:
+        enabled: true
       tls:
         caCert:
           secretName: helixaibot-com-production-tls
@@ -47,9 +42,22 @@ spec:
       replicas: 5
       bootstrapExpect: 5
       storageClass: openebs-hostpath
-      serverCert:
-        secretName: helixaibot-com-production-tls
-        secretKey: tls.crt
+      extraConfig: |
+        {
+          "log_level": "TRACE"
+        }
+
+    connectInject:
+      enabled: true
+      default: true
+    
+    meshGateway:
+      enabled: true
+      replicas: 1
+    
+    controller:
+      enabled: true
+
     ui:
       enabled: true
       service:
@@ -66,6 +74,3 @@ spec:
           - hosts:
               - consul.${SECRET_DOMAIN}
             secretName: helixaibot-com-production-tls
-    connectInject:
-      enabled: true
-      default: true
