@@ -68,10 +68,6 @@ spec:
       replicas: 3
       bootstrapExpect: 3
       storageClass: "openebs-hostpath"
-
-      exposeService:
-        enabled: true
-        type: "LoadBalancer"
       
     ui: 
       enabled: true
