@@ -42,8 +42,8 @@ spec:
           secretKey: tls.key
 
     server:
-      replicas: 5
-      bootstrapExpect: 5
+      replicas: 7
+      bootstrapExpect: 7
       storage: 5Gi
       storageClass: openebs-hostpath
 
