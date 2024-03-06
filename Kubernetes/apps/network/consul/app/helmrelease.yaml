@@ -24,7 +24,7 @@ spec:
     keepHistory: false
   values:
     global:
-      name: null
+      name: helix
       logLevel: info
       logJSON: false
       domain: ${SECRET_DOMAIN}
