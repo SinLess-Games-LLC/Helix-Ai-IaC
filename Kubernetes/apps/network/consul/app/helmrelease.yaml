@@ -45,10 +45,7 @@ spec:
       replicas: 5
       bootstrapExpect: 5
       storageClass: openebs-hostpath
-      extraConfig: |
-        {
-          "log_level": "TRACE",
-        }
+      storage: 10Gi
 
     connectInject:
       enabled: true
