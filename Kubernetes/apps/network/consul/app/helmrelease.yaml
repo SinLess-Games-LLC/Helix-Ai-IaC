@@ -43,7 +43,7 @@ spec:
 
     server:
       replicas: 5
-      bootstrapExpect: 3
+      bootstrapExpect: 5
       storage: 5Gi
       storageClass: openebs-hostpath
 
