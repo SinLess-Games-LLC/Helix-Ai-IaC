@@ -24,6 +24,7 @@ spec:
     keepHistory: false
   values:
     global:
+      name: null
       logLevel: info
       logJSON: false
       domain: ${SECRET_DOMAIN}
@@ -39,14 +40,12 @@ spec:
         caKey:
           secretName: helixaibot-com-production-tls
           secretKey: tls.key
+
     server:
       replicas: 5
       bootstrapExpect: 5
+      storage: 5Gi
       storageClass: openebs-hostpath
-      extraConfig: |
-        {
-          "log_level": "TRACE"
-        }
 
     connectInject:
       enabled: true
