@@ -31,7 +31,7 @@ spec:
       image: docker.mirror.hashicorp.services/hashicorppreview/consul:1.18.0
       datacenter: Helix-Ai-DC1
       peering:
-        enabled: true
+        enabled: false
       tls:
         enabled: true
         caCert:
@@ -55,11 +55,11 @@ spec:
         cniNetDir: "/etc/consul/cni/net.d"
     
     meshGateway:
-      enabled: true
+      enabled: fasle
       replicas: 1
     
     controller:
-      enabled: true
+      enabled: false
 
     ui:
       enabled: true
