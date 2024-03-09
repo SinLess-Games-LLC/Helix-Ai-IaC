@@ -34,12 +34,6 @@ spec:
         enabled: false
       tls:
         enabled: true
-        caCert:
-          secretName: helixaibot-com-staging-tls
-          secretKey: tls.crt
-        caKey:
-          secretName: helixaibot-com-staging-tls
-          secretKey: tls.key
 
     server:
       replicas: 5
@@ -51,6 +45,7 @@ spec:
       enabled: true
       default: true
       cni:
+        enabled: true
         cniBinDir: "/opt/consul/cni/bin"
         cniNetDir: "/etc/consul/cni/net.d"
     
@@ -76,4 +71,3 @@ spec:
         tls:
           - hosts:
               - consul.${SECRET_DOMAIN}
-            # secretName: helixaibot-com-production-tls
