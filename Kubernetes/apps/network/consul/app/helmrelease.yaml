@@ -31,7 +31,7 @@ spec:
       image: docker.mirror.hashicorp.services/hashicorppreview/consul:1.18.0
       datacenter: Helix-Ai-DC1
       peering:
-        enabled: false
+        enabled: true
       tls:
         enabled: true
 
@@ -54,7 +54,7 @@ spec:
       replicas: 1
     
     controller:
-      enabled: false
+      enabled: true
 
     ui:
       enabled: true
@@ -71,3 +71,4 @@ spec:
         tls:
           - hosts:
               - consul.${SECRET_DOMAIN}
+
