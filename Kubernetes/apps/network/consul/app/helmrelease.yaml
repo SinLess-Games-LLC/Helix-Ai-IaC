@@ -55,7 +55,7 @@ spec:
         cniNetDir: "/etc/consul/cni/net.d"
     
     meshGateway:
-      enabled: fasle
+      enabled: false
       replicas: 1
     
     controller:
