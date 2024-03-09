@@ -46,6 +46,7 @@ spec:
       replicas: 3
       bootstrapExpect: 3
       storageClass: openebs-hostpath
+      storage: 10Gi
 
     connectInject:
       enabled: true
