@@ -58,7 +58,18 @@ spec:
     meshGateway:
       enabled: true
       replicas: 1
-    
+      wanAddress:
+        source: Service
+      ingress:
+        ingressClassName: external
+        hosts:
+          - host: mesh.consul.${SECRET_DOMAIN}
+            paths:
+              - /
+        tls:
+          - hosts:
+              - mesh.consul.${SECRET_DOMAIN}
+
     controller:
       enabled: true
 
