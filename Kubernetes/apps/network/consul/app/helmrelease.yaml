@@ -50,6 +50,9 @@ spec:
     connectInject:
       enabled: true
       default: true
+      cni:
+        cniBinDir: "/opt/consul/cni/bin"
+        cniNetDir: "/etc/consul/cni/net.d"
     
     meshGateway:
       enabled: true
