@@ -34,7 +34,6 @@ spec:
       datacenter: Helix-Ai-DC1
       peering:
         enabled: false
-      # Not Working 
       tls:
         caCert: 
           secretName: helixaibot-com-production-tls
@@ -50,9 +49,9 @@ spec:
       storageClass: openebs-hostpath
       storage: 10Gi
 
-    # Working
+    # Not Working
     connectInject:
-      enabled: false
+      enabled: true
       default: true
       cni:
         enabled: false
@@ -66,10 +65,12 @@ spec:
       wanAddress:
         source: Service
 
+    # Working
     controller:
       enabled: true
 
 
+    # Working
     ui:
       enabled: true
       service:
