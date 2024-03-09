@@ -76,4 +76,4 @@ spec:
         tls:
           - hosts:
               - consul.${SECRET_DOMAIN}
-            secretName: helixaibot-com-production-tls
+            # secretName: helixaibot-com-production-tls
