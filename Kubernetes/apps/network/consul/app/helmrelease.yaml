@@ -55,7 +55,7 @@ spec:
       enabled: false
       default: true
       cni:
-        enabled: true
+        enabled: false
         cniBinDir: "/opt/consul/cni/bin"
         cniNetDir: "/etc/consul/cni/net.d"
     
@@ -69,7 +69,7 @@ spec:
     controller:
       enabled: true
 
-    
+
     ui:
       enabled: true
       service:
