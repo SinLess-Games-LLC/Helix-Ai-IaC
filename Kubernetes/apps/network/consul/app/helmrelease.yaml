@@ -35,10 +35,10 @@ spec:
       tls:
         enabled: true
         caCert: 
-          secretName: helixaibot-com-staging-tls
+          secretName: helixaibot-com-production-tls
           secretKey: tls.crt
         caKey:
-          secretName: helixaibot-com-staging-tls
+          secretName: helixaibot-com-production-tls
           secretKey: tls.key
 
     server:
