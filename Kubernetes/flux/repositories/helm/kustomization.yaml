@@ -4,12 +4,10 @@ kind: Kustomization
 resources:
   - ./bjw-s.yaml
   - ./cilium.yaml
-  - ./elastic.yaml
   - ./external-dns.yaml
   - ./grafana.yaml
   - ./hashicorp.yaml
   - ./ingress-nginx.yaml
-  - ./istio.yaml
   - ./k8s-gateway.yaml
   - ./jetstack.yaml
   - ./metrics-server.yaml
