@@ -34,6 +34,12 @@ spec:
         enabled: true
       tls:
         enabled: true
+        caCert: 
+          secretName: helixaibot-com-staging-tls
+          secretKey: tls.crt
+        caKey:
+          secretName: helixaibot-com-staging-tls
+          secretKey: tls.key
 
     server:
       replicas: 5
@@ -50,7 +56,7 @@ spec:
         cniNetDir: "/etc/consul/cni/net.d"
     
     meshGateway:
-      enabled: false
+      enabled: true
       replicas: 1
     
     controller:
