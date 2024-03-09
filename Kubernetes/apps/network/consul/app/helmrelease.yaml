@@ -42,10 +42,9 @@ spec:
         #   secretKey: tls.key
 
     server:
-      replicas: 5
-      bootstrapExpect: 5
+      replicas: 3
+      bootstrapExpect: 3
       storageClass: openebs-hostpath
-      storage: 10Gi
 
     connectInject:
       enabled: true
