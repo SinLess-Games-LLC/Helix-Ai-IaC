@@ -30,6 +30,7 @@ spec:
       domain: ${SECRET_DOMAIN}
       image: docker.mirror.hashicorp.services/hashicorppreview/consul:1.18.0
       datacenter: Helix-Ai-DC1
+      enableAutoEncrypt: true
       peering:
         enabled: true
       tls:
