@@ -23,6 +23,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
+  #TODO:
+  # Working
     global:
       name: consul
       logLevel: info
@@ -32,8 +34,8 @@ spec:
       datacenter: Helix-Ai-DC1
       peering:
         enabled: false
+      # Not Working 
       tls:
-        enabled: true
         caCert: 
           secretName: helixaibot-com-production-tls
           secretKey: tls.crt
@@ -41,20 +43,23 @@ spec:
           secretName: helixaibot-com-production-tls
           secretKey: tls.key
 
+    # Working
     server:
       replicas: 3
       bootstrapExpect: 3
       storageClass: openebs-hostpath
       storage: 10Gi
 
+    # Working
     connectInject:
-      enabled: true
+      enabled: false
       default: true
       cni:
         enabled: true
         cniBinDir: "/opt/consul/cni/bin"
         cniNetDir: "/etc/consul/cni/net.d"
     
+    # TODO: Read docs and configure properly
     meshGateway:
       enabled: false
       replicas: 1
@@ -64,6 +69,7 @@ spec:
     controller:
       enabled: true
 
+    
     ui:
       enabled: true
       service:
