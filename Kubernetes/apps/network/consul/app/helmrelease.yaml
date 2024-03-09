@@ -34,12 +34,12 @@ spec:
         enabled: true
       tls:
         enabled: true
-        # caCert: 
-        #   secretName: helixaibot-com-production-tls
-        #   secretKey: tls.crt
-        # caKey:
-        #   secretName: helixaibot-com-production-tls
-        #   secretKey: tls.key
+        caCert: 
+          secretName: helixaibot-com-production-tls
+          secretKey: tls.crt
+        caKey:
+          secretName: helixaibot-com-production-tls
+          secretKey: tls.key
 
     server:
       replicas: 3
