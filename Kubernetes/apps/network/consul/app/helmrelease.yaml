@@ -49,7 +49,7 @@ spec:
           secretName: helixaibot-com-production-tls
           secretKey: tls.key
       acls:
-        manageSystemACLs: false
+        manageSystemACLs: true
 
     # Working
     server:
@@ -62,7 +62,7 @@ spec:
 
     # Working
     connectInject:
-      enabled: false
+      enabled: true
       default: false # only want to inject when requested
       cni:
         enabled: false
@@ -72,7 +72,7 @@ spec:
     
     # Working
     meshGateway:
-      enabled: false
+      enabled: true
       replicas: 2
 
     # Working
