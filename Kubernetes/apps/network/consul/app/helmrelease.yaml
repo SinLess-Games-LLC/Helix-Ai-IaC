@@ -48,6 +48,15 @@ spec:
       bootstrapExpect: 3
       storageClass: openebs-hostpath
       storage: 10Gi
+      # Working On
+      extraConfig: |
+        {
+          "ui_config": {
+            "dashboard_url_templates": {
+              "service": "https://${SECRET_DOMAIN}/d/lDlaj-NGz/service-overview?orgId=1&var-service={{ "{{" }}Service.Name}}&var-namespace={{ "{{" }}Service.Namespace}}&var-dc={{ "{{" }}Datacenter}}"
+            }
+          }
+        }
 
     # Working
     connectInject:
@@ -73,7 +82,6 @@ spec:
     controller:
       enabled: true
 
-
     # Working
     ui:
       enabled: true
@@ -91,4 +99,11 @@ spec:
           - hosts:
               - consul.${SECRET_DOMAIN}
             secretName: helixaibot-com-production-tls
+      # Working On
+      metrics:
+        enabled: true
+        provider: prometheus
+        baseURL: /metrics
+        dashboardURLTemplates:
+          service: "consul.${SECRET_DOMAIN}/d/lDlaj-NGz/service-overview?orgId=1&var-service={{Service.Name}}&var-namespace={{Service.Namespace}}&var-dc={{Datacenter}}"
 
