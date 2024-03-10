@@ -31,7 +31,7 @@ spec:
       logJSON: false
       domain: ${SECRET_DOMAIN}
       image: docker.mirror.hashicorp.services/hashicorppreview/consul:1.18.0
-      datacenter: Helix-Ai-DC1
+      datacenter: helix-ai-dc1
       peering:
         enabled: false
       tls:
@@ -49,14 +49,21 @@ spec:
       storageClass: openebs-hostpath
       storage: 10Gi
 
-    # Not Working
+    # Not Working: Working On
     connectInject:
       enabled: true
-      default: true
+      default: false # only want to inject when requested
+      multus: true
+      logLevel: debug
+      # Works
       cni:
         enabled: false
         cniBinDir: "/opt/consul/cni/bin"
         cniNetDir: "/etc/consul/cni/net.d"
+      # New
+      apiGateway:
+        manageExternalCRDs: true
+        manageNonStandardCRDs: false
     
     # TODO: Read docs and configure properly
     meshGateway:
