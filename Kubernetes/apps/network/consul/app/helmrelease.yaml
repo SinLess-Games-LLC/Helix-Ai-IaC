@@ -41,12 +41,6 @@ spec:
       tls:
         enableAutoEncrypt: true
         verify: true
-        caCert: 
-          secretName: helixaibot-com-production-tls
-          secretKey: tls.crt
-        caKey:
-          secretName: helixaibot-com-production-tls
-          secretKey: tls.key
       acls:
         manageSystemACLs: true
 
