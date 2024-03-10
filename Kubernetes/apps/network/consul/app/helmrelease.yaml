@@ -35,17 +35,15 @@ spec:
       peering:
         enabled: false
       tls:
-        # Peering requires TLS to be enabled
-        enabled: true # working on
         caCert: 
           secretName: helixaibot-com-production-tls
           secretKey: tls.crt
         caKey:
           secretName: helixaibot-com-production-tls
           secretKey: tls.key
-      # acls:
-      #   manageSystemACLs: true
-      #   createReplicationToken: true
+      acls:
+        manageSystemACLs: true
+        createReplicationToken: true
 
     # Working
     server:
