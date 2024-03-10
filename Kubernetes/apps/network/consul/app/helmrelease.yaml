@@ -32,6 +32,10 @@ spec:
       domain: ${SECRET_DOMAIN}
       image: docker.mirror.hashicorp.services/hashicorppreview/consul:1.18.0
       datacenter: helix-ai-dc1
+      # Added
+      federation:
+        enabled: true
+        createFederationSecret: true
       peering:
         enabled: false
       tls:
@@ -45,7 +49,7 @@ spec:
           secretName: helixaibot-com-production-tls
           secretKey: tls.key
       acls:
-        manageSystemACLs: true
+        manageSystemACLs: false
 
     # Working
     server:
