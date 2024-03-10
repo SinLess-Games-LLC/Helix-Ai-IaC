@@ -66,10 +66,8 @@ spec:
     
     # Working
     meshGateway:
-      enabled: false
+      enabled: true
       replicas: 2
-      wanAddress:
-        source: Service
 
     # Working
     controller:
