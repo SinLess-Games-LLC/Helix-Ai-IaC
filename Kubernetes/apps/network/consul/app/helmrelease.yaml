@@ -46,8 +46,8 @@ spec:
 
     # Working
     server:
-      replicas: 3
-      bootstrapExpect: 3
+      replicas: 4
+      bootstrapExpect: 4
       storageClass: openebs-hostpath
       storage: 10Gi
 
