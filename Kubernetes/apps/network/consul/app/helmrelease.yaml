@@ -43,7 +43,6 @@ spec:
           secretKey: tls.key
       acls:
         manageSystemACLs: true
-        createReplicationToken: true
 
     # Working
     server:
