@@ -48,7 +48,7 @@ spec:
     # Working
     server:
       # Minimum number of servers required for quorum is 3
-      # However inorder to avoiddisruptions during upgrades, we need to have 4 servers
+      # However inorder to avoid disruptions during upgrades, we need to have 4 servers
       replicas: 4
       bootstrapExpect: 4
       storageClass: openebs-hostpath
@@ -66,8 +66,8 @@ spec:
     
     # Working
     meshGateway:
-      enabled: false
-      replicas: 1
+      enabled: true
+      replicas: 2
       wanAddress:
         source: Service
 
