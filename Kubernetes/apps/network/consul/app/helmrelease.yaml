@@ -33,7 +33,7 @@ spec:
       image: docker.mirror.hashicorp.services/hashicorppreview/consul:1.18.0
       datacenter: helix-ai-dc1
       peering:
-        enabled: false
+        enabled: true # Working On
       tls:
         caCert: 
           secretName: helixaibot-com-production-tls
@@ -62,7 +62,7 @@ spec:
         manageExternalCRDs: true
         manageNonStandardCRDs: false
     
-    # Working on
+    # Working
     meshGateway:
       enabled: true
       replicas: 1
