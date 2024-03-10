@@ -35,6 +35,7 @@ spec:
       peering:
         enabled: true
       tls:
+        enabled: true
         caCert: 
           secretName: helixaibot-com-production-tls
           secretKey: tls.crt
