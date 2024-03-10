@@ -1,0 +1,114 @@
+2024/01/30 17:52:09 [INFO] Packer version: 1.8.4 [go1.18.5 linux amd64]
+2024/01/30 17:52:09 [TRACE] discovering plugins in /home/vscode/.asdf/installs/packer/1.8.4/bin
+2024/01/30 17:52:09 [TRACE] discovering plugins in /home/vscode/.config/packer/plugins
+2024/01/30 17:52:09 [DEBUG] Discovered plugin: proxmox = /home/vscode/.config/packer/plugins/github.com/hashicorp/proxmox/packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64
+2024/01/30 17:52:09 [INFO] found external [-packer-default-plugin-name- clone iso] builders from proxmox plugin
+2024/01/30 17:52:09 [TRACE] discovering plugins in .
+2024/01/30 17:52:10 [INFO] PACKER_CONFIG env var not set; checking the default config file path
+2024/01/30 17:52:10 [INFO] PACKER_CONFIG env var set; attempting to open config file: /home/vscode/.packerconfig
+2024/01/30 17:52:10 [WARN] Config file doesn't exist: /home/vscode/.packerconfig
+2024/01/30 17:52:10 [INFO] Setting cache directory: /home/vscode/.cache/packer
+2024/01/30 17:52:10 [TRACE] listing potential installations for "github.com/hashicorp/proxmox" that match ">= 1.1.3". plugingetter.ListInstallationsOptions{FromFolders:[]string{"/home/vscode/.asdf/installs/packer/1.8.4/bin/packer", ".", "/home/vscode/.config/packer/plugins"}, BinaryInstallationOptions:plugingetter.BinaryInstallationOptions{APIVersionMajor:"5", APIVersionMinor:"0", OS:"linux", ARCH:"amd64", Ext:"", Checksummers:[]plugingetter.Checksummer{plugingetter.Checksummer{Type:"sha256", Hash:(*sha256.digest)(0xc000153380)}}}}
+2024/01/30 17:52:10 [TRACE] Found the following "github.com/hashicorp/proxmox" installations: [{/home/vscode/.config/packer/plugins/github.com/hashicorp/proxmox/packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 v1.1.7}]
+2024/01/30 17:52:10 [INFO] found external [-packer-default-plugin-name- clone iso] builders from proxmox plugin
+2024/01/30 17:52:10 [TRACE] validateValue: not active for proxmox_api_token_secret, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for proxmox_api_skip_tls_verify, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for vm_cores, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for iso_file, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for unmount_iso, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for ssh_timeout, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for ssh_handshake_attempts, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for ssh_private_key_file, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for proxmox_api_url, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for proxmox_node_name, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for vm_scsi_controller, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for iso_url, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for iso_storage_pool, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for ssh_username, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for ssh_password, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for proxmox_api_token_id, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for vm_id, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for vm_memory, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for vm_qemu_agent, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for vm_name, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for vm_onboot, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for iso_checksum, so skipping
+2024/01/30 17:52:10 [TRACE] validateValue: not active for ssh_port, so skipping
+2024/01/30 17:52:10 [TRACE] Starting external plugin /home/vscode/.config/packer/plugins/github.com/hashicorp/proxmox/packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 start builder clone
+2024/01/30 17:52:10 Starting plugin: /home/vscode/.config/packer/plugins/github.com/hashicorp/proxmox/packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 []string{"/home/vscode/.config/packer/plugins/github.com/hashicorp/proxmox/packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64", "start", "builder", "clone"}
+2024/01/30 17:52:10 Waiting for RPC address for: /home/vscode/.config/packer/plugins/github.com/hashicorp/proxmox/packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64
+2024/01/30 17:52:10 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 17:52:10 Plugin address: unix /tmp/packer-plugin3467607744
+2024/01/30 17:52:10 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 17:52:10 Waiting for connection...
+2024/01/30 17:52:10 Received unix RPC address for /home/vscode/.config/packer/plugins/github.com/hashicorp/proxmox/packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64: addr is /tmp/packer-plugin3467607744
+2024/01/30 17:52:10 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 17:52:10 Serving a plugin connection...
+2024/01/30 17:52:10 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 17:52:10 [TRACE] starting builder clone
+2024/01/30 17:52:10 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 17:52:10 CPU type not set, using default 'kvm64'
+2024/01/30 17:52:10 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 17:52:10 OS not set, using default 'other'
+2024/01/30 17:52:10 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 17:52:10 SCSI controller not set, using default 'lsi'
+2024/01/30 17:52:10 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 17:52:10 AdditionalISOFile 0 Device not set, using default 'ide3'
+2024/01/30 17:52:10 ui: [1;32mk3s-m1.proxmox-clone.k3s-m1: output will be in this color.[0m
+2024/01/30 17:52:10 ui: 
+2024/01/30 17:52:10 Build debug mode: false
+2024/01/30 17:52:10 Force build: false
+2024/01/30 17:52:10 On error: 
+2024/01/30 17:52:10 Waiting on builds to complete...
+2024/01/30 17:52:10 Starting build run: k3s-m1.proxmox-clone.k3s-m1
+2024/01/30 17:52:10 Running builder: 
+2024/01/30 17:52:10 [INFO] (telemetry) Starting builder proxmox-clone.k3s-m1
+2024/01/30 17:52:10 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 17:52:10 using token auth
+2024/01/30 17:52:10 ui: [1;32m==> k3s-m1.proxmox-clone.k3s-m1: Creating CD disk...[0m
+2024/01/30 17:52:10 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 17:52:10 CD label is set to cidata
+2024/01/30 17:52:10 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 17:52:10 CD path: /tmp/packer4081146449.iso
+2024/01/30 17:52:10 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 17:52:10 Wrote 0 bytes to meta-data
+2024/01/30 17:52:10 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 17:52:10 Wrote 1709 bytes to user-data
+2024/01/30 17:52:10 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 17:52:10 Executing: /usr/bin/mkisofs [-joliet -volid cidata -o /tmp/packer4081146449.iso /tmp/packer_to_cdrom4105634686]
+2024/01/30 17:52:10 ui: [0;32m    k3s-m1.proxmox-clone.k3s-m1: Warning: creating filesystem with Joliet extensions but without Rock Ridge[0m
+2024/01/30 17:52:10 ui: [0;32m    k3s-m1.proxmox-clone.k3s-m1: extensions. It is highly recommended to add Rock Ridge.[0m
+2024/01/30 17:52:10 ui: [0;32m    k3s-m1.proxmox-clone.k3s-m1: I: -input-charset not specified, using utf-8 (detected in locale settings)[0m
+2024/01/30 17:52:10 ui: [0;32m    k3s-m1.proxmox-clone.k3s-m1: Total translation table size: 0[0m
+2024/01/30 17:52:10 ui: [0;32m    k3s-m1.proxmox-clone.k3s-m1: Total rockridge attributes bytes: 0[0m
+2024/01/30 17:52:10 ui: [0;32m    k3s-m1.proxmox-clone.k3s-m1: Total directory bytes: 0[0m
+2024/01/30 17:52:10 ui: [0;32m    k3s-m1.proxmox-clone.k3s-m1: Path table size(bytes): 10[0m
+2024/01/30 17:52:10 ui: [0;32m    k3s-m1.proxmox-clone.k3s-m1: Max brk space used 0[0m
+2024/01/30 17:52:10 ui: [0;32m    k3s-m1.proxmox-clone.k3s-m1: 181 extents written (0 MB)[0m
+2024/01/30 17:52:10 ui: [0;32m    k3s-m1.proxmox-clone.k3s-m1: Done copying paths from CD_dirs[0m
+2024/01/30 17:52:10 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 17:52:10 No URLs were provided to Step Download. Continuing...
+2024/01/30 17:52:12 ui: [0;32m    k3s-m1.proxmox-clone.k3s-m1: Uploaded ISO to local:iso/packer4081146449.iso[0m
+2024/01/30 17:52:12 ui: [1;32m==> k3s-m1.proxmox-clone.k3s-m1: Creating VM[0m
+2024/01/30 18:36:15 ui: [1;32m==> k3s-m1.proxmox-clone.k3s-m1: Starting VM[0m
+2024/01/30 18:36:20 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 18:36:20 No boot command given, skipping
+2024/01/30 18:36:23 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 18:36:23 [DEBUG] Unable to get address during connection step: 500 QEMU guest agent is not running
+2024/01/30 18:36:23 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 18:36:23 [INFO] Waiting for SSH, up to timeout: 5m0s
+2024/01/30 18:36:23 ui: [1;32m==> k3s-m1.proxmox-clone.k3s-m1: Waiting for SSH to become available...[0m
+2024/01/30 18:36:26 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 18:36:26 [DEBUG] Error getting SSH address: 500 QEMU guest agent is not running
+2024/01/30 18:36:34 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 18:36:34 [DEBUG] Error getting SSH address: 500 QEMU guest agent is not running
+2024/01/30 18:36:42 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 18:36:42 [DEBUG] Error getting SSH address: 500 QEMU guest agent is not running
+2024/01/30 18:36:49 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 18:36:49 [INFO] Attempting SSH connection to 192.168.86.171:22...
+2024/01/30 18:36:49 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 18:36:49 [DEBUG] reconnecting to TCP connection for SSH
+2024/01/30 18:36:49 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 18:36:49 [DEBUG] handshaking with SSH
+2024/01/30 18:36:51 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 18:36:51 [DEBUG] handshake complete!
+2024/01/30 18:36:51 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 18:36:51 [DEBUG] Opening new ssh session
+2024/01/30 18:36:55 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 18:36:55 [INFO] agent forwarding enabled
+2024/01/30 18:36:55 ui: [1;32m==> k3s-m1.proxmox-clone.k3s-m1: Connected to SSH![0m
+2024/01/30 18:36:55 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 18:36:55 Running the provision hook
+2024/01/30 18:36:57 ui: [1;32m==> k3s-m1.proxmox-clone.k3s-m1: Stopping VM[0m
+2024/01/30 18:37:01 ui: [1;32m==> k3s-m1.proxmox-clone.k3s-m1: Converting VM to template[0m
+2024/01/30 18:37:02 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 18:37:02 template_id: 200
+2024/01/30 18:37:06 ui: [0;32m    k3s-m1.proxmox-clone.k3s-m1: Deleted generated ISO from local:iso/packer4081146449.iso[0m
+2024/01/30 18:37:06 packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64 plugin: 2024/01/30 18:37:06 Deleting CD disk: /tmp/packer4081146449.iso
+2024/01/30 18:37:06 [INFO] (telemetry) ending proxmox-clone.k3s-m1
+2024/01/30 18:37:06 ui: [1;32mBuild 'k3s-m1.proxmox-clone.k3s-m1' finished after 44 minutes 55 seconds.[0m
+2024/01/30 18:37:06 ui: 
+==> Wait completed after 44 minutes 55 seconds
+2024/01/30 18:37:06 ui: 
+==> Builds finished. The artifacts of successful builds are:
+2024/01/30 18:37:06 machine readable: k3s-m1.proxmox-clone.k3s-m1,artifact-count []string{"1"}
+2024/01/30 18:37:06 machine readable: k3s-m1.proxmox-clone.k3s-m1,artifact []string{"0", "builder-id", "proxmox.clone"}
+2024/01/30 18:37:06 machine readable: k3s-m1.proxmox-clone.k3s-m1,artifact []string{"0", "id", "200"}
+2024/01/30 18:37:06 machine readable: k3s-m1.proxmox-clone.k3s-m1,artifact []string{"0", "string", "A template was created: 200"}
+2024/01/30 18:37:06 machine readable: k3s-m1.proxmox-clone.k3s-m1,artifact []string{"0", "files-count", "0"}
+2024/01/30 18:37:06 machine readable: k3s-m1.proxmox-clone.k3s-m1,artifact []string{"0", "end"}
+2024/01/30 18:37:06 ui: --> k3s-m1.proxmox-clone.k3s-m1: A template was created: 200
+2024/01/30 18:37:06 [INFO] (telemetry) Finalizing.
+2024/01/30 18:37:06 waiting for all plugin processes to complete...
+2024/01/30 18:37:06 /home/vscode/.config/packer/plugins/github.com/hashicorp/proxmox/packer-plugin-proxmox_v1.1.7_x5.0_linux_amd64: plugin process exited
