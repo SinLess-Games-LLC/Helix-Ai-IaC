@@ -39,6 +39,7 @@ spec:
       peering:
         enabled: false
       tls:
+        enabled: true
         enableAutoEncrypt: true
         verify: true
       acls:
@@ -55,7 +56,7 @@ spec:
 
     # Working
     connectInject:
-      enabled: true
+      enabled: false
       default: false # only want to inject when requested
       cni:
         enabled: false
