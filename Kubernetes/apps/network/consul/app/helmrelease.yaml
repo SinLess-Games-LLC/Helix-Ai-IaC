@@ -33,15 +33,17 @@ spec:
       image: docker.mirror.hashicorp.services/hashicorppreview/consul:1.18.0
       datacenter: helix-ai-dc1
       peering:
-        enabled: true
+        enabled: true # Working On
       tls:
-        enabled: true
         caCert: 
           secretName: helixaibot-com-production-tls
           secretKey: tls.crt
         caKey:
           secretName: helixaibot-com-production-tls
           secretKey: tls.key
+      acls:
+        manageSystemACLs: true
+        createReplicationToken: true
 
     # Working
     server:
@@ -49,7 +51,15 @@ spec:
       bootstrapExpect: 3
       storageClass: openebs-hostpath
       storage: 10Gi
-      
+      # Working On
+      extraConfig: |
+        {
+          "ui_config": {
+            "dashboard_url_templates": {
+              "service": "https://${SECRET_DOMAIN}/d/lDlaj-NGz/service-overview?orgId=1&var-service={{ "{{" }}Service.Name}}&var-namespace={{ "{{" }}Service.Namespace}}&var-dc={{ "{{" }}Datacenter}}"
+            }
+          }
+        }
 
     # Working
     connectInject:
@@ -61,13 +71,18 @@ spec:
         cniBinDir: "/opt/consul/cni/bin"
         cniNetDir: "/etc/consul/cni/net.d"
       apiGateway:
-        manageExternalCRDs: false
+        manageExternalCRDs: true
         manageNonStandardCRDs: false
+      metrics:
+        defaultEnabled: true
+        defaultEnableMerging: true
     
     # Working
     meshGateway:
       enabled: true
       replicas: 1
+      wanAddress:
+        source: Service
 
     # Working
     controller:
@@ -90,4 +105,3 @@ spec:
           - hosts:
               - consul.${SECRET_DOMAIN}
             secretName: helixaibot-com-production-tls
-      
