@@ -38,10 +38,10 @@ spec:
         # Peering requires TLS to be enabled
         # enabled: true
         caCert: 
-          secretName: helixaibot-com-production-tls
+          secretName: helixaibot-com-staging-tls
           secretKey: tls.crt
         caKey:
-          secretName: helixaibot-com-production-tls
+          secretName: helixaibot-com-staging-tls
           secretKey: tls.key
 
     # Working
@@ -88,4 +88,4 @@ spec:
         tls:
           - hosts:
               - consul.${SECRET_DOMAIN}
-            secretName: helixaibot-com-production-tls
+            secretName: helixaibot-com-staging-tls
