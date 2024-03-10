@@ -43,6 +43,10 @@ spec:
         caKey:
           secretName: helixaibot-com-production-tls
           secretKey: tls.key
+      # Working On
+      acls:
+        manageSystemACLs: true
+        createReplicationToken: true
 
     # Working
     server:
