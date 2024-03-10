@@ -56,9 +56,8 @@ spec:
 
     # Working
     connectInject:
-      enabled: true
+      enabled: false
       default: false # only want to inject when requested
-      multus: true
       cni:
         enabled: false
         cniBinDir: "/opt/consul/cni/bin"
