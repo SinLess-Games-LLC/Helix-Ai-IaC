@@ -59,7 +59,8 @@ spec:
       enabled: true
       default: false # only want to inject when requested
       cni:
-        enabled: false
+        enabled: true
+        # Added `/consul/` to the directories to avoid conflicts with cilium
         cniBinDir: "/opt/consul/cni/bin"
         cniNetDir: "/etc/consul/cni/net.d"
     
