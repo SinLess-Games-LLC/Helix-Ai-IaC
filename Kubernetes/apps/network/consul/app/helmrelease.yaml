@@ -33,7 +33,7 @@ spec:
       image: docker.mirror.hashicorp.services/hashicorppreview/consul:1.18.0
       datacenter: helix-ai-dc1
       peering:
-        enabled: true # Working On
+        enabled: false
       tls:
         # Peering requires TLS to be enabled
         enabled: true
@@ -46,8 +46,8 @@ spec:
 
     # Working
     server:
-      replicas: 5
-      bootstrapExpect: 5
+      replicas: 3
+      bootstrapExpect: 3
       storageClass: openebs-hostpath
       storage: 10Gi
 
@@ -60,9 +60,6 @@ spec:
         enabled: true
         cniBinDir: "/opt/consul/cni/bin"
         cniNetDir: "/etc/consul/cni/net.d"
-      apiGateway:
-        manageExternalCRDs: true
-        manageNonStandardCRDs: false
     
     # Working
     meshGateway:
