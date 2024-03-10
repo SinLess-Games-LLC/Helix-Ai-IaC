@@ -53,15 +53,6 @@ spec:
       bootstrapExpect: 3
       storageClass: openebs-hostpath
       storage: 10Gi
-      # Working On
-      extraConfig: |
-        {
-          "ui_config": {
-            "dashboard_url_templates": {
-              "service": "https://${SECRET_DOMAIN}/d/lDlaj-NGz/service-overview?orgId=1&var-service={{ "{{" }}Service.Name}}&var-namespace={{ "{{" }}Service.Namespace}}&var-dc={{ "{{" }}Datacenter}}"
-            }
-          }
-        }
 
     # Working
     connectInject:
@@ -75,9 +66,6 @@ spec:
       apiGateway:
         manageExternalCRDs: true
         manageNonStandardCRDs: false
-      metrics:
-        defaultEnabled: true
-        defaultEnableMerging: true
     
     # Working
     meshGateway:
