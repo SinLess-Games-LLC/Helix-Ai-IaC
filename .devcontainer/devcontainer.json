@@ -5,7 +5,7 @@
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   // "image": "mcr.microsoft.com/devcontainers/base:bullseye",
   "build": {
-    "dockerfile": "./Dockerfile"
+    "dockerfile": "./Dockerfile",
   },
   "containerEnv": {
     "KUBECONFIG": "/workspaces/Helix-Ai-IaC/kubeconfig",
@@ -29,7 +29,10 @@
     "install-ansible-requirements": "ansible-galaxy install --role-file ./requirements.yaml",
     // sudo is required to change permissions
     "ssh2": "sudo chmod 600 ~/.ssh/id_ed25519",
-    "install K9S": "go install github.com/derailed/k9s@latest"
+    "install K9S": "go install github.com/derailed/k9s@latest",
+    "add gpg key": "cp ./.devcontainer/gpg-pubkey ~/.gnupg/pub.gpg",
+    "change perms": "chmod 600 ~/.gnupg/pub.gpg",
+    "import gpg": "gpg --import ~/.gnupg/pub.gpg"
   },
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {

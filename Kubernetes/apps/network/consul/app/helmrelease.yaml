@@ -53,17 +53,17 @@ spec:
 
     # Working
     connectInject:
-      enabled: true
+      enabled: false
       default: false # only want to inject when requested
       multus: true
       cni:
-        enabled: true
+        enabled: false
         cniBinDir: "/opt/consul/cni/bin"
         cniNetDir: "/etc/consul/cni/net.d"
     
     # Working
     meshGateway:
-      enabled: true
+      enabled: false
       replicas: 1
       wanAddress:
         source: Service
