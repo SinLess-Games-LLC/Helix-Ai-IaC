@@ -34,8 +34,8 @@ spec:
       datacenter: helix-ai-dc1
       # Added
       federation:
-        enabled: true
-        createFederationSecret: true
+        enabled: false
+        createFederationSecret: false
       peering:
         enabled: false
       tls:
@@ -62,7 +62,7 @@ spec:
 
     # Working
     connectInject:
-      enabled: true
+      enabled: false
       default: false # only want to inject when requested
       cni:
         enabled: false
@@ -72,7 +72,7 @@ spec:
     
     # Working
     meshGateway:
-      enabled: true
+      enabled: false
       replicas: 2
 
     # Working
