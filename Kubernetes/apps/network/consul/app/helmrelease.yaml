@@ -35,6 +35,8 @@ spec:
       peering:
         enabled: false
       tls:
+        enableAutoEncrypt: true
+        verify: true
         caCert: 
           secretName: helixaibot-com-production-tls
           secretKey: tls.crt
@@ -43,12 +45,6 @@ spec:
           secretKey: tls.key
       acls:
         manageSystemACLs: true
-        bootstrapToken:
-          secretName: consul-bootstrap-acl-token
-          secretKey: token
-        replicationToken:
-          secretName: consul-replication-acl-token
-          secretKey: token
 
     # Working
     server:
