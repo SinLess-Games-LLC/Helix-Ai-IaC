@@ -54,10 +54,9 @@ spec:
       enabled: true
       default: false # only want to inject when requested
       multus: true
-      logLevel: debug
       # Works
       cni:
-        enabled: false
+        enabled: true
         cniBinDir: "/opt/consul/cni/bin"
         cniNetDir: "/etc/consul/cni/net.d"
       # New
