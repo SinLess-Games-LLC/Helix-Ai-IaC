@@ -33,7 +33,7 @@ spec:
       image: docker.mirror.hashicorp.services/hashicorppreview/consul:1.18.0
       datacenter: helix-ai-dc1
       peering:
-        enabled: true # Working On
+        enabled: true
       tls:
         caCert: 
           secretName: helixaibot-com-production-tls
@@ -41,6 +41,10 @@ spec:
         caKey:
           secretName: helixaibot-com-production-tls
           secretKey: tls.key
+      # Working On
+      acls:
+        manageSystemACLs: true
+        createReplicationToken: true
 
     # Working
     server:
@@ -48,7 +52,6 @@ spec:
       bootstrapExpect: 3
       storageClass: openebs-hostpath
       storage: 10Gi
-      # Working On
       extraConfig: |
         {
           "ui_config": {
@@ -70,6 +73,9 @@ spec:
       apiGateway:
         manageExternalCRDs: true
         manageNonStandardCRDs: false
+      metrics:
+        defaultEnabled: true
+        defaultEnableMerging: true
     
     # Working
     meshGateway:
@@ -99,7 +105,6 @@ spec:
           - hosts:
               - consul.${SECRET_DOMAIN}
             secretName: helixaibot-com-production-tls
-      # Working On
       metrics:
         enabled: true
         provider: prometheus
@@ -107,3 +112,5 @@ spec:
         dashboardURLTemplates:
           service: "consul.${SECRET_DOMAIN}/d/lDlaj-NGz/service-overview?orgId=1&var-service={{Service.Name}}&var-namespace={{Service.Namespace}}&var-dc={{Datacenter}}"
 
+    prometheus:
+      enabled: true
