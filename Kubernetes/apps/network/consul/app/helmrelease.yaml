@@ -35,6 +35,7 @@ spec:
       peering:
         enabled: false
       tls:
+        enabled: true
         enableAutoEncrypt: true
         verify: true
         caCert: 
