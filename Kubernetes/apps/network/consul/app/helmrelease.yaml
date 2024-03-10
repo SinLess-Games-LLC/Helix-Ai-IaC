@@ -23,7 +23,7 @@ spec:
   uninstall:
     keepHistory: false
   values:
-  #TODO:
+  # TODO: Fetch documentation link and add as a comment here
   # Working
     global:
       name: consul
@@ -49,24 +49,22 @@ spec:
       storageClass: openebs-hostpath
       storage: 10Gi
 
-    # Not Working: Working On
+    # Working
     connectInject:
       enabled: true
       default: false # only want to inject when requested
       multus: true
-      # Works
       cni:
         enabled: true
         cniBinDir: "/opt/consul/cni/bin"
         cniNetDir: "/etc/consul/cni/net.d"
-      # New
       apiGateway:
         manageExternalCRDs: true
         manageNonStandardCRDs: false
     
-    # TODO: Read docs and configure properly
+    # Working on
     meshGateway:
-      enabled: false
+      enabled: true
       replicas: 1
       wanAddress:
         source: Service
