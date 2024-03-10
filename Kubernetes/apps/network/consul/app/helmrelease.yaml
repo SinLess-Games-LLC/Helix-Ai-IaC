@@ -102,10 +102,11 @@ spec:
           - hosts:
               - consul.${SECRET_DOMAIN}
             secretName: helixaibot-com-production-tls
+
       metrics:
         enabled: true
         provider: prometheus
-        baseURL: /metrics
+        baseURL: https://prometheus.${SECRET_DOMAIN}/metrics
         dashboardURLTemplates:
           service: "consul.${SECRET_DOMAIN}/d/lDlaj-NGz/service-overview?orgId=1&var-service={{Service.Name}}&var-namespace={{Service.Namespace}}&var-dc={{Datacenter}}"
 
