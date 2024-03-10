@@ -114,7 +114,8 @@
         "ms-kubernetes-tools.vscode-kubernetes-tools",
         "signageos.signageos-vscode-sops",
         "GitHub.copilot",
-        "BenjaminBenais.copilot-theme"
+        "BenjaminBenais.copilot-theme",
+        "donjayamanne.git-extension-pack"
       ]
     }
   }
