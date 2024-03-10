@@ -29,7 +29,10 @@
     "install-ansible-requirements": "ansible-galaxy install --role-file ./requirements.yaml",
     // sudo is required to change permissions
     "ssh2": "sudo chmod 600 ~/.ssh/id_ed25519",
-    "install K9S": "go install github.com/derailed/k9s@latest"
+    "install K9S": "go install github.com/derailed/k9s@latest",
+    "set github creds 1": "git config --global user.name Sinless777",
+    "set github creds 2": "git config --global user.email disdainful777@gmail.com",
+    "copy gpg key": "cp ./.devcontainer/gpg-pubkey ~/.gnupg/pub.gpg"
   },
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {

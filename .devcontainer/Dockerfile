@@ -20,3 +20,4 @@ COPY .ssh /root/.ssh
 # Download SSH keys and create .ssh directory
 RUN curl -sL 'https://github.com/SinLess-Games.keys' >> /root/.ssh/authorized_keys
 
+
