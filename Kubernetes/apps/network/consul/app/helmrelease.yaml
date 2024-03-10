@@ -61,7 +61,7 @@ spec:
 
     # Working
     connectInject:
-      enabled: false
+      enabled: true
       default: false # only want to inject when requested
       cni:
         enabled: false
