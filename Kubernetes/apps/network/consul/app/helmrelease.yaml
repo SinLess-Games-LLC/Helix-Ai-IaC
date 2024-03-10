@@ -61,15 +61,13 @@ spec:
         cniBinDir: "/opt/consul/cni/bin"
         cniNetDir: "/etc/consul/cni/net.d"
       apiGateway:
-        manageExternalCRDs: true
+        manageExternalCRDs: false
         manageNonStandardCRDs: false
     
     # Working
     meshGateway:
       enabled: true
       replicas: 1
-      wanAddress:
-        source: Service
 
     # Working
     controller:
