@@ -38,11 +38,11 @@ spec:
       peering:
         enabled: false
       tls:
-        enabled: true
-        enableAutoEncrypt: true
-        verify: true
+        # enabled: false
+        enableAutoEncrypt: false
+        verify: false
       acls:
-        manageSystemACLs: true
+        manageSystemACLs: false
 
     # Working
     server:
