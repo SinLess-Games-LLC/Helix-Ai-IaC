@@ -4,7 +4,7 @@ metadata:
   name: consul
   namespace: network
   labels:
-    config/version: "1.0.3-2"
+    config/version: "1.0.3-3"
 spec:
   interval: 30m
   chart:
@@ -62,6 +62,7 @@ spec:
       bootstrapExpect: 5
       storageClass: openebs-hostpath
       storage: 10Gi
+      updatePartition: 5
 
     # Working
     connectInject:
