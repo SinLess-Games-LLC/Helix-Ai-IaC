@@ -4,7 +4,7 @@ metadata:
   name: consul
   namespace: network
   labels:
-    config/version: "1.0.2"
+    config/version: "1.0.2-0"
 spec:
   interval: 30m
   chart:
@@ -41,7 +41,7 @@ spec:
         enabled: false
       tls:
         enabled: true
-        enableAutoEncrypt: true
+        enableAutoEncrypt: false
         verify: true
       acls:
         manageSystemACLs: false
