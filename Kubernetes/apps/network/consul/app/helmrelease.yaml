@@ -4,7 +4,7 @@ metadata:
   name: consul
   namespace: network
   labels:
-    config/version: "1.0.3-1"
+    config/version: "1.0.3-2"
 spec:
   interval: 30m
   chart:
@@ -39,8 +39,10 @@ spec:
         createFederationSecret: false
       peering:
         enabled: false
+      gossipEncryption:
+        autoGenerate: true
       tls:
-        enabled: true
+        # enabled: true <--- posibly misconfig with using your own ca certs
         enableAutoEncrypt: true
         verify: false 
         caCert:  # <----
@@ -97,4 +99,4 @@ spec:
         tls:
           - hosts:
               - consul.${SECRET_DOMAIN}
-            # secretName: helixaibot-com-production-tls <----
+            secretName: helixaibot-com-production-tls
