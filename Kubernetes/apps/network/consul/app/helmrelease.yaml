@@ -4,7 +4,7 @@ metadata:
   name: consul
   namespace: network
   labels:
-    config/version: "1.0.2-2"
+    config/version: "1.0.3"
 spec:
   interval: 30m
   chart:
@@ -41,8 +41,11 @@ spec:
         enabled: false
       tls:
         enabled: true
-        enableAutoEncrypt: true # <===
+        enableAutoEncrypt: true
         verify: false 
+        caCert:  # <----
+          secretName: helixaibot-com-production-tls
+          secretKey: tls.crt
       acls:
         manageSystemACLs: false
 
