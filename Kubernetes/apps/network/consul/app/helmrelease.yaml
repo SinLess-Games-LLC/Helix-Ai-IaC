@@ -32,8 +32,7 @@ spec:
       domain: ${SECRET_DOMAIN}
       image: docker.mirror.hashicorp.services/hashicorppreview/consul:1.18.0
       datacenter: helix-ai-dc1
-      # Added
-      federation:
+      federation: # not working
         enabled: false
         createFederationSecret: false
       peering:
