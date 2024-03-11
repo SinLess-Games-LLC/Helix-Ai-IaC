@@ -3,7 +3,8 @@ kind: HelmRelease
 metadata:
   name: consul
   namespace: network
-  config-version: 1.0.0
+  labels:
+    config/version: "1.0.0"
 spec:
   interval: 30m
   chart:
