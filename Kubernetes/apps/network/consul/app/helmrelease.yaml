@@ -4,7 +4,7 @@ metadata:
   name: consul
   namespace: network
   labels:
-    config/version: "1.0.4"
+    config/version: "1.0.5"
 spec:
   interval: 30m
   chart:
@@ -44,7 +44,7 @@ spec:
       tls:
         enabled: true
         enableAutoEncrypt: true
-        verify: true
+        verify: false # TODO: This need to be figured out how to use  with self signed keys
         caCert:
           secretName: helixaibot-com-production-tls
           secretKey: tls.crt
@@ -52,7 +52,7 @@ spec:
           secretName: helixaibot-com-production-tls
           secretKey: tls.key
       acls:
-        manageSystemACLs: false
+        manageSystemACLs: true
 
     # Working
     server:
