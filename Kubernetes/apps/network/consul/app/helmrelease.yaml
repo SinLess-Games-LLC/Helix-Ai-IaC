@@ -4,7 +4,7 @@ metadata:
   name: consul
   namespace: network
   labels:
-    config/version: "1.0.3-3"
+    config/version: "1.0.4"
 spec:
   interval: 30m
   chart:
@@ -42,13 +42,13 @@ spec:
       gossipEncryption:
         autoGenerate: true
       tls:
-        # enabled: true <--- posibly misconfig with using your own ca certs
+        enabled: true
         enableAutoEncrypt: true
-        verify: false 
-        caCert:  # <----
+        verify: true
+        caCert:
           secretName: helixaibot-com-production-tls
           secretKey: tls.crt
-        caKey:  # <----
+        caKey:
           secretName: helixaibot-com-production-tls
           secretKey: tls.key
       acls:
@@ -62,7 +62,6 @@ spec:
       bootstrapExpect: 5
       storageClass: openebs-hostpath
       storage: 10Gi
-      updatePartition: 5 # <----
 
     # Working
     connectInject:
