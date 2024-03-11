@@ -4,7 +4,7 @@ metadata:
   name: consul
   namespace: network
   labels:
-    config/version: "1.0.2-0"
+    config/version: "1.0.2-1"
 spec:
   interval: 30m
   chart:
@@ -42,7 +42,7 @@ spec:
       tls:
         enabled: true
         enableAutoEncrypt: false
-        verify: true
+        verify: false # <===
       acls:
         manageSystemACLs: false
 
@@ -62,6 +62,7 @@ spec:
       cni:
         enabled: false
         # Added `/consul/` to the directories to avoid conflicts with cilium
+        # Consul's CNI will not work if cillium is using `/opt/cni/bin` & `/etc/cni/net.d`
         cniBinDir: "/opt/consul/cni/bin"
         cniNetDir: "/etc/consul/cni/net.d"
     
