@@ -55,7 +55,6 @@ tasks:
     - rm -f {{.TERRAFORM_DIR}}/variables.auto.tfvars.json
     - rm -f {{.TERRAFORM_DIR}}/.terraform.tfstate.lock.info
     - rm -f {{.TERRAFORM_DIR}}/.terraform.lock.hcl
-    - sudo rm -rf {{.TERRAFORM_DIR}}/.terraform
 
   encrypt:
     desc: Encrypt all Terraform SOPS secrets that are not already encrypted
