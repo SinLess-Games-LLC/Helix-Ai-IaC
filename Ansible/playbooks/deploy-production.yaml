@@ -9,9 +9,17 @@
       ansible.builtin.pause:
         seconds: 5
   tasks:  
+    - name: Filter hosts with "production" in the name
+      set_fact:
+        production_hosts: "{{ ansible_play_hosts | select('search', 'production') | list }}"
+      
+    - name: Set ansible_play_hosts to empty list
+      ansible.builtin.set_fact:
+        ansible_play_hosts: []
+
     - name: Reset Ansible play hosts
       ansible.builtin.set_fact:
-        ansible_play_hosts: "{{ ansible_play_hosts | select('search', 'production') | list }}"
+        ansible_play_hosts: "{{ production_hosts }}"
 
     - name: install production cluster
       block:
