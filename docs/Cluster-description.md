@@ -42,20 +42,18 @@ The Kubernetes cluster consists of 3 master nodes and 4 worker nodes, deployed o
 
 Namespaces are used to organize and segregate resources within the cluster, providing a logical boundary for different components and environments. The following namespaces are used in the Kubernetes cluster:
 
+<br/>
+<h3>cert-manager</h3>
 
-<div align="center">
-    <h3>cert-manager</h3>
-</div>
-
-Manages SSL/TLS certificates for secure communication.
+Cert-manager is a Kubernetes add-on that automates the management and issuance of SSL/TLS certificates. It integrates with the Kubernetes API to provide a way to issue certificates for various use cases, such as securing web applications, internal services, and more. Cert-manager ensures that certificates are automatically renewed before they expire, reducing the manual effort required to manage certificates.
 
 #### Components:
 
-- **[Certmanager](https://cert-manager.io/docs/):** Manages SSL/TLS certificates for secure communication within the cluster.
+- **[Certmanager](https://cert-manager.io/docs/):** The Certmanager component manages SSL/TLS certificates for secure communication within the cluster. It includes features such as automatic certificate issuance, renewal, and revocation, as well as integration with various certificate authorities (CAs) and Kubernetes Ingress resources.
 
-<div align="center">
-    <h3>data-plane</h3>
-</div>
+<br/>
+<h3>data-plane</h3>
+
 
 Houses data plane components, including [OpenEBS](https://openebs.io/docs/), [Redis Operator](https://ot-redis-operator.netlify.app/docs/), and [MySQL Operator](https://dev.mysql.com/doc/mysql-operator/en/mysql-operator-introduction.html).
 
@@ -65,9 +63,9 @@ Houses data plane components, including [OpenEBS](https://openebs.io/docs/), [Re
 - **[Redis Operator](https://ot-redis-operator.netlify.app/docs/):** Manages Redis instances within the data-plane namespace.
 - **[MySQL Operator](https://dev.mysql.com/doc/mysql-operator/en/mysql-operator-introduction.html):** Manages MySQL instances within the data-plane namespace.
 
-<div align="center">
-    <h3>flux-system</h3>
-</div>
+<br/>
+<h3>flux-system</h3>
+
 
 Used for [Flux CD](https://fluxcd.io/flux/) components and GitOps workflows.
 
@@ -76,9 +74,9 @@ Used for [Flux CD](https://fluxcd.io/flux/) components and GitOps workflows.
 - **[Flux CD](https://fluxcd.io/flux/):** Implements GitOps workflows for declarative and automated cluster configuration.
 - **[Flagger](https://docs.flagger.app/):** Provides progressive delivery and canary deployment capabilities.
 
-<div align="center">
-    <h3>istio-system</h3>
-</div>
+<br/>
+<h3>istio-system</h3>
+
 
  Contains [Istio](https://istio.io/latest/docs/) service mesh components for advanced traffic management and security.
 
@@ -86,9 +84,9 @@ Used for [Flux CD](https://fluxcd.io/flux/) components and GitOps workflows.
 
 - **[Istio](https://istio.io/latest/docs/):** Provides advanced traffic management, security, and observability features through its service mesh capabilities.
 
-<div align="center">
-    <h3>kube-system</h3>
-</div>
+<br/>
+<h3>kube-system</h3>
+
 
 Houses essential [Kubernetes](https://kubernetes.io/docs/home/) system components such as [Cilium](https://docs.cilium.io/en/stable/), [Metrics Server](https://github.com/kubernetes-sigs/metrics-server), and [Stakater Reloader](https://github.com/stakater/Reloader).
 
@@ -101,10 +99,9 @@ Houses essential [Kubernetes](https://kubernetes.io/docs/home/) system component
 - **[Trivy Operator](https://aquasecurity.github.io/trivy-operator/latest/):** Added to the kube-system namespace for vulnerability scanning of containers.
 - **[Chaos Mesh](https://chaos-mesh.org/docs/):** Used for chaos engineering and testing, ensuring resilience and reliability of the cluster.
 
+<br/>
+<h3>monitoring</h3>
 
-<div align="center">
-    <h3>monitoring</h3>
-</div>
 
 Contains monitoring and observability tools, including [Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources), [Prometheus](https://prometheus.io/docs/introduction/overview/), and [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/).
 
@@ -121,10 +118,9 @@ Contains monitoring and observability tools, including [Grafana](https://grafana
     - **[Agent](https://grafana.com/docs/agent/latest/):** Grafana Agent is an OpenTelemetry Collector distribution with configuration inspired by Terraform. It is designed to be flexible, performant, and compatible with multiple ecosystems such as Prometheus and OpenTelemetry.
 - **[Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/):** Handles alert notifications based on predefined rules.
 
+<br/>
+<h3>network</h3>
 
-<div align="center">
-    <h3>network</h3>
-</div>
 
 Houses networking components such as [NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/) and [Cloudflared](https://developers.cloudflare.com/cloudflare-one/tutorials/many-cfd-one-tunnel/) for DNS management.
 
@@ -134,9 +130,9 @@ Houses networking components such as [NGINX Ingress Controller](https://docs.ngi
 - **[Istio](https://istio.io/latest/docs/):** Provides advanced traffic management, security, and observability features through its service mesh capabilities.
 - **[NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/):** Handles external traffic routing into the cluster, with both internal and external configurations.
 
-<div align="center">
-    <h3>production</h3>
-</div>
+<br/>
+<h3>production</h3>
+
 
 Contains resources for the production environment.
 
@@ -145,9 +141,9 @@ Contains resources for the production environment.
 - **[Kafka operator](https://strimzi.io/docs/operators/latest/overview):** Deployed in both staging and production environments for messaging and event streaming purposes.
 - **[Flagsmith](https://docs.flagsmith.com/deployment/hosting/kubernetes):** Added to the production namespace for feature flag and remote configuration management.
 
-<div align="center">
-    <h3>staging</h3>
-</div>
+<br/>
+<h3>staging</h3>
+
 
 Contains resources for the staging environment.
 
@@ -155,9 +151,8 @@ Contains resources for the staging environment.
 
 - **[Kafka operator](https://strimzi.io/docs/operators/latest/overview):** Deployed in both staging and production environments for messaging and event streaming purposes.
 
-<div align="center">
-    <h3>system-upgrade</h3>
-</div>
+<br/>
+<h3>system-upgrade</h3>
 
 Used for managing cluster upgrades.
 
