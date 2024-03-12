@@ -50,34 +50,30 @@ kubernetes:
 # This groups the hosts into a single group named staging
 staging:
   children:
-    kubernetes:
-      children:
-        master:
-          hosts:
-            "k8s-master-1-staging":
-            "k8s-master-2-staging":
-            "k8s-master-3-staging":
-        worker:
-          hosts:
-            "k8s-worker-1-staging":
-            "k8s-worker-2-staging":
+    master:
+      hosts:
+        "k8s-master-1-staging":
+        "k8s-master-2-staging":
+        "k8s-master-3-staging":
+    worker:
+      hosts:
+        "k8s-worker-1-staging":
+        "k8s-worker-2-staging":
 
 # This groups the hosts  into a single group named production
 production:
   children:
-    kubernetes:
-      children:
-        master:
-          hosts:
-            "k8s-master-1-production":
-            "k8s-master-2-production":
-            "k8s-master-3-production":
-        worker:
-          hosts:
-            "k8s-worker-1-production":
-            "k8s-worker-2-production":
-            "k8s-worker-3-production":
-            "k8s-worker-4-production":
+    master:
+      hosts:
+        "k8s-master-1-production":
+        "k8s-master-2-production":
+        "k8s-master-3-production":
+    worker:
+      hosts:
+        "k8s-worker-1-production":
+        "k8s-worker-2-production":
+        "k8s-worker-3-production":
+        "k8s-worker-4-production":
 
 # The Pihole group contains all the hosts that need to run Pihole
 pihole:
