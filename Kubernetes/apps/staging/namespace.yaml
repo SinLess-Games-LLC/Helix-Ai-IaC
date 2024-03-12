@@ -1,8 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: helix-ai
+  name: staging
   labels:
     kustomize.toolkit.fluxcd.io/prune: enabled
     kustomize.toolkit.fluxcd.io/ignore: 'false'
-    connect-inject: enabled
