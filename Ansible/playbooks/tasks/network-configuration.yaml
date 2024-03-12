@@ -54,8 +54,4 @@
         name: resolvconf
         state: started
         enabled: true
-    
-    - name: Network Configuration | Reboot
-      ansible.builtin.reboot:
-        msg: Rebooting hosts
-        reboot_timeout: 3600
+      register: resolvconf
