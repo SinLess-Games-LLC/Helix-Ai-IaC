@@ -49,11 +49,21 @@ Namespaces are used to organize and segregate resources within the cluster, prov
 
 Manages SSL/TLS certificates for secure communication.
 
+#### Components:
+
+- **[Certmanager](https://cert-manager.io/docs/):** Manages SSL/TLS certificates for secure communication within the cluster.
+
 <div align="center">
     <h3>data-plane</h3>
 </div>
 
 Houses data plane components, including [OpenEBS](https://openebs.io/docs/), [Redis Operator](https://ot-redis-operator.netlify.app/docs/), and [MySQL Operator](https://dev.mysql.com/doc/mysql-operator/en/mysql-operator-introduction.html).
+
+#### Components:
+
+- **[OpenEBS](https://openebs.io/docs/):** Provides storage management capabilities within the data-plane namespace.
+- **[Redis Operator](https://ot-redis-operator.netlify.app/docs/):** Manages Redis instances within the data-plane namespace.
+- **[MySQL Operator](https://dev.mysql.com/doc/mysql-operator/en/mysql-operator-introduction.html):** Manages MySQL instances within the data-plane namespace.
 
 <div align="center">
     <h3>flux-system</h3>
@@ -61,11 +71,20 @@ Houses data plane components, including [OpenEBS](https://openebs.io/docs/), [Re
 
 Used for [Flux CD](https://fluxcd.io/flux/) components and GitOps workflows.
 
+#### Components:
+
+- **[Flux CD](https://fluxcd.io/flux/):** Implements GitOps workflows for declarative and automated cluster configuration.
+- **[Flagger](https://docs.flagger.app/):** Provides progressive delivery and canary deployment capabilities.
+
 <div align="center">
     <h3>istio-system</h3>
 </div>
 
  Contains [Istio](https://istio.io/latest/docs/) service mesh components for advanced traffic management and security.
+
+ #### Components:
+
+- **[Istio](https://istio.io/latest/docs/):** Provides advanced traffic management, security, and observability features through its service mesh capabilities.
 
 <div align="center">
     <h3>kube-system</h3>
@@ -73,11 +92,31 @@ Used for [Flux CD](https://fluxcd.io/flux/) components and GitOps workflows.
 
 Houses essential [Kubernetes](https://kubernetes.io/docs/home/) system components such as [Cilium](https://docs.cilium.io/en/stable/), [Metrics Server](https://github.com/kubernetes-sigs/metrics-server), and [Stakater Reloader](https://github.com/stakater/Reloader).
 
+#### Components:
+
+- **[Cilium](https://docs.cilium.io/en/stable/):** Provides network security within the kube-system namespace.
+- **[Metrics Server](https://github.com/kubernetes-sigs/metrics-server):** Collects resource usage metrics from the cluster.
+- **[Stakater Reloader](https://github.com/stakater/Reloader):** Watches changes in ConfigMap and Secret and restarts pods for the changes to take effect.
+
 <div align="center">
     <h3>monitoring</h3>
 </div>
 
 Contains monitoring and observability tools, including [Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources), [Prometheus](https://prometheus.io/docs/introduction/overview/), and [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/).
+
+#### Components:
+
+- **[Prometheus](https://prometheus.io/docs/introduction/overview/):** Collects metrics from various components in the cluster for monitoring purposes.
+- **[Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources):** Visualizes metrics and provides dashboards for monitoring purposes.
+    - **[Mimir](https://grafana.com/docs/mimir/latest/):** Grafana Mimir is an open source software project that provides a scalable long-term storage for Prometheus.
+    - **[Loki](https://grafana.com/docs/loki/latest/):**
+    - **[OnCall](https://grafana.com/docs/oncall/latest/):**
+    - **[Tempo](https://grafana.com/docs/tempo/latest/):**
+    = **[Application Observability](https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/):**
+    - **[Pyroscope](https://grafana.com/docs/pyroscope/latest/):**
+    - **[Agent](https://grafana.com/docs/agent/latest/):**
+- **[Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/):** Handles alert notifications based on predefined rules.
+
 
 <div align="center">
     <h3>network</h3>
@@ -107,13 +146,13 @@ Used for managing cluster upgrades.
 
 The Kubernetes cluster is equipped with various components and tools to support the deployment, management, and monitoring of the Helix Ai application. The following components are deployed within the cluster:
 
-- **[Certmanager](https://cert-manager.io/docs/):** Manages SSL/TLS certificates for secure communication within the cluster.
+
 - **[Flux CD](https://fluxcd.io/flux/):** Implements GitOps workflows for declarative and automated cluster configuration.
 - **[Istio](https://istio.io/latest/docs/):** Provides advanced traffic management, security, and observability features through its service mesh capabilities.
 - **[NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/):** Handles external traffic routing into the cluster, with both internal and external configurations.
 - **[OpenEBS](https://openebs.io/docs/):** Provides storage management capabilities within the data-plane namespace.
 - **[Prometheus](https://prometheus.io/docs/introduction/overview/):** Collects metrics from various components in the cluster for monitoring purposes.
-- **[Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources):** Visualizes metrics and provides dashboards for monitoring purposes, including various Grafana components such as [Mimir](https://grafana.com/docs/mimir/latest/), [Loki](https://grafana.com/docs/loki/latest/), [OnCall](https://grafana.com/docs/oncall/latest/), [Tempo](https://grafana.com/docs/tempo/latest/), [Application Observability](https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/), [Pyroscope](https://grafana.com/docs/pyroscope/latest/), and [Agent](https://grafana.com/docs/agent/latest/).
+- **[Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources):** Visualizes metrics and provides dashboards for monitoring purposes, including various Grafana components such as .
 - **[Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/):** Handles alert notifications based on predefined rules, ensuring timely response to incidents.
 - **[Redis Operator](https://ot-redis-operator.netlify.app/docs/) and [MySQL Operator](https://dev.mysql.com/doc/mysql-operator/en/mysql-operator-introduction.html):** Deployed within the data-plane namespace to manage Redis and MySQL instances respectively.
 - **[Chaos Mesh](https://chaos-mesh.org/docs/):** Used for chaos engineering and testing, ensuring resilience and reliability of the cluster.
