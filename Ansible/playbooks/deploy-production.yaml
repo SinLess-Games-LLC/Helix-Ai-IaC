@@ -1,6 +1,6 @@
 ---
 - name: Cluster Installation
-  hosts: production
+  hosts: Production
   become: true
   gather_facts: true
   any_errors_fatal: true
