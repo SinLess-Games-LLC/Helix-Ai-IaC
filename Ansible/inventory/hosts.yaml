@@ -1,4 +1,8 @@
 ---
+# This is the inventory file for the Ansible playbook
+# It contains the hosts and groups that the playbook will run against
+
+# The Kubernetes group contains all the hosts that need to run Kubernetes
 kubernetes: 
   children:
     master:
@@ -55,16 +59,6 @@ kubernetes:
           ansible_host: "192.168.86.91"
           production_cluster: false
 
-pihole:
-  hosts:
-    pihole-1:
-      ansible_user: "sinless777"
-      ansible_host: "192.168.86.80"
-    pihole-2:
-      ansible_user: "sinless777"
-      ansible_host: "192.168.86.81"
-
-
 # This groups the hosts into a single group named staging
 staging:
   children:
@@ -97,4 +91,12 @@ production:
             k8s-worker-3-production:
             k8s-worker-4-production:
 
-        
+# The Pihole group contains all the hosts that need to run Pihole
+pihole:
+  hosts:
+    pihole-1:
+      ansible_user: "sinless777"
+      ansible_host: "192.168.86.80"
+    pihole-2:
+      ansible_user: "sinless777"
+      ansible_host: "192.168.86.81"
