@@ -1,6 +1,8 @@
 ---
 - name: Cluster Installation
-  hosts: production
+  hosts: 
+    - production
+    - staging
   become: true
   gather_facts: true
   any_errors_fatal: true
@@ -8,21 +10,13 @@
     - name: Pausing for 5 seconds...
       ansible.builtin.pause:
         seconds: 5
-  vars:
-    production_hosts: []
-  tasks:  
-    - name: Filter hosts with "production" in the name
-      set_fact:
-        production_hosts: "{{ ansible_play_hosts | select('search', 'production') | list }}"
-
-    - name: Print production hosts
-      when: ansible_hostname == "k8s-master-1-production"
-      debug:
-        var: production_hosts
-    
+  tasks:
+    - name: check if production cluster
+      ansible.builtin.debug:
+        msg: "Production Cluster: {{ production_cluster }}"
+      
     - name: install production cluster
-      when: ansible_hostname == item
-      loop: "{{ production_hosts }}"
+      when: production_cluster == true
       block:
         - name: Check if cluster is installed
           check_mode: false
@@ -50,3 +44,27 @@
 
         - name: Kubeconfig
           ansible.builtin.include_tasks: tasks/kubeconfig.yaml
+
+        - name: Wait for custom manifests to rollout
+          when:
+            - k3s_primary_control_node
+            - (k3s_server_manifests_templates | length > 0
+                or k3s_server_manifests_urls | length > 0)
+          kubernetes.core.k8s_info:
+            kubeconfig: /etc/rancher/k3s/k3s.yaml
+            kind: "{{ item.kind }}"
+            name: "{{ item.name }}"
+            namespace: "{{ item.namespace | default('') }}"
+            wait: true
+            wait_sleep: 10
+            wait_timeout: 360
+          loop:
+            - { name: cilium, kind: HelmChart, namespace: kube-system }
+
+        - name: Cilium
+          when: k3s_primary_control_node
+          ansible.builtin.include_tasks: tasks/cilium.yaml
+
+        - name: Cruft
+          when: k3s_primary_control_node
+          ansible.builtin.include_tasks: tasks/cruft.yaml
