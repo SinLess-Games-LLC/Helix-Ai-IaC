@@ -1,104 +1,70 @@
-# Cluster Description
+<div style="text-align: center;">
+    <h1>Kubernetes Cluster Description</h1>
+</div>
+
+<div style="text-align: center;">
+    <img src="https://img.shields.io/website?down_color=red&down_message=down&label=helixaibot.com&up_color=green&up_message=up" alt="helixaibot.com status">
+</div>
+
 
 ## Overview
-
-The Kubernetes cluster managed by Helix Ai under the domain [helixaibot.com](http://helixaibot.com/) is designed to be highly available, scalable, and feature-rich, as a SaaS application. It is managed using the lightweight Kubernetes distribution [k3s](https://k3s.io/) version 1.29.1-k3s2, known for its simplicity and efficiency.
-
-The cluster includes various namespaces for organizing resources, each serving specific purposes such as managing SSL/TLS certificates, storage, networking, monitoring, and more. It incorporates a wide range of components and tools to ensure stability, scalability, security, and observability for the SaaS application. Key components include Flux CD for GitOps workflows, Istio for service mesh capabilities, Grafana for monitoring and visualization, NGINX Ingress Controller for traffic routing, and Prometheus for metrics collection.
-
-The cluster also implements [DevSecOps](https://devsecopsdocs.com/) practices, including CI/CD pipelines with GitHub Actions, infrastructure management with Ansible and Terraform, and security measures with Mozilla SOPS and Age. It is designed with scalability and high availability in mind, with plans for autoscaling nodes and pods in AWS and disaster recovery strategies in place.
-
-Overall, the Kubernetes cluster provides a robust and efficient platform for hosting and managing the SaaS application, ensuring its reliability and performance.
+This document provides a comprehensive overview of the architecture, components, and configuration of the [Kubernetes](https://kubernetes.io/docs/home/) cluster deployed for the SaaS application, Helix Ai, owned and developed by [SinLess Games LLC](https://sinlessgamesllc.com). The cluster is designed to be highly available, scalable, and secure, supporting the deployment and management of the Helix Ai application.
 
 ## Cluster Management
-
-The cluster is managed using the lightweight Kubernetes distribution [k3s](https://k3s.io/), version 1.29.1-k3s2, known for its simplicity and efficiency.
+- **Distribution:** The cluster is based on [k3s](https://docs.k3s.io/) version 1.29.1-k3s2, chosen for its lightweight nature and ease of management.
+- **Nodes:** The cluster comprises 3 master nodes and 4 worker nodes, deployed on-premises for high availability and performance.
 
 ## Namespaces
-
-The cluster includes the following namespaces, each serving specific purposes:
-
-- **certmanager**: For managing SSL/TLS certificates.
-- **data-plane** (formerly openebs-system): For [OpenEBS](https://docs.openebs.io/) storage management.
-- **flux-system**: For [Flux CD](https://fluxcd.io/) components and GitOps workflows.
-- **istio-system**: For [Istio](https://istio.io/) service mesh components.
-- **kube-system**: For essential Kubernetes system components.
-- **monitoring**: For monitoring and observability tools.
-- **network**: For networking components such as [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/) and DNS management.
-- **production**: For production environment resources.
-- **staging**: For staging environment resources.
-- **system-upgrade**: For managing cluster upgrades.
-- **testing**: For testing environment resources.
+- **cert-manager:** Manages SSL/TLS certificates for secure communication.
+- **data-plane:** Houses data plane components, including [OpenEBS](https://openebs.io/docs/), [Redis Operator](https://ot-redis-operator.netlify.app/docs/), and [MySQL Operator](https://dev.mysql.com/doc/mysql-operator/en/mysql-operator-introduction.html).
+- **flux-system:** Used for [Flux CD](https://fluxcd.io/flux/) components and GitOps workflows.
+- **istio-system:** Contains [Istio](https://istio.io/latest/docs/) service mesh components for advanced traffic management and security.
+- **kube-system:** Houses essential [Kubernetes](https://kubernetes.io/docs/home/) system components such as [Cilium](https://docs.cilium.io/en/stable/), [Metrics Server](https://github.com/kubernetes-sigs/metrics-server), and [Stakater Reloader](https://github.com/stakater/Reloader).
+- **monitoring:** Contains monitoring and observability tools, including [Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources), [Prometheus](https://prometheus.io/docs/introduction/overview/), and [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/).
+- **network:** Houses networking components such as [NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/) and [Cloudflared](https://developers.cloudflare.com/cloudflare-one/tutorials/many-cfd-one-tunnel/) for DNS management.
+- **production:** Contains resources for the production environment.
+- **staging:** Contains resources for the staging environment.
+- **system-upgrade:** Used for managing cluster upgrades.
 
 ## Components
-
-### kube-system
-
-- **[Cilium](https://cilium.io/)**: Provides network security.
-- **Metrics Server**: Collects resource usage metrics.
-- **Stakater Reloader**: Automatically reloads resources like ConfigMaps and Secrets.
-
-### network
-
-- **Cloudflared**: Enables secure DNS tunneling.
-- **Echo server**: Used for testing purposes.
-- **External DNS**: Automatically manages DNS records for external services.
-- **NGINX Ingress Controller**: Routes external traffic into the cluster, both internally and externally.
-- **K8s gateway**: Acts as a gateway for Kubernetes services.
-
-### system-upgrade
-
-- **System Upgrade Controller**: Manages cluster upgrades.
-- **k3s plan**: Provides a plan for upgrading the k3s distribution.
-
-### data-plane
-
-- **Redis Operator**: Manages Redis instances.
-- **MySQL Operator**: Manages MySQL databases.
-- **Kafka**: Highly available Kafka cluster for messaging.
-
-### monitoring
-
-- **[Grafana](https://grafana.com/)**: Provides metrics visualization, including Mimir, Loki, OnCall, Tempo, Application Observability, Pyroscope, and Agent.
-- **[Prometheus](https://prometheus.io/)**: Collects metrics from the cluster.
-- **[Alertmanager](https://prometheus.io/docs/alerting/alertmanager/)**: Handles alert notifications based on predefined rules.
-- **[Grafana Kubernetes Monitoring](https://grafana.com/docs/grafana-cloud/grafana-kubernetes-monitoring/)**: Provides detailed monitoring for Kubernetes components.
-
-## Traffic Management
-
-- [Istio](https://istio.io/) and [Flagger](https://flagger.app/) for advanced traffic management and canary deployments.
-- [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/) serves as the public-facing entry point, with Istio providing load balancing.
+- **[Certmanager](https://cert-manager.io/docs/):** Manages SSL/TLS certificates for secure communication within the cluster.
+- **[Flux CD](https://fluxcd.io/flux/):** Implements GitOps workflows for declarative and automated cluster configuration.
+- **[Istio](https://istio.io/latest/docs/):** Provides advanced traffic management, security, and observability features through its service mesh capabilities.
+- **[NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/):** Handles external traffic routing into the cluster, with both internal and external configurations.
+- **[OpenEBS](https://openebs.io/docs/):** Provides storage management capabilities within the data-plane namespace.
+- **[Prometheus](https://prometheus.io/docs/introduction/overview/):** Collects metrics from various components in the cluster for monitoring purposes.
+- **[Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources):** Visualizes metrics and provides dashboards for monitoring purposes, including various Grafana components such as [Mimir](https://grafana.com/docs/mimir/latest/), [Loki](https://grafana.com/docs/loki/latest/), [OnCall](https://grafana.com/docs/oncall/latest/), [Tempo](https://grafana.com/docs/tempo/latest/), [Application Observability](https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/), [Pyroscope](https://grafana.com/docs/pyroscope/latest/), and [Agent](https://grafana.com/docs/agent/latest/).
+- **[Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/):** Handles alert notifications based on predefined rules, ensuring timely response to incidents.
+- **[Redis Operator](https://ot-redis-operator.netlify.app/docs/) and [MySQL Operator](https://dev.mysql.com/doc/mysql-operator/en/mysql-operator-introduction.html):** Deployed within the data-plane namespace to manage Redis and MySQL instances respectively.
+- **[Chaos Mesh](https://chaos-mesh.org/docs/):** Used for chaos engineering and testing, ensuring resilience and reliability of the cluster.
+- **[Kafka operator](https://strimzi.io/docs/operators/latest/overview):** Deployed in both staging and production environments for messaging and event streaming purposes.
+- **System Upgrade Controller:** Manages cluster upgrades, ensuring the cluster remains up to date with the latest versions of components.
+- **[Cloudflared](https://developers.cloudflare.com/cloudflare-one/tutorials/many-cfd-one-tunnel/):** Enables secure DNS tunneling within the cluster for enhanced security.
+- **[Falco](https://falco.org/docs/):** Added to the kube-system namespace for runtime security monitoring and anomaly detection.
+- **[Trivy Operator](https://aquasecurity.github.io/trivy-operator/latest/):** Added to the kube-system namespace for vulnerability scanning of containers.
+- **[Flagsmith](https://docs.flagsmith.com/deployment/hosting/kubernetes):** Added to the production namespace for feature flag and remote configuration management.
 
 ## CI/CD and DevOps
-
-- [Flux CD](https://fluxcd.io/) and [GitHub Actions](https://github.com/features/actions) for GitOps workflows and continuous integration.
-- Webhooks used for triggering CI/CD processes.
-- DevSecOps practices integrated into the workflow.
-
-## Infrastructure Management
-
-- [Ansible](https://docs.ansible.com/ansible/latest/index.html), [Terraform](https://www.terraform.io/docs/index.html), and [go-task](https://taskfile.dev/) for infrastructure provisioning, configuration management, and task automation.
+- Utilizes [GitHub Actions](https://docs.github.com/en/actions) and webhooks for continuous integration.
+- Implements [DevSecOps](https://devsecopsdocs.com/) practices throughout the workflow, ensuring security is integrated into development and operations processes.
 
 ## Security
+- Utilizes [Mozilla SOPS](https://github.com/mozilla/sops) and Age for secrets management.
+- Implements [Cilium](https://docs.cilium.io/en/stable/) for network security within the kube-system namespace.
 
-- [Mozilla SOPS](https://github.com/mozilla/sops) and [Age](https://github.com/FiloSottile/age) for secrets management.
-- Cilium for network security.
-- DevSecOps practices implemented throughout the workflow.
-
-## Testing
-
-- Separate namespace for testing environment resources.
+## Observability
+- Uses various monitoring and observability tools such as [Prometheus](https://prometheus.io/docs/introduction/overview/), [Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources), and [Istio](https://istio.io/latest/docs/) for comprehensive visibility into the cluster's health and performance.
 
 ## Scalability and High Availability
+- Planned high availability with multiple master and worker nodes, ensuring resilience and fault tolerance.
+- Implements autoscaling for both nodes and pods in AWS, providing elasticity to handle varying workload demands.
 
-- Planned high availability with 3 master nodes and 4 worker nodes deployed on-premises.
-- Autoscaling for both nodes and pods in AWS.
+## Infrastructure Management
+- Utilizes [Ansible](https://docs.ansible.com/), [Terraform](https://developer.hashicorp.com/terraform/docs), and [go-task](https://taskfile.dev/) for infrastructure provisioning, configuration management, and task automation.
 
-## Additional Components
-
-- [Chaos Mesh](https://chaos-mesh.org/) for chaos engineering and testing.
-- Disaster recovery strategies implemented.
+## Disaster Recovery
+- Implements disaster recovery strategies to ensure business continuity in case of unforeseen incidents.
 
 ---
 
-Feel free to adjust or expand this document as needed for your documentation purposes.
+This document provides a detailed description of the Kubernetes cluster, highlighting its key components, namespaces, and configurations. It serves as a reference for understanding the architecture and design of the cluster deployed for the Helix Ai application.
