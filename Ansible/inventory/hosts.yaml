@@ -3,7 +3,7 @@
 # It contains the hosts and groups that the playbook will run against
 
 # This groups the hosts into a single group named staging
-staging:
+Staging:
   children:
     master:
       hosts:
@@ -27,7 +27,7 @@ staging:
           ansible_host: "192.168.86.91"
 
 # This groups the hosts  into a single group named production
-production:
+Production:
   children:
     master:
       hosts:
