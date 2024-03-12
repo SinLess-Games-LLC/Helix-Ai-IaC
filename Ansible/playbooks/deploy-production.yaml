@@ -8,13 +8,9 @@
     - name: Pausing for 5 seconds...
       ansible.builtin.pause:
         seconds: 5
-  tasks:
-    - name: Filter hosts with "production" in the name
-      set_fact:
-        production_hosts: "{{ ansible_play_hosts | select('search', 'production') | list }}"
-    
+  tasks:  
     - name: install production cluster
-      when: production_hosts
+      when: "{{ ansible_play_hosts | select('search', 'production') | list }}"
       block:
         - name: Check if cluster is installed
           check_mode: false
