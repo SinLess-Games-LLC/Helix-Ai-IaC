@@ -116,26 +116,17 @@ tasks:
   add-ssh:
     desc: Add SSH known hosts
     cmds:
-      - ssh-keyscan -H 192.168.86.80
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.81"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.85"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.86"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.87"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.90"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.91"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.100"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.101"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.102"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.103"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.104"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.105"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.150"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.151"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.152"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.153"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.154"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.155"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.156"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.157"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.158"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.159"
+      - ssh-keyscan -H 192.168.86.80 >> ~/.ssh/known_hosts
+      - ssh-keyscan -H 192.168.86.81 >> ~/.ssh/known_hosts
+      - ssh-keyscan -H 192.168.86.85 >> ~/.ssh/known_hosts
+      - ssh-keyscan -H 192.168.86.86 >> ~/.ssh/known_hosts
+      - ssh-keyscan -H 192.168.86.87 >> ~/.ssh/known_hosts
+      - ssh-keyscan -H 192.168.86.90 >> ~/.ssh/known_hosts
+      - ssh-keyscan -H 192.168.86.91 >> ~/.ssh/known_hosts
+      - ssh-keyscan -H 192.168.86.100 >> ~/.ssh/known_hosts
+      - ssh-keyscan -H 192.168.86.101 >> ~/.ssh/known_hosts
+      - ssh-keyscan -H 192.168.86.102 >> ~/.ssh/known_hosts
+      - ssh-keyscan -H 192.168.86.150 >> ~/.ssh/known_hosts
+      - ssh-keyscan -H 192.168.86.151 >> ~/.ssh/known_hosts
+      - ssh-keyscan -H 192.168.86.152 >> ~/.ssh/known_hosts
+      - ssh-keyscan -H 192.168.86.153 >> ~/.ssh/known_hosts
