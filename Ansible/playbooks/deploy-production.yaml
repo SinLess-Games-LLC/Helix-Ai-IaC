@@ -9,10 +9,6 @@
       ansible.builtin.pause:
         seconds: 5
   tasks:
-    - name: check if production cluster
-      ansible.builtin.debug:
-        msg: "Production Cluster: {{ production_cluster }}"
-      
     - name: install production cluster
       when: production_cluster == true
       block:
