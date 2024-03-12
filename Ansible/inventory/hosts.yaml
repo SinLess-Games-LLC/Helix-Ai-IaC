@@ -2,8 +2,32 @@
 # This is the inventory file for the Ansible playbook
 # It contains the hosts and groups that the playbook will run against
 
-# The Kubernetes group contains all the hosts that need to run Kubernetes
-kubernetes: 
+# This groups the hosts into a single group named staging
+staging:
+  children:
+    master:
+      hosts:
+        "k8s-master-1-staging":
+          ansible_user: "sinless777"
+          ansible_host: "192.168.86.85"
+        "k8s-master-2-staging":
+          ansible_user: "sinless777"
+          ansible_host: "192.168.86.86"
+        "k8s-master-3-staging":
+          ansible_user: "sinless777"
+          ansible_host: "192.168.86.87"
+
+    worker:
+      hosts:
+        "k8s-worker-1-staging":
+          ansible_user: "sinless777"
+          ansible_host: "192.168.86.90"
+        "k8s-worker-2-staging":
+          ansible_user: "sinless777"
+          ansible_host: "192.168.86.91"
+
+# This groups the hosts  into a single group named production
+production:
   children:
     master:
       hosts:
@@ -16,16 +40,7 @@ kubernetes:
         "k8s-master-3-production":
           ansible_user: "sinless777"
           ansible_host: "192.168.86.102"
-        "k8s-master-1-staging":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.85"
-        "k8s-master-2-staging":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.86"
-        "k8s-master-3-staging":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.87"
-    
+
     worker:
       hosts:
         "k8s-worker-1-production":
@@ -40,40 +55,6 @@ kubernetes:
         "k8s-worker-4-production":
           ansible_user: "sinless777"
           ansible_host: "192.168.86.153"
-        "k8s-worker-1-staging":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.90"
-        "k8s-worker-2-staging":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.91"
-
-# This groups the hosts into a single group named staging
-staging:
-  children:
-    master:
-      hosts:
-        "k8s-master-1-staging":
-        "k8s-master-2-staging":
-        "k8s-master-3-staging":
-    worker:
-      hosts:
-        "k8s-worker-1-staging":
-        "k8s-worker-2-staging":
-
-# This groups the hosts  into a single group named production
-production:
-  children:
-    master:
-      hosts:
-        "k8s-master-1-production":
-        "k8s-master-2-production":
-        "k8s-master-3-production":
-    worker:
-      hosts:
-        "k8s-worker-1-production":
-        "k8s-worker-2-production":
-        "k8s-worker-3-production":
-        "k8s-worker-4-production":
 
 # The Pihole group contains all the hosts that need to run Pihole
 pihole:
