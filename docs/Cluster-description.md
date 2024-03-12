@@ -42,9 +42,31 @@ The Kubernetes cluster consists of 3 master nodes and 4 worker nodes, deployed o
 
 Namespaces are used to organize and segregate resources within the cluster, providing a logical boundary for different components and environments. The following namespaces are used in the Kubernetes cluster:
 
-- **cert-manager:** Manages SSL/TLS certificates for secure communication.
-- **data-plane:** Houses data plane components, including [OpenEBS](https://openebs.io/docs/), [Redis Operator](https://ot-redis-operator.netlify.app/docs/), and [MySQL Operator](https://dev.mysql.com/doc/mysql-operator/en/mysql-operator-introduction.html).
-- **flux-system:** Used for [Flux CD](https://fluxcd.io/flux/) components and GitOps workflows.
+
+<div align="center">
+    <h3>cert-manager</h3>
+</div>
+
+Manages SSL/TLS certificates for secure communication.
+
+<div align="center">
+    <h3>data-plane</h3>
+</div>
+
+Houses data plane components, including [OpenEBS](https://openebs.io/docs/), [Redis Operator](https://ot-redis-operator.netlify.app/docs/), and [MySQL Operator](https://dev.mysql.com/doc/mysql-operator/en/mysql-operator-introduction.html).
+
+<div align="center">
+    <h3>flux-system</h3>
+</div>
+
+Used for [Flux CD](https://fluxcd.io/flux/) components and GitOps workflows.
+
+<div align="center">
+    <h3></h3>
+</div>
+
+- **** 
+- **:** 
 - **istio-system:** Contains [Istio](https://istio.io/latest/docs/) service mesh components for advanced traffic management and security.
 - **kube-system:** Houses essential [Kubernetes](https://kubernetes.io/docs/home/) system components such as [Cilium](https://docs.cilium.io/en/stable/), [Metrics Server](https://github.com/kubernetes-sigs/metrics-server), and [Stakater Reloader](https://github.com/stakater/Reloader).
 - **monitoring:** Contains monitoring and observability tools, including [Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources), [Prometheus](https://prometheus.io/docs/introduction/overview/), and [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/).
