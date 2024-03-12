@@ -54,35 +54,40 @@ Cert-manager is a Kubernetes add-on that automates the management and issuance o
 <br/>
 <h3>data-plane</h3>
 
-
-Houses data plane components, including [OpenEBS](https://openebs.io/docs/), [Redis Operator](https://ot-redis-operator.netlify.app/docs/), and [MySQL Operator](https://dev.mysql.com/doc/mysql-operator/en/mysql-operator-introduction.html).
+The data-plane namespace is dedicated to housing data plane components, which are responsible for processing and forwarding data within the Kubernetes cluster. These components are crucial for the functioning of various applications and services running in the cluster.
 
 #### Components:
 
-- **[OpenEBS](https://openebs.io/docs/):** Provides storage management capabilities within the data-plane namespace.
-- **[Redis Operator](https://ot-redis-operator.netlify.app/docs/):** Manages Redis instances within the data-plane namespace.
-- **[MySQL Operator](https://dev.mysql.com/doc/mysql-operator/en/mysql-operator-introduction.html):** Manages MySQL instances within the data-plane namespace.
+- **[OpenEBS](https://openebs.io/docs/):** OpenEBS is a popular open-source storage solution for Kubernetes that provides storage management capabilities within the data-plane namespace. It offers features such as dynamic provisioning, snapshots, and storage policies to ensure reliable and scalable storage for application workloads.
+- **[Redis Operator](https://ot-redis-operator.netlify.app/docs/):** The Redis Operator manages Redis instances within the data-plane namespace. It automates the deployment, scaling, and management of Redis clusters, making it easier to use Redis for caching and data storage in Kubernetes.
+- **[MySQL Operator](https://dev.mysql.com/doc/mysql-operator/en/mysql-operator-introduction.html):** The MySQL Operator manages MySQL instances within the data-plane namespace. It simplifies the deployment and management of MySQL databases in Kubernetes, providing features such as automated backups, scaling, and high availability configurations.
 
 <br/>
 <h3>flux-system</h3>
 
-
-Used for [Flux CD](https://fluxcd.io/flux/) components and GitOps workflows.
+The flux-system namespace is used to house components related to Flux CD, which is a tool for implementing GitOps workflows. GitOps is a way to do Kubernetes cluster management and application delivery that relies on Git as a single source of truth for declarative infrastructure and applications.
 
 #### Components:
 
-- **[Flux CD](https://fluxcd.io/flux/):** Implements GitOps workflows for declarative and automated cluster configuration.
-- **[Flagger](https://docs.flagger.app/):** Provides progressive delivery and canary deployment capabilities.
+- **[Flux CD](https://fluxcd.io/flux/):** Flux CD is a tool that automates the deployment and lifecycle management of applications in Kubernetes clusters. It works by synchronizing the state of a Git repository with the cluster, ensuring that the cluster's configuration matches the desired state defined in the repository.
+- **[Flagger](https://docs.flagger.app/):** Flagger is a progressive delivery tool that integrates with Flux CD to automate the promotion of canary deployments. It provides advanced deployment strategies such as canary releases, A/B testing, and blue-green deployments, allowing for safer and more controlled application deployments.
 
 <br/>
 <h3>istio-system</h3>
 
+The istio-system namespace contains components of Istio, which is a popular service mesh platform for Kubernetes. Istio provides advanced traffic management, security, and observability features, making it easier to manage and secure microservices-based applications.
 
- Contains [Istio](https://istio.io/latest/docs/) service mesh components for advanced traffic management and security.
+#### Components:
 
- #### Components:
+- **[Istio Pilot](https://istio.io/latest/docs/ops/deployment/architecture/#pilot):** Pilot is responsible for configuring the Envoy proxies deployed alongside your application services. It translates high-level routing rules into Envoy-specific configurations and dynamically propagates them to the Envoy proxies.
+- **[Istio Citadel](https://istio.io/latest/docs/ops/deployment/architecture/#citadel):** Citadel provides strong service-to-service and end-user authentication with built-in identity and credential management. It manages the issuance and rotation of certificates for services in the mesh.
+- **[Istio Galley](https://istio.io/latest/docs/ops/deployment/architecture/#galley):** Galley is Istio's configuration validation, ingestion, processing, and distribution component. It ensures that configuration is propagated to all components in the Istio mesh.
+- **[Istio Mixer](https://istio.io/latest/docs/ops/deployment/architecture/#mixer):** Mixer enforces access control and usage policies across the service mesh and collects telemetry data from the Envoy proxies and other services. It provides a centralized policy and telemetry hub for Istio.
+- **[Istio Sidecar Injector](https://istio.io/latest/docs/ops/configuration/traffic-management/sidecar-injection/):** The sidecar injector is a mutating webhook that automatically injects Envoy sidecar proxies into pods. This allows Istio to control and monitor traffic to and from the pods.
+- **[Istio Ingress Gateway](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/):** The Ingress Gateway is the entry point for traffic coming into the mesh. It routes external traffic to the appropriate services inside the mesh based on the defined routing rules.
+- **[Istio Egress Gateway](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/):** The Egress Gateway allows traffic from inside the mesh to egress to external services. It provides control over egress traffic and can enforce policies for external communication.
+- **[Istio Telemetry](https://istio.io/latest/docs/ops/integrations/observability/):** Istio provides various telemetry components, including metrics, logs, and traces, to observe and troubleshoot your services. This includes integration with tools like Prometheus, Grafana, Jaeger, and Kiali for monitoring and observability.
 
-- **[Istio](https://istio.io/latest/docs/):** Provides advanced traffic management, security, and observability features through its service mesh capabilities.
 
 <br/>
 <h3>kube-system</h3>
