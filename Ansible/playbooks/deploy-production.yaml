@@ -8,6 +8,8 @@
     - name: Pausing for 5 seconds...
       ansible.builtin.pause:
         seconds: 5
+  vars:
+    production_hosts: []
   tasks:  
     - name: Filter hosts with "production" in the name
       set_fact:
