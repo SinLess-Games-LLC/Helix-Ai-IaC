@@ -62,18 +62,46 @@ Houses data plane components, including [OpenEBS](https://openebs.io/docs/), [Re
 Used for [Flux CD](https://fluxcd.io/flux/) components and GitOps workflows.
 
 <div align="center">
-    <h3></h3>
+    <h3>istio-system</h3>
 </div>
 
-- **** 
-- **:** 
-- **istio-system:** Contains [Istio](https://istio.io/latest/docs/) service mesh components for advanced traffic management and security.
-- **kube-system:** Houses essential [Kubernetes](https://kubernetes.io/docs/home/) system components such as [Cilium](https://docs.cilium.io/en/stable/), [Metrics Server](https://github.com/kubernetes-sigs/metrics-server), and [Stakater Reloader](https://github.com/stakater/Reloader).
-- **monitoring:** Contains monitoring and observability tools, including [Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources), [Prometheus](https://prometheus.io/docs/introduction/overview/), and [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/).
-- **network:** Houses networking components such as [NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/) and [Cloudflared](https://developers.cloudflare.com/cloudflare-one/tutorials/many-cfd-one-tunnel/) for DNS management.
-- **production:** Contains resources for the production environment.
-- **staging:** Contains resources for the staging environment.
-- **system-upgrade:** Used for managing cluster upgrades.
+ Contains [Istio](https://istio.io/latest/docs/) service mesh components for advanced traffic management and security.
+
+<div align="center">
+    <h3>kube-system</h3>
+</div>
+
+Houses essential [Kubernetes](https://kubernetes.io/docs/home/) system components such as [Cilium](https://docs.cilium.io/en/stable/), [Metrics Server](https://github.com/kubernetes-sigs/metrics-server), and [Stakater Reloader](https://github.com/stakater/Reloader).
+
+<div align="center">
+    <h3>monitoring</h3>
+</div>
+
+Contains monitoring and observability tools, including [Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources), [Prometheus](https://prometheus.io/docs/introduction/overview/), and [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/).
+
+<div align="center">
+    <h3>network</h3>
+</div>
+
+Houses networking components such as [NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/) and [Cloudflared](https://developers.cloudflare.com/cloudflare-one/tutorials/many-cfd-one-tunnel/) for DNS management.
+
+<div align="center">
+    <h3>production</h3>
+</div>
+
+Contains resources for the production environment.
+
+<div align="center">
+    <h3>staging</h3>
+</div>
+
+Contains resources for the staging environment.
+
+<div align="center">
+    <h3>system-upgrade</h3>
+</div>
+
+Used for managing cluster upgrades.
 
 ## Components
 
