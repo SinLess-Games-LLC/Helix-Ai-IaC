@@ -12,6 +12,11 @@
     - name: Filter hosts with "production" in the name
       set_fact:
         production_hosts: "{{ ansible_play_hosts | select('search', 'production') | list }}"
+
+    - name: Print production hosts
+      when: ansible_hostname == "k8s-master-1-production"
+      debug:
+        var: production_hosts
       
     - name: Set ansible_play_hosts to empty list
       ansible.builtin.set_fact:
