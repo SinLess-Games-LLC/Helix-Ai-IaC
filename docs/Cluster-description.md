@@ -2,7 +2,13 @@
 
 ## Overview
 
-This document provides a detailed overview of the Kubernetes cluster managed by Helixaibot under the domain [helixaibot.com](http://helixaibot.com/).
+The Kubernetes cluster managed by Helix Ai under the domain [helixaibot.com](http://helixaibot.com/) is designed to be highly available, scalable, and feature-rich, as a SaaS application. It is managed using the lightweight Kubernetes distribution [k3s](https://k3s.io/) version 1.29.1-k3s2, known for its simplicity and efficiency.
+
+The cluster includes various namespaces for organizing resources, each serving specific purposes such as managing SSL/TLS certificates, storage, networking, monitoring, and more. It incorporates a wide range of components and tools to ensure stability, scalability, security, and observability for the SaaS application. Key components include Flux CD for GitOps workflows, Istio for service mesh capabilities, Grafana for monitoring and visualization, NGINX Ingress Controller for traffic routing, and Prometheus for metrics collection.
+
+The cluster also implements [DevSecOps](https://devsecopsdocs.com/) practices, including CI/CD pipelines with GitHub Actions, infrastructure management with Ansible and Terraform, and security measures with Mozilla SOPS and Age. It is designed with scalability and high availability in mind, with plans for autoscaling nodes and pods in AWS and disaster recovery strategies in place.
+
+Overall, the Kubernetes cluster provides a robust and efficient platform for hosting and managing the SaaS application, ensuring its reliability and performance.
 
 ## Cluster Management
 
