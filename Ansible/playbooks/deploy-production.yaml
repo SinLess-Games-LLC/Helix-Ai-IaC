@@ -9,8 +9,13 @@
       ansible.builtin.pause:
         seconds: 5
   tasks:
-    - name: Print ansible play hosts 
-      ansible.builtin.debug:
-        msg: "Ansible play hosts: {{ ansible_play_hosts }}"
+    - name: Filter hosts with "production" in the name
+      set_fact:
+        production_hosts: "{{ ansible_play_hosts | select('search', 'production') | list }}"
+
+    - name: Print production hosts
+      when: ansible_hostname == 'k8s-master-1-production'
+      debug:
+        var: production_hosts
 
     
