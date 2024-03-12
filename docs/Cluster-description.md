@@ -97,6 +97,10 @@ Houses essential [Kubernetes](https://kubernetes.io/docs/home/) system component
 - **[Cilium](https://docs.cilium.io/en/stable/):** Provides network security within the kube-system namespace.
 - **[Metrics Server](https://github.com/kubernetes-sigs/metrics-server):** Collects resource usage metrics from the cluster.
 - **[Stakater Reloader](https://github.com/stakater/Reloader):** Watches changes in ConfigMap and Secret and restarts pods for the changes to take effect.
+- **[Falco](https://falco.org/docs/):** Added to the kube-system namespace for runtime security monitoring and anomaly detection.
+- **[Trivy Operator](https://aquasecurity.github.io/trivy-operator/latest/):** Added to the kube-system namespace for vulnerability scanning of containers.
+- **[Chaos Mesh](https://chaos-mesh.org/docs/):** Used for chaos engineering and testing, ensuring resilience and reliability of the cluster.
+
 
 <div align="center">
     <h3>monitoring</h3>
@@ -112,7 +116,7 @@ Contains monitoring and observability tools, including [Grafana](https://grafana
     - **[Loki](https://grafana.com/docs/loki/latest/):** Grafana Loki is a set of components that can be composed into a fully featured logging stack.
     - **[OnCall](https://grafana.com/docs/oncall/latest/):** Grafana OnCall is an incident response and on-call management system that helps teams reduce the stress and maintenance of being on-call. Based on the Grafana OnCall OSS project, Grafana OnCall is available on Grafana Cloud as part of the Grafana Incident Response & Management (IRM) solution.
     - **[Tempo](https://grafana.com/docs/tempo/latest/):** Grafana Tempo is an open source, easy-to-use, and high-volume distributed tracing backend. Tempo is cost-efficient, and only requires an object storage to operate. Tempo is deeply integrated with Grafana, Mimir, Prometheus, and Loki. You can use Tempo with open-source tracing protocols, including Jaeger, Zipkin, or OpenTelemetry.
-    = **[Application Observability](https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/):** Grafana Application Observability is an observability solution designed to minimize the mean time to repair (MTTR) for modern application problems based on OpenTelemetry semantic conventions and the Prometheus data-model.
+    - **[Application Observability](https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/):** Grafana Application Observability is an observability solution designed to minimize the mean time to repair (MTTR) for modern application problems based on OpenTelemetry semantic conventions and the Prometheus data-model.
     - **[Pyroscope](https://grafana.com/docs/pyroscope/latest/):** Grafana Pyroscope is an open source software project for aggregating continuous profiling data. Continuous profiling is an observability signal that allows you to understand your workload’s resources (CPU, memory, etc.) usage down to the line number.
     - **[Agent](https://grafana.com/docs/agent/latest/):** Grafana Agent is an OpenTelemetry Collector distribution with configuration inspired by Terraform. It is designed to be flexible, performant, and compatible with multiple ecosystems such as Prometheus and OpenTelemetry.
 - **[Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/):** Handles alert notifications based on predefined rules.
@@ -124,6 +128,12 @@ Contains monitoring and observability tools, including [Grafana](https://grafana
 
 Houses networking components such as [NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/) and [Cloudflared](https://developers.cloudflare.com/cloudflare-one/tutorials/many-cfd-one-tunnel/) for DNS management.
 
+#### Components:
+
+- **[Cloudflared](https://developers.cloudflare.com/cloudflare-one/tutorials/many-cfd-one-tunnel/):** Enables secure DNS tunneling within the cluster for enhanced security.
+- **[Istio](https://istio.io/latest/docs/):** Provides advanced traffic management, security, and observability features through its service mesh capabilities.
+- **[NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/):** Handles external traffic routing into the cluster, with both internal and external configurations.
+
 <div align="center">
     <h3>production</h3>
 </div>
@@ -133,7 +143,7 @@ Contains resources for the production environment.
 #### Components:
 
 - **[Kafka operator](https://strimzi.io/docs/operators/latest/overview):** Deployed in both staging and production environments for messaging and event streaming purposes.
-
+- **[Flagsmith](https://docs.flagsmith.com/deployment/hosting/kubernetes):** Added to the production namespace for feature flag and remote configuration management.
 
 <div align="center">
     <h3>staging</h3>
@@ -145,28 +155,16 @@ Contains resources for the staging environment.
 
 - **[Kafka operator](https://strimzi.io/docs/operators/latest/overview):** Deployed in both staging and production environments for messaging and event streaming purposes.
 
-
 <div align="center">
     <h3>system-upgrade</h3>
 </div>
 
 Used for managing cluster upgrades.
 
-## Components
+#### Components:
 
-The Kubernetes cluster is equipped with various components and tools to support the deployment, management, and monitoring of the Helix Ai application. The following components are deployed within the cluster:
-
-
-- **[Flux CD](https://fluxcd.io/flux/):** Implements GitOps workflows for declarative and automated cluster configuration.
-- **[Istio](https://istio.io/latest/docs/):** Provides advanced traffic management, security, and observability features through its service mesh capabilities.
-- **[NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/):** Handles external traffic routing into the cluster, with both internal and external configurations.
-
-- **[Chaos Mesh](https://chaos-mesh.org/docs/):** Used for chaos engineering and testing, ensuring resilience and reliability of the cluster.
 - **System Upgrade Controller:** Manages cluster upgrades, ensuring the cluster remains up to date with the latest versions of components.
-- **[Cloudflared](https://developers.cloudflare.com/cloudflare-one/tutorials/many-cfd-one-tunnel/):** Enables secure DNS tunneling within the cluster for enhanced security.
-- **[Falco](https://falco.org/docs/):** Added to the kube-system namespace for runtime security monitoring and anomaly detection.
-- **[Trivy Operator](https://aquasecurity.github.io/trivy-operator/latest/):** Added to the kube-system namespace for vulnerability scanning of containers.
-- **[Flagsmith](https://docs.flagsmith.com/deployment/hosting/kubernetes):** Added to the production namespace for feature flag and remote configuration management.
+- **[K3s Upgrade Plan](https://rancher.com/docs/k3s/latest/en/upgrades/):** Provides a plan for upgrading the k3s distribution to the latest version.
 
 ## CI/CD and DevOps
 
