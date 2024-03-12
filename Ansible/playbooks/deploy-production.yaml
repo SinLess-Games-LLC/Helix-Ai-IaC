@@ -20,15 +20,3 @@
       debug:
         var: production_hosts
       
-    - name: Set ansible_play_hosts to empty list
-      ansible.builtin.set_fact:
-        ansible_play_hosts: []
-
-    - name: Reset Ansible play hosts
-      ansible.builtin.set_fact:
-        ansible_play_hosts: production_hosts
-
-    - name: print ansible_play_hosts
-      when: ansible_hostname == "k8s-master-1-production"
-      debug:
-        var: ansible_play_hosts
