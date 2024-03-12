@@ -1,4 +1,4 @@
----
+
 Staging:
   children:
     master:
@@ -21,7 +21,7 @@ Staging:
         "k8s-worker-2-staging":
           ansible_user: "sinless777"
           ansible_host: "192.168.86.91"
----
+
 # This groups the hosts  into a single group named production
 Production:
   children:
@@ -51,7 +51,7 @@ Production:
         "k8s-worker-4-production":
           ansible_user: "sinless777"
           ansible_host: "192.168.86.153"
----
+
 # The Pihole group contains all the hosts that need to run Pihole
 pihole:
   hosts:
