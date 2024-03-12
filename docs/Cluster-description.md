@@ -6,7 +6,7 @@
 <div align="center">
     <a href="https://helixaibot.com/" target="blank">
         <img 
-            src="DOCS/images/logos/Favicon-01.png" 
+            src="https://github.com/SinLess-Games-LLC/Helix-Ai/raw/master/DOCS/images/logos/Favicon-01.png" 
             width="350" 
             alt="Helix Ai Logo"
         />
