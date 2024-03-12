@@ -1,31 +1,38 @@
 ---
-kubernetes:
+production: 
   children:
     master:
       hosts:
-        "K8S-Master-1":
+        "k8s-master-1-production":
           ansible_user: "sinless777"
           ansible_host: "192.168.86.100"
-        "K8S-Master-2":
+          production_cluster: true
+        "k8s-master-2-production":
           ansible_user: "sinless777"
           ansible_host: "192.168.86.101"
-        "K8S-Master-3":
+          production_cluster: true
+        "k8s-master-3-production":
           ansible_user: "sinless777"
           ansible_host: "192.168.86.102"
+          production_cluster: true
     worker:
       hosts:
-        "K8S-Worker-1":
+        "k8s-worker-1-production":
           ansible_user: "sinless777"
           ansible_host: "192.168.86.150"
-        "K8S-Worker-2":
+          production_cluster: true
+        "k8s-worker-2-production":
           ansible_user: "sinless777"
           ansible_host: "192.168.86.151"
-        "K8S-Worker-3":
+          production_cluster: true
+        "k8s-worker-3-production":
           ansible_user: "sinless777"
           ansible_host: "192.168.86.152"
-        "K8S-Worker-4":
+          production_cluster: true
+        "k8s-worker-4-production":
           ansible_user: "sinless777"
           ansible_host: "192.168.86.153"
+          production_cluster: true
 
 pihole:
   hosts:
@@ -35,4 +42,30 @@ pihole:
     "pihole-2":
       ansible_user: "sinless777"
       ansible_host: "192.168.86.81"
-    
+
+staging:
+  children:
+    master:
+      hosts:
+        "k8s-master-1-staging":
+          ansible_user: "sinless777"
+          ansible_host: "192.168.86.85"
+          production_cluster: false
+        "k8s-master-2-staging":
+          ansible_user: "sinless777"
+          ansible_host: "192.168.86.86"
+          production_cluster: false
+        "k8s-master-3-staging":
+          ansible_user: "sinless777"
+          ansible_host: "192.168.86.87"
+          production_cluster: false     
+    worker:
+      hosts:
+        "k8s-worker-1-staging":
+          ansible_user: "sinless777"
+          ansible_host: "192.168.86.90"
+          production_cluster: false
+        "k8s-worker-2-staging":
+          ansible_user: "sinless777"
+          ansible_host: "192.168.86.91"
+          production_cluster: false

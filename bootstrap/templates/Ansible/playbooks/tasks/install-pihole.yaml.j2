@@ -1,0 +1,71 @@
+- name: Install Pi-Hole
+  block:
+    - name: Install Pi-Hole | Download Pi-Hole installation script
+      ansible.builtin.get_url:
+        url: https://install.pi-hole.net
+        dest: /tmp/pihole-install.sh
+      register: download_result
+      until: download_result is succeeded
+      retries: 3
+      delay: 5
+
+    - name: Check if /etc/pihole exists if not create it
+      block:
+        - name: Check if /etc/pihole exists
+          ansible.builtin.stat:
+            path: /etc/pihole
+          register: pihole_dir_stat
+
+        - name: Create /etc/pihole directory if it doesn't exist
+          ansible.builtin.file:
+            path: /etc/pihole
+            state: directory
+          when: not pihole_dir_stat.stat.exists
+
+    - name: Install Pi-Hole | Check if setupVars.conf exists
+      ansible.builtin.stat:
+        path: /etc/pihole/setupVars.conf
+      register: setupvars_conf_stat
+
+    - name: Install Pi-Hole | Display setupVars.conf existence status
+      debug:
+        msg: "/etc/pihole/setupVars.conf exists: {% raw %}{{ setupvars_conf_stat.stat.exists }}{% endraw %}"
+
+    - name: Install Pi-Hole | Create setupVars.conf if it doesn't exist
+      ansible.builtin.file:
+        path: /etc/pihole/setupVars.conf
+        state: touch 
+      when: setupvars_conf_stat.stat.exists == false
+
+    - name: Create setupVars.conf
+      ansible.builtin.copy:
+        content: |
+          PIHOLE_INTERFACE=eth0
+          IPV4_ADDRESS="{% raw %}{{ ansible_default_ipv4.address }}{% endraw %}/24"
+          QUERY_LOGGING=true
+          INSTALL_WEB=true
+          DNSMASQ_LISTENING=single
+          PIHOLE_DNS_1=1.1.1.1
+          PIHOLE_DNS_2=1.0.0.1
+          DNS_FQDN_REQUIRED=true
+          DNS_BOGUS_PRIV=true
+          DNSSEC=true
+          TEMPERATUREUNIT=f
+          WEBUIBOXEDLAYOUT=traditional
+          API_EXCLUDE_DOMAINS=
+          API_EXCLUDE_CLIENTS=
+          API_QUERY_LOG_SHOW=all
+          API_PRIVACY_MODE=false
+        dest: /etc/pihole/setupVars.conf
+
+    - name: Install Pi-Hole | Display download_result
+      debug:
+        var: download_result.status_code
+
+    - name: Intall Pi-Hole | Run Installation script
+      ansible.builtin.command: sudo bash /tmp/pihole-install.sh --unattended
+
+    - name: Change Pi-hole password
+      ansible.builtin.command: pihole -a -p "{% raw %}{{ new_password }}{% endraw %}"
+      vars:
+        new_password: "{{ system.pihole.password }}"

@@ -1,0 +1,122 @@
+- name: Install adlists
+  vars:
+    modified_adlists: []
+    adlists_with_status: []
+    broken_adlists: []
+    valid_adlists: []
+    clean_adlists: []
+    x_adlists: []
+    y_adlists: []
+  block:
+    - name: Install adlists | Setup
+      block:
+        - name: Setup | Check if sqlite3 is installed
+          stat:
+            path: /usr/bin/sqlite3
+          register: sqlite3_check
+
+        - name: Setup | Install sqlite3 if not installed
+          ansible.builtin.apt:
+            name: sqlite3
+            state: present
+          when: not sqlite3_check.stat.exists
+
+        - name: Setup | Include adlists variables
+          include_vars:
+            file: ./variables/adlists.yaml
+          tags: adlists
+
+        - name: Setup | Add empty Comment to adlist if not defined
+          set_fact:
+            modified_adlists: "{% raw %}{{ modified_adlists + [{'address': item.address, 'enabled': item.enabled | default(0), 'comment': item.comment | default('')} ] }}{% endraw %}"
+          loop: "{% raw %}{{ adlists }}{% endraw %}"
+
+
+    - name: Install adlists | Validate adlist URLs
+      block:
+        - name:  Validate adlist URLs | Check URL status
+          ansible.builtin.uri:
+            url: "{% raw %}{{ item.address }}{% endraw %}"
+            return_content: no
+          register: url_check
+          ignore_errors: yes
+          loop: "{% raw %}{{ modified_adlists }}{% endraw %}"
+          when: item.address is defined
+
+        - name:  Validate adlist URLs | Add adlist status to list
+          set_fact:
+            adlists_with_status: "{% raw %}{{ adlists_with_status + [{'address': item.item.address, 'status': item.status, 'enabled': item.item.enabled, 'comment': item.item.comment}] }}{% endraw %}"
+          loop: "{% raw %}{{ url_check.results }}{% endraw %}"
+
+
+    - name: Install adlists | Sort adlists by status
+      block:
+        - name: Sort adlists by status | Add broken adlists to list
+          set_fact:
+            broken_adlists: "{% raw %}{{ broken_adlists + [{'address': item.address, 'enabled': item.enabled, 'comment': item.comment}] }}{% endraw %}"
+          loop: "{% raw %}{{ adlists_with_status }}{% endraw %}"
+          when: item.status is not defined or item.status != 200
+
+        - name: Sort adlists by status | Add valid adlists to list
+          set_fact:
+            valid_adlists: "{% raw %}{{ valid_adlists + [{'address': item.address, 'enabled': item.enabled, 'comment': item.comment}] }}{% endraw %}"
+          loop: "{% raw %}{{ adlists_with_status }}{% endraw %}"
+          when: item.status == 200
+    
+    - name: Install adlists | Clean adlists
+      block:
+        - name: Clean adlists | Convert Valid adlists to Clean Adlists
+          set_fact:
+            x_adlists: "{% raw %}{{ x_adlists + [{'address': item.address, 'enabled': item.enabled, 'comment': item.comment}] }}{% endraw %}"
+          loop: "{% raw %}{{ valid_adlists }}{% endraw %}"
+          when: valid_adlists | length > 0
+
+        - name: Clean adlists | Disable broken addlists and add them to the valid list
+          set_fact:
+            y_adlists: "{% raw %}{{ clean_adlists + [{'address': item.address, 'enabled': 0, 'comment': item.comment}] }}{% endraw %}"
+          loop: "{% raw %}{{ broken_adlists }}{% endraw %}"
+          when: broken_adlists | length > 0
+
+        - name: Clean adlists | Merge x_adlists and y_adlists
+          set_fact:
+            clean_adlists: "{% raw %}{{ x_adlists + y_adlists }}{% endraw %}"
+          when:
+            - x_adlists | length > 0
+            - y_adlists | length > 0
+
+        - name: Clean adlists | Set clean_adlists to x_adlists
+          set_fact:
+            clean_adlists: "{% raw %}{{ x_adlists }}{% endraw %}"
+          when: 
+            - x_adlists | length > 0
+            - y_adlists | length == 0
+
+        - name: Clean adlists | Set clean_adlists to y_adlists
+          set_fact:
+            clean_adlists: "{% raw %}{{ y_adlists }}{% endraw %}"
+          when: 
+            - x_adlists | length == 0
+            - y_adlists | length > 0
+    
+    - name: Install aslists | Add to pihole
+      block:
+        - name: Add to pihole | Add adlists to pihole
+          ansible.builtin.command: >
+            sudo sqlite3 /etc/pihole/gravity.db 
+            "INSERT OR IGNORE INTO adlist (address, enabled, comment) VALUES ('{% raw %}{{ item.address }}{% endraw %}'', '{% raw %}{{ item.enabled }}{% endraw %}'', '{% raw %}{{ item.comment }}{% endraw %}');"
+          loop: "{% raw %}{{ clean_adlists }}{% endraw %}"
+          when: clean_adlists | length > 0
+
+        - name: Add to pihole | Restart pihole
+          ansible.builtin.systemd:
+            name: pihole-FTL
+            state: restarted
+          when: clean_adlists | length > 0
+
+        - name: Add to pihole | Update gravity
+          ansible.builtin.command: pihole -g
+          when: clean_adlists | length > 0
+
+          
+
+    

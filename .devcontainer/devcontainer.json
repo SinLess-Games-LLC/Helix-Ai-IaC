@@ -21,7 +21,10 @@
     // to change the zsh theme, change the value of strug to the desired theme
     // If you need to install the theme do it before this step.
     "zsh theme": "sed -i 's/ZSH_THEME=\"devcontainers\"/ZSH_THEME=\"strug\"/g' ~/.zshrc",
-    "ssh1": "cp ./.ssh/id_ed25519 ~/.ssh/id_ed25519 && cp ./.ssh/id_ed25519.pub ~/.ssh/id_ed25519.pub"
+    "ssh1": "cp ./.ssh/id_ed25519 ~/.ssh/id_ed25519 && cp ./.ssh/id_ed25519.pub ~/.ssh/id_ed25519.pub",
+    "add gpg key": "cp ./.devcontainer/gpg-pubkey ~/.gnupg/pub.gpg",
+    "change perms": "chmod 600 ~/.gnupg/pub.gpg",
+    "import gpg": "gpg --import ~/.gnupg/pub.gpg"
   },
   "postStartCommand": {
     "upgrade-pip": "python3 -m pip install --upgrade pip setuptools wheel",
@@ -30,9 +33,7 @@
     // sudo is required to change permissions
     "ssh2": "sudo chmod 600 ~/.ssh/id_ed25519",
     "install K9S": "go install github.com/derailed/k9s@latest",
-    "add gpg key": "cp ./.devcontainer/gpg-pubkey ~/.gnupg/pub.gpg",
-    "change perms": "chmod 600 ~/.gnupg/pub.gpg",
-    "import gpg": "gpg --import ~/.gnupg/pub.gpg"
+    "install ip utils": "sudo apt update -y && sudo apt-get install iputils-ping -y"
   },
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
@@ -115,7 +116,8 @@
         "signageos.signageos-vscode-sops",
         "GitHub.copilot",
         "BenjaminBenais.copilot-theme",
-        "donjayamanne.git-extension-pack"
+        "donjayamanne.git-extension-pack",
+        "vsls-contrib.gitdoc"
       ]
     }
   }

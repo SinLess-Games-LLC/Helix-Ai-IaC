@@ -1,18 +1,43 @@
 ---
 kubernetes:
-  children:
-    master:
-      hosts:
-        {% for item in bootstrap_nodes.master %}
-        "{{ item.name }}":
-          ansible_user: "{{ item.username }}"
-          ansible_host: "{{ item.address }}"
-        {% endfor %}
-    worker:
-      hosts:
-        {% for item in bootstrap_nodes.worker %}
-        "{{ item.name }}":
-          ansible_user: "{{ item.username }}"
-          ansible_host: "{{ item.address }}"
-        {% endfor %}
+  production:
+    children:
+      master:
+        hosts:
+          {% for item in bootstrap_nodes.production.master %}
+          "{{ item.name }}":
+            ansible_user: "{{ item.username }}"
+            ansible_host: "{{ item.address }}"
+          {% endfor %}
+      worker:
+        hosts:
+          {% for item in bootstrap_nodes.production.worker %}
+          "{{ item.name }}":
+            ansible_user: "{{ item.username }}"
+            ansible_host: "{{ item.address }}"
+          {% endfor %}
+  staging:
+    children:
+      master:
+        hosts:
+          {% for item in bootstrap_nodes.staging.master %}
+          "{{ item.name }}":
+            ansible_user: "{{ item.username }}"
+            ansible_host: "{{ item.address }}"
+          {% endfor %}
+      worker:
+        hosts:
+          {% for item in bootstrap_nodes.staging.worker %}
+          "{{ item.name }}":
+            ansible_user: "{{ item.username }}"
+            ansible_host: "{{ item.address }}"
+          {% endfor %}
 
+pihole:
+  hosts:
+    "pihole-1":
+      ansible_user: "{{ bootstrap_nodes.pihole-1.user}}"
+      ansible_host: "{{ bootstrap_nodes.pihole-1.address }}"
+    "pihole-2":
+      ansible_user: "{{ bootstrap_nodes.pihole-2.user}}"
+      ansible_host: "{{ bootstrap_nodes.pihole-2.address }}"

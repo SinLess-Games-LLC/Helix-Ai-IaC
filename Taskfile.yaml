@@ -91,7 +91,11 @@ tasks:
     cmds:
       - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.80"
       - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.81"
-      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.82"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.85"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.86"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.87"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.90"
+      - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.91"
       - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.100"
       - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.101"
       - ssh-keygen -f "/home/vscode/.ssh/known_hosts" -R "192.168.86.102"

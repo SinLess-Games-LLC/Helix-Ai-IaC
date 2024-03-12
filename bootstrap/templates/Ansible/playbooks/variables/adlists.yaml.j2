@@ -1,0 +1,18 @@
+adlists:
+  - address: "https://raw.githubusercontent.com/blocklistproject/Lists/master/ads.txt"
+    enabled: 1
+    comment: "repo https://github.com/blocklistproject/Lists"
+
+  - address: "https://raw.githubusercontent.com/blocklistproject/Lists/master/abuse.txt"
+    enabled: 1
+    comment: "repo https://github.com/blocklistproject/Lists"
+
+  - address: "https://github.com/blocklistproject/Lists/blob/master/drugs.txt"
+    enabled: 1
+    comment: "repo https://github.com/blocklistproject/Lists"
+
+  {% for intem in adlists %}
+  - address: "{{ intem.address }}"
+    enabled: {{ intem.enabled }}
+    comment: "{{ intem.comment }}"
+  {% endfor %}

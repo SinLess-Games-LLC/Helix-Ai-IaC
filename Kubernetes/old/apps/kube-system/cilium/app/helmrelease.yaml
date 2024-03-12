@@ -23,11 +23,11 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    autoDirectNodeRoutes: true
+    autoDirectNodeRoutes: true 
     bpf:
       masquerade: true
     cluster:
-      name: home-kubernetes
+      name: helix-ai-k8s-cluster
       id: 1
     containerRuntime:
       integration: containerd
@@ -41,6 +41,7 @@ spec:
           - dns:query
           - drop
           - tcp
+          - udp
           - flow
           - port-distribution
           - icmp

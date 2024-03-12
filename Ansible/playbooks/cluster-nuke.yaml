@@ -1,6 +1,8 @@
 ---
 - name: Cluster Nuke
-  hosts: kubernetes
+  hosts: 
+    - production
+    - staging
   become: true
   gather_facts: true
   any_errors_fatal: true

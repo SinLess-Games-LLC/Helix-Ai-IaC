@@ -1,0 +1,10 @@
+dns_entries: 
+  - name: k8s
+    domain: "{{ cloudflare.tunnel.domain }}"
+    ip: "{{ kubernetes.k8s_gateway_addr }}"
+  
+  {% for item in dns_entries %}
+  - name: "{{ item.name }}"
+    domain: "{{ item.domain }}"
+    ip: "{{ item.ip }}"
+  {% endfor %}
