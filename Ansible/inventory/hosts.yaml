@@ -45,6 +45,14 @@ kubernetes:
           ansible_user: "sinless777"
           ansible_host: "192.168.86.153"
           production_cluster: true
+        k8s-worker-1-staging:
+          ansible_user: "sinless777"
+          ansible_host: "192.168.86.90"
+          production_cluster: false
+        k8s-worker-2-staging:
+          ansible_user: "sinless777"
+          ansible_host: "192.168.86.91"
+          production_cluster: false
 
 pihole:
   hosts:
@@ -55,18 +63,37 @@ pihole:
       ansible_user: "sinless777"
       ansible_host: "192.168.86.81"
 
+
+# This groups these hosts  into a single group named staging
 staging:
   children:
-    master:
-      hosts:
-          
-    worker:
-      hosts:
-        "k8s-worker-1-staging":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.90"
-          production_cluster: false
-        "k8s-worker-2-staging":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.91"
-          production_cluster: false
+    kubernetes:
+      children:
+        master:
+          hosts:
+            k8s-master-1-staging:
+            k8s-master-2-staging:
+            k8s-master-3-staging:
+        worker:
+          hosts:
+            k8s-worker-1-staging:
+            k8s-worker-2-staging:
+
+# This groups these hosts  into a single group named production
+production:
+  children:
+    kubernetes:
+      children:
+        master:
+          hosts:
+            k8s-master-1-production:
+            k8s-master-2-production:
+            k8s-master-3-production:
+        worker:
+          hosts:
+            k8s-worker-1-production:
+            k8s-worker-2-production:
+            k8s-worker-3-production:
+            k8s-worker-4-production:
+
+        
