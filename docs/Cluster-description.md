@@ -3,7 +3,7 @@
 </div>
 
 <div style="text-align: center;">
-    <img src="https://img.shields.io/website?down_color=red&down_message=down&label=helixaibot.com&up_color=green&up_message=up" alt="helixaibot.com status">
+    <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fhelixaibot.com&up_message=Website%20UP&up_color=green&down_message=Website%20DOWN&down_color=red&style=for-the-badge&label=Helix%20Ai%20Website">
 </div>
 
 
