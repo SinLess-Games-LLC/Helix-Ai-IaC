@@ -15,7 +15,6 @@
     <a href="https://helixaibot.com">
         <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fhelixaibot.com&up_message=Website%20UP&up_color=green&down_message=Website%20DOWN&down_color=red&style=for-the-badge&label=Helix%20Ai%20Website">
     </a>
-    <br/>
     <a href="https://sinlessgamesllc.com">
         <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fsinlessgamesllc.com&up_message=Website%20UP&up_color=green&down_message=Website%20DOWN&down_color=red&style=for-the-badge&label=SinLess%20Games%20LLC%20Website">
     </a>
@@ -26,8 +25,12 @@
 This document provides a comprehensive overview of the architecture, components, and configuration of the [Kubernetes](https://kubernetes.io/docs/home/) cluster deployed for the SaaS application, Helix Ai, owned and developed by [SinLess Games LLC](https://sinlessgamesllc.com). The cluster is designed to be highly available, scalable, and secure, supporting the deployment and management of the Helix Ai application.
 
 ## Cluster Management
-- **Distribution:** The cluster is based on [k3s](https://docs.k3s.io/) version 1.29.1-k3s2, chosen for its lightweight nature and ease of management.
-- **Nodes:** The cluster comprises 3 master nodes and 4 worker nodes, deployed on-premises for high availability and performance.
+
+### Distribution
+The Kubernetes cluster is based on [k3s](https://docs.k3s.io/) version 1.29.1-k3s2, a lightweight Kubernetes distribution designed for production workloads in resource-constrained environments. k3s provides all the core Kubernetes features, including the ability to run containerized applications at scale, while reducing the complexity and resource requirements of a typical Kubernetes deployment. The choice of k3s was made to ensure the cluster remains lightweight and easy to manage, while still providing the necessary functionality for the Helix Ai SaaS application.
+
+### Nodes
+The Kubernetes cluster consists of 3 master nodes and 4 worker nodes, deployed on-premises to ensure [high availability](https://documentation.softwareag.com/webmethods/tamino/ins10-11/ha/ha.htm) and performance. The master nodes are responsible for managing the cluster's control plane components, including the API server, scheduler, and controller manager, while the worker nodes host the application workloads. The deployment of multiple master nodes enhances fault tolerance and ensures that the cluster remains operational even if one of the master nodes fails. Similarly, the deployment of multiple worker nodes enables the cluster to handle a higher number of concurrent application workloads, improving overall performance and scalability.
 
 ## Namespaces
 - **cert-manager:** Manages SSL/TLS certificates for secure communication.
