@@ -9,8 +9,11 @@
       ansible.builtin.pause:
         seconds: 5
   tasks:  
+    - name: Reset Ansible play hosts
+      ansible.builtin.set_fact:
+        ansible_play_hosts: "{{ ansible_play_hosts | select('search', 'production') | list }}"
+
     - name: install production cluster
-      when: "{{ ansible_play_hosts | select('search', 'production') | list }}"
       block:
         - name: Check if cluster is installed
           check_mode: false
