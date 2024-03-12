@@ -27,6 +27,7 @@ kubernetes:
           ansible_user: "sinless777"
           ansible_host: "192.168.86.87"
           production_cluster: false   
+    
     worker:
       hosts:
         k8s-worker-1-production:
