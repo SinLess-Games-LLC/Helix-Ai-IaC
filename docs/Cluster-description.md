@@ -1,8 +1,8 @@
-<div style="text-align: center;">
+<div align="center">
     <h1>Kubernetes Cluster Description</h1>
 </div>
 
-<div style="text-align: center;">
+<div align="center>
     <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fhelixaibot.com&up_message=Website%20UP&up_color=green&down_message=Website%20DOWN&down_color=red&style=for-the-badge&label=Helix%20Ai%20Website">
 </div>
 
