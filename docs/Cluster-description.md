@@ -109,9 +109,9 @@ Contains monitoring and observability tools, including [Grafana](https://grafana
 - **[Prometheus](https://prometheus.io/docs/introduction/overview/):** Collects metrics from various components in the cluster for monitoring purposes.
 - **[Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources):** Visualizes metrics and provides dashboards for monitoring purposes.
     - **[Mimir](https://grafana.com/docs/mimir/latest/):** Grafana Mimir is an open source software project that provides a scalable long-term storage for Prometheus.
-    - **[Loki](https://grafana.com/docs/loki/latest/):**
-    - **[OnCall](https://grafana.com/docs/oncall/latest/):**
-    - **[Tempo](https://grafana.com/docs/tempo/latest/):**
+    - **[Loki](https://grafana.com/docs/loki/latest/):** Grafana Loki is a set of components that can be composed into a fully featured logging stack.
+    - **[OnCall](https://grafana.com/docs/oncall/latest/):** Grafana OnCall is an incident response and on-call management system that helps teams reduce the stress and maintenance of being on-call. Based on the Grafana OnCall OSS project, Grafana OnCall is available on Grafana Cloud as part of the Grafana Incident Response & Management (IRM) solution.
+    - **[Tempo](https://grafana.com/docs/tempo/latest/):** Grafana Tempo is an open source, easy-to-use, and high-volume distributed tracing backend. Tempo is cost-efficient, and only requires an object storage to operate. Tempo is deeply integrated with Grafana, Mimir, Prometheus, and Loki. You can use Tempo with open-source tracing protocols, including Jaeger, Zipkin, or OpenTelemetry.
     = **[Application Observability](https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/):**
     - **[Pyroscope](https://grafana.com/docs/pyroscope/latest/):**
     - **[Agent](https://grafana.com/docs/agent/latest/):**
