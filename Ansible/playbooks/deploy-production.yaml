@@ -17,8 +17,9 @@
             name: "{{ item }}"
             groups: production
           with_items: "{{ groups['production'] }}"
+          register: production_hosts
 
-        - name: Print all variables/facts known for a host
+        - name: Print production hosts
           debug:
-            var: hostvars[inventory_hostname] 
+            var: production_hosts
 
