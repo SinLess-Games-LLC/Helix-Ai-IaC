@@ -57,15 +57,15 @@ kubernetes:
 
 pihole:
   hosts:
-    "pihole-1":
+    pihole-1:
       ansible_user: "sinless777"
       ansible_host: "192.168.86.80"
-    "pihole-2":
+    pihole-2:
       ansible_user: "sinless777"
       ansible_host: "192.168.86.81"
 
 
-# This groups these hosts  into a single group named staging
+# This groups the hosts into a single group named staging
 staging:
   children:
     kubernetes:
@@ -80,7 +80,7 @@ staging:
             k8s-worker-1-staging:
             k8s-worker-2-staging:
 
-# This groups these hosts  into a single group named production
+# This groups the hosts  into a single group named production
 production:
   children:
     kubernetes:
