@@ -29,6 +29,7 @@
         state: restarted
 
     - name: System Configuration | Sysctl
+      register: sysctl_status
       ansible.posix.sysctl:
         name: "{{ item.key }}"
         value: "{{ item.value }}"
@@ -42,6 +43,7 @@
           fs.inotify.max_user_instances: 8192
 
     - name: System Configuration | Reboot
+      when: sysctl_status.changed
       ansible.builtin.reboot:
         msg: Rebooting hosts
         reboot_timeout: 3600
