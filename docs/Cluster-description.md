@@ -27,12 +27,15 @@ This document provides a comprehensive overview of the architecture, components,
 ## Cluster Management
 
 ### Distribution
-The Kubernetes cluster is based on [k3s](https://docs.k3s.io/) version 1.29.1-k3s2, a lightweight Kubernetes distribution designed for production workloads in resource-constrained environments. k3s provides all the core Kubernetes features, including the ability to run containerized applications at scale, while reducing the complexity and resource requirements of a typical Kubernetes deployment. The choice of k3s was made to ensure the cluster remains lightweight and easy to manage, while still providing the necessary functionality for the Helix Ai SaaS application.
+The Kubernetes cluster is based on [k3s](https://docs.k3s.io/) version 1.29.1-k3s2 (The current latest as of 03/12/2024), a lightweight Kubernetes distribution designed for production workloads in resource-constrained environments. k3s provides all the core Kubernetes features, including the ability to run containerized applications at scale, while reducing the complexity and resource requirements of a typical Kubernetes deployment. The choice of k3s was made to ensure the cluster remains lightweight and easy to manage, while still providing the necessary functionality for the Helix Ai SaaS application.
 
 ### Nodes
 The Kubernetes cluster consists of 3 master nodes and 4 worker nodes, deployed on-premises to ensure [high availability](https://documentation.softwareag.com/webmethods/tamino/ins10-11/ha/ha.htm) and performance. The master nodes are responsible for managing the cluster's control plane components, including the API server, scheduler, and controller manager, while the worker nodes host the application workloads. The deployment of multiple master nodes enhances [fault tolerance](https://www.fortinet.com/resources/cyberglossary/fault-tolerance#:~:text=Fault%20tolerance%20is%20a%20process,operating%20despite%20failures%20or%20malfunctions.) and ensures that the cluster remains operational even if one of the master nodes fails. Similarly, the deployment of multiple worker nodes enables the cluster to handle a higher number of concurrent application workloads, improving overall performance and scalability.
 
 ## Namespaces
+
+Namespaces are used to organize and segregate resources within the cluster, providing a logical boundary for different components and environments. The following namespaces are used in the Kubernetes cluster:
+
 - **cert-manager:** Manages SSL/TLS certificates for secure communication.
 - **data-plane:** Houses data plane components, including [OpenEBS](https://openebs.io/docs/), [Redis Operator](https://ot-redis-operator.netlify.app/docs/), and [MySQL Operator](https://dev.mysql.com/doc/mysql-operator/en/mysql-operator-introduction.html).
 - **flux-system:** Used for [Flux CD](https://fluxcd.io/flux/) components and GitOps workflows.
@@ -45,6 +48,9 @@ The Kubernetes cluster consists of 3 master nodes and 4 worker nodes, deployed o
 - **system-upgrade:** Used for managing cluster upgrades.
 
 ## Components
+
+The Kubernetes cluster is equipped with various components and tools to support the deployment, management, and monitoring of the Helix Ai application. The following components are deployed within the cluster:
+
 - **[Certmanager](https://cert-manager.io/docs/):** Manages SSL/TLS certificates for secure communication within the cluster.
 - **[Flux CD](https://fluxcd.io/flux/):** Implements GitOps workflows for declarative and automated cluster configuration.
 - **[Istio](https://istio.io/latest/docs/):** Provides advanced traffic management, security, and observability features through its service mesh capabilities.
@@ -63,12 +69,20 @@ The Kubernetes cluster consists of 3 master nodes and 4 worker nodes, deployed o
 - **[Flagsmith](https://docs.flagsmith.com/deployment/hosting/kubernetes):** Added to the production namespace for feature flag and remote configuration management.
 
 ## CI/CD and DevOps
+
+The Kubernetes cluster is integrated with various CI/CD and DevOps tools to support the development, deployment, and management of the Helix Ai application. The following tools and practices are implemented:
+
 - Utilizes [GitHub Actions](https://docs.github.com/en/actions) and webhooks for continuous integration.
 - Implements [DevSecOps](https://devsecopsdocs.com/) practices throughout the workflow, ensuring security is integrated into development and operations processes.
 
 ## Security
+
+The Kubernetes cluster is designed with security in mind, implementing various measures to protect the cluster and its workloads. The following security features and practices are implemented:
+
 - Utilizes [Mozilla SOPS](https://github.com/mozilla/sops) and Age for secrets management.
 - Implements [Cilium](https://docs.cilium.io/en/stable/) for network security within the kube-system namespace.
+- Utilizes [Falco](https://falco.org/docs/) for runtime security monitoring and anomaly detection.
+- Implements [Trivy Operator](https://aquasecurity.github.io/trivy-operator/latest/) for vulnerability scanning of containers.
 
 ## Observability
 - Uses various monitoring and observability tools such as [Prometheus](https://prometheus.io/docs/introduction/overview/), [Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources), and [Istio](https://istio.io/latest/docs/) for comprehensive visibility into the cluster's health and performance.
