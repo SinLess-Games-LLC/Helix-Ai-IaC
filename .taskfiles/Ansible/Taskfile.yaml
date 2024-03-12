@@ -41,9 +41,9 @@ tasks:
         playbook: Playbook to run (required)
     prompt: Run Ansible playbook '{{.playbook}}'... continue?
     deps: ['deps']
-    cmd: 'ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} {{.ANSIBLE_DIR}}/playbooks/{{.playbook}}.yaml {{.CLI_ARGS}}'
+    cmd: 'ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} --limit {{ .limit }} {{.ANSIBLE_DIR}}/playbooks/{{.playbook}}.yaml {{.CLI_ARGS}}'
     requires:
-      vars: ['playbook']
+      vars: ['playbook', 'limit']
     preconditions:
       - {
           msg: 'Missing Ansible inventory file',
