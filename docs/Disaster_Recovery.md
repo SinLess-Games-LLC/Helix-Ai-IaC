@@ -1,4 +1,3 @@
-To create the content for your `Disaster_Recovery.md` file in your `./docs` directory, you can use the following template:
 # Disaster Recovery Plan for Cluster Apps
 
 ## Overview
