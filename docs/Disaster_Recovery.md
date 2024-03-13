@@ -14,7 +14,7 @@ This document outlines the disaster recovery plan for the cluster apps deployed 
 
 ### Unplanned Outages
 
-- **Definition:** Any unforeseen event that causes a disruption in service availability.
+- **Definition:** Any unforeseen event or Chaos Engineering, that causes a disruption in service availability.
 - **Response:** The team will follow the incident response plan to quickly diagnose the issue, mitigate any impact, and restore services using the backup data. Chaos Mesh can also be used to analyze the impact of the unplanned outage and validate the effectiveness of the incident response plan.
 - **Communication:** Regular updates will be provided to stakeholders and end-users to keep them informed about the status of the outage and the progress of the recovery efforts.
 - **Postmortem:** After the outage is resolved, a postmortem analysis will be conducted to identify the root cause, evaluate the response, and implement any necessary improvements to prevent similar incidents in the future.
