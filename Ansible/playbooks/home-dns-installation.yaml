@@ -78,7 +78,7 @@
                   nameserver 192.168.86.80
                   nameserver 1.1.1.1
                   nameserver 1.0.0.1
-                  search {{ ansible_host }}.local.sinlessgamesllc.com
+                  search {{ ansible_hostname }}.local.sinlessgamesllc.com
               when: inventory_hostname != "pihole-1"
             
             - name: Network Configuration | Set hostname
@@ -88,7 +88,7 @@
                   nameserver 127.0.0.1
                   nameserver 1.1.1.1
                   nameserver 1.0.0.1
-                  search {{ ansible_host }}.local.sinlessgamesllc.com
+                  search {{ ansible_hostname }}.local.sinlessgamesllc.com
               when: inventory_hostname == "pihole-1"
 
         
