@@ -130,8 +130,8 @@ Houses networking components such as [NGINX Ingress Controller](https://docs.ngi
 
 - **[Cloudflared](https://developers.cloudflare.com/cloudflare-one/tutorials/many-cfd-one-tunnel/):** Enables secure DNS tunneling within the cluster for enhanced security.
 - **[NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/):** Handles external traffic routing into the cluster, with both internal and external configurations
-    - **[CoreDNS](https://coredns.io/):** CoreDNS is a flexible, extensible DNS server that can be used as a Kubernetes DNS plugin. It provides service discovery and DNS resolution for Kubernetes clusters, ensuring that applications can communicate with each other using DNS names.
-    - **[External DNS](
+- **[CoreDNS](https://coredns.io/):** CoreDNS is a flexible, extensible DNS server that can be used as a Kubernetes DNS plugin. It provides service discovery and DNS resolution for Kubernetes clusters, ensuring that applications can communicate with each other using DNS names.
+- **[External DNS](https://kubernetes-sigs.github.io/external-dns/v0.14.0/):** External DNS is a Kubernetes add-on that automatically configures DNS records for Kubernetes services and ingresses. It integrates with various DNS providers, such as AWS Route 53, Google Cloud DNS, and Azure DNS, to manage DNS records for external services.
 - **[Istio](https://istio.io/latest/docs/):** Provides advanced traffic management, security, and observability features through its service mesh capabilities.
 - **[NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/):** Handles external traffic routing into the cluster, with both internal and external configurations.
 
