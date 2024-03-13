@@ -245,11 +245,28 @@ The Kubernetes cluster is equipped with various monitoring and observability too
 By leveraging these monitoring and observability tools, the Kubernetes cluster is able to achieve comprehensive visibility into its health and performance, enabling efficient monitoring, troubleshooting, and optimization of cluster components and applications.
 
 ## Scalability and High Availability
-- Planned high availability with multiple master and worker nodes, ensuring resilience and fault tolerance.
-- Implements autoscaling for both nodes and pods in AWS, providing elasticity to handle varying workload demands.
+
+The Kubernetes cluster is designed with scalability and high availability in mind, ensuring that it can handle varying workload demands and remain resilient to failures. The following features and practices are implemented to achieve scalability and high availability:
+
+- **Nodes:** The cluster comprises multiple master and worker nodes, deployed on-premises for high availability and performance. This architecture ensures that the cluster can continue to operate even if one or more nodes fail, providing resilience and fault tolerance.
+
+- **Autoscaling:** Autoscaling is implemented for both nodes and pods in AWS, allowing the cluster to automatically adjust its capacity based on workload demands. This provides elasticity, ensuring that the cluster can scale up to handle increased workload and scale down during periods of low activity, optimizing resource utilization and cost efficiency.
+
+- **Disaster Recovery:** The cluster is designed with disaster recovery in mind, ensuring that data and applications can be restored in the event of a catastrophic failure. This includes regular backups of data and configurations, as well as procedures for restoring operations in a separate location.
+
+By implementing these scalability and high availability features, the Kubernetes cluster is able to provide a resilient and elastic infrastructure for deploying and managing the Helix Ai application, ensuring that it can handle varying workload demands and remain operational even in the face of failures.
 
 ## Infrastructure Management
-- Utilizes [Ansible](https://docs.ansible.com/), [Terraform](https://developer.hashicorp.com/terraform/docs), and [go-task](https://taskfile.dev/) for infrastructure provisioning, configuration management, and task automation.
+
+The Kubernetes cluster's infrastructure is managed using a combination of tools and practices to automate provisioning, configuration, and task management. The following tools are utilized for infrastructure management:
+
+- **Ansible:** [Ansible](https://docs.ansible.com/) is used for configuration management and automation of infrastructure tasks. It allows for the definition of infrastructure as code using simple YAML-based playbooks, enabling the provisioning and configuration of servers, networking devices, and other infrastructure components in a declarative and repeatable manner.
+
+- **Terraform:** [Terraform](https://www.terraform.io/) is used for infrastructure provisioning and management. It allows for the definition of infrastructure as code using a declarative configuration language, enabling the provisioning and management of cloud resources, virtual machines, containers, and other infrastructure components across multiple cloud providers and on-premises environments.
+
+- **go-task:** [go-task](https://taskfile.dev/) is used for task automation and orchestration. It provides a simple and powerful way to define and execute tasks in a declarative manner using a YAML-based Taskfile. go-task allows for the automation of common infrastructure tasks such as building, testing, deploying, and managing Kubernetes resources, enabling efficient and repeatable workflows.
+
+By leveraging these infrastructure management tools and practices, the Kubernetes cluster is able to automate provisioning, configuration, and task management, streamlining operations and ensuring consistency and reliability across the infrastructure.
 
 ## Disaster Recovery
 - Implements disaster recovery strategies to ensure business continuity in case of unforeseen incidents.
