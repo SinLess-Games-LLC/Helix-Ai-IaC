@@ -1,7 +1,3 @@
-To create the content for your `Disaster_Recovery.md` file in your `./docs` directory, you can use the following template:
-
----
-
 # Disaster Recovery Plan for Cluster Apps
 
 ## Overview
@@ -14,11 +10,15 @@ This document outlines the disaster recovery plan for the cluster apps deployed 
 
 - **Purpose:** To test the cluster's response to controlled downtime and ensure the viability of the disaster recovery plan.
 - **Procedure:** Scheduled maintenance windows will be used to simulate planned outages, during which services will be gracefully shut down and then restored to assess recovery capabilities.
+- **Chaos Engineering:** Chaos Mesh will be used to introduce controlled chaos into the cluster during planned outages, allowing for the testing of various failure scenarios and the validation of the cluster's resilience and recovery mechanisms.
 
 ### Unplanned Outages
 
-- **Definition:** Any unforeseen event that causes a disruption in service availability.
-- **Response:** The team will follow the incident response plan to quickly diagnose the issue, mitigate any impact, and restore services using the backup data.
+- **Definition:** Any unforeseen event or Chaos Engineering, that causes a disruption in service availability.
+- **Response:** The team will follow the incident response plan to quickly diagnose the issue, mitigate any impact, and restore services using the backup data. Chaos Mesh can also be used to analyze the impact of the unplanned outage and validate the effectiveness of the incident response plan.
+- **Communication:** Regular updates will be provided to stakeholders and end-users to keep them informed about the status of the outage and the progress of the recovery efforts.
+- **Postmortem:** After the outage is resolved, a postmortem analysis will be conducted to identify the root cause, evaluate the response, and implement any necessary improvements to prevent similar incidents in the future.
+
 
 ## Backup Strategy
 
@@ -45,7 +45,3 @@ This document outlines the disaster recovery plan for the cluster apps deployed 
 ## Conclusion
 
 This disaster recovery plan aims to ensure the availability and recoverability of the cluster apps in the event of a disaster. Regular testing and adherence to the outlined procedures are essential to maintaining the effectiveness of the plan.
-
----
-
-Feel free to customize this template to fit your specific requirements and add any additional details as needed.
