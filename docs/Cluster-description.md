@@ -255,11 +255,11 @@ By leveraging these monitoring and observability tools, the Kubernetes cluster i
 
 The Kubernetes cluster is designed with scalability and high availability in mind, ensuring that it can handle varying workload demands and remain resilient to failures. The following features and practices are implemented to achieve scalability and high availability:
 
-- **Nodes:** The cluster comprises multiple master and worker nodes, deployed on-premises for high availability and performance. This architecture ensures that the cluster can continue to operate even if one or more nodes fail, providing resilience and fault tolerance.
+- **Nodes:** The cluster comprises multiple master and worker nodes, deployed on-premises for high availability and performance. This architecture ensures that the cluster can continue to operate even if one or more nodes fail, providing resilience and fault tolerance. . Additionally, a node in Linode is utilized to auto-scale nodes on Linode Nanodes, further enhancing the cluster's 
 
-- **Autoscaling:** Autoscaling is implemented for both nodes and pods in AWS, allowing the cluster to automatically adjust its capacity based on workload demands. This provides elasticity, ensuring that the cluster can scale up to handle increased workload and scale down during periods of low activity, optimizing resource utilization and cost efficiency.
+- **Autoscaling:** Autoscaling is implemented for both nodes and pods in AWS and Linode, allowing the cluster to automatically adjust its capacity based on workload demands. This provides elasticity, ensuring that the cluster can scale up to handle increased workload and scale down during periods of low activity, optimizing resource utilization and cost efficiency.
 
-- **Disaster Recovery:** The cluster is designed with disaster recovery in mind, ensuring that data and applications can be restored in the event of a catastrophic failure. This includes regular backups of data and configurations, as well as procedures for restoring operations in a separate location.
+- **Disaster Recovery:** The cluster is designed with disaster recovery in mind, ensuring that data and applications can be restored in the event of a catastrophic failure. This includes regular backups of data and configurations, as well as procedures for restoring operations in a separate location. AWS EKS and ECS are also part of the disaster recovery plan, providing additional redundancy and failover capabilities.
 
 By implementing these scalability and high availability features, the Kubernetes cluster is able to provide a resilient and elastic infrastructure for deploying and managing the Helix Ai application, ensuring that it can handle varying workload demands and remain operational even in the face of failures.
 
