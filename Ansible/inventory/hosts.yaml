@@ -1,29 +1,5 @@
 
-Staging:
-  children:
-    master:
-      hosts:
-        "k8s-master-1-staging":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.85"
-        "k8s-master-2-staging":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.86"
-        "k8s-master-3-staging":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.87"
-
-    worker:
-      hosts:
-        "k8s-worker-1-staging":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.90"
-        "k8s-worker-2-staging":
-          ansible_user: "sinless777"
-          ansible_host: "192.168.86.91"
-
-# This groups the hosts  into a single group named production
-Production:
+kubernetes:
   children:
     master:
       hosts:
