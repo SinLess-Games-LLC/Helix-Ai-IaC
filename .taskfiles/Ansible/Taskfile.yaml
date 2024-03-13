@@ -40,8 +40,11 @@ tasks:
       Args:
         playbook: Playbook to run (required)
     prompt: Run Ansible playbook '{{.playbook}}'... continue?
-    deps: ['deps', 'ping']
-    cmd: 'ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} {{.ANSIBLE_DIR}}/playbooks/{{.playbook}}.yaml {{.CLI_ARGS}}'
+    deps: ['deps']
+    cmds:
+      - 'task asible:ping group=kubernetes'
+      - 'task ansible:ping group=pihole' 
+      - 'ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} {{.ANSIBLE_DIR}}/playbooks/{{.playbook}}.yaml {{.CLI_ARGS}}'
     requires:
       vars: ['playbook']
     preconditions:
@@ -63,12 +66,14 @@ tasks:
   ping:
     desc: Ping all the hosts
     deps: ['deps']
-    cmd: "ansible kubernetes --inventory {{.ANSIBLE_INVENTORY_FILE}} --one-line -m 'ping'"
+    cmd: "ansible {{ .group }} --inventory {{.ANSIBLE_INVENTORY_FILE}} --one-line -m 'ping'"
     preconditions:
       - {
           msg: 'Missing Ansible inventory file',
           sh: 'test -f {{.ANSIBLE_INVENTORY_FILE}}',
         }
+    requires:
+      vars: ['group']
 
   uptime:
     desc: Uptime of all the hosts
