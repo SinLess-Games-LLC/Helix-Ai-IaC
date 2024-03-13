@@ -217,7 +217,7 @@ The Kubernetes cluster is designed with security in mind, implementing various m
 
 - **Secrets Management:** Secrets management is handled using [Mozilla SOPS](https://github.com/mozilla/sops) and Age. These tools allow for the secure encryption and management of sensitive information, such as API keys, passwords, and tokens.
 
-- **Network Security:** Network security within the kube-system namespace is managed using [Cilium](https://docs.cilium.io/en/stable/). Cilium provides advanced networking and security capabilities, including network policies, encryption, and visibility, to protect the cluster from unauthorized access and attacks.
+- **Network Security:** Network security within the kube-system namespace is managed using [Cilium](https://docs.cilium.io/en/stable/) and [Istio](https://istio.io/). Cilium provides advanced networking and security capabilities, including network policies, encryption, and visibility, to protect the cluster from unauthorized access and attacks. Istio complements this by providing additional security features such as service mesh encryption and access control.
 
 - **Runtime Security Monitoring:** Runtime security monitoring and anomaly detection are implemented using [Falco](https://falco.org/docs/). Falco continuously monitors the Kubernetes cluster for abnormal behavior and potential security threats, providing real-time alerts and insights into potential security incidents.
 
