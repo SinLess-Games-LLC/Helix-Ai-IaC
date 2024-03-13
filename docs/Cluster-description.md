@@ -119,6 +119,10 @@ The kube-system namespace houses essential Kubernetes system components that are
 
 - **[Chaos Mesh](https://chaos-mesh.org/docs/):** Chaos Mesh is used for chaos engineering and testing, ensuring the resilience and reliability of the cluster. It allows users to simulate various failure scenarios, such as network latency, pod failures, and clock skew, to validate the cluster's robustness under adverse conditions.
 
+- **[Kafka operator](https://strimzi.io/docs/operators/latest/overview):** The Kafka operator is deployed in kube-system namespace for messaging and event streaming purposes. It automates the deployment and management of Apache Kafka clusters, making it easier to scale and operate Kafka in Kubernetes.
+
+- **[Flagsmith](https://docs.flagsmith.com/deployment/hosting/kubernetes):** Flagsmith is added to the production namespace for feature flag and remote configuration management. It allows developers to manage feature flags and remote configurations in a centralized and scalable manner, enabling them to easily roll out features and control their availability in real-time.
+
 <br/>
 <h3>monitoring</h3>
 
@@ -170,18 +174,12 @@ The production namespace contains resources and components dedicated to the prod
 
 #### Components:
 
-- **[Kafka operator](https://strimzi.io/docs/operators/latest/overview):** The Kafka operator is deployed in both the staging and production environments for messaging and event streaming purposes. It automates the deployment and management of Apache Kafka clusters, making it easier to scale and operate Kafka in Kubernetes.
-
-- **[Flagsmith](https://docs.flagsmith.com/deployment/hosting/kubernetes):** Flagsmith is added to the production namespace for feature flag and remote configuration management. It allows developers to manage feature flags and remote configurations in a centralized and scalable manner, enabling them to easily roll out features and control their availability in real-time.
-
 <br/>
 <h3>staging</h3>
 
 The staging namespace contains resources and components dedicated to the staging environment of the Kubernetes cluster.
 
 #### Components:
-
-- **[Kafka operator](https://strimzi.io/docs/operators/latest/overview):** The Kafka operator is deployed in both the staging and production environments for messaging and event streaming purposes. It automates the deployment and management of Apache Kafka clusters, making it easier to scale and operate Kafka in Kubernetes.
 
 <br/>
 <h3>system-upgrade</h3>
