@@ -196,20 +196,53 @@ The system-upgrade namespace is used for managing cluster upgrades, ensuring tha
 
 The Kubernetes cluster is integrated with various CI/CD and DevOps tools to support the development, deployment, and management of the Helix Ai application. The following tools and practices are implemented:
 
-- Utilizes [GitHub Actions](https://docs.github.com/en/actions) and webhooks for continuous integration.
-- Implements [DevSecOps](https://devsecopsdocs.com/) practices throughout the workflow, ensuring security is integrated into development and operations processes.
+- **GitHub Actions:** GitHub Actions is used for continuous integration, enabling automated build, test, and deployment workflows directly from GitHub repositories. It allows for the creation of custom CI/CD pipelines and integrates seamlessly with other GitHub features.
+
+- **Webhooks:** Webhooks are used to trigger automated actions in response to events that occur within the GitHub repository. This includes triggering CI/CD pipelines, updating documentation, or notifying team members of changes.
+
+- **DevSecOps Practices:** DevSecOps practices are integrated throughout the workflow, ensuring that security is integrated into the development and operations processes. This includes implementing security controls, conducting regular security assessments, and integrating security into the CI/CD pipeline.
+
+By leveraging GitHub Actions, webhooks, and DevSecOps practices, the Kubernetes cluster is able to automate and streamline the development, deployment, and security processes of the Helix Ai application, ensuring a secure and efficient workflow.
 
 ## Security
 
 The Kubernetes cluster is designed with security in mind, implementing various measures to protect the cluster and its workloads. The following security features and practices are implemented:
 
-- Utilizes [Mozilla SOPS](https://github.com/mozilla/sops) and Age for secrets management.
-- Implements [Cilium](https://docs.cilium.io/en/stable/) for network security within the kube-system namespace.
-- Utilizes [Falco](https://falco.org/docs/) for runtime security monitoring and anomaly detection.
-- Implements [Trivy Operator](https://aquasecurity.github.io/trivy-operator/latest/) for vulnerability scanning of containers.
+- **Secrets Management:** Secrets management is handled using [Mozilla SOPS](https://github.com/mozilla/sops) and Age. These tools allow for the secure encryption and management of sensitive information, such as API keys, passwords, and tokens.
+
+- **Network Security:** Network security within the kube-system namespace is managed using [Cilium](https://docs.cilium.io/en/stable/). Cilium provides advanced networking and security capabilities, including network policies, encryption, and visibility, to protect the cluster from unauthorized access and attacks.
+
+- **Runtime Security Monitoring:** Runtime security monitoring and anomaly detection are implemented using [Falco](https://falco.org/docs/). Falco continuously monitors the Kubernetes cluster for abnormal behavior and potential security threats, providing real-time alerts and insights into potential security incidents.
+
+- **Vulnerability Scanning:** Vulnerability scanning of containers is performed using the [Trivy Operator](https://aquasecurity.github.io/trivy-operator/latest/). Trivy scans container images for known vulnerabilities and provides actionable insights to help mitigate security risks.
+
+By implementing these security measures, the Kubernetes cluster is able to enhance its overall security posture, protecting both the cluster infrastructure and its workloads from potential security threats.
 
 ## Observability
-- Uses various monitoring and observability tools such as [Prometheus](https://prometheus.io/docs/introduction/overview/), [Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources), and [Istio](https://istio.io/latest/docs/) for comprehensive visibility into the cluster's health and performance.
+
+The Kubernetes cluster is equipped with various monitoring and observability tools to provide comprehensive visibility into the cluster's health and performance. These tools enable monitoring, logging, and tracing of cluster components and applications, ensuring that any issues or anomalies can be quickly identified and addressed. The following tools are used for observability:
+
+- **Prometheus:** [Prometheus](https://prometheus.io/docs/introduction/overview/) is used for collecting metrics from various components in the cluster. It provides powerful querying capabilities and alerting based on the collected metrics, enabling proactive monitoring and alerting for potential issues.
+
+- **Grafana:** [Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources) is used for visualizing the metrics collected by Prometheus. Grafana provides flexible and customizable dashboards, allowing for easy visualization of cluster metrics and performance data.
+
+    - **Mimir:** [Grafana Mimir](https://grafana.com/docs/mimir/latest/) is an open-source software project that provides scalable long-term storage for Prometheus. It enables efficient storage and querying of historical metrics data, ensuring that historical performance data is readily available for analysis.
+
+    - **Loki:** [Grafana Loki](https://grafana.com/docs/loki/latest/) is a set of components that can be composed into a fully-featured logging stack. It is designed to be cost-effective and highly scalable, enabling efficient logging and log analysis for cluster components and applications.
+
+    - **OnCall:** [Grafana OnCall](https://grafana.com/docs/oncall/latest/) is an incident response and on-call management system that helps teams reduce the stress and maintenance of being on-call. Based on the Grafana OnCall OSS project, Grafana OnCall is available on Grafana Cloud as part of the Grafana Incident Response & Management (IRM) solution.
+
+    - **Tempo:** [Grafana Tempo](https://grafana.com/docs/tempo/latest/) is an open-source, easy-to-use, and high-volume distributed tracing backend. Tempo is cost-efficient and requires only an object storage to operate. It is deeply integrated with Grafana, Mimir, Prometheus, and Loki, enabling comprehensive tracing and analysis of distributed applications.
+
+    - **Application Observability:** [Grafana Application Observability](https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/) is an observability solution designed to minimize the mean time to repair (MTTR) for modern application problems based on OpenTelemetry semantic conventions and the Prometheus data-model. It provides insights into application performance and behavior, enabling efficient troubleshooting and optimization.
+
+    - **Pyroscope:** [Grafana Pyroscope](https://grafana.com/docs/pyroscope/latest/) is an open-source software project for aggregating continuous profiling data. Continuous profiling is an observability signal that allows you to understand your workload’s resources (CPU, memory, etc.) usage down to the line number. Pyroscope enables deep insights into application performance, helping to optimize resource utilization and identify performance bottlenecks.
+
+    - **Agent:** [Grafana Agent](https://grafana.com/docs/agent/latest/) is an OpenTelemetry Collector distribution with configuration inspired by Terraform. It is designed to be flexible, performant, and compatible with multiple ecosystems such as Prometheus and OpenTelemetry. Grafana Agent facilitates the collection and forwarding of telemetry data from applications and infrastructure, enabling comprehensive observability and analysis.
+
+- **Istio:** [Istio](https://istio.io/latest/docs/) is used for advanced traffic management, security, and observability features through its service mesh capabilities. Istio provides powerful tools for monitoring and tracing requests across microservices, enabling deep insights into application behavior and performance.
+
+By leveraging these monitoring and observability tools, the Kubernetes cluster is able to achieve comprehensive visibility into its health and performance, enabling efficient monitoring, troubleshooting, and optimization of cluster components and applications.
 
 ## Scalability and High Availability
 - Planned high availability with multiple master and worker nodes, ensuring resilience and fault tolerance.
