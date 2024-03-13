@@ -121,7 +121,7 @@ The kube-system namespace houses essential Kubernetes system components that are
 
 - **[Kafka operator](https://strimzi.io/docs/operators/latest/overview):** The Kafka operator is deployed in kube-system namespace for messaging and event streaming purposes. It automates the deployment and management of Apache Kafka clusters, making it easier to scale and operate Kafka in Kubernetes.
 
-- **[Flagsmith](https://docs.flagsmith.com/deployment/hosting/kubernetes):** Flagsmith is added to the production namespace for feature flag and remote configuration management. It allows developers to manage feature flags and remote configurations in a centralized and scalable manner, enabling them to easily roll out features and control their availability in real-time.
+- **[Flagsmith](https://docs.flagsmith.com/deployment/hosting/kubernetes):** Flagsmith is added to the kube-system namespace for feature flag and remote configuration management. It allows developers to manage feature flags and remote configurations in a centralized and scalable manner, enabling them to easily roll out features and control their availability in real-time.
 
 <br/>
 <h3>monitoring</h3>
@@ -191,6 +191,13 @@ The system-upgrade namespace is used for managing cluster upgrades, ensuring tha
 - **System Upgrade Controller:** The System Upgrade Controller is responsible for managing cluster upgrades. It automates the process of upgrading Kubernetes components and ensures that the cluster remains stable and up to date with the latest features and security patches.
 
 - **[K3s Upgrade Plan](https://rancher.com/docs/k3s/latest/en/upgrades/):** The K3s Upgrade Plan provides a plan for upgrading the k3s distribution to the latest version. It outlines the steps and best practices for upgrading k3s clusters, ensuring a smooth and seamless upgrade process.
+
+<br/>
+<h3>testing</h3>
+
+The testing namespace contains resources and components dedicated to the testing environment of the Kubernetes cluster.
+
+#### Components:
 
 ## CI/CD and DevOps
 
