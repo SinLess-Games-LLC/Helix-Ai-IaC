@@ -269,7 +269,7 @@ The Kubernetes cluster's infrastructure is managed using a combination of tools 
 
 By leveraging these infrastructure management tools and practices, the Kubernetes cluster is able to automate provisioning, configuration, and task management, streamlining operations and ensuring consistency and reliability across the infrastructure.
 
-## [Disaster Recovery](./docs/Disaster_Recovery.md)
+## [Disaster Recovery](/docs/Disaster_Recovery.md)
 
 - **Implements disaster recovery strategies:** The Kubernetes cluster is equipped with robust disaster recovery strategies to ensure business continuity in case of unforeseen incidents. These strategies include regular backups of data and configurations using Velero, with daily backups and a retention period of 7 days. Additionally, weekly and monthly backups are performed, along with incremental backups and regular testing of backups to ensure their reliability.
 
