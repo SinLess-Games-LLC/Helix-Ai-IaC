@@ -10,11 +10,12 @@ This document outlines the disaster recovery plan for the cluster apps deployed 
 
 - **Purpose:** To test the cluster's response to controlled downtime and ensure the viability of the disaster recovery plan.
 - **Procedure:** Scheduled maintenance windows will be used to simulate planned outages, during which services will be gracefully shut down and then restored to assess recovery capabilities.
+- **Chaos Engineering:** Chaos Mesh will be used to introduce controlled chaos into the cluster during planned outages, allowing for the testing of various failure scenarios and the validation of the cluster's resilience and recovery mechanisms.
 
 ### Unplanned Outages
 
 - **Definition:** Any unforeseen event that causes a disruption in service availability.
-- **Response:** The team will follow the incident response plan to quickly diagnose the issue, mitigate any impact, and restore services using the backup data.
+- **Response:** The team will follow the incident response plan to quickly diagnose the issue, mitigate any impact, and restore services using the backup data. Chaos Mesh can also be used to analyze the impact of the unplanned outage and validate the effectiveness of the incident response plan.
 
 ## Backup Strategy
 
