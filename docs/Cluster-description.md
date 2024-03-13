@@ -172,14 +172,10 @@ The network namespace houses networking components that facilitate communication
 
 The production namespace contains resources and components dedicated to the production environment of the Kubernetes cluster.
 
-#### Components:
-
 <br/>
 <h3>staging</h3>
 
 The staging namespace contains resources and components dedicated to the staging environment of the Kubernetes cluster.
-
-#### Components:
 
 <br/>
 <h3>system-upgrade</h3>
@@ -196,8 +192,6 @@ The system-upgrade namespace is used for managing cluster upgrades, ensuring tha
 <h3>testing</h3>
 
 The testing namespace contains resources and components dedicated to the testing environment of the Kubernetes cluster.
-
-#### Components:
 
 ## CI/CD and DevOps
 
@@ -277,7 +271,15 @@ By leveraging these infrastructure management tools and practices, the Kubernete
 
 ## [Disaster Recovery](/Disaster_Recovery.md)
 
-- Implements disaster recovery strategies to ensure business continuity in case of unforeseen incidents.
+- **Implements disaster recovery strategies:** The Kubernetes cluster is equipped with robust disaster recovery strategies to ensure business continuity in case of unforeseen incidents. These strategies include regular backups of data and configurations using Velero, with daily backups and a retention period of 7 days. Additionally, weekly and monthly backups are performed, along with incremental backups and regular testing of backups to ensure their reliability.
+
+- **Backup storage:** Backups are stored both on-premises and in Amazon S3, providing redundancy and ensuring that data and applications can be restored even if one storage location becomes unavailable.
+
+- **Autoscaling for nodes:** The cluster uses a Linode node to auto-scale nodes on Linode Nanodes, providing elasticity and ensuring that the cluster can adapt to varying workload demands.
+
+- **AWS EKS and ECS:** The disaster recovery plan also includes AWS EKS and ECS, providing additional redundancy and failover capabilities. This ensures that data and applications can be restored and operations can be resumed in a separate location in case of a catastrophic failure.
+
+By implementing these disaster recovery strategies, the Kubernetes cluster ensures business continuity and minimizes downtime, ensuring that the Helix Ai application remains operational and accessible to users even in the face of unforeseen incidents.
 
 ---
 
