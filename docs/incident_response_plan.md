@@ -1,17 +1,14 @@
-Certainly! Here's the content for your `incident_response_plan.md` file:
-
----
-
 # Incident Response Plan
 (SinLess Games LLC)
+
 [last updated on 03-12-2024]
 
-> [INFO] 
+> [!INFO] 
 >This document outlines the incident response plan for SinLess Games LLC. It includes the incident severity levels, roles and responsibilities, the incident response process, and the on-call schedule for developers. 
 >
 > The incident response plan is designed to ensure that incidents are detected, resolved, and communicated effectively to minimize the impact on users and services.
 
-> [WARNING]
+> [!WARNING]
 > This document is subject to change and should be reviewed and updated regularly to reflect the evolving needs of the organization.
 
 ## Incident Severity Levels:
