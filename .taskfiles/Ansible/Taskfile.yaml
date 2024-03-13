@@ -96,7 +96,6 @@ tasks:
     desc: Deploy the cluster
     deps: ['deps']
     cmds:
-      - 'task ansible:ping group=staging'
-      - 'task ansible:ping group=production'
+      - 'task ansible:ping group=kubernetes'
       - 'ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} {{.ANSIBLE_DIR}}/playbooks/cluster-prepare.yaml {{.CLI_ARGS}}'
       - 'ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} {{.ANSIBLE_DIR}}/playbooks/cluster-installation.yaml {{.CLI_ARGS}}'
