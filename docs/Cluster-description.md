@@ -255,7 +255,7 @@ By leveraging these monitoring and observability tools, the Kubernetes cluster i
 
 The Kubernetes cluster is designed with scalability and high availability in mind, ensuring that it can handle varying workload demands and remain resilient to failures. The following features and practices are implemented to achieve scalability and high availability:
 
-- **Nodes:** The cluster comprises multiple master and worker nodes, deployed on-premises for high availability and performance. This architecture ensures that the cluster can continue to operate even if one or more nodes fail, providing resilience and fault tolerance. Additionally, a node in Linode is utilized to auto-scale nodes on Linode Nanodes, further enhancing the cluster's 
+- **Nodes:** The cluster comprises multiple master and worker nodes, deployed on-premises for high availability and performance. This architecture ensures that the cluster can continue to operate even if one or more nodes fail, providing resilience and fault tolerance. Additionally, a node in Linode is utilized to auto-scale nodes on Linode Nanodes, further enhancing the cluster's scalability.
 
 - **Autoscaling:** Autoscaling is implemented for both nodes and pods in AWS and Linode, allowing the cluster to automatically adjust its capacity based on workload demands. This provides elasticity, ensuring that the cluster can scale up to handle increased workload and scale down during periods of low activity, optimizing resource utilization and cost efficiency.
 
