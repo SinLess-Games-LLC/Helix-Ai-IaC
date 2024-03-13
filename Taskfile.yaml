@@ -119,11 +119,6 @@ tasks:
       - |
         ssh-keyscan -H 192.168.86.80 >> ~/.ssh/known_hosts
         ssh-keyscan -H 192.168.86.81 >> ~/.ssh/known_hosts
-        ssh-keyscan -H 192.168.86.85 >> ~/.ssh/known_hosts
-        ssh-keyscan -H 192.168.86.86 >> ~/.ssh/known_hosts
-        ssh-keyscan -H 192.168.86.87 >> ~/.ssh/known_hosts
-        ssh-keyscan -H 192.168.86.90 >> ~/.ssh/known_hosts
-        ssh-keyscan -H 192.168.86.91 >> ~/.ssh/known_hosts
         ssh-keyscan -H 192.168.86.100 >> ~/.ssh/known_hosts
         ssh-keyscan -H 192.168.86.101 >> ~/.ssh/known_hosts
         ssh-keyscan -H 192.168.86.102 >> ~/.ssh/known_hosts
