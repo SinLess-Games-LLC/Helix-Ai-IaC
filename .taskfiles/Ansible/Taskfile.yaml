@@ -43,7 +43,7 @@ tasks:
     deps: ['deps']
     cmd: 'ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} {{.ANSIBLE_DIR}}/playbooks/{{.playbook}}.yaml {{.CLI_ARGS}}'
     requires:
-      vars: ['playbook', 'limit']
+      vars: ['playbook']
     preconditions:
       - {
           msg: 'Missing Ansible inventory file',
