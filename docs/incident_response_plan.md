@@ -3,7 +3,7 @@
 
 [last updated on 03-12-2024]
 
-> [!INFO] 
+> [!NOTE] 
 >This document outlines the incident response plan for SinLess Games LLC. It includes the incident severity levels, roles and responsibilities, the incident response process, and the on-call schedule for developers. 
 >
 > The incident response plan is designed to ensure that incidents are detected, resolved, and communicated effectively to minimize the impact on users and services.
