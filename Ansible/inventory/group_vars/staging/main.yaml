@@ -1,7 +1,0 @@
----
-k3s_registration_address: "192.168.86.204"
-k3s_server:
-  cluster-cidr: "10.44.0.0/16"
-  service-cidr: "10.45.0.0/16"
-  tls-san:
-    - "192.168.86.204"
