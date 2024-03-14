@@ -67,6 +67,39 @@ spec:
       - digrich-bubblechart-panel
       - https://grafana.com/api/plugins/marcusolsson-json-datasource/versions/1.3.2/download;marcusolsson-json-datasource
     
+    dashboardProviders:
+      dashboardproviders.yaml:
+        apiVersion: 1
+        providers:
+          - name: "default"
+            orgId: 1
+            folder: ""
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/default
+    
+    dashboards: 
+      default:
+        Prometheus-stats:
+          url: https://grafana.com/api/dashboards/2
+          name: Prometheus Stats
+          orgId: 1
+      flux:
+        cluster:
+          url: https://github.com/fluxcd/flux2-monitoring-example/blob/main/monitoring/configs/dashboards/cluster.json
+          name: Flux Cluster
+          orgId: 1
+        logs:
+          url: https://github.com/fluxcd/flux2-monitoring-example/blob/main/monitoring/configs/dashboards/logs.json
+          name: Flux Logs
+          orgId: 1
+        control-plane:
+          url: https://github.com/fluxcd/flux2-monitoring-example/blob/main/monitoring/configs/dashboards/control-plane.json
+          name: Flux Control Plane
+          orgId: 1
+    
     datasources:
       datasources.yaml:
         apiVersion: 1
