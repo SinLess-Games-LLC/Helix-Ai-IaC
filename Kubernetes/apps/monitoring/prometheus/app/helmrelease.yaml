@@ -7,8 +7,8 @@ spec:
   interval: 1h
   chart:
     spec:
-      version: "55.x"
-      chart: kube-prometheus-stack
+      version: "25.x.x"
+      chart: prometheus
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
@@ -31,54 +31,12 @@ spec:
     valuesKey: kube-state-metrics-config.yaml
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
   values:
-    alertmanager:
-      replicas: 1
+    ingress:
       enabled: true
-      ingress:
-        enabled: true
-        ingressClassName: internal
-        hosts:
-          - "alertmanager.${SECRET_DOMAIN}"
-        tls:
-          - hosts:
-              - "alertmanager.${SECRET_DOMAIN}"
-    prometheus:
-      replicas: 1
-      prometheusSpec:
-        retention: 24h
-        resources:
-          requests:
-            cpu: 200m
-            memory: 200Mi
-        podMonitorNamespaceSelector: { }
-        podMonitorSelector:
-          matchLabels:
-            app.kubernetes.io/component: monitoring
-      volumeMounts:
-        - name: config-volume
-          configMap:
-            name: istio-prometheus
-      ingress:
-        enabled: true
-        ingressClassName: internal
-        hosts:
-          - "prometheus.${SECRET_DOMAIN}"
-        tls:
-          - hosts:
-              - "prometheus.${SECRET_DOMAIN}"
-    grafana:
-      replicas: 1
-      defaultDashboardsEnabled: true
-      defaultDashboardsTimezone: ${TIMEZONE}
-      admin:
-        existingSecret: grafana-login
-        userKey: admin-user
-        passwordKey: admin-password
-      ingress:
-        enabled: true
-        ingressClassName: internal
-        hosts:
-          - "grafana.${SECRET_DOMAIN}"
-        tls:
-          - hosts:
-              - "grafana.${SECRET_DOMAIN}"
+      hosts:
+        - prometheus.${SECRET_DOMAIN}
+      tls:
+        - secretName: helixaibot-com-production-tls
+          hosts:
+            - prometheus.${SECRET_DOMAIN}
+      

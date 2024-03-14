@@ -5,12 +5,13 @@
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   // "image": "mcr.microsoft.com/devcontainers/base:bullseye",
   "build": {
-    "dockerfile": "./Dockerfile",
+    "dockerfile": "./Dockerfile"
   },
   "containerEnv": {
     "KUBECONFIG": "/workspaces/Helix-Ai-IaC/kubeconfig",
     "SOPS_AGE_KEY_FILE": "/workspaces/Helix-Ai-IaC/.age.key"
   },
+  // Privlaged is required to run sudo
   "privileged": true,
   "postCreateCommand": {
     "clone zsh-autosuggestions": "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions",
@@ -23,7 +24,8 @@
     "zsh theme": "sed -i 's/ZSH_THEME=\"devcontainers\"/ZSH_THEME=\"strug\"/g' ~/.zshrc",
     "ssh1": "cp ./.ssh/id_ed25519 ~/.ssh/id_ed25519 && cp ./.ssh/id_ed25519.pub ~/.ssh/id_ed25519.pub",
     "add gpg key": "cp ./.devcontainer/gpg-pubkey ~/.gnupg/pub.gpg",
-    "change perms": "chmod 600 ~/.gnupg/pub.gpg",
+    // sudo is required to change permissions
+    "change perms": "sudo chmod 600 ~/.gnupg/pub.gpg",
     "import gpg": "gpg --import ~/.gnupg/pub.gpg"
   },
   "postStartCommand": {
@@ -78,6 +80,7 @@
     "ghcr.io/devcontainers-contrib/features/kubectl-asdf:2": {},
     "ghcr.io/audacioustux/devcontainers/cilium:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers-contrib/features/istioctl:1": {},
     /**
      * Common utils
      * - zsh
