@@ -26,9 +26,9 @@ spec:
         target:
           kind: PrometheusRule
   valuesFrom:
-  - kind: ConfigMap
-    name: flux-kube-state-metrics-config
-    valuesKey: kube-state-metrics-config.yaml
+    - kind: ConfigMap
+      name: flux-kube-state-metrics-config
+      valuesKey: kube-state-metrics-config.yaml
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
   values:
     alertmanager:
@@ -56,6 +56,15 @@ spec:
           requests:
             cpu: 200m
             memory: 200Mi
+          limits:
+            cpu: 400m
+            memory: 400Mi
+        autoscaling:
+          enabled: true
+          minReplicas: 1
+          maxReplicas: 5
+          targetCPU: 80
+          targetMemory: 80
         podMonitorNamespaceSelector: { }
         podMonitorSelector:
           matchLabels:

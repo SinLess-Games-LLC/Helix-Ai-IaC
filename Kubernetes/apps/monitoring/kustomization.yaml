@@ -6,4 +6,3 @@ resources:
   - ./prometheus/ks.yaml
   - ./loki/ks.yaml
   - ./tempo/ks.yaml
-  - ./configs
