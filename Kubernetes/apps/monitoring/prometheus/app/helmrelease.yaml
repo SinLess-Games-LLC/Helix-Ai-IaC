@@ -36,6 +36,10 @@ spec:
     alertmanager:
       ingress:
         enabled: true
+        ingressClassName: internal
+        annotations: 
+          kubernetes.io/ingress.class: internal
+          kubernetes.io/tls-acme: 'true'
         hosts:
           - alertmanager.${SECRET_DOMAIN}
         tls:
@@ -46,6 +50,10 @@ spec:
         storageClass: openebs-hostpath
     ingress:
       enabled: true
+      ingressClassName: internal
+      annotations: 
+        kubernetes.io/ingress.class: internal
+        kubernetes.io/tls-acme: 'true'
       hosts:
         - prometheus.${SECRET_DOMAIN}
       tls:
