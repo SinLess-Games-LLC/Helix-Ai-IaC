@@ -55,7 +55,7 @@ spec:
 
     prometheus:
       enabled: true
-      replicas: 2
+      replicas: 5
       thanosService:
         enabled: true
         thanosServiceMonitor:
