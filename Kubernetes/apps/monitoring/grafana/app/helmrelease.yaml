@@ -41,6 +41,7 @@ spec:
       targetCPU: 60
     ingress:
       enabled: true
+      ingressClassName: external
       hosts:
         - grafana.${SECRET_DOMAIN}
       tls:
