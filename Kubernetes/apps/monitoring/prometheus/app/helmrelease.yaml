@@ -55,6 +55,12 @@ spec:
           cpu: 200m
         limits:
           cpu: 400m
+      autoscaling:
+        enabled: true
+        minReplicas: 2
+        maxReplicas: 5
+        targetCPU: 80
+        targetMemory: 80
       prometheusSpec:
         retention: 24h
         podMonitorNamespaceSelector: { }
@@ -88,7 +94,7 @@ spec:
         limits:
           cpu: 200m
       autoscaling:
-        enabled: false
+        enabled: true
         minReplicas: 2
         maxReplicas: 5
         targetCPU: 80
