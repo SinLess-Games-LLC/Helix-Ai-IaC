@@ -71,10 +71,10 @@ spec:
         podMonitorSelector:
           matchLabels:
             app.kubernetes.io/component: monitoring
-      volumeMounts:
-        - name: config-volume
-          configMap:
-            name: istio-prometheus
+      volumeMounts: []
+        # - name: config-volume
+        #   configMap:
+        #     name: istio-prometheus
       ingress:
         enabled: true
         ingressClassName: internal
