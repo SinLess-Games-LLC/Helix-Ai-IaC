@@ -24,6 +24,10 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    adminUser: 
+      existingSecret: grafana-admin-secret
+      passwordKey: admin-password
+      usernameKey: admin-user
     persistence:
       enabled: true
       size: 10Gi
