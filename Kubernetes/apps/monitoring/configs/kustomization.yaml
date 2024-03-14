@@ -6,9 +6,9 @@ resources:
 configMapGenerator:
   - name: flux-grafana-dashboards
     files:
-      - /dashboards/control-plane.json
-      - /dashboards/cluster.json
-      - /dashboards/logs.json
+      - dashboards/control-plane.json
+      - dashboards/cluster.json
+      - dashboards/logs.json
     options:
       disableNameSuffixHash: true
       labels:
