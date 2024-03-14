@@ -37,16 +37,16 @@ spec:
   
     server:
       ingress:
-      enabled: true
-      ingressClassName: internal
-      annotations: 
-        kubernetes.io/ingress.class: internal
-        kubernetes.io/tls-acme: 'true'
-      hosts:
-        - prometheus.${SECRET_DOMAIN}
-      tls:
-        - secretName: helixaibot-com-production-tls
-          hosts:
-            - prometheus.${SECRET_DOMAIN}
+        enabled: true
+        ingressClassName: internal
+        annotations: 
+          kubernetes.io/ingress.class: internal
+          kubernetes.io/tls-acme: 'true'
+        hosts:
+          - prometheus.${SECRET_DOMAIN}
+        tls:
+          - secretName: helixaibot-com-production-tls
+            hosts:
+              - prometheus.${SECRET_DOMAIN}
       PersistentVolume:
         storageClass: openebs-hostpath
