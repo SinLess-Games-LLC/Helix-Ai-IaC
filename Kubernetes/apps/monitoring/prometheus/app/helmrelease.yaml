@@ -4,8 +4,6 @@ metadata:
   name: prometheus
   namespace: monitoring
 spec:
-  depends_on:
-    - openebs
   interval: 1h
   chart:
     spec:
