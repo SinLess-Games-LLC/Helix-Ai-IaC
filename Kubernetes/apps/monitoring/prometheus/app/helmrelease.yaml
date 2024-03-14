@@ -91,7 +91,7 @@ spec:
         passwordKey: admin-password
       ingress:
         enabled: true
-        ingressClassName: internal
+        ingressClassName: external
         hosts:
           - "grafana.${SECRET_DOMAIN}"
         tls:
@@ -99,10 +99,7 @@ spec:
               - "grafana.${SECRET_DOMAIN}"
       plugins:
         - digrich-bubblechart-panel
-        - grafana-piechart-panel
         - grafana-worldmap-panel
         - grafana-clock-panel
-        - grafana-simple-json-datasource
-        - grafana-kubernetes-app
         - grafana-heatmap
       
