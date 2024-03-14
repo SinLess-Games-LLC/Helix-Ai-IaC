@@ -46,7 +46,7 @@ spec:
     
     prometheusOperator:
       enabled: true
-      certMandager:
+      certManager:
         enabled: true
         issuerRef:
           name: letsencrypt-production
