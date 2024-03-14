@@ -36,11 +36,15 @@ spec:
         enabled: true
         ingressClassName: internal
         hosts:
-          - alert-manager.${SECRET_DOMAIN}
+          - host: alert-manager.${SECRET_DOMAIN}
+            paths: 
+              - path: /
+                pathType: ImplementationSpecific
         tls:
           - secretName: helixaibot-com-production-tls
             hosts:
-              - host: alert-manager.${SECRET_DOMAIN}
+              - alert-manager.${SECRET_DOMAIN}
+              
       persistantVolume:
         storageClass: openebs-hostpath
   
