@@ -81,8 +81,7 @@ spec:
         hosts:
           - "prometheus.${SECRET_DOMAIN}"
         tls:
-          - secretName: helixaibot-com-production-tls
-            hosts:
+          - hosts:
               - "prometheus.${SECRET_DOMAIN}"
 
     prometheus-node-exporter:
