@@ -54,6 +54,7 @@ spec:
       clusterDomain: ${SECRET_DOMAIN}
 
     prometheus:
+      enabled: true
       replicas: 2
       thanosService:
         enabled: true
