@@ -48,4 +48,31 @@ spec:
         - secretName: helixaibot-com-staging-tls
           hosts:
             - grafana.${SECRET_DOMAIN}
-      
+    
+    plugins:
+      - grafana-piechart-panel
+      - grafana-worldmap-panel
+      - grafana-clock-panel
+      - digrich-bubblechart-panel
+      - https://grafana.com/api/plugins/marcusolsson-json-datasource/versions/1.3.2/download;marcusolsson-json-datasource
+    
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+          - name: Prometheus
+            type: prometheus
+            access: proxy
+            orgId: 1
+            url: http://prometheus-server.monitoring.svc.cluster.local
+            isDefault: true
+          - name: Loki
+            type: loki
+            access: proxy
+            orgId: 1
+            url: http://loki.monitoring.svc.cluster.local
+          - name: Tempo
+            type: tempo
+            access: proxy
+            orgId: 1
+            url: http://tempo.monitoring.svc.cluster.local
