@@ -41,9 +41,6 @@ spec:
           - secretName: helixaibot-com-production-tls
             hosts:
               - host: alert-manager.${SECRET_DOMAIN}
-                paths: 
-                  - path: /
-                    pathType: ImplementationSpecific
       persistantVolume:
         storageClass: openebs-hostpath
   
