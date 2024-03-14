@@ -31,7 +31,7 @@ configMapGenerator:
   
   - name: loki-dashboards
     files:
-      - dashboards/loki/loki.json
+      - dashboards/loki/loki-stack-monitor.json
     options:
       disableNameSuffixHash: true
       labels:
