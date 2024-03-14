@@ -41,6 +41,7 @@ spec:
           - "alertmanager.${SECRET_DOMAIN}"
         tls:
           - secretName: helixaibot-com-production-tls
+            secretNamespace: network
             hosts:
               - "alertmanager.${SECRET_DOMAIN}"
     
@@ -81,6 +82,7 @@ spec:
           - "prometheus.${SECRET_DOMAIN}"
         tls:
           - secretName: helixaibot-com-production-tls
+            secretNamespace: network
             hosts:
               - "prometheus.${SECRET_DOMAIN}"
 
