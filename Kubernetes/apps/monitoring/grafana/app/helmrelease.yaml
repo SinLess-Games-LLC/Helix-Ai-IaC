@@ -69,9 +69,6 @@ spec:
         providers:
           - name: "default"
             orgId: 1
-            folder: ""
-            type: file
-            disableDeletion: false
             editable: true
             options:
               path: /var/lib/grafana/dashboards/default
@@ -79,9 +76,6 @@ spec:
           - name: "flux"
             apiVersion: 1
             orgId: 1
-            folder: ""
-            type: file
-            disableDeletion: false
             editable: true
             options:
               path: /var/lib/grafana/dashboards/flux
