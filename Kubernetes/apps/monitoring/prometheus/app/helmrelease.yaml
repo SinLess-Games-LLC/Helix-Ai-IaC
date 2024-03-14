@@ -40,7 +40,8 @@ spec:
         hosts:
           - "alertmanager.${SECRET_DOMAIN}"
         tls:
-          - hosts:
+          - secretName: helixaibot-com-production-tls
+            hosts:
               - "alertmanager.${SECRET_DOMAIN}"
 
     prometheus:
@@ -65,7 +66,8 @@ spec:
         hosts:
           - "prometheus.${SECRET_DOMAIN}"
         tls:
-          - hosts:
+          - secretName: helixaibot-com-production-tls
+            hosts:
               - "prometheus.${SECRET_DOMAIN}"
 
     grafana:
@@ -94,7 +96,8 @@ spec:
         hosts:
           - "grafana.${SECRET_DOMAIN}"
         tls:
-          - hosts:
+          - secretName: helixaibot-com-production-tls
+            hosts:
               - "grafana.${SECRET_DOMAIN}"
 
       
