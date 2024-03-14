@@ -5,4 +5,4 @@ resources:
   - ./helmrelease.yaml
   - ./secret.sops.yaml
   - ./config.yaml
-  - ./momitoring/kustomization.yaml
+  - ./monitoring
