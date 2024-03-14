@@ -89,9 +89,9 @@ spec:
     dashboards: 
       default:
         Prometheus-stats:
-          url: https://grafana.com/api/dashboards/2
-          name: Prometheus Stats
-          orgId: 1
+          gnetId: 2
+          revision: 1
+          datasource: Prometheus
 
     dashboardConfigMaps:
       flux: "flux-grafana-dashboards"
@@ -119,3 +119,8 @@ spec:
             access: proxy
             orgId: 1
             url: http://tempo.monitoring.svc.cluster.local
+          - name: alertmanager
+            type: prometheus
+            access: proxy
+            orgId: 1
+            url: https://alertmanager.${SECRET_DOMAIN}
