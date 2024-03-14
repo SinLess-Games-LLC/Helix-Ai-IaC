@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       version: "55.x"
-      chart: kube-prometheus-stack
+      chart: prometheus-stack
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
@@ -32,8 +32,8 @@ spec:
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
   values:
     alertmanager:
+      enabled: false
       replicas: 1
-      enabled: true
       ingress:
         enabled: true
         ingressClassName: internal
@@ -43,6 +43,15 @@ spec:
           - secretName: helixaibot-com-production-tls
             hosts:
               - "alertmanager.${SECRET_DOMAIN}"
+    
+    prometheusOperator:
+      enabled: true
+      certMandager:
+        enabled: true
+        issuerRef:
+          name: letsencrypt-production
+          kind: ClusterIssuer
+      clusterDomain: ${SECRET_DOMAIN}
 
     prometheus:
       replicas: 2
@@ -75,7 +84,13 @@ spec:
             hosts:
               - "prometheus.${SECRET_DOMAIN}"
 
+    prometheus-node-exporter:
+      prometheus:
+        monitor:
+          enabled: true
+
     grafana:
+      enabled: false
       defaultDashboardsEnabled: true
       defaultDashboardsTimezone: ${TIMEZONE}
       resources:
