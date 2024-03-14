@@ -47,11 +47,6 @@ spec:
     
     prometheusOperator:
       enabled: true
-      certManager:
-        enabled: true
-        issuerRef:
-          name: letsencrypt-production
-          kind: ClusterIssuer
       clusterDomain: ${SECRET_DOMAIN}
 
     prometheus:
@@ -110,11 +105,14 @@ spec:
       ingress:
         enabled: true
         ingressClassName: external
+        paths:
+          - "/"
+        pathType: ImplementationSpecific
         hosts:
           - "grafana.${SECRET_DOMAIN}"
         tls:
           - secretName: helixaibot-com-production-tls
-            secretNamespace: network
+            secretNameSpace: network
             hosts:
               - "grafana.${SECRET_DOMAIN}"
 
