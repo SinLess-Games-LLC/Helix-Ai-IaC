@@ -48,15 +48,4 @@ spec:
         - secretName: helixaibot-com-staging-tls
           hosts:
             - grafana.${SECRET_DOMAIN}
-      annotations:
-        kubernetes.io/ingress.class: external
-        nginx.ingress.kubernetes.io/ssl-redirect: "true"
-        nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-        nginx.ingress.kubernetes.io/rewrite-target: /
-        nginx.ingress.kubernetes.io/proxy-body-size: 50m
-        nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
-        nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
-        nginx.ingress.kubernetes.io/proxy-connect-timeout: "600"
-        nginx.ingress.kubernetes.io/proxy-next-upstream-timeout: "600"
-        nginx.ingress.kubernetes.io/proxy-next-upstream-tries: "3"
       
