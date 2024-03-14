@@ -5,6 +5,6 @@ resources:
   - ./grafana/ks.yaml
   - ./namespace.yaml
   - ./prometheus/ks.yaml
-  # - ./loki/ks.yaml
-  # - ./tempo/ks.yaml
+  - ./loki/ks.yaml
+  - ./tempo/ks.yaml
   - ./configs
