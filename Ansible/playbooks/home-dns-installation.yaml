@@ -1,4 +1,3 @@
----
 - name: Pihole Installation
   hosts: pihole
   become: true
