@@ -121,6 +121,7 @@ spec:
           folder: "prometheus"
           type: file 
           options:
-            path: ./dashboards/prometheus
+            path: E:/Kubernetes/apps/monitoring/prometheus/app/configs/dashboards
+            foldersFromFilesStructure: true
 
       
