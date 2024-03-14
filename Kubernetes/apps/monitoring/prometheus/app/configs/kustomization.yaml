@@ -14,6 +14,7 @@ configMapGenerator:
       disableNameSuffixHash: true
       labels:
         grafana_dashboard: "1"
+        grafana_folder: "Flux"
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/component: monitoring
   
@@ -26,8 +27,10 @@ configMapGenerator:
       disableNameSuffixHash: true
       labels:
         grafana_dashboard: "1"
+        grafana_folder: "Prometheus"
         app.kubernetes.io/part-of: prometheus
         app.kubernetes.io/component: monitoring
+        
   
   - name: loki-dashboards
     files:
@@ -36,5 +39,6 @@ configMapGenerator:
       disableNameSuffixHash: true
       labels:
         grafana_dashboard: "1"
+        grafana_folder: "Loki"
         app.kubernetes.io/part-of: loki
         app.kubernetes.io/component: monitoring
