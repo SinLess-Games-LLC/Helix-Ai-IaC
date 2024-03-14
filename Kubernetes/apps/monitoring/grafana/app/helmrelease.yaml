@@ -24,6 +24,10 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    serviceMonitor:
+      enabled: true
+      namespace: monitoring
+      interval: 30s
     admin: 
       existingSecret: grafana-admin-secret
       passwordKey: admin-password
@@ -36,9 +40,9 @@ spec:
       storageClassName: openebs-hostpath
     autoscaling:
       enabled: true
-      maxReplicas: 5
-      minReplicas: 2
-      targetCPU: '60'
+      maxReplicas: 6
+      minReplicas: 1
+      targetCPU: "60"
     ingress:
       enabled: true
       ingressClassName: external
