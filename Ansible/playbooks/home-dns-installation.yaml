@@ -74,7 +74,6 @@
               ansible.builtin.copy:
                 dest: /etc/resolv.conf
                 content: |
-                  nameserver 192.168.86.80
                   nameserver 1.1.1.1
                   nameserver 1.0.0.1
                   search {{ ansible_hostname }}.local.sinlessgamesllc.com
@@ -84,7 +83,6 @@
               ansible.builtin.copy:
                 dest: /etc/resolv.conf
                 content: |
-                  nameserver 127.0.0.1
                   nameserver 1.1.1.1
                   nameserver 1.0.0.1
                   search {{ ansible_hostname }}.local.sinlessgamesllc.com

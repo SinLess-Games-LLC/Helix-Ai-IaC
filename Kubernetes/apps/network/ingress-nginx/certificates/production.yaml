@@ -6,10 +6,6 @@ metadata:
   namespace: network
 spec:
   secretName: "${SECRET_DOMAIN/./-}-production-tls"
-  annotations:
-    reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
-    reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
-    cert-manager.io/cluster-issuer: letsencrypt-production
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
