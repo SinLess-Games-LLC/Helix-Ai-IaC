@@ -32,6 +32,18 @@ spec:
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
   values:
     alertmanager:
+      ingress:
+        enabled: true
+        ingressClassName: internal
+        annotations: 
+          kubernetes.io/ingress.class: internal
+          kubernetes.io/tls-acme: 'true'
+        hosts:
+          - alert-manager.${SECRET_DOMAIN}
+        tls:
+          - secretName: helixaibot-com-production-tls
+            hosts:
+              - alert-manager.${SECRET_DOMAIN}
       persistantVolume:
         storageClass: openebs-hostpath
   
