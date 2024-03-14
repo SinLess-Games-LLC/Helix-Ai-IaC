@@ -39,9 +39,7 @@ spec:
         hosts:
           - "alertmanager.${SECRET_DOMAIN}"
         tls:
-          - secretName: helixaibot-com-production-tls
-            secretNamespace: network
-            hosts:
+          - hosts:
               - "alertmanager.${SECRET_DOMAIN}"
     
     prometheusOperator:
@@ -72,9 +70,7 @@ spec:
         hosts:
           - "prometheus.${SECRET_DOMAIN}"
         tls:
-          - secretName: helixaibot-com-production-tls
-            secretNamespace: network
-            hosts:
+          - hosts:
               - "prometheus.${SECRET_DOMAIN}"
 
     prometheus-node-exporter:
@@ -110,9 +106,7 @@ spec:
         hosts:
           - "grafana.${SECRET_DOMAIN}"
         tls:
-          - secretName: helixaibot-com-production-tls
-            secretNameSpace: network
-            hosts:
+          - hosts:
               - "grafana.${SECRET_DOMAIN}"
 
       
