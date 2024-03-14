@@ -36,7 +36,6 @@ spec:
       replicas: 1
       ingress:
         enabled: true
-        ingressClassName: internal
         hosts:
           - "alertmanager.${SECRET_DOMAIN}"
         tls:
