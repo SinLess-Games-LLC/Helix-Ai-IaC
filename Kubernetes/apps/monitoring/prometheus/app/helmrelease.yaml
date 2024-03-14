@@ -4,6 +4,8 @@ metadata:
   name: prometheus
   namespace: monitoring
 spec:
+  depends_on:
+    - openebs
   interval: 1h
   chart:
     spec:
@@ -31,6 +33,17 @@ spec:
     valuesKey: kube-state-metrics-config.yaml
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
   values:
+    alertmanager:
+      ingress:
+        enabled: true
+        hosts:
+          - alertmanager.${SECRET_DOMAIN}
+        tls:
+          - secretName: helixaibot-com-production-tls
+            hosts:
+              - alertmanager.${SECRET_DOMAIN}
+      persistantVolume:
+        storageClass: openebs-hostpath
     ingress:
       enabled: true
       hosts:
