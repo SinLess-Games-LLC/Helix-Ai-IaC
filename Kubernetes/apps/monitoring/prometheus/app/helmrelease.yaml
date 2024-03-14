@@ -112,16 +112,8 @@ spec:
         hosts:
           - "grafana.${SECRET_DOMAIN}"
         tls:
-          - hosts:
+          - secretName: "network/${SECRET_DOMAIN/./-}-production-tls"
+            hosts:
               - "grafana.${SECRET_DOMAIN}"
-      
-      providers:
-        - name: "prometheus"
-          orgId: 1
-          folder: "prometheus"
-          type: file 
-          options:
-            path: /Kubernetes/apps/monitoring/prometheus/app/configs/dashboards
-            foldersFromFilesStructure: true
 
       

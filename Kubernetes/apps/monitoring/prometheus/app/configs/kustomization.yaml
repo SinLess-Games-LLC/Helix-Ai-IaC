@@ -4,3 +4,41 @@ namespace: monitoring
 resources:
   - ./podmonitor.yaml
   - ./kube-state-metrics.yaml
+configMapGenerator:
+  - name: flux-dashboards
+    files:
+      - dashboards/flux/control-plane.json
+      - dashboards/flux/cluster.json
+      - dashboards/flux/logs.json
+    options:
+      disableNameSuffixHash: true
+      labels:
+        grafana_dashboard: "1"
+        grafana_folder: "Flux"
+        app.kubernetes.io/part-of: flux
+        app.kubernetes.io/component: monitoring
+  
+  - name: prometheus-dashboards
+    files:
+      - dashboards/prometheus/node-exporter-full.json
+      - dashboards/prometheus/core-dns.json
+      - dashboards/prometheus/prometheus-2.0-overview.json
+    options:
+      disableNameSuffixHash: true
+      labels:
+        grafana_dashboard: "1"
+        grafana_folder: "Prometheus"
+        app.kubernetes.io/part-of: prometheus
+        app.kubernetes.io/component: monitoring
+        
+  
+  - name: loki-dashboards
+    files:
+      - dashboards/loki/loki-stack-monitor.json
+    options:
+      disableNameSuffixHash: true
+      labels:
+        grafana_dashboard: "1"
+        grafana_folder: "Loki"
+        app.kubernetes.io/part-of: loki
+        app.kubernetes.io/component: monitoring
