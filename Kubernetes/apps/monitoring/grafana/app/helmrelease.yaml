@@ -87,39 +87,6 @@ spec:
               path: /var/lib/grafana/dashboards/flux
     
     dashboards: 
-      default:
-        Prometheus-stats:
-          gnetId: 2
-          revision: 1
-          datasource: Prometheus
-
-    dashboardConfigMaps:
-      flux: "flux-grafana-dashboards"
-
-
-      
-    
-    datasources:
-      datasources.yaml:
-        apiVersion: 1
-        datasources:
-          - name: Prometheus
-            type: prometheus
-            access: proxy
-            orgId: 1
-            url: http://prometheus.monitoring.svc.cluster.local
-          - name: Loki
-            type: loki
-            access: proxy
-            orgId: 1
-            url: http://loki.monitoring.svc.cluster.local
-          - name: Tempo
-            type: tempo
-            access: proxy
-            orgId: 1
-            url: http://tempo.monitoring.svc.cluster.local
-          - name: alertmanager
-            type: prometheus
-            access: proxy
-            orgId: 1
-            url: http://alertmanager.monitoring.svc.cluster.local
+      flux:
+        cluster:
+          file: dashboards/cluster.json
