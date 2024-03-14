@@ -77,7 +77,6 @@ spec:
         #     name: istio-prometheus
       ingress:
         enabled: true
-        ingressClassName: internal
         hosts:
           - "prometheus.${SECRET_DOMAIN}"
         tls:
