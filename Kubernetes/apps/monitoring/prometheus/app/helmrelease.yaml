@@ -114,5 +114,13 @@ spec:
         tls:
           - hosts:
               - "grafana.${SECRET_DOMAIN}"
+      
+      providers:
+        - name: "prometheus"
+          orgId: 1
+          folder: "prometheus"
+          type: file 
+          options:
+            path: dashboards/prometheus
 
       
