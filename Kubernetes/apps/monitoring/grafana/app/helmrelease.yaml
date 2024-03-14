@@ -107,8 +107,7 @@ spec:
             type: prometheus
             access: proxy
             orgId: 1
-            url: https://prometheus.${SECRET_DOMAIN}
-            isDefault: true
+            url: https://prometheus.monitoring.svc.cluster.local
           - name: Loki
             type: loki
             access: proxy
@@ -123,4 +122,4 @@ spec:
             type: prometheus
             access: proxy
             orgId: 1
-            url: https://alertmanager.${SECRET_DOMAIN}
+            url: https://alertmanager.monitoring.svc.cluster.local
