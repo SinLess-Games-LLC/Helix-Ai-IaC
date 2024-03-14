@@ -5,11 +5,13 @@ resources:
   - ./pod-monitor.yaml
 
 configMapGenerator:
-
-  - name: flux-kube-state-metrics-config
+  - name: flux-grafana-dashboards
     files:
-      - kube-state-metrics-config.yaml
+      - ./dashboards/control-plane.json
+      - ./dashboards/cluster.json
+      - ./dashboards/logs.json
     options:
       labels:
+        grafana_dashboard: "1"
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/component: monitoring
