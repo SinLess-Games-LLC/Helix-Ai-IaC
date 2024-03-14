@@ -45,24 +45,17 @@ spec:
               - "alertmanager.${SECRET_DOMAIN}"
 
     prometheus:
-      replicas: 1
       thanosService:
         enabled: true
         thanosServiceMonitor:
           enabled: true
+      resources:
+        requests:
+          cpu: 200m
+        limits:
+          cpu: 400m
       prometheusSpec:
         retention: 24h
-        resources:
-          requests:
-            cpu: 200m
-          limits:
-            cpu: 400m
-        autoscaling:
-          enabled: true
-          minReplicas: 1
-          maxReplicas: 5
-          targetCPU: 80
-          targetMemory: 80
         podMonitorNamespaceSelector: { }
         podMonitorSelector:
           matchLabels:
