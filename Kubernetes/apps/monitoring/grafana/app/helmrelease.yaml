@@ -1,0 +1,57 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: grafana
+      version: 1.7.2
+      sourceRef:
+        kind: HelmRepository
+        name: grafana-charts
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    persistence:
+      enabled: true
+      size: 10Gi
+      accessModes:
+        - ReadWriteOnce
+      storageClassName: openebs-hostpath
+    autoscaling:
+      enabled: true
+      maxReplicas: 5
+      minReplicas: 2
+      targetCPU: 60
+    ingress:
+      enabled: true
+      hosts:
+        - grafana.${SECRET_DOMAIN}
+      tls:
+        - secretName: helixaibot-com-staging-tls
+          hosts:
+            - grafana.${SECRET_DOMAIN}
+      annotations:
+        kubernetes.io/ingress.class: external
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/rewrite-target: /
+        nginx.ingress.kubernetes.io/proxy-body-size: 50m
+        nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+        nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+        nginx.ingress.kubernetes.io/proxy-connect-timeout: "600"
+        nginx.ingress.kubernetes.io/proxy-next-upstream-timeout: "600"
+        nginx.ingress.kubernetes.io/proxy-next-upstream-tries: "3"
+      
