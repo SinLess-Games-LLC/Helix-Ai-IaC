@@ -69,7 +69,6 @@ spec:
               - "prometheus.${SECRET_DOMAIN}"
 
     grafana:
-      replicas: 1
       defaultDashboardsEnabled: true
       defaultDashboardsTimezone: ${TIMEZONE}
       resources:
@@ -97,9 +96,5 @@ spec:
         tls:
           - hosts:
               - "grafana.${SECRET_DOMAIN}"
-      plugins:
-        - digrich-bubblechart-panel
-        - grafana-worldmap-panel
-        - grafana-clock-panel
-        - grafana-heatmap
+
       
