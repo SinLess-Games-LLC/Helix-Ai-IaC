@@ -35,7 +35,8 @@ spec:
       persistantVolume:
         storageClass: openebs-hostpath
   
-    ingress:
+    server:
+      ingress:
       enabled: true
       ingressClassName: internal
       annotations: 
@@ -47,7 +48,5 @@ spec:
         - secretName: helixaibot-com-production-tls
           hosts:
             - prometheus.${SECRET_DOMAIN}
-    
-    server:
       PersistentVolume:
         storageClass: openebs-hostpath
