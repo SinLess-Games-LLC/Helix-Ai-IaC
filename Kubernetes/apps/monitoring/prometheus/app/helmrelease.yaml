@@ -112,7 +112,8 @@ spec:
         hosts:
           - "grafana.${SECRET_DOMAIN}"
         tls:
-          - secretName: "network/helixaibot-com-production-tls"
+          - secretName: "helixaibot-com-production-tls"
+            secretNamespace: "network"
             hosts:
               - "grafana.${SECRET_DOMAIN}"
 
