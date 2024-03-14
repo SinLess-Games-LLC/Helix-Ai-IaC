@@ -39,4 +39,7 @@ spec:
         - secretName: helixaibot-com-production-tls
           hosts:
             - prometheus.${SECRET_DOMAIN}
-      
+    
+    server:
+      PersistentVolume:
+        storageClass: openebs-hostpath
