@@ -4,11 +4,11 @@ metadata:
   name: flux-dashboards
   namespace: monitoring
   labels:
-        grafana_dashboard: "1"
-        app.kubernetes.io/part-of: flux
-        app.kubernetes.io/component: monitoring
+    grafana_dashboard: "1"
+    app.kubernetes.io/part-of: flux
+    app.kubernetes.io/component: monitoring
 data:
-  control-plane.json: |
+  "control-plane.json": |
     {
         "annotations": {
           "list": [
@@ -1740,7 +1740,7 @@ data:
         "weekStart": ""
       }
 
-  cluster.json: |
+  "cluster.json": |
     {
       "__inputs": [
         {
@@ -2074,7 +2074,7 @@ data:
       "version": 2
     }         
    
-  logs.json:  |
+  "logs.json":  |
     {
         "__inputs": [
           {
