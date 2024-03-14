@@ -32,7 +32,7 @@ spec:
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
   values:
     alertmanager:
-      enabled: false
+      enabled: true
       replicas: 1
       ingress:
         enabled: true
@@ -89,7 +89,7 @@ spec:
           enabled: true
 
     grafana:
-      enabled: false
+      enabled: true
       defaultDashboardsEnabled: false
       defaultDashboardsTimezone: ${TIMEZONE}
       resources:
@@ -114,6 +114,7 @@ spec:
           - "grafana.${SECRET_DOMAIN}"
         tls:
           - secretName: helixaibot-com-production-tls
+            secretNamespace: network
             hosts:
               - "grafana.${SECRET_DOMAIN}"
 
