@@ -5,7 +5,7 @@ resources:
   - ./podmonitor.yaml
   - ./kube-state-metrics.yaml
 configMapGenerator:
-  - name: flux-grafana-dashboards
+  - name: flux-dashboards
     files:
       - dashboards/flux/control-plane.json
       - dashboards/flux/cluster.json
@@ -15,4 +15,26 @@ configMapGenerator:
       labels:
         grafana_dashboard: "1"
         app.kubernetes.io/part-of: flux
+        app.kubernetes.io/component: monitoring
+  
+  - name: prometheus-dashboards
+    files:
+      - dashboards/prometheus/node-exporter-full.json
+      - dashboards/prometheus/core-dns.json
+      - dashboards/prometheus/prometheus-2.0-overview.json
+    options:
+      disableNameSuffixHash: true
+      labels:
+        grafana_dashboard: "1"
+        app.kubernetes.io/part-of: prometheus
+        app.kubernetes.io/component: monitoring
+  
+  - name: loki-dashboards
+    files:
+      - dashboards/loki/loki.json
+    options:
+      disableNameSuffixHash: true
+      labels:
+        grafana_dashboard: "1"
+        app.kubernetes.io/part-of: loki
         app.kubernetes.io/component: monitoring
