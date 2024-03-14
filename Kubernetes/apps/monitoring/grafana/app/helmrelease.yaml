@@ -76,6 +76,7 @@ spec:
           - name: "flux"
             apiVersion: 1
             orgId: 1
+            type: folder
             editable: true
             options:
               path: /var/lib/grafana/dashboards/flux
