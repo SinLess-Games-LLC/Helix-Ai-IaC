@@ -78,31 +78,13 @@ spec:
           
           - name: "flux"
             apiVersion: 1
-            providers:
-              - name: "cluster"
-                orgId: 1
-                folder: ""
-                type: file
-                disableDeletion: false
-                editable: true
-                options:
-                  path: /var/lib/grafana/dashboards/flux/cluster
-              - name: "logs"
-                orgId: 1
-                folder: ""
-                type: file
-                disableDeletion: false
-                editable: true
-                options:
-                  path: /var/lib/grafana/dashboards/flux/logs
-              - name: "control-plane"
-                orgId: 1
-                folder: ""
-                type: file
-                disableDeletion: false
-                editable: true
-                options:
-                  path: /var/lib/grafana/dashboards/flux/control-plane
+            orgId: 1
+            folder: ""
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/flux
     
     dashboards: 
       default:
