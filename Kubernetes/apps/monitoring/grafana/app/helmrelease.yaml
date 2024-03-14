@@ -38,7 +38,7 @@ spec:
       enabled: true
       maxReplicas: 5
       minReplicas: 2
-      targetCPU: 60
+      targetCPU: '60'
     ingress:
       enabled: true
       ingressClassName: external
@@ -64,7 +64,7 @@ spec:
             type: prometheus
             access: proxy
             orgId: 1
-            url: http://prometheus-server.monitoring.svc.cluster.local
+            url: https://prometheus.${SECRET_DOMAIN}
             isDefault: true
           - name: Loki
             type: loki
