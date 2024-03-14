@@ -7,7 +7,7 @@ spec:
   interval: 1h
   chart:
     spec:
-      version: "55.x"
+      version: "57.x.x"
       chart: prometheus-stack
       sourceRef:
         kind: HelmRepository
