@@ -57,10 +57,7 @@ spec:
     prometheus:
       enabled: true
       replicas: 5
-      thanosService:
-        enabled: true
-        thanosServiceMonitor:
-          enabled: true
+      shards: 3
       resources:
         requests:
           cpu: 200m
@@ -72,10 +69,10 @@ spec:
         podMonitorSelector:
           matchLabels:
             app.kubernetes.io/component: monitoring
-      volumeMounts: []
-        # - name: config-volume
-        #   configMap:
-        #     name: istio-prometheus
+      volumeMounts: 
+        - name: config-volume
+          configMap:
+            name: istio-prometheus
       ingress:
         enabled: true
         hosts:
@@ -93,7 +90,7 @@ spec:
 
     grafana:
       enabled: false
-      defaultDashboardsEnabled: true
+      defaultDashboardsEnabled: false
       defaultDashboardsTimezone: ${TIMEZONE}
       resources:
         requests:
