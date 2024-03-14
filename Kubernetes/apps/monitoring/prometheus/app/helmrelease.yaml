@@ -46,6 +46,10 @@ spec:
 
     prometheus:
       replicas: 1
+      thanosService:
+        enabled: true
+        thanosServiceMonitor:
+          enabled: true
       prometheusSpec:
         retention: 24h
         resources:
