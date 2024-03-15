@@ -1,14 +1,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: prometheus-stack
+  name: prometheus
   namespace: monitoring
 spec:
   interval: 1h
   chart:
     spec:
-      version: "57.x.x"
-      chart: kube-prometheus-stack
+      version: "25.x.x"
+      chart: prometheus
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
@@ -31,89 +31,13 @@ spec:
       valuesKey: kube-state-metrics-config.yaml
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
   values:
-    alertmanager:
-      enabled: true
-      replicas: 1
+    server:
       ingress:
         enabled: true
         hosts:
-          - "alertmanager.${SECRET_DOMAIN}"
+          - prometheus.${SECRET_DOMAIN}
         tls:
-          - hosts:
-              - "alertmanager.${SECRET_DOMAIN}"
-    
-    prometheusOperator:
-      enabled: true
-      clusterDomain: ${SECRET_DOMAIN}
-
-    prometheus:
-      enabled: true
-      replicas: 5
-      shards: 3
-      resources:
-        requests:
-          cpu: 200m
-        limits:
-          cpu: 400m
-      autoscaling:
-        enabled: true
-        minReplicas: 2
-        maxReplicas: 5
-        targetCPU: 80
-        targetMemory: 80
-      prometheusSpec:
-        retention: 24h
-        podMonitorNamespaceSelector: { }
-        podMonitorSelector:
-          matchLabels:
-            app.kubernetes.io/component: monitoring
-      volumeMounts: 
-        - name: config-volume
-          configMap:
-            name: istio-prometheus
-      ingress:
-        enabled: true
-        hosts:
-          - "prometheus.${SECRET_DOMAIN}"
-        tls:
-          - hosts:
-              - "prometheus.${SECRET_DOMAIN}"
-
-    prometheus-node-exporter:
-      prometheus:
-        monitor:
-          enabled: true
-
-    grafana:
-      enabled: true
-      defaultDashboardsEnabled: false
-      defaultDashboardsTimezone: ${TIMEZONE}
-      resources:
-        requests:
-          cpu: 100m
-        limits:
-          cpu: 200m
-      autoscaling:
-        enabled: true
-        minReplicas: 2
-        maxReplicas: 5
-        targetCPU: 80
-        targetMemory: 80
-      admin:
-        existingSecret: grafana-login
-        userKey: admin-user
-        passwordKey: admin-password
-      ingress:
-        enabled: true
-        ingressClassName: external
-        paths:
-          - "/"
-        pathType: ImplementationSpecific
-        hosts:
-          - "grafana.${SECRET_DOMAIN}"
-        tls:
-          - secretName: "helixaibot-com-production-tls"
+          - secretName: helixaibot-com-production-tls
             hosts:
-              - "grafana.${SECRET_DOMAIN}"
-
-      
+              - prometheus.${SECRET_DOMAIN}
+    
