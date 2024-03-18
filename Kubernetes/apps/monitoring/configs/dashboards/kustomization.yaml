@@ -5,9 +5,9 @@ resources: []
 configMapGenerator:
   - name: flux-dashboards
     files:
-      - dashboards/flux/control-plane.json
-      - dashboards/flux/cluster.json
-      - dashboards/flux/logs.json
+      - flux/control-plane.json
+      - flux/cluster.json
+      - flux/logs.json
     options:
       disableNameSuffixHash: true
       labels:
@@ -18,9 +18,9 @@ configMapGenerator:
   
   - name: prometheus-dashboards
     files:
-      - dashboards/prometheus/node-exporter-full.json
-      - dashboards/prometheus/core-dns.json
-      - dashboards/prometheus/prometheus-2.0-overview.json
+      - prometheus/node-exporter-full.json
+      - prometheus/core-dns.json
+      - prometheus/prometheus-2.0-overview.json
     options:
       disableNameSuffixHash: true
       labels:
@@ -32,7 +32,7 @@ configMapGenerator:
   
   - name: loki-dashboards
     files:
-      - dashboards/loki/loki-stack-monitor.json
+      - loki/loki-stack-monitor.json
     options:
       disableNameSuffixHash: true
       labels:
