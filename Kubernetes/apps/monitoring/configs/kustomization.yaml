@@ -4,4 +4,4 @@ namespace: monitoring
 resources:
   - ./metrics
   - ./dashboards
-  - ./podmonitors
+  - ./pod-monitors
