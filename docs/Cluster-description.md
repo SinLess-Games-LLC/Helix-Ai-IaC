@@ -20,9 +20,16 @@
     </a>
 </div>
 
+> [!INFO]
+> ✅️ denotes if it is implemented and 🚧 denotes if it is in progress.
+
 
 ## Overview
 This document provides a comprehensive overview of the architecture, components, and configuration of the [Kubernetes](https://kubernetes.io/docs/home/) cluster deployed for the SaaS application, Helix Ai, owned and developed by [SinLess Games LLC](https://sinlessgamesllc.com). The cluster is designed to be highly available, scalable, and secure, supporting the deployment and management of the Helix Ai application.
+
+There is **14** out of **39** services implemented.
+
+**35.897%** of the services are implemented.
 
 ## Cluster Management
 
@@ -43,13 +50,13 @@ The Kubernetes cluster consists of 3 master nodes and 4 worker nodes, deployed o
 Namespaces are used to organize and segregate resources within the cluster, providing a logical boundary for different components and environments. The following namespaces are used in the Kubernetes cluster:
 
 <br/>
-<h3>cert-manager</h3>
+<h3>&#10003; cert-manager</h3>
 
 Cert-manager is a Kubernetes add-on that automates the management and issuance of SSL/TLS certificates. It integrates with the Kubernetes API to provide a way to issue certificates for various use cases, such as securing web applications, internal services, and more. Cert-manager ensures that certificates are automatically renewed before they expire, reducing the manual effort required to manage certificates.
 
 #### Components:
 
-- **[Certmanager](https://cert-manager.io/docs/):** The Certmanager component manages SSL/TLS certificates for secure communication within the cluster. It includes features such as automatic certificate issuance, renewal, and revocation, as well as integration with various certificate authorities (CAs) and Kubernetes Ingress resources.
+- 1. ✅️ **[Certmanager](https://cert-manager.io/docs/):** The Certmanager component manages SSL/TLS certificates for secure communication within the cluster. It includes features such as automatic certificate issuance, renewal, and revocation, as well as integration with various certificate authorities (CAs) and Kubernetes Ingress resources.
 
 <br/>
 <h3>data-plane</h3>
@@ -58,13 +65,13 @@ The data-plane namespace is dedicated to housing data plane components, which ar
 
 #### Components:
 
-- **[OpenEBS](https://openebs.io/docs/):** OpenEBS is a popular open-source storage solution for Kubernetes that provides storage management capabilities within the data-plane namespace. It offers features such as dynamic provisioning, snapshots, and storage policies to ensure reliable and scalable storage for application workloads.
+- 2. ✅️ **[OpenEBS](https://openebs.io/docs/):** OpenEBS is a popular open-source storage solution for Kubernetes that provides storage management capabilities within the data-plane namespace. It offers features such as dynamic provisioning, snapshots, and storage policies to ensure reliable and scalable storage for application workloads.
 
-- **[Redis Operator](https://ot-redis-operator.netlify.app/docs/):** The Redis Operator manages Redis instances within the data-plane namespace. It automates the deployment, scaling, and management of Redis clusters, making it easier to use Redis for caching and data storage in Kubernetes.
+- 3. **[Redis Operator](https://ot-redis-operator.netlify.app/docs/):** The Redis Operator manages Redis instances within the data-plane namespace. It automates the deployment, scaling, and management of Redis clusters, making it easier to use Redis for caching and data storage in Kubernetes.
 
-- **[MySQL Operator](https://dev.mysql.com/doc/mysql-operator/en/mysql-operator-introduction.html):** The MySQL Operator manages MySQL instances within the data-plane namespace. It simplifies the deployment and management of MySQL databases in Kubernetes, providing features such as automated backups, scaling, and high availability configurations.
+- 4. **[MySQL Operator](https://dev.mysql.com/doc/mysql-operator/en/mysql-operator-introduction.html):** The MySQL Operator manages MySQL instances within the data-plane namespace. It simplifies the deployment and management of MySQL databases in Kubernetes, providing features such as automated backups, scaling, and high availability configurations.
 
-- **[Velero](https://velero.io/docs/):** Velero is a backup and restore solution for Kubernetes clusters. It provides features such as backup scheduling, retention policies, and disaster recovery, ensuring that critical data and configurations are protected and recoverable in the event of a failure.
+- 5. **[Velero](https://velero.io/docs/):** Velero is a backup and restore solution for Kubernetes clusters. It provides features such as backup scheduling, retention policies, and disaster recovery, ensuring that critical data and configurations are protected and recoverable in the event of a failure.
 
 <br/>
 <h3>flux-system</h3>
@@ -73,32 +80,34 @@ The flux-system namespace is used to house components related to Flux CD, which 
 
 #### Components:
 
-- **[Flux CD](https://fluxcd.io/flux/):** Flux CD is a tool that automates the deployment and lifecycle management of applications in Kubernetes clusters. It works by synchronizing the state of a Git repository with the cluster, ensuring that the cluster's configuration matches the desired state defined in the repository.
+- 6. ✅️ **[Flux CD](https://fluxcd.io/flux/):** Flux CD is a tool that automates the deployment and lifecycle management of applications in Kubernetes clusters. It works by synchronizing the state of a Git repository with the cluster, ensuring that the cluster's configuration matches the desired state defined in the repository.
 
-- **[Flagger](https://docs.flagger.app/):** Flagger is a progressive delivery tool that integrates with Flux CD to automate the promotion of canary deployments. It provides advanced deployment strategies such as canary releases, A/B testing, and blue-green deployments, allowing for safer and more controlled application deployments.
+- 7. **[Flagger](https://docs.flagger.app/):** Flagger is a progressive delivery tool that integrates with Flux CD to automate the promotion of canary deployments. It provides advanced deployment strategies such as canary releases, A/B testing, and blue-green deployments, allowing for safer and more controlled application deployments.
 
 <br/>
 <h3>istio-system</h3>
 
 The istio-system namespace contains components of Istio, which is a popular service mesh platform for Kubernetes. Istio provides advanced traffic management, security, and observability features, making it easier to manage and secure microservices-based applications.
 
+Istio provides advanced traffic management, security, and observability features through its service mesh capabilities. It allows for fine-grained control over traffic routing, load balancing, and security policies. Istio also provides rich observability features, allowing operators to monitor and debug traffic in real time
+
 #### Components:
 
-- **[Istio Pilot](https://istio.io/latest/docs/ops/deployment/architecture/#pilot):** Pilot is responsible for configuring the Envoy proxies deployed alongside your application services. It translates high-level routing rules into Envoy-specific configurations and dynamically propagates them to the Envoy proxies.
+- 8. **[Istio Pilot](https://istio.io/latest/docs/ops/deployment/architecture/#pilot):** Pilot is responsible for configuring the Envoy proxies deployed alongside your application services. It translates high-level routing rules into Envoy-specific configurations and dynamically propagates them to the Envoy proxies.
 
-- **[Istio Citadel](https://istio.io/latest/docs/ops/deployment/architecture/#citadel):** Citadel provides strong service-to-service and end-user authentication with built-in identity and credential management. It manages the issuance and rotation of certificates for services in the mesh.
+- 9. **[Istio Citadel](https://istio.io/latest/docs/ops/deployment/architecture/#citadel):** Citadel provides strong service-to-service and end-user authentication with built-in identity and credential management. It manages the issuance and rotation of certificates for services in the mesh.
 
-- **[Istio Galley](https://istio.io/latest/docs/ops/deployment/architecture/#galley):** Galley is Istio's configuration validation, ingestion, processing, and distribution component. It ensures that configuration is propagated to all components in the Istio mesh.
+- 10. **[Istio Galley](https://istio.io/latest/docs/ops/deployment/architecture/#galley):** Galley is Istio's configuration validation, ingestion, processing, and distribution component. It ensures that configuration is propagated to all components in the Istio mesh.
 
-- **[Istio Mixer](https://istio.io/latest/docs/ops/deployment/architecture/#mixer):** Mixer enforces access control and usage policies across the service mesh and collects telemetry data from the Envoy proxies and other services. It provides a centralized policy and telemetry hub for Istio.
+- 11. **[Istio Mixer](https://istio.io/latest/docs/ops/deployment/architecture/#mixer):** Mixer enforces access control and usage policies across the service mesh and collects telemetry data from the Envoy proxies and other services. It provides a centralized policy and telemetry hub for Istio.
 
-- **[Istio Sidecar Injector](https://istio.io/latest/docs/ops/configuration/traffic-management/sidecar-injection/):** The sidecar injector is a mutating webhook that automatically injects Envoy sidecar proxies into pods. This allows Istio to control and monitor traffic to and from the pods.
+- 12. **[Istio Sidecar Injector](https://istio.io/latest/docs/ops/configuration/traffic-management/sidecar-injection/):** The sidecar injector is a mutating webhook that automatically injects Envoy sidecar proxies into pods. This allows Istio to control and monitor traffic to and from the pods.
 
-- **[Istio Ingress Gateway](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/):** The Ingress Gateway is the entry point for traffic coming into the mesh. It routes external traffic to the appropriate services inside the mesh based on the defined routing rules.
+- 13. **[Istio Ingress Gateway](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/):** The Ingress Gateway is the entry point for traffic coming into the mesh. It routes external traffic to the appropriate services inside the mesh based on the defined routing rules.
 
-- **[Istio Egress Gateway](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/):** The Egress Gateway allows traffic from inside the mesh to egress to external services. It provides control over egress traffic and can enforce policies for external communication.
+- 14. **[Istio Egress Gateway](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/):** The Egress Gateway allows traffic from inside the mesh to egress to external services. It provides control over egress traffic and can enforce policies for external communication.
 
-- **[Istio Telemetry](https://istio.io/latest/docs/ops/integrations/observability/):** Istio provides various telemetry components, including metrics, logs, and traces, to observe and troubleshoot your services. This includes integration with tools like Prometheus, Grafana, Jaeger, and Kiali for monitoring and observability.
+- 15. **[Istio Telemetry](https://istio.io/latest/docs/ops/integrations/observability/):** Istio provides various telemetry components, including metrics, logs, and traces, to observe and troubleshoot your services. This includes integration with tools like Prometheus, Grafana, Jaeger, and Kiali for monitoring and observability.
 
 <br/>
 <h3>kube-system</h3>
@@ -107,21 +116,21 @@ The kube-system namespace houses essential Kubernetes system components that are
 
 #### Components:
 
-- **[Cilium](https://docs.cilium.io/en/stable/):** Cilium provides network security within the kube-system namespace. It offers features such as network policy enforcement, transparent encryption, and API-aware network visibility.
+- 16. ✅️ **[Cilium](https://docs.cilium.io/en/stable/):** Cilium provides network security within the kube-system namespace. It offers features such as network policy enforcement, transparent encryption, and API-aware network visibility.
 
-- **[Metrics Server](https://github.com/kubernetes-sigs/metrics-server):** Metrics Server collects resource usage metrics from the cluster, such as CPU and memory usage of pods and nodes. These metrics are used for monitoring and autoscaling purposes.
+- 17. ✅️ **[Metrics Server](https://github.com/kubernetes-sigs/metrics-server):** Metrics Server collects resource usage metrics from the cluster, such as CPU and memory usage of pods and nodes. These metrics are used for monitoring and autoscaling purposes.
 
-- **[Stakater Reloader](https://github.com/stakater/Reloader):** Reloader watches changes in ConfigMap and Secret objects and restarts pods that use these resources to apply the changes. This ensures that configuration updates are applied to the running pods.
+- 18. ✅️ **[Stakater Reloader](https://github.com/stakater/Reloader):** Reloader watches changes in ConfigMap and Secret objects and restarts pods that use these resources to apply the changes. This ensures that configuration updates are applied to the running pods.
 
-- **[Falco](https://falco.org/docs/):** Falco is added to the kube-system namespace for runtime security monitoring and anomaly detection. It monitors system calls and detects abnormal behavior in real-time, helping to identify and respond to potential security threats.
+- 19. **[Falco](https://falco.org/docs/):** Falco is added to the kube-system namespace for runtime security monitoring and anomaly detection. It monitors system calls and detects abnormal behavior in real-time, helping to identify and respond to potential security threats.
 
-- **[Trivy Operator](https://aquasecurity.github.io/trivy-operator/latest/):** Trivy Operator is added to the kube-system namespace for vulnerability scanning of containers. It scans container images for known vulnerabilities and provides reports to help ensure that only secure images are deployed in the cluster.
+- 20. **[Trivy Operator](https://aquasecurity.github.io/trivy-operator/latest/):** Trivy Operator is added to the kube-system namespace for vulnerability scanning of containers. It scans container images for known vulnerabilities and provides reports to help ensure that only secure images are deployed in the cluster.
 
-- **[Chaos Mesh](https://chaos-mesh.org/docs/):** Chaos Mesh is used for chaos engineering and testing, ensuring the resilience and reliability of the cluster. It allows users to simulate various failure scenarios, such as network latency, pod failures, and clock skew, to validate the cluster's robustness under adverse conditions.
+- 21. **[Chaos Mesh](https://chaos-mesh.org/docs/):** Chaos Mesh is used for chaos engineering and testing, ensuring the resilience and reliability of the cluster. It allows users to simulate various failure scenarios, such as network latency, pod failures, and clock skew, to validate the cluster's robustness under adverse conditions.
 
-- **[Kafka operator](https://strimzi.io/docs/operators/latest/overview):** The Kafka operator is deployed in kube-system namespace for messaging and event streaming purposes. It automates the deployment and management of Apache Kafka clusters, making it easier to scale and operate Kafka in Kubernetes.
+- 22. **[Kafka operator](https://strimzi.io/docs/operators/latest/overview):** The Kafka operator is deployed in kube-system namespace for messaging and event streaming purposes. It automates the deployment and management of Apache Kafka clusters, making it easier to scale and operate Kafka in Kubernetes.
 
-- **[Flagsmith](https://docs.flagsmith.com/deployment/hosting/kubernetes):** Flagsmith is added to the kube-system namespace for feature flag and remote configuration management. It allows developers to manage feature flags and remote configurations in a centralized and scalable manner, enabling them to easily roll out features and control their availability in real-time.
+- 23. **[Flagsmith](https://docs.flagsmith.com/deployment/hosting/kubernetes):** Flagsmith is added to the kube-system namespace for feature flag and remote configuration management. It allows developers to manage feature flags and remote configurations in a centralized and scalable manner, enabling them to easily roll out features and control their availability in real-time.
 
 <br/>
 <h3>monitoring</h3>
@@ -130,25 +139,25 @@ The monitoring namespace contains monitoring and observability tools that provid
 
 #### Components:
 
-- **[Prometheus](https://prometheus.io/docs/introduction/overview/):** Prometheus collects metrics from various components in the cluster for monitoring purposes. It stores these metrics in a time-series database and provides a powerful query language for data analysis and alerting.
+- 24. ✅️ **[Prometheus](https://prometheus.io/docs/introduction/overview/):** Prometheus collects metrics from various components in the cluster for monitoring purposes. It stores these metrics in a time-series database and provides a powerful query language for data analysis and alerting.
 
-- **[Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources):** Grafana visualizes metrics and provides dashboards for monitoring purposes. It allows users to create custom dashboards to visualize the data collected by Prometheus and other data sources. Additionally, Grafana supports plugins that extend its functionality, such as Grafana Mimir, Loki, OnCall, Tempo, Application Observability, Pyroscope, and Agent.
+- 25. **[Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources):** Grafana visualizes metrics and provides dashboards for monitoring purposes. It allows users to create custom dashboards to visualize the data collected by Prometheus and other data sources. Additionally, Grafana supports plugins that extend its functionality, such as Grafana Mimir, Loki, OnCall, Tempo, Application Observability, Pyroscope, and Agent.
     
-    - **[Mimir](https://grafana.com/docs/mimir/latest/):** Grafana Mimir is an open-source project that provides scalable long-term storage for Prometheus metrics. It allows users to store and query metrics over a longer period, enabling historical analysis and trend analysis.
+    - 26. **[Mimir](https://grafana.com/docs/mimir/latest/):** Grafana Mimir is an open-source project that provides scalable long-term storage for Prometheus metrics. It allows users to store and query metrics over a longer period, enabling historical analysis and trend analysis.
     
-    - **[Loki](https://grafana.com/docs/loki/latest/):** Grafana Loki is a set of components that provide a fully-featured logging stack. It is designed to be highly scalable and efficient, allowing users to store and query logs from multiple sources.
+    - 27. **[Loki](https://grafana.com/docs/loki/latest/):** Grafana Loki is a set of components that provide a fully-featured logging stack. It is designed to be highly scalable and efficient, allowing users to store and query logs from multiple sources.
     
-    - **[OnCall](https://grafana.com/docs/oncall/latest/):** Grafana OnCall is an incident response and on-call management system that helps teams manage on-call rotations and incidents. It integrates with Grafana Cloud for seamless incident management and communication.
+    - 28. **[OnCall](https://grafana.com/docs/oncall/latest/):** Grafana OnCall is an incident response and on-call management system that helps teams manage on-call rotations and incidents. It integrates with Grafana Cloud for seamless incident management and communication.
     
-    - **[Tempo](https://grafana.com/docs/tempo/latest/):** Grafana Tempo is an open-source, high-volume distributed tracing backend. It is designed to be cost-efficient and easy to use, providing observability into distributed systems.
+    - 29. **[Tempo](https://grafana.com/docs/tempo/latest/):** Grafana Tempo is an open-source, high-volume distributed tracing backend. It is designed to be cost-efficient and easy to use, providing observability into distributed systems.
     
-    - **[Application Observability](https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/):** Grafana Application Observability is an observability solution that helps minimize the mean time to repair (MTTR) for modern application problems. It is based on OpenTelemetry semantic conventions and the Prometheus data model.
+    - 30. **[Application Observability](https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/):** Grafana Application Observability is an observability solution that helps minimize the mean time to repair (MTTR) for modern application problems. It is based on OpenTelemetry semantic conventions and the Prometheus data model.
     
-    - **[Pyroscope](https://grafana.com/docs/pyroscope/latest/):** Grafana Pyroscope is an open-source project for aggregating continuous profiling data. It allows users to understand their workload's resource usage down to the line number, helping to optimize performance.
+    - 31. **[Pyroscope](https://grafana.com/docs/pyroscope/latest/):** Grafana Pyroscope is an open-source project for aggregating continuous profiling data. It allows users to understand their workload's resource usage down to the line number, helping to optimize performance.
     
-    - **[Agent](https://grafana.com/docs/agent/latest/):** Grafana Agent is an OpenTelemetry Collector distribution with Terraform-inspired configuration. It is designed to be flexible, performant, and compatible with multiple ecosystems, such as Prometheus and OpenTelemetry.
+    - 32. **[Agent](https://grafana.com/docs/agent/latest/):** Grafana Agent is an OpenTelemetry Collector distribution with Terraform-inspired configuration. It is designed to be flexible, performant, and compatible with multiple ecosystems, such as Prometheus and OpenTelemetry.
 
-- **[Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/):** Alertmanager handles alert notifications based on predefined rules. It integrates with Prometheus to send notifications via various channels, such as email, Slack, or PagerDuty, based on the severity of the alert.
+- 33. ✅️ **[Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/):** Alertmanager handles alert notifications based on predefined rules. It integrates with Prometheus to send notifications via various channels, such as email, Slack, or PagerDuty, based on the severity of the alert.
 
 <br/>
 <h3>network</h3>
@@ -157,15 +166,13 @@ The network namespace houses networking components that facilitate communication
 
 #### Components:
 
-- **[Cloudflared](https://developers.cloudflare.com/cloudflare-one/tutorials/many-cfd-one-tunnel/):** Cloudflared enables secure DNS tunneling within the cluster for enhanced security. It provides a secure and encrypted connection to Cloudflare's DNS service, ensuring that DNS queries are not intercepted or tampered with.
+- 34. ✅️ **[Cloudflared](https://developers.cloudflare.com/cloudflare-one/tutorials/many-cfd-one-tunnel/):** Cloudflared enables secure DNS tunneling within the cluster for enhanced security. It provides a secure and encrypted connection to Cloudflare's DNS service, ensuring that DNS queries are not intercepted or tampered with.
 
-- **[NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/):** The NGINX Ingress Controller handles external traffic routing into the cluster. It acts as a reverse proxy, routing traffic to the appropriate services based on ingress rules. It supports both internal and external configurations, allowing for fine-grained control over traffic routing and load balancing.
+- 35. ✅️ **[NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/):** The NGINX Ingress Controller handles external traffic routing into the cluster. It acts as a reverse proxy, routing traffic to the appropriate services based on ingress rules. It supports both internal and external configurations, allowing for fine-grained control over traffic routing and load balancing.
 
-- **[CoreDNS](https://coredns.io/):** CoreDNS is a flexible and extensible DNS server that can be used as a Kubernetes DNS plugin. It provides service discovery and DNS resolution for Kubernetes clusters, ensuring that applications can communicate with each other using DNS names. CoreDNS is highly customizable and supports various plugins for advanced functionality.
+- 36. ✅️ **[CoreDNS](https://coredns.io/):** CoreDNS is a flexible and extensible DNS server that can be used as a Kubernetes DNS plugin. It provides service discovery and DNS resolution for Kubernetes clusters, ensuring that applications can communicate with each other using DNS names. CoreDNS is highly customizable and supports various plugins for advanced functionality.
 
-- **[External DNS](https://kubernetes-sigs.github.io/external-dns/v0.14.0/):** External DNS is a Kubernetes add-on that automatically configures DNS records for Kubernetes services and ingresses. It integrates with various DNS providers, such as AWS Route 53, Google Cloud DNS, and Azure DNS, to manage DNS records for external services. External DNS simplifies the management of DNS records, ensuring that they are always up to date with the latest service and ingress configurations.
-
-- **[Istio](https://istio.io/latest/docs/):** Istio provides advanced traffic management, security, and observability features through its service mesh capabilities. It allows for fine-grained control over traffic routing, load balancing, and security policies. Istio also provides rich observability features, allowing operators to monitor and debug traffic in real time.
+- 37. ✅️ **[External DNS](https://kubernetes-sigs.github.io/external-dns/v0.14.0/):** External DNS is a Kubernetes add-on that automatically configures DNS records for Kubernetes services and ingresses. It integrates with various DNS providers, such as AWS Route 53, Google Cloud DNS, and Azure DNS, to manage DNS records for external services. External DNS simplifies the management of DNS records, ensuring that they are always up to date with the latest service and ingress configurations.
 
 <br/>
 <h3>production</h3>
@@ -184,9 +191,9 @@ The system-upgrade namespace is used for managing cluster upgrades, ensuring tha
 
 #### Components:
 
-- **System Upgrade Controller:** The System Upgrade Controller is responsible for managing cluster upgrades. It automates the process of upgrading Kubernetes components and ensures that the cluster remains stable and up to date with the latest features and security patches.
+- 38. ✅️ **System Upgrade Controller:** The System Upgrade Controller is responsible for managing cluster upgrades. It automates the process of upgrading Kubernetes components and ensures that the cluster remains stable and up to date with the latest features and security patches.
 
-- **[K3s Upgrade Plan](https://rancher.com/docs/k3s/latest/en/upgrades/):** The K3s Upgrade Plan provides a plan for upgrading the k3s distribution to the latest version. It outlines the steps and best practices for upgrading k3s clusters, ensuring a smooth and seamless upgrade process.
+- 39. ✅️ **[K3s Upgrade Plan](https://rancher.com/docs/k3s/latest/en/upgrades/):** The K3s Upgrade Plan provides a plan for upgrading the k3s distribution to the latest version. It outlines the steps and best practices for upgrading k3s clusters, ensuring a smooth and seamless upgrade process.
 
 <br/>
 <h3>testing</h3>
