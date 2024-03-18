@@ -48,9 +48,6 @@ spec:
         enabled: true
         hosts:
           - host: alertmanager.${SECRET_DOMAIN}
-            paths:
-              - path: /
-                pathType: implementationSpecific
         tls:
           - secretName: helixaibot-com-production-tls
             hosts:
