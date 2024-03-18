@@ -42,12 +42,26 @@ spec:
               - prometheus.${SECRET_DOMAIN}
     
     alertmanager:
+      enabled: true
+      replicaCount: 2
       ingress:
         enabled: true
         hosts:
-          - alertmanager.${SECRET_DOMAIN}
+          - host: alertmanager.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: implementationSpecific
         tls:
           - secretName: helixaibot-com-production-tls
             hosts:
               - alertmanager.${SECRET_DOMAIN}
+    
+    kubeStateMetrics:
+      enabled: true
+      autosharding:
+        enabled: true
+      replicas: 4
+      prometheus:
+        monitor:
+          enabled: true
     
