@@ -48,7 +48,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./Kubernetes/apps/monitoring/tconfigs/pod-monitors
+  path: ./Kubernetes/apps/monitoring/configs/pod-monitors
   prune: true
   sourceRef:
     kind: GitRepository
