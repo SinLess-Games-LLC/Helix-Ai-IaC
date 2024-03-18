@@ -64,4 +64,14 @@ spec:
       prometheus:
         monitor:
           enabled: true
+        podMonitor:
+          enabled: true
+
+    nodeExporter:
+      enabled: true
+      prometheus:
+        monitor:
+          enabled: true
+        podMonitor:
+          enabled: true  
     
