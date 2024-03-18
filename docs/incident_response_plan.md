@@ -13,10 +13,17 @@
 
 ## Incident Severity Levels:
 
-- **Critical:** A critical incident results in a complete outage of the SaaS or a critical component of the cluster. Immediate action is required to restore services.
-- **Major:** A major incident affects a significant portion of users or services but does not result in a complete outage. It requires urgent attention to restore services.
-- **Minor:** A minor incident has a limited impact on users or services and can be resolved within a reasonable timeframe without significant impact.
-- **Informational:** An informational incident includes events that do not require immediate action but should be monitored or investigated for potential impact.
+### **Critical:** 
+
+
+### **Major:** 
+
+
+### **Minor:**
+
+
+### **Informational:** 
+
 
 ## Roles and Responsibilities:
 
