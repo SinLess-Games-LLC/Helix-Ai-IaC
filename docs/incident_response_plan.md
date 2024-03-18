@@ -1,7 +1,7 @@
 # Incident Response Plan
 (SinLess Games LLC)
 
-[last updated on 03-12-2024]
+[last updated on 03-18-2024]
 
 > [!NOTE] 
 >This document outlines the incident response plan for SinLess Games LLC. It includes the incident severity levels, roles and responsibilities, the incident response process, and the on-call schedule for developers. 
@@ -14,15 +14,52 @@
 ## Incident Severity Levels:
 
 ### **Critical:** 
-
+- Description: A critical incident results in a complete outage of the SaaS or a critical component of the cluster. This level of incident requires immediate action to restore services.
+- Examples:
+  - Complete loss of access to the SaaS platform.
+  - Critical database failure resulting in data loss.
+- Response:
+  - Immediate notification of the on-call team.
+  - Dedicated team focus until the incident is resolved.
+  - Escalation to higher management if necessary.
+- Communication:
+  - Continuous updates to stakeholders until the incident is resolved.
+  - Post-incident report detailing the root cause and resolution steps.
 
 ### **Major:** 
-
+- Description: A major incident affects a significant portion of users or services but does not result in a complete outage. Urgent attention is required to restore services.
+- Examples:
+  - Performance degradation impacting a large number of users.
+  - Partial loss of functionality in a critical service.
+- Response:
+  - Notification of the on-call team.
+  - Immediate investigation and action to mitigate the impact.
+  - Regular updates to stakeholders until the incident is resolved.
+- Communication:
+  - Updates to stakeholders every 30 minutes until the incident is resolved.
+  - Post-incident report with details of the incident and actions taken.
 
 ### **Minor:**
+- Description: A minor incident has a limited impact on users or services and can be resolved within a reasonable timeframe without significant impact.
+- Examples:
+  - Temporary loss of access to non-critical features.
+  - Minor performance issues affecting a small number of users.
+- Response:
+  - Notification of the on-call team for awareness.
+  - Resolution within a reasonable timeframe.
+- Communication:
+  - Updates to stakeholders as needed, depending on the impact.
+  - Minimal documentation for future reference.
 
-
-### **Informational:** 
+### **Informational:**
+- Description: An informational incident includes events that do not require immediate action but should be monitored or investigated for potential impact.
+- Examples:
+  - Non-critical errors in logs.
+  - Routine maintenance tasks.
+- Response:
+  - Monitoring and observation without immediate action.
+- Communication:
+  - No communication required unless the situation escalates.
 
 
 ## Roles and Responsibilities:
