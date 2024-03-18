@@ -41,3 +41,13 @@ spec:
             hosts:
               - prometheus.${SECRET_DOMAIN}
     
+    alertmanager:
+      ingress:
+        enabled: true
+        hosts:
+          - alertmanager.${SECRET_DOMAIN}
+        tls:
+          - secretName: helixaibot-com-production-tls
+            hosts:
+              - alertmanager.${SECRET_DOMAIN}
+    

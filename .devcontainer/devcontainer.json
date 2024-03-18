@@ -35,7 +35,9 @@
     // sudo is required to change permissions
     "ssh2": "sudo chmod 600 ~/.ssh/id_ed25519",
     "install K9S": "go install github.com/derailed/k9s@latest",
-    "install ip utils": "sudo apt update -y && sudo apt-get install iputils-ping -y"
+    "install ip utils": "sudo apt update -y && sudo apt-get install iputils-ping -y",
+    "git config": "git config --global user.email \"disdainful777@gmail.comn\" && git config --global user.name \"Sinless777\"",
+    "ssh keys" : "task remove-ssh && task add-ssh"
   },
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
@@ -119,8 +121,7 @@
         "signageos.signageos-vscode-sops",
         "GitHub.copilot",
         "BenjaminBenais.copilot-theme",
-        "donjayamanne.git-extension-pack",
-        "vsls-contrib.gitdoc"
+        "donjayamanne.git-extension-pack"
       ]
     }
   }
