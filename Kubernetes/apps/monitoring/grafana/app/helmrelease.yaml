@@ -73,29 +73,40 @@ spec:
             type: file
             options:
               path: /var/lib/grafana/dashboards
+          
           - name: flux-system
             orgId: 1
             folder: 'flux'
             type: file
             options:
               path: /var/lib/grafana/dashboards/flux-system
+          
           - name: prometheus
             orgId: 1
             folder: 'prometheus'
             type: file
             options:
               path: /var/lib/grafana/dashboards/prometheus
+          
           - name: loki
             orgId: 1
             folder: 'loki'
             type: file
             options:
               path: /var/lib/grafana/dashboards/loki
+          
+          - name: cillium
+            orgId: 1
+            folder: 'cillium'
+            type: file
+            options:
+              path: /var/lib/grafana/dashboards/cillium
     
     dashboardsConfigMaps:
       flux-system: flux-dashboards
       prometheus: prometheus-dashboards
       loki: loki-dashboards
+      cillium: cillium-dashboards
 
     datasources:
       datasources.yaml:

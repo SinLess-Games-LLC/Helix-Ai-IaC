@@ -40,3 +40,16 @@ configMapGenerator:
         grafana_folder: "Loki"
         app.kubernetes.io/part-of: loki
         app.kubernetes.io/component: monitoring
+
+  - name: cillium-dashboards
+    files:
+      - cilium/cilium-operator-dashboard.json
+      - cilium/cilium-dashboard.json
+      - cilium/hubble-dashboard.json
+    options:
+      disableNameSuffixHash: true
+      labels:
+        grafana_dashboard: "1"
+        grafana_folder: "Cillium"
+        app.kubernetes.io/part-of: cillium
+        app.kubernetes.io/component: monitoring
