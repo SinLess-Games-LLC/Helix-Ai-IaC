@@ -134,3 +134,10 @@ spec:
             access: proxy
             orgId: 1
             url: http://grafana-loki.monitoring.svc.cluster.local
+          
+          - name: Mimir 
+            uid: prom 
+            type: prometheus
+            url: http://grafana-mimir-nginx.monitoring.svc.cluster.local
+            isDefault: true
+            
