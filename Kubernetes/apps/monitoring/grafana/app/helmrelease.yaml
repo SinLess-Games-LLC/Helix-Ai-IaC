@@ -108,6 +108,6 @@ spec:
       prometheus: prometheus-dashboards
       cillium: cillium-dashboard
       hubble: hubble-dashboard
-      loki: loki-dashboard
+      loki: loki-dashboards
 
     
