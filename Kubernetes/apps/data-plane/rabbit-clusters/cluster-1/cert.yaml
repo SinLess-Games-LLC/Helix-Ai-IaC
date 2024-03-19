@@ -4,7 +4,9 @@ metadata:
   name: rabbitmq-tls
   namespace: data-plane
 spec:
-  secretName: tls-secret
+  secretName: rabbitmq-tls-secret
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-staging
+  dnsNames:
+    - cluster-1.rabbitmq.${SECRET_DOMAIN}
