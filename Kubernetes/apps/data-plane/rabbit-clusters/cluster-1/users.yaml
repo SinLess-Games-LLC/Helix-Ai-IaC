@@ -1,7 +1,7 @@
 apiVersion: rabbitmq.com/v1beta1
 kind: User
 metadata:
-  name: Sin-less-777-Rabbit
+  name: sin-less-777-rabbit
   namespace: data-plane
 spec:
   tags:
