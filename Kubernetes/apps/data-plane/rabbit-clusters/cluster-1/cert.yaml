@@ -1,0 +1,10 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: rabbitmq-tls
+  namespace: data-plane
+spec:
+  secretName: tls-secret
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-staging

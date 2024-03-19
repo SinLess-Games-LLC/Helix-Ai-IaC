@@ -7,7 +7,7 @@ spec:
   replicas: 3
 
   tls:
-    secretName: network/helixaibot-com-production-tls
+    secretName: rabbitmq-tls
 
   resources:
     requests:
