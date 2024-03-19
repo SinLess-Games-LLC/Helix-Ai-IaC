@@ -9,7 +9,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./Kubernetes/apps/data-plane/rabbitmq/app/clusers/cluster-1
+  path: ./Kubernetes/apps/data-plane/rabbitmq/app/clusters/cluster-1
   prune: true
   sourceRef:
     kind: GitRepository
