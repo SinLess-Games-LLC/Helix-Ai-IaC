@@ -2,6 +2,6 @@ apiVersion: rabbitmq.com/v1beta1
 kind: RabbitmqCluster
 metadata:
   name: helix-rabbit
-  namespace: rabbitmq-service
+  namespace: data-plane
 spec:
-  replicas: 1
+  replicas: 3
