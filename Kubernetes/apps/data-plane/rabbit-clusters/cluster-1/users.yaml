@@ -5,28 +5,11 @@ metadata:
   namespace: data-plane
 spec:
   tags:
-  - policymaker
-  - monitoring
-  - management
-  - administrator
+    - policymaker
+    - monitoring
+    - management
+    - administrator
   rabbitmqClusterReference:
     name: helix-rabbit
   importCredentialsSecret:
     name: helix-rabbit-connection-secret
-
----
-
-apiVersion: rabbitmq.com/v1beta1
-kind: Permission
-metadata:
-  name: Sin-less-777-Rabbit-permission
-  namespace: data-plane
-spec:
-  vhost: /
-  user: Sin-less-777-Rabbit
-  permissions:
-    write: ".*"
-    read: ".*"
-    configure: ".*"
-  rabbitmqClusterReference:
-    name: helix-rabbit

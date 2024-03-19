@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./cert.yaml
   - ./disruption-budget.yaml
+  - ./permissions.yaml
   - ./queues.yaml
   - ./rabbit-cluster.yaml
   - ./secret.sops.yaml
