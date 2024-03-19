@@ -1,0 +1,107 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: grafana-tempo
+  namespace: monitoring
+spec:
+  interval: 30m
+  chart:
+    spec:
+      version: "51.9.0"
+      chart: tempo-distributed
+      sourceRef:
+        kind: HelmRepository
+        name: grafana-charts
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    rbac: 
+      create: true
+    
+    ingester:
+      autoscaling:
+        enabled: true
+        maxReplicas: 5
+        minReplicas: 1
+        targetCPUUtilizationPercentage: 60
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+
+    distributor:
+      autoscaling:
+        enabled: true
+        maxReplicas: 5
+        minReplicas: 1
+        targetCPUUtilizationPercentage: 60
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+    
+    querier:
+      autoscaling:
+        enabled: true
+        maxReplicas: 5
+        minReplicas: 1
+        targetCPUUtilizationPercentage: 60
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+    
+    memcachedExporter:
+      enabled: true
+
+    prometheusRule:
+      enabled: true
+    
+    minio:
+      enabled: true
+      
+    gateway:
+      enabled: true
+      autoscaling:
+        enabled: true
+        maxReplicas: 5
+        minReplicas: 1
+        targetCPUUtilizationPercentage: 60
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      ingress:
+        enabled: true
+        ingressClassName: internal
+        hosts:
+          - host: tempo.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - secretName: helixaibot-com-production-tls
+            secretNamespace: network
+            hosts:
+              - tempo.${SECRET_DOMAIN}
