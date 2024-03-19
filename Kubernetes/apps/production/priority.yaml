@@ -1,7 +1,17 @@
 apiVersion: scheduling.k8s.io/v1
 kind: PriorityClass
 metadata:
-  name: system-app-critical
-value: 2000002000
+  name: app-critical
+value: 1000000
 globalDefault: false
 description: "This priority class should be used for system critical applications"
+
+--- 
+
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: app-non-critical
+value: 1000
+globalDefault: false
+description: "This priority class should be used for non-critical applications"
