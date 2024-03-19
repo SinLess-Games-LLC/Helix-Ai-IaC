@@ -5,4 +5,4 @@ resources:
   - ./namespace.yaml
   - ./configs/ks.yaml
   - ./prometheus/ks.yaml
-  # - ./grafana/ks.yaml
+  - ./grafana/ks.yaml
