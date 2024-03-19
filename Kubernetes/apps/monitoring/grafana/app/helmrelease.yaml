@@ -27,14 +27,15 @@ spec:
     autoscaling:
       enabled: true
       maxReplicas: 5
-      minReplicas: 2
-      targetCPUUtilizationPercentage: 80
+      minReplicas: 1
+      targetCPUUtilizationPercentage: 60
 
     serviceMonitor:
       enabled: true
 
     ingress:
       enabled: true
+      ingreessClassName: external
       hosts:
         - grafana.${SECRET_DOMAIN}
       tls:
@@ -52,8 +53,8 @@ spec:
     
     admin:
       existingSecret: grafana-admin-credentials
-      userKey: admin-user
-      passwordKey: admin-password
+      userKey: adminUser
+      passwordKey: adminPassword
 
     dashboardProviders:
       dashboardproviders.yaml:
@@ -83,6 +84,7 @@ spec:
             type: file
             options:
               path: /var/lib/grafana/dashboards/loki
+
     dashboardsConfigMaps:
       flux-system: flux-dashboards
       prometheus: prometheus-dashboards
