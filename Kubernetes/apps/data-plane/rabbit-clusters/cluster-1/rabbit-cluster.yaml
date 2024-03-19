@@ -26,7 +26,7 @@ spec:
     storageClassName: openebs-hostpath
     storage: 10Gi
 
-  verride:
+  override:
     statefulSet:
       spec:
         template:
