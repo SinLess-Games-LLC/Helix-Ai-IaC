@@ -36,7 +36,9 @@ spec:
 
       ingress:
         enabled: true
-        # ingreessClassName: external
+        annotaions:
+          kubernetes.io/ingress.class: external
+          kubernetes.io/tls-acme: "true"
         hosts:
           - grafana.${SECRET_DOMAIN}
         tls:
