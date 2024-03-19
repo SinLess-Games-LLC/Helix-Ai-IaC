@@ -8,3 +8,4 @@ resources:
   - ./prometheus/ks.yaml
   - ./grafana/ks.yaml
   - ./loki/ks.yaml
+  - ./mimir/ks.yaml
