@@ -84,18 +84,6 @@ spec:
             type: file
             options:
               path: /var/lib/grafana/dashboards/prometheus
-          - name: cillium
-            orgId: 1
-            folder: 'cillium'
-            type: file
-            options:
-              path: /var/lib/grafana/dashboards/cillium
-          - name: hubble
-            orgId: 1
-            folder: 'hubble'
-            type: file
-            options:
-              path: /var/lib/grafana/dashboards/hubble
           - name: loki
             orgId: 1
             folder: 'loki'
@@ -106,8 +94,6 @@ spec:
     dashboardsConfigMaps:
       flux-system: flux-dashboards
       prometheus: prometheus-dashboards
-      cillium: cillium-dashboard
-      hubble: hubble-dashboard
       loki: loki-dashboards
 
     
