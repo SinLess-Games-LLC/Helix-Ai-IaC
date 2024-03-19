@@ -74,9 +74,6 @@ spec:
 
     prometheusRule:
       enabled: true
-    
-    minio:
-      enabled: true
       
     gateway:
       enabled: true
