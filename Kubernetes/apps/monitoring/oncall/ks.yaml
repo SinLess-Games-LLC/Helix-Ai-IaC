@@ -7,7 +7,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./Kubernetes/apps/monitoring/on-call/app
+  path: ./Kubernetes/apps/monitoring/oncall/app
   prune: true
   sourceRef:
     kind: GitRepository
