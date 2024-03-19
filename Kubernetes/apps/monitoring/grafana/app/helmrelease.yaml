@@ -95,9 +95,9 @@ spec:
             options:
               path: /var/lib/grafana/dashboards/loki
           
-          - name: cillium
+          - name: cilium
             orgId: 1
-            folder: 'cillium'
+            folder: 'cilium'
             type: file
             options:
               path: /var/lib/grafana/dashboards/cillium
@@ -106,7 +106,7 @@ spec:
       flux-system: flux-dashboards
       prometheus: prometheus-dashboards
       loki: loki-dashboards
-      cillium: cillium-dashboards
+      cilium: cillium-dashboards
 
     datasources:
       datasources.yaml:
@@ -136,7 +136,7 @@ spec:
             access: proxy
             orgId: 1
             url: http://prometheus-alertmanager.monitoring.svc.cluster.local
-            
+
           - name: Loki
             type: loki
             access: proxy
