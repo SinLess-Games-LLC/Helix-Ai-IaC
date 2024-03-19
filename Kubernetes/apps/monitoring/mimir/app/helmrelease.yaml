@@ -2,14 +2,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: grafana-loki
+  name: grafana-mimir
   namespace: monitoring
 spec:
   interval: 30m
   chart:
     spec:
-      version: "2.10.2"
-      chart: loki-stack
+      version: "5.3.0-weekly.281"
+      chart: mimir-distributed
       sourceRef:
         kind: HelmRepository
         name: grafana-charts
