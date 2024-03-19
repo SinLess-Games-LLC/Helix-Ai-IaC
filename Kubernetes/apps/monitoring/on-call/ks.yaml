@@ -4,7 +4,6 @@ metadata:
   name: &app grafana-onCall
   namespace: flux-system
 spec:
-  # targetNamespace: monitoring
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
