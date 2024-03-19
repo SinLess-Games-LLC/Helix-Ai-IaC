@@ -67,13 +67,6 @@ spec:
       dashboardproviders.yaml:
         apiVersion: 1
         providers:
-          - name: 'default'
-            orgId: 1
-            folder: 'default'
-            type: file
-            options:
-              path: /var/lib/grafana/dashboards
-          
           - name: flux-system
             orgId: 1
             folder: 'flux'
@@ -100,7 +93,7 @@ spec:
             folder: 'cilium'
             type: file
             options:
-              path: /var/lib/grafana/dashboards/cillium
+              path: /var/lib/grafana/dashboards/cilium
     
     dashboardsConfigMaps:
       flux-system: flux-dashboards
@@ -117,7 +110,6 @@ spec:
             access: proxy
             orgId: 1
             url: http://prometheus-server.monitoring.svc.cluster.local
-            isDefault: true
 
           - name: Kube State Metrics
             type: prometheus

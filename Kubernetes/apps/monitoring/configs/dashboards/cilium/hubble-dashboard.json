@@ -43,7 +43,7 @@
     ]
   },
   "editable": true,
-  "gnetId": 15515,
+  "gnetId": 16613,
   "graphTooltip": 0,
   "id": null,
   "links": [],
@@ -1642,12 +1642,14 @@
         "overrides": []
       },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 12,
         "x": 0,
         "y": 37
       },
+      "hiddenSeries": false,
       "id": 36,
       "legend": {
         "avg": false,
@@ -1662,6 +1664,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 2,
       "points": false,
@@ -1733,12 +1738,14 @@
         "overrides": []
       },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 12,
         "x": 12,
         "y": 37
       },
+      "hiddenSeries": false,
       "id": 65,
       "legend": {
         "avg": false,
@@ -1753,6 +1760,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 2,
       "points": false,
@@ -3496,8 +3506,8 @@
     ]
   },
   "timezone": "",
-  "title": "Cilium v1.11 Hubble Metrics",
+  "title": "Cilium v1.12 Hubble Metrics",
   "uid": "5HftnJAWz",
   "version": 1,
-  "description": "Dashboard for the Cilium v1.11 (https://cilium.io/) Hubble metrics"
+  "description": "Dashboard for the Cilium v1.12 (https://cilium.io/) Hubble metrics"
 }

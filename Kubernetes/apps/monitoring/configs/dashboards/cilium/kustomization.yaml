@@ -4,7 +4,6 @@ namespace: monitoring
 configMapGenerator:
   - name: cilium-monitoring-dashboards
     files:
-      - cilium-dashboard.json
       - hubble-dashboard.json
     options:
       disableNameSuffixHash: true
