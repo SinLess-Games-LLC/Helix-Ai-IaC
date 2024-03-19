@@ -9,4 +9,5 @@ spec:
     kind: ClusterIssuer
     name: letsencrypt-staging
   dnsNames:
-    - cluster-1.rabbitmq.${SECRET_DOMAIN}
+    - "helix-rabbit.${SECRET_DOMAIN}"
+    - "*.helix-rabbit.data-plane.svc.cluster.local"
