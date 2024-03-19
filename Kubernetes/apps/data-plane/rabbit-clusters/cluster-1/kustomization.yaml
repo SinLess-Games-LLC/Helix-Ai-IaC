@@ -6,3 +6,4 @@ resources:
   - ./queues.yaml
   - ./secret.sops.yaml
   - ./disruption-budget.yaml
+  - ./cert.yaml
