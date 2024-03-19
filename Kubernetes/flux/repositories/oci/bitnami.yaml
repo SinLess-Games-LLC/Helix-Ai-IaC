@@ -6,4 +6,4 @@ metadata:
 spec:
   type: oci
   interval: 5m
-  url: oci://registry-1.docker.io/bitnamicharts/rabbitmq-cluster-operator
+  url: oci://registry-1.docker.io/bitnamicharts
