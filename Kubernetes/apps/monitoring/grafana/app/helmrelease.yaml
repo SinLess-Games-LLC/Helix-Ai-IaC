@@ -119,3 +119,8 @@ spec:
             access: proxy
             orgId: 1
             url: http://alertmanager.monitoring.svc.cluster.local
+          - name: Loki
+            type: loki
+            access: proxy
+            orgId: 1
+            url: http://loki.monitoring.svc.cluster.local
