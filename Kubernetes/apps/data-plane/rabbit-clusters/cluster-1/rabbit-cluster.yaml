@@ -8,6 +8,7 @@ spec:
 
   tls:
     secretName: helixaibot-com-production-tls
+    secretNamespace: network
 
   resources:
     requests:
