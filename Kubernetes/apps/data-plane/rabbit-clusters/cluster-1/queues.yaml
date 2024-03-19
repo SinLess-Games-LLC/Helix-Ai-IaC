@@ -10,5 +10,3 @@ spec:
   rabbitmqClusterReference:
     name: helix-rabbit
     namespace: data-plane
-    connectionSecret:
-      name: helix-rabbit-connection-secret
