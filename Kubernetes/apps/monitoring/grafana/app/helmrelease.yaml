@@ -2,14 +2,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: grafana
+  name: grafana-loki
   namespace: monitoring
 spec:
   interval: 30m
   chart:
     spec:
-      version: "1.0.1"
-      chart: lgtm-distributed
+      version: "7.3.7"
+      chart: grafana
       sourceRef:
         kind: HelmRepository
         name: grafana-charts
@@ -24,116 +24,80 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    grafana: 
-      autoscaling:
-        enabled: true
-        maxReplicas: 5
-        minReplicas: 1
-        targetCPUUtilizationPercentage: 60
+    autoscaling:
+      enabled: true
+      maxReplicas: 5
+      minReplicas: 2
+      targetCPUUtilizationPercentage: 80
 
-      serviceMonitor:
-        enabled: true
+    serviceMonitor:
+      enabled: true
 
-      ingress:
-        enabled: true
-        annotaions:
-          kubernetes.io/ingress.class: external
-          kubernetes.io/tls-acme: "true"
-        hosts:
-          - grafana.${SECRET_DOMAIN}
-        tls:
-          - secretName: helixaibot-com-production-tls
-            hosts:
-              - grafana.${SECRET_DOMAIN}
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: external
+      hosts:
+        - grafana.${SECRET_DOMAIN}
+      tls:
+        - secretName: helixaibot-com-production-tls
+          hosts:
+            - grafana.${SECRET_DOMAIN}
 
-      resources:
-        limits:
-          cpu: 100m
-          memory: 128Mi
-        requests:
-          cpu: 100m
-          memory: 128Mi
-      
-      admin:
-        existingSecret: grafana-admin-credentials
-        userKey: adminUser
-        passwordKey: adminPassword
-
-      persistence:
-        enabled: true
-        storageClassName: openebs-hostpath
-
-      dashboardProviders:
-        dashboardproviders.yaml:
-          apiVersion: 1
-          providers:
-            - name: 'default'
-              orgId: 1
-              folder: ''
-              type: file
-              options:
-                path: /var/lib/grafana/dashboards
-            - name: flux-system
-              orgId: 1
-              folder: ''
-              type: file
-              options:
-                path: /var/lib/grafana/dashboards/flux-system
-            - name: prometheus 
-              orgId: 1
-              folder: ''
-              type: file
-              options:
-                path: /var/lib/grafana/dashboards/prometheus
-            - name: loki 
-              orgId: 1
-              folder: ''
-              type: file
-              options:
-                path: /var/lib/grafana/dashboards/loki
-
-      dashboardsConfigMaps:
-        flux-system: flux-dashboards
-        prometheus: prometheus-dashboards
-        loki: loki-dashboards
-
-      datasources:
-        datasources.yaml:
-          apiVersion: 1
-          datasources:
-            - name: Prometheus
-              type: prometheus
-              access: proxy
-              orgId: 1
-              url: http://prometheus-server.monitoring.svc.cluster.local
-            - name: Kube State Metrics
-              type: prometheus
-              access: proxy
-              orgId: 1
-              url: http://prometheus-kube-state-metrics.monitoring.svc.cluster.local
-            - name: Node Exporter
-              type: prometheus
-              access: proxy
-              orgId: 1
-              url: http://prometheus-node-exporter.monitoring.svc.cluster.local
-            - name: Alertmanager
-              type: prometheus
-              access: proxy
-              orgId: 1
-              url: http://prometheus-alertmanager.monitoring.svc.cluster.local
-            
-
-    loki:
-      # -- Deploy Loki if enabled. See [upstream readme](https://github.com/grafana/helm-charts/tree/main/charts/loki-distributed#values) for full values reference.
-      enabled: false
+    resources:
+      limits:
+        cpu: 100m
+        memory: 128Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
     
-    mimir:
-      # -- Deploy Mimir if enabled. See [upstream values.yaml](https://github.com/grafana/mimir/blob/main/operations/helm/charts/mimir-distributed/values.yaml) for full values reference.
-      enabled: false
-      
-    tempo:
-      # -- Deploy Tempo if enabled.  See [upstream readme](https://github.com/grafana/helm-charts/blob/main/charts/tempo-distributed/README.md#values) for full values reference.
-      enabled: false
-      ingester:
-        replicas: 1
-    
+    admin:
+      existingSecret: grafana-admin-credentials
+      userKey: admin-user
+      passwordKey: admin-password
+
+    dashboardProviders:
+      dashboardproviders.yaml:
+        apiVersion: 1
+        providers:
+          - name: 'default'
+            orgId: 1
+            folder: ''
+            type: file
+            options:
+              path: /var/lib/grafana/dashboards
+          - name: flux-system
+            orgId: 1
+            folder: ''
+            type: file
+            options:
+              path: /var/lib/grafana/dashboards/flux-system
+          - name: prometheus 
+          
+
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+          - name: Prometheus
+            type: prometheus
+            access: proxy
+            orgId: 1
+            url: http://prometheus-server.monitoring.svc.cluster.local
+            isDefault: true
+          - name: Kube State Metrics
+            type: prometheus
+            access: proxy
+            orgId: 1
+            url: http://kube-state-metrics.monitoring.svc.cluster.local
+          - name: Node Exporter
+            type: prometheus
+            access: proxy
+            orgId: 1
+            url: http://node-exporter.monitoring.svc.cluster.local
+          - name: Alertmanager
+            type: prometheus
+            access: proxy
+            orgId: 1
+            url: http://alertmanager.monitoring.svc.cluster.local
