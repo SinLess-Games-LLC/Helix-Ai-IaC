@@ -40,6 +40,7 @@ spec:
         - grafana.${SECRET_DOMAIN}
       tls:
         - secretName: helixaibot-com-production-tls
+          secretNamespace: network
           hosts:
             - grafana.${SECRET_DOMAIN}
 
