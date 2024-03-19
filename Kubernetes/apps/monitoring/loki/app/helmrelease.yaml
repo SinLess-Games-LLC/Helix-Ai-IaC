@@ -26,7 +26,6 @@ spec:
   values:
     loki:
       enabled: true
-      url: 
 
     promtail:
       enabled: true
