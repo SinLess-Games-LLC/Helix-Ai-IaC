@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./configs/ks.yaml
+  - ./configs/dashboards/ks.yaml
   - ./prometheus/ks.yaml
   - ./grafana/ks.yaml
   - ./loki/ks.yaml

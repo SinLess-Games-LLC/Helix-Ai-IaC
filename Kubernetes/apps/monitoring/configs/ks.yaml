@@ -1,22 +1,3 @@
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: &app dashboards
-  namespace: flux-system
-spec:
-  # targetNamespace: monitoring
-  commonMetadata:
-    labels:
-      app.kubernetes.io/name: *app
-  path: ./Kubernetes/apps/monitoring/configs/dashboards
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: helix-ai-k8s-cluster
-  wait: false
-  interval: 30m
-  retryInterval: 1m
-  timeout: 5m
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization

@@ -1,0 +1,95 @@
+---
+#
+# Cilium Dashboard
+#
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app dashboard-cilium
+  namespace: flux-system
+spec:
+  # targetNamespace: monitoring
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  path: ./Kubernetes/apps/monitoring/configs/dashboards/cilium
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: helix-ai-k8s-cluster
+  wait: false
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
+
+---
+#
+# Loki Dashboard
+#
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app dashboard-loki
+  namespace: flux-system
+spec:
+  # targetNamespace: monitoring
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  path: ./Kubernetes/apps/monitoring/configs/dashboards/loki
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: helix-ai-k8s-cluster
+  wait: false
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
+
+---
+#
+# Flux Dashboard
+#
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app dashboard-flux
+  namespace: flux-system
+spec:
+  # targetNamespace: monitoring
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  path: ./Kubernetes/apps/monitoring/configs/dashboards/flux
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: helix-ai-k8s-cluster
+  wait: false
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
+
+---
+#
+# Prometheus Dashboard
+# 
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app dashboard-prometheus
+  namespace: flux-system
+spec:
+  # targetNamespace: monitoring
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  path: ./Kubernetes/apps/monitoring/configs/dashboards/prometheus
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: helix-ai-k8s-cluster
+  wait: false
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
