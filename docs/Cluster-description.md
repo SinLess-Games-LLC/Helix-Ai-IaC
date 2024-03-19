@@ -28,7 +28,7 @@
 ## Overview
 This document provides a comprehensive overview of the architecture, components, and configuration of the [Kubernetes](https://kubernetes.io/docs/home/) cluster deployed for the SaaS application, Helix Ai, owned and developed by [SinLess Games LLC](https://sinlessgamesllc.com). The cluster is designed to be highly available, scalable, and secure, supporting the deployment and management of the Helix Ai application.
 
-There is **14** out of **39** services implemented.
+There is **16** out of **39** services implemented.
 
 **35.897%** of the services are implemented.
 
@@ -142,11 +142,11 @@ The monitoring namespace contains monitoring and observability tools that provid
 
 - 24. ✅️ **[Prometheus](https://prometheus.io/docs/introduction/overview/):** Prometheus collects metrics from various components in the cluster for monitoring purposes. It stores these metrics in a time-series database and provides a powerful query language for data analysis and alerting.
 
-- 25. **[Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources):** Grafana visualizes metrics and provides dashboards for monitoring purposes. It allows users to create custom dashboards to visualize the data collected by Prometheus and other data sources. Additionally, Grafana supports plugins that extend its functionality, such as Grafana Mimir, Loki, OnCall, Tempo, Application Observability, Pyroscope, and Agent.
+- 25. ✅️ **[Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources):** Grafana visualizes metrics and provides dashboards for monitoring purposes. It allows users to create custom dashboards to visualize the data collected by Prometheus and other data sources. Additionally, Grafana supports plugins that extend its functionality, such as Grafana Mimir, Loki, OnCall, Tempo, Application Observability, Pyroscope, and Agent.
     
     - 26. **[Mimir](https://grafana.com/docs/mimir/latest/):** Grafana Mimir is an open-source project that provides scalable long-term storage for Prometheus metrics. It allows users to store and query metrics over a longer period, enabling historical analysis and trend analysis.
     
-    - 27. **[Loki](https://grafana.com/docs/loki/latest/):** Grafana Loki is a set of components that provide a fully-featured logging stack. It is designed to be highly scalable and efficient, allowing users to store and query logs from multiple sources.
+    - 27. ✅️ **[Loki](https://grafana.com/docs/loki/latest/):** Grafana Loki is a set of components that provide a fully-featured logging stack. It is designed to be highly scalable and efficient, allowing users to store and query logs from multiple sources.
     
     - 28. **[OnCall](https://grafana.com/docs/oncall/latest/):** Grafana OnCall is an incident response and on-call management system that helps teams manage on-call rotations and incidents. It integrates with Grafana Cloud for seamless incident management and communication.
     
