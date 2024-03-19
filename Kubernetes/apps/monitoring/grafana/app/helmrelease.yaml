@@ -148,15 +148,15 @@ spec:
 
     loki:
       # -- Deploy Loki if enabled. See [upstream readme](https://github.com/grafana/helm-charts/tree/main/charts/loki-distributed#values) for full values reference.
-      enabled: true
+      enabled: false
     
     mimir:
       # -- Deploy Mimir if enabled. See [upstream values.yaml](https://github.com/grafana/mimir/blob/main/operations/helm/charts/mimir-distributed/values.yaml) for full values reference.
-      enabled: true
+      enabled: false
       
     tempo:
       # -- Deploy Tempo if enabled.  See [upstream readme](https://github.com/grafana/helm-charts/blob/main/charts/tempo-distributed/README.md#values) for full values reference.
-      enabled: true
+      enabled: false
       ingester:
         replicas: 1
     
