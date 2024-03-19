@@ -30,10 +30,10 @@
 ## Overview
 This document provides a comprehensive overview of the architecture, components, and configuration of the [Kubernetes](https://kubernetes.io/docs/home/) cluster deployed for the SaaS application, Helix Ai, owned and developed by [SinLess Games LLC](https://sinlessgamesllc.com). The cluster is designed to be highly available, scalable, and secure, supporting the deployment and management of the Helix Ai application.
 
-There is **16** out of **39** services implemented.
+There is **19** out of **39** services implemented.
 there is **11** out of **39** services fully configured.
 
-**35.897%** of the services are implemented.
+**48.718%** of the services are implemented.
 **28.205%** of the services are fully configured.
 
 ## Cluster Management
@@ -148,13 +148,13 @@ The monitoring namespace contains monitoring and observability tools that provid
 
 - 25. ✅️ **[Grafana](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/?pg=oss-graf&plcmt=resources):** Grafana visualizes metrics and provides dashboards for monitoring purposes. It allows users to create custom dashboards to visualize the data collected by Prometheus and other data sources. Additionally, Grafana supports plugins that extend its functionality, such as Grafana Mimir, Loki, OnCall, Tempo, Application Observability, Pyroscope, and Agent.
     
-    - 26. **[Mimir](https://grafana.com/docs/mimir/latest/):** Grafana Mimir is an open-source project that provides scalable long-term storage for Prometheus metrics. It allows users to store and query metrics over a longer period, enabling historical analysis and trend analysis.
+    - 26. ✅️ **[Mimir](https://grafana.com/docs/mimir/latest/):** Grafana Mimir is an open-source project that provides scalable long-term storage for Prometheus metrics. It allows users to store and query metrics over a longer period, enabling historical analysis and trend analysis.
     
-    - 27. **[Loki](https://grafana.com/docs/loki/latest/):** Grafana Loki is a set of components that provide a fully-featured logging stack. It is designed to be highly scalable and efficient, allowing users to store and query logs from multiple sources.
+    - 27. ✅️ **[Loki](https://grafana.com/docs/loki/latest/):** Grafana Loki is a set of components that provide a fully-featured logging stack. It is designed to be highly scalable and efficient, allowing users to store and query logs from multiple sources.
     
     - 28. **[OnCall](https://grafana.com/docs/oncall/latest/):** Grafana OnCall is an incident response and on-call management system that helps teams manage on-call rotations and incidents. It integrates with Grafana Cloud for seamless incident management and communication.
     
-    - 29. **[Tempo](https://grafana.com/docs/tempo/latest/):** Grafana Tempo is an open-source, high-volume distributed tracing backend. It is designed to be cost-efficient and easy to use, providing observability into distributed systems.
+    - 29. ✅️ **[Tempo](https://grafana.com/docs/tempo/latest/):** Grafana Tempo is an open-source, high-volume distributed tracing backend. It is designed to be cost-efficient and easy to use, providing observability into distributed systems.
     
     - 30. **[Application Observability](https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/):** Grafana Application Observability is an observability solution that helps minimize the mean time to repair (MTTR) for modern application problems. It is based on OpenTelemetry semantic conventions and the Prometheus data model.
     
