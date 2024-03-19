@@ -12,11 +12,11 @@ spec:
 
   resources:
     requests:
-      cpu: 4
-      memory: 10Gi
+      cpu: 100m
+      memory: 256Mi
     limits:
-      cpu: 4
-      memory: 10Gi
+      cpu: 500m
+      memory: 512Mi
 
   rabbitmq:
     additionalPlugins:
