@@ -2,13 +2,13 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: loki
+  name: grafana-loki
   namespace: monitoring
 spec:
   interval: 30m
   chart:
     spec:
-      version: "0.78.3"
+      version: "2.10.2"
       chart: loki-stack
       sourceRef:
         kind: HelmRepository
@@ -24,4 +24,10 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    loki:
+      enabled: true
+      url: 
+
+    promtail:
+      enabled: true
     
