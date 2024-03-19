@@ -24,6 +24,11 @@ spec:
       - rabbitmq_federation_management
       - rabbitmq_prometheus
       - rabbitmq_management
+      - rabbitmq_mqtt
+      - rabbitmq_stomp
+      - rabbitmq_stream
+      - rabbitmq_web_mqtt
+      - rabbitmq_web_stomp
     additionalConfig:
       management.oauth_enabled: true
       management.oauth_client_id: Sin-less-777-Rabbit
