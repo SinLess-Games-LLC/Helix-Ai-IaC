@@ -1,0 +1,48 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: grafana-onCall
+  namespace: monitoring
+spec:
+  interval: 30m
+  chart:
+    spec:
+      version: 1.3.106
+      chart: oncall
+      sourceRef:
+        kind: HelmRepository
+        name: grafana-charts
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    baseurl: oncall.${SECRET_DOMAIN}
+    base_url_protocol: https
+
+    ingress:
+      enabled: true
+      className: internal 
+      tls: 
+        - hosts:
+          - oncall.${SECRET_DOMAIN}
+          secretName: helixaibot-com-production-tls
+
+    ingress-nginx:
+      enabled: false
+
+    cert-manager:
+      enabled: false
+
+    grafana: 
+      enabled: false
+
+    externalGrafana:
+      url: http://grafana.monitoring.svc.cluster.local
