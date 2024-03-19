@@ -68,41 +68,46 @@ spec:
         providers:
           - name: 'default'
             orgId: 1
-            folder: ''
+            folder: 'default'
             type: file
             options:
               path: /var/lib/grafana/dashboards
           - name: flux-system
             orgId: 1
-            folder: ''
+            folder: 'flux'
             type: file
             options:
               path: /var/lib/grafana/dashboards/flux-system
-          - name: prometheus 
-          
+          - name: prometheus
+            orgId: 1
+            folder: 'prometheus'
+            type: file
+            options:
+              path: /var/lib/grafana/dashboards/prometheus
+          - name: cillium
+            orgId: 1
+            folder: 'cillium'
+            type: file
+            options:
+              path: /var/lib/grafana/dashboards/cillium
+          - name: hubble
+            orgId: 1
+            folder: 'hubble'
+            type: file
+            options:
+              path: /var/lib/grafana/dashboards/hubble
+          - name: loki
+            orgId: 1
+            folder: 'loki'
+            type: file
+            options:
+              path: /var/lib/grafana/dashboards/loki
+    
+    dashboardsConfigMaps:
+      flux-system: flux-dashboards
+      prometheus: prometheus-dashboards
+      cillium: cillium-dashboard
+      hubble: hubble-dashboard
+      loki: loki-dashboard
 
-    datasources:
-      datasources.yaml:
-        apiVersion: 1
-        datasources:
-          - name: Prometheus
-            type: prometheus
-            access: proxy
-            orgId: 1
-            url: http://prometheus-server.monitoring.svc.cluster.local
-            isDefault: true
-          - name: Kube State Metrics
-            type: prometheus
-            access: proxy
-            orgId: 1
-            url: http://prometheus-kube-state-metrics.monitoring.svc.cluster.local
-          - name: Node Exporter
-            type: prometheus
-            access: proxy
-            orgId: 1
-            url: http://prometheus-node-exporter.monitoring.svc.cluster.local
-          - name: Alertmanager
-            type: prometheus
-            access: proxy
-            orgId: 1
-            url: http://prometheus-alertmanager.monitoring.svc.cluster.local
+    
