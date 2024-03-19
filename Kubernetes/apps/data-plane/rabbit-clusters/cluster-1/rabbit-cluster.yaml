@@ -29,12 +29,7 @@ spec:
       - rabbitmq_stream
       - rabbitmq_web_mqtt
       - rabbitmq_web_stomp
-    additionalConfig:
-      management.oauth_enabled: true
-      management.oauth_client_id: Sin-less-777-Rabbit
-      management.oauth_client_secret: rabbit_user_client
-      management.oauth_provider_url: https://rabbit-admin${SECRET_DOMAIN}:8443/uaa
-      management.oauth_scopes: openid profile rabbitmq.*
+    
     
   persistence:
     storageClassName: openebs-hostpath
