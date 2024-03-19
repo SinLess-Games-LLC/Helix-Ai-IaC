@@ -139,4 +139,18 @@ spec:
           - name: Mimir 
             uid: prom 
             type: prometheus
-            url: http://grafana-mimir-nginx.monitoring.svc.cluster.local            
+            url: http://grafana-mimir-nginx.monitoring.svc.cluster.local
+
+          - name: Tempo
+            type: tempo
+            orgId: 1
+            url: http://grafana-tempo-query-frontend.monitoring.svc.cluster.local
+            jsonData:
+              tracesToLogsV2:
+                datasourceUid: loki
+              lokiSearch:
+                datasourceUid: loki
+              tracesToMetrics:
+                datasourceUid: prom
+              serviceMap:
+                datasourceUid: prom
