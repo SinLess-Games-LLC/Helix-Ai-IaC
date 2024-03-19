@@ -33,15 +33,3 @@ spec:
           spec:
             containers: []
             priorityClassName: app-critical
-
----
-
-apiVersion: policy/v1
-kind: PodDisruptionBudget
-metadata:
-  name: helix-rabbit-rabbitmq
-spec:
-  maxUnavailable: 1
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: helix-rabbit
