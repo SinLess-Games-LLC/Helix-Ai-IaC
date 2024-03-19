@@ -26,24 +26,6 @@ spec:
   values:
     rbac:
       create: true
-
-    distributor:
-      kedaAutoscaling:
-        enabled: true
-        minReplicaCount: 1
-        maxReplicaCount: 10
-    
-    querier:
-      kedaAutoscaling:
-        enabled: true
-        minReplicaCount: 1
-        maxReplicaCount: 10
-    
-    query_frontend:
-      kedaAutoscaling:
-        enabled: true
-        minReplicaCount: 1
-        maxReplicaCount: 10
     
     ingress:
       enabled: true
