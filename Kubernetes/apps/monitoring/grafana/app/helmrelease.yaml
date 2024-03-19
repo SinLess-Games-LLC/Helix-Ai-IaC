@@ -57,6 +57,13 @@ spec:
       userKey: admin-user
       passwordKey: admin-password
 
+    persistence:
+      enabled: true
+      size: 10Gi
+      accessModes:
+        - ReadWriteOnce
+      storageClassName: openebs-hostpath
+
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
