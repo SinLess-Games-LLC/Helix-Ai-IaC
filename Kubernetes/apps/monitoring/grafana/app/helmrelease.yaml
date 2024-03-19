@@ -122,3 +122,8 @@ spec:
             access: proxy
             orgId: 1
             url: http://prometheus-alertmanager.monitoring.svc.cluster.local
+          - name: Loki
+            type: loki
+            access: proxy
+            orgId: 1
+            url: http://loki-gateway.monitoring.svc.cluster.local

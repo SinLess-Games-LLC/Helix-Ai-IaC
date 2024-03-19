@@ -1,0 +1,128 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: loki
+  namespace: monitoring
+spec:
+  interval: 30m
+  chart:
+    spec:
+      version: "0.78.3"
+      chart: loki-distributed
+      sourceRef:
+        kind: HelmRepository
+        name: grafana-charts
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    serviceMonitor:
+      enabled: true
+    
+    prometheusRule:
+      enabled: true
+
+    ingester:
+      autoscaling:
+        enabled: true
+        maxReplicas: 5
+        minReplicas: 1
+        targetCPUUtilizationPercentage: 60
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+    
+    distributor:
+      autoscaling:
+        enabled: true
+        maxReplicas: 5
+        minReplicas: 1
+        targetCPUUtilizationPercentage: 60
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+
+    querier:
+      autoscaling:
+        enabled: true
+        maxReplicas: 5
+        minReplicas: 1
+        targetCPUUtilizationPercentage: 60
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+    
+    query-frontend:
+      autoscaling:
+        enabled: true
+        maxReplicas: 5
+        minReplicas: 1
+        targetCPUUtilizationPercentage: 60
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+    
+    tableManager:
+      enabled: true
+
+    ingress:
+      enabled: true
+      ingressClassName: internal
+      hosts:
+        - loki.${SECRET_DOMAIN}
+      tls:
+        - secretName: helixaibot-com-staging-tls
+          hosts:
+            - loki.${SECRET_DOMAIN}
+    
+    gateway:
+      enabled: true
+      autoscaling:
+        enabled: true
+        maxReplicas: 5
+        minReplicas: 1
+        targetCPUUtilizationPercentage: 60
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      ingress: 
+        enabled: true
+        ingressClassName: internal
+        hosts:
+          - host: loki-gateway.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - secretName: helixaibot-com-staging-tls
+            hosts:
+              - loki-gateway.${SECRET_DOMAIN}
+      
