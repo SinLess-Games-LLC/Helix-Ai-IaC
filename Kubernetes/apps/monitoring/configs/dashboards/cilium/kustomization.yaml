@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: monitoring
 resources: []
 configMapGenerator:
-  - name: cilium-dashboards
+  - name: cilium-monitoring-dashboards
     files:
       - cilium-operator-dashboard.json
       - cilium-dashboard.json

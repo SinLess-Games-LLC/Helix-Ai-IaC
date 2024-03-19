@@ -12,6 +12,5 @@ configMapGenerator:
       disableNameSuffixHash: true
       labels:
         grafana_dashboard: "1"
-        grafana_folder: "Flux"
         app.kubernetes.io/part-of: flux
         app.kubernetes.io/component: monitoring
