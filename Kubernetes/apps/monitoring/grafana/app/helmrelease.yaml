@@ -27,16 +27,14 @@ spec:
     autoscaling:
       enabled: true
       maxReplicas: 5
-      minReplicas: 2
-      targetCPUUtilizationPercentage: 80
+      minReplicas: 1
+      targetCPUUtilizationPercentage: 60
 
     serviceMonitor:
       enabled: true
 
     ingress:
       enabled: true
-      annotations:
-        kubernetes.io/ingress.class: external
       hosts:
         - grafana.${SECRET_DOMAIN}
       tls:
