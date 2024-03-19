@@ -12,4 +12,3 @@ spec:
     namespace: data-plane
     connectionSecret:
       name: helix-rabbit-connection-secret
-      namespace: data-plane
