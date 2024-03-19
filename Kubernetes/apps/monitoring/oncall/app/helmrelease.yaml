@@ -36,7 +36,7 @@ spec:
           secretName: helixaibot-com-production-tls
 
     ingress-nginx:
-      enabled: false
+      enabled: true
 
     cert-manager:
       enabled: false
