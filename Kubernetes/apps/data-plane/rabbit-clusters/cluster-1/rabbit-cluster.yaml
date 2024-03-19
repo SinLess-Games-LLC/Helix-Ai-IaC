@@ -32,7 +32,7 @@ spec:
         template:
           spec:
             containers: []
-            priorityClassName: system-app-critical
+            priorityClassName: app-critical
 
 ---
 
