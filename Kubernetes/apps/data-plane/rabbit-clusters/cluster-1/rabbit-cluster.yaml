@@ -5,6 +5,7 @@ metadata:
   namespace: data-plane
 spec:
   replicas: 3
+  terminationGracePeriodSeconds: 60
 
   tls:
     secretName: rabbitmq-tls-secret
