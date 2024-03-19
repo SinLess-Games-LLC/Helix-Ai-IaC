@@ -110,6 +110,7 @@ spec:
             type: prometheus
             access: proxy
             orgId: 1
+            isDefault: true
             url: http://prometheus-server.monitoring.svc.cluster.local
 
           - name: Kube State Metrics
