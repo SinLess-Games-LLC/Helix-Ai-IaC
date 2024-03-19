@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./rabbit-cluster.yaml
   - ./queues.yaml
+  - ./secret.sops.yaml

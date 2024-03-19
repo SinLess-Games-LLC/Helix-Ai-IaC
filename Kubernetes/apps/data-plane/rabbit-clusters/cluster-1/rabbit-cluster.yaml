@@ -5,3 +5,43 @@ metadata:
   namespace: data-plane
 spec:
   replicas: 3
+
+  tls:
+    secretName: helixaibot-com-production-tls
+
+  resources:
+    requests:
+      cpu: 4
+      memory: 10Gi
+    limits:
+      cpu: 4
+      memory: 10Gi
+
+  rabbitmq:
+    additionalPlugins:
+      - rabbitmq_federation
+      - rabbitmq_federation_management
+    
+  persistence:
+    storageClassName: openebs-hostpath
+    storage: 10Gi
+
+  verride:
+    statefulSet:
+      spec:
+        template:
+          spec:
+            containers: []
+            priorityClassName: system-app-critical
+
+---
+
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: helix-rabbit-rabbitmq
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: helix-rabbit

@@ -5,6 +5,11 @@ metadata:
   namespace: production
 spec:
   name: default-queue # name of the queue
+  autoDelete: false
+  durable: true
   rabbitmqClusterReference:
     name: helix-rabbit
     namespace: data-plane
+    connectionSecret:
+      name: helix-rabbit-connection-secret
+      namespace: data-plane
