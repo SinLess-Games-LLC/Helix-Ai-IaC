@@ -5,9 +5,9 @@ resources: []
 configMapGenerator:
   - name: cilium-dashboards
     files:
-      - cilium/cilium-operator-dashboard.json
-      - cilium/cilium-dashboard.json
-      - cilium/hubble-dashboard.json
+      - cilium-operator-dashboard.json
+      - cilium-dashboard.json
+      - hubble-dashboard.json
     options:
       disableNameSuffixHash: true
       labels:

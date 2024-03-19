@@ -5,9 +5,9 @@ resources: []
 configMapGenerator:
   - name: flux-dashboards
     files:
-      - flux/control-plane.json
-      - flux/cluster.json
-      - flux/logs.json
+      - control-plane.json
+      - cluster.json
+      - logs.json
     options:
       disableNameSuffixHash: true
       labels:

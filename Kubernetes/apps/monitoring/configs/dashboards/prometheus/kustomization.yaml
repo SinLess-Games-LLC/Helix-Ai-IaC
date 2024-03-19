@@ -5,9 +5,9 @@ resources: []
 configMapGenerator:
   - name: prometheus-dashboards
     files:
-      - prometheus/node-exporter-full.json
-      - prometheus/core-dns.json
-      - prometheus/prometheus-2.0-overview.json
+      - node-exporter-full.json
+      - core-dns.json
+      - prometheus-2.0-overview.json
     options:
       disableNameSuffixHash: true
       labels:
