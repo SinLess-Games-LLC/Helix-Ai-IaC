@@ -36,12 +36,10 @@ spec:
     ingress:
       enabled: true
       annotations:
-        k8s.io/ingress.class: internal
+        k8s.io/ingress.class: external
+      ingressClassName: external
       hosts:
-        - host: grafana.${SECRET_DOMAIN}
-          paths:
-            - path: /
-              pathType: Prefix
+        - grafana.${SECRET_DOMAIN}
       tls:
         - secretName: helixaibot-com-production-tls
           hosts:
