@@ -39,3 +39,11 @@ spec:
           hosts:
             - mimir.${SECRET_DOMAIN}
     
+    minio:
+      enabled: true
+      mode: standalone
+      rootUser: grafana-mimir
+      persistence:
+        size: 5Gi
+        storageClass: openebs-hostpath
+    
