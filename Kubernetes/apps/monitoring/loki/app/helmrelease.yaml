@@ -88,16 +88,6 @@ spec:
     
     tableManager:
       enabled: true
-
-    ingress:
-      enabled: true
-      ingressClassName: internal
-      hosts:
-        - loki.${SECRET_DOMAIN}
-      tls:
-        - secretName: helixaibot-com-staging-tls
-          hosts:
-            - loki.${SECRET_DOMAIN}
     
     gateway:
       enabled: true
