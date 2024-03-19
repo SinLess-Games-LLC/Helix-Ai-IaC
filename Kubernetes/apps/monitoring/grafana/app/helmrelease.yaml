@@ -104,22 +104,21 @@ spec:
               access: proxy
               orgId: 1
               url: http://prometheus-server.monitoring.svc.cluster.local
-              isDefault: true
             - name: Kube State Metrics
               type: prometheus
               access: proxy
               orgId: 1
-              url: http://kube-state-metrics.monitoring.svc.cluster.local
+              url: http://prometheus-kube-state-metrics.monitoring.svc.cluster.local
             - name: Node Exporter
               type: prometheus
               access: proxy
               orgId: 1
-              url: http://node-exporter.monitoring.svc.cluster.local
+              url: http://prometheus-node-exporter.monitoring.svc.cluster.local
             - name: Alertmanager
               type: prometheus
               access: proxy
               orgId: 1
-              url: http://alertmanager.monitoring.svc.cluster.local
+              url: http://prometheus-alertmanager.monitoring.svc.cluster.local
             - name: Loki
               uid: loki
               type: loki
