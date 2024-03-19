@@ -8,7 +8,7 @@ spec:
   interval: 30m
   chart:
     spec:
-      chart: tempo
+      chart: tempo-distributed
       version: 1.7.2
       sourceRef:
         kind: HelmRepository
@@ -24,15 +24,69 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    serviceMonitor:
-      enabled: true
-      interval: 30s
-    tempoQuery:
-      enabled: true
-      ingress:
+    rbac: 
+      create: true
+
+    ingester:
+      autoscaling:
         enabled: true
-        hosts:
-          - query.tempo.${SECRET_DOMAIN}
-        tls:
-          - hosts:
-              - query.tempo.${SECRET_DOMAIN}
+        maxReplicas: 5
+        minReplicas: 1
+        targetCPUUtilizationPercentage: 60
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+      persistence: 
+        enabled: true
+        storageClassName: openebs-hostpath
+    
+    distributor:
+      autoscaling:
+        enabled: true
+        maxReplicas: 5
+        minReplicas: 1
+        targetCPUUtilizationPercentage: 60
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+
+    querier:
+      autoscaling:
+        enabled: true
+        maxReplicas: 5
+        minReplicas: 1
+        targetCPUUtilizationPercentage: 60
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+
+    memcached:
+      enabled: true
+
+    memcachedExporter:
+      enabled: true
+    
+    metaMonitoring:
+      serviceMonitor:
+        enabled: true
+
+    prometheusRule:
+      enabled: true
+    
+    minio:
+      enabled: true
+      persistence:
+        enabled: true
+        storageClassName: openebs-hostpath

@@ -124,3 +124,8 @@ spec:
             access: proxy
             orgId: 1
             url: http://loki.monitoring.svc.cluster.local
+          - name: Tempo
+            type: tempo
+            access: proxy
+            orgId: 1
+            url: http://tempo.monitoring.svc.cluster.local
