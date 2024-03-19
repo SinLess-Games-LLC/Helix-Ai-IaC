@@ -36,7 +36,7 @@ spec:
 
       ingress:
         enabled: true
-        ingreessClassName: external
+        # ingreessClassName: external
         hosts:
           - grafana.${SECRET_DOMAIN}
         tls:
@@ -122,19 +122,19 @@ spec:
             - name: Loki
               uid: loki
               type: loki
-              url: http://{{ .Release.Name }}-loki-gateway
+              url: http://{{ .Release.Name }}-loki-gateway.monitoring.svc.cluster.local
               isDefault: false
             # https://grafana.com/docs/grafana/latest/datasources/prometheus/#provision-the-data-source
             - name: Mimir
               uid: prom
               type: prometheus
-              url: http://{{ .Release.Name }}-mimir-nginx/prometheus
+              url: http://{{ .Release.Name }}-mimir-nginx.monitoring.svc.cluster.local/prometheus
               isDefault: true
             # https://grafana.com/docs/grafana/latest/datasources/tempo/configure-tempo-data-source/#provision-the-data-source
             - name: Tempo
               uid: tempo
               type: tempo
-              url: http://{{ .Release.Name }}-tempo-query-frontend:3100
+              url: http://{{ .Release.Name }}-tempo-query-frontend.monitoring.svc.cluster.local
               isDefault: false
               jsonData:
                 tracesToLogsV2:
