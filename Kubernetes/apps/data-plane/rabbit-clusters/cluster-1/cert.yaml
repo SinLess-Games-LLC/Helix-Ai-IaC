@@ -10,4 +10,3 @@ spec:
     name: letsencrypt-staging
   dnsNames:
     - "helix-rabbit.${SECRET_DOMAIN}"
-    - "*.helix-rabbit.data-plane.svc.cluster.local"
