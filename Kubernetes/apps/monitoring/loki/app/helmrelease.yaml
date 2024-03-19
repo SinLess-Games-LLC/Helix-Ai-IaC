@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       version: "0.78.3"
-      chart: loki-distributed
+      chart: loki-stack
       sourceRef:
         kind: HelmRepository
         name: grafana-charts
@@ -24,69 +24,4 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    serviceMonitor:
-      enabled: true
     
-    prometheusRule:
-      enabled: true
-
-    ingester:
-      autoscaling:
-        enabled: true
-        maxReplicas: 5
-        minReplicas: 1
-        targetCPUUtilizationPercentage: 60
-      resources:
-        limits:
-          cpu: 100m
-          memory: 128Mi
-        requests:
-          cpu: 100m
-          memory: 128Mi
-    
-    distributor:
-      autoscaling:
-        enabled: true
-        maxReplicas: 5
-        minReplicas: 1
-        targetCPUUtilizationPercentage: 60
-      resources:
-        limits:
-          cpu: 100m
-          memory: 128Mi
-        requests:
-          cpu: 100m
-          memory: 128Mi
-
-    querier:
-      autoscaling:
-        enabled: true
-        maxReplicas: 5
-        minReplicas: 1
-        targetCPUUtilizationPercentage: 60
-      resources:
-        limits:
-          cpu: 100m
-          memory: 128Mi
-        requests:
-          cpu: 100m
-          memory: 128Mi
-    
-    query-frontend:
-      autoscaling:
-        enabled: true
-        maxReplicas: 5
-        minReplicas: 1
-        targetCPUUtilizationPercentage: 60
-      resources:
-        limits:
-          cpu: 100m
-          memory: 128Mi
-        requests:
-          cpu: 100m
-          memory: 128Mi
-    
-    tableManager:
-      enabled: true
- 
-      

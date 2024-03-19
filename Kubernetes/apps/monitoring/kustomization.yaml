@@ -6,4 +6,4 @@ resources:
   - ./configs/ks.yaml
   - ./prometheus/ks.yaml
   - ./grafana/ks.yaml
-  - ./loki/ks.yaml
+  # - ./loki/ks.yaml
