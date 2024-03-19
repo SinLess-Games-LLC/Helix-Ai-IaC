@@ -5,11 +5,10 @@ metadata:
   name: &app rabbitmq-cluster-1
   namespace: flux-system
 spec:
-  targetNamespace: data-plane
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./Kubernetes/apps/data-plane/rabbitmq/app/clusters/cluster-1
+  path: ./Kubernetes/apps/data-plane/rabbit-clusters/cluster-1
   prune: true
   sourceRef:
     kind: GitRepository
