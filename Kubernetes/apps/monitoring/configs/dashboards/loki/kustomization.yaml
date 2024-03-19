@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: monitoring
+resources: []
+configMapGenerator:
+  - name: loki-dashboards
+    files:
+      - loki/loki-stack-monitor.json
+    options:
+      disableNameSuffixHash: true
+      labels:
+        grafana_dashboard: "1"
+        grafana_folder: "Loki"
+        app.kubernetes.io/part-of: loki
+        app.kubernetes.io/component: monitoring

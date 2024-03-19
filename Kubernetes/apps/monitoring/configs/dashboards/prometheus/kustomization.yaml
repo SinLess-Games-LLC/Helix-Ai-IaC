@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: monitoring
+resources: []
+configMapGenerator:
+  - name: prometheus-dashboards
+    files:
+      - prometheus/node-exporter-full.json
+      - prometheus/core-dns.json
+      - prometheus/prometheus-2.0-overview.json
+    options:
+      disableNameSuffixHash: true
+      labels:
+        grafana_dashboard: "1"
+        grafana_folder: "Prometheus"
+        app.kubernetes.io/part-of: prometheus
+        app.kubernetes.io/component: monitoring
