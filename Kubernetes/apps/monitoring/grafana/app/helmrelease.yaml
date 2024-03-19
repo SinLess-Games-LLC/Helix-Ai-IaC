@@ -106,7 +106,7 @@ spec:
       flux-system: flux-dashboards
       prometheus: prometheus-dashboards
       loki: loki-dashboards
-      cilium: ccilium-monitoring-dashboards
+      cilium: cilium-monitoring-dashboards
 
     datasources:
       datasources.yaml:
