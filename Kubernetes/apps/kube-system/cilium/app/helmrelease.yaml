@@ -49,9 +49,7 @@ spec:
         serviceMonitor:
           enabled: true
         dashboards:
-          enabled: true
-          annotations:
-            grafana_folder: Cilium
+          enabled: false
       relay:
         enabled: true
         rollOutPods: true
@@ -90,18 +88,14 @@ spec:
         serviceMonitor:
           enabled: true
       dashboards:
-        enabled: true
-        annotations:
-          grafana_folder: Cilium
+        enabled: false
     prometheus:
       enabled: true
       serviceMonitor:
         enabled: true
         trustCRDsExist: true
     dashboards:
-      enabled: true
-      annotations:
-        grafana_folder: Cilium
+      enabled: false
     rollOutCiliumPods: true
     routingMode: native
     securityContext:

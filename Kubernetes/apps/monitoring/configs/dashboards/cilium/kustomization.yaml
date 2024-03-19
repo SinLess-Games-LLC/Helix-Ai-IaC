@@ -12,6 +12,3 @@ configMapGenerator:
       disableNameSuffixHash: true
       labels:
         grafana_dashboard: "1"
-        grafana_folder: "Cilium"
-        app.kubernetes.io/part-of: cilium
-        app.kubernetes.io/component: monitoring
