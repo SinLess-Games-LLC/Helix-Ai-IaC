@@ -3,9 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: "${SECRET_DOMAIN/./-}-production"
-  namespaces: 
-    - network
-    - data-plane
+  namespace: network
 spec:
   secretName: "${SECRET_DOMAIN/./-}-production-tls"
   issuerRef:

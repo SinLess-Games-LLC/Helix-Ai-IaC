@@ -7,8 +7,7 @@ spec:
   replicas: 3
 
   tls:
-    secretName: helixaibot-com-production-tls
-    secretNamespace: network
+    secretName: network/helixaibot-com-production-tls
 
   resources:
     requests:
