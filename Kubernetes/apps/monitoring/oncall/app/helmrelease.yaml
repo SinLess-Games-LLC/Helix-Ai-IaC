@@ -24,9 +24,10 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    baseurl: oncall.${SECRET_DOMAIN}
+    baseurl: ${SECRET_DOMAIN}
     base_url_protocol: https
 
+    #TODO: Figure out why the ingress defaults to example.com
     ingress:
       enabled: true
       annotations:
