@@ -45,10 +45,10 @@ spec:
       enabled: false
     
     mariadb:
-      enabled: false
-
-    postgresql:
       enabled: true
+      auth:
+        database: oncall
+        existingSecret: mysql-credentials
 
     grafana: 
       enabled: false
