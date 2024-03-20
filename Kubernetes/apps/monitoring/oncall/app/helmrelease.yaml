@@ -40,18 +40,45 @@ spec:
 
     ingress-nginx:
       enabled: true
+    
+    # TODO: switch oncall to use individually managed MySQL instance
+    externalMysql:
+      host:
+      port:
+      db_name: oncall
+      # Use an existing secret for the mysql password.
+      existingSecret: mysql-credentials
+      # The key in the secret containing the mysql username
+      usernameKey: user
+      # The key in the secret containing the mysql password
+      passwordKey: password
+    
+    # TODO: switch oncall to use individually managed RabbitMQ instance
+    externalRabbitmq:
+      host:
+      port:
+      protocol:
+      vhost:
+      # Use an existing secret for the rabbitmq password
+      existingSecret: rabbitmq-credentials
+      # The key in the secret containing the rabbitmq password
+      passwordKey: password
+      # The key in the secret containing the rabbitmq username
+      usernameKey: user
+
+    # TODO: switch oncall to use individually managed Redis instance  
+    externalRedis:
+      protocol:
+      host:
+      port:
+
+    grafana: 
+      enabled: false
 
     cert-manager:
       enabled: false
     
-    # TODO: switch to individually managed MySQL instance
     mariadb:
-      enabled: true
-      auth:
-        database: oncall
-        existingSecret: mysql-credentials
-
-    grafana: 
       enabled: false
 
     externalGrafana:
