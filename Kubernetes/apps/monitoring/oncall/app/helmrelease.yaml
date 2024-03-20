@@ -29,6 +29,9 @@ spec:
 
     ingress:
       enabled: true
+      annotations:
+        kubernetes.io/ingress.class: internal
+        issuer: letsencrypt-production
       className: internal 
       tls: 
         - hosts:
