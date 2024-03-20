@@ -1,0 +1,39 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: redis-operator
+  namespace: data-plane
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: redis-operator
+      version: 0.15.9
+      sourceRef:
+        kind: HelmRepository
+        name: ot-helm-charts
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    resources:
+      limits:
+        cpu: 500m
+        memory: 500Mi
+      requests:
+        cpu: 500m
+        memory: 500Mi
+    
+    certificate:
+      name: redis-operator
+      secretName: redis-operator-tls
+
+    
