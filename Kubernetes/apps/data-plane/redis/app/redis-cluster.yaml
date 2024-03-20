@@ -1,0 +1,23 @@
+apiVersion: redis.redis.opstreelabs.in/v1beta1
+kind: RedisCluster
+metadata:
+  name: redis-cluster
+  namespace: data-plane
+spec:
+  clusterSize: 6
+  clusterVersion: v7
+  securityContext:
+    runAsUser: 1000
+    fsGroup: 1000
+  persistenceEnabled: true
+  kubernetesConfig:
+    image: quay.io/opstree/redis:v7.0.5
+    imagePullPolicy: Always
+  storage:
+    storageClassName: openebs-hostpath
+    volumeClaimTemplate:
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
