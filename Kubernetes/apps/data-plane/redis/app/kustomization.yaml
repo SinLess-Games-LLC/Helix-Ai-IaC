@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./redis-cluster.yaml
+  - ./secret.sops.yaml

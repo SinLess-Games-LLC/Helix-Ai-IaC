@@ -4,19 +4,24 @@ metadata:
   name: redis-cluster
   namespace: data-plane
 spec:
-  clusterSize: 6
-  clusterVersion: v7
-  securityContext:
-    runAsUser: 1000
-    fsGroup: 1000
-  persistenceEnabled: true
-  kubernetesConfig:
-    image: quay.io/opstree/redis:v7.0.5
-    imagePullPolicy: Always
-  storage:
-    volumeClaimTemplate:
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 1Gi
+  redisCluster:
+    clusterSize: 3
+    clusterVersion: v7
+    persistenceEnabled: true
+    secretName: redis-secret
+    secretKey: redis-password
+  
+  externalService:
+    enabled: true
+    serviceType: LoadBalancer
+
+  serviceMonitor:
+    enabled: true
+  
+  redisExporter:
+    enabled: true
+  
+  storageSpec:
+    storageClassName: openebs-hostpath
+    storageSize: 1Gi
+    accessMode: ReadWriteOnce
