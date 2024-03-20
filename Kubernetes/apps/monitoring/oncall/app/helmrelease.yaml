@@ -44,6 +44,7 @@ spec:
     cert-manager:
       enabled: false
     
+    # TODO: switch to individually managed MySQL instance
     mariadb:
       enabled: true
       auth:
