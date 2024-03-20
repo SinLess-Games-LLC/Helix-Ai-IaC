@@ -43,6 +43,12 @@ spec:
 
     cert-manager:
       enabled: false
+    
+    mariadb:
+      enabled: false
+
+    postgresql:
+      enabled: true
 
     grafana: 
       enabled: false
