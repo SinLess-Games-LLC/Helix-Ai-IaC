@@ -14,7 +14,6 @@ spec:
     image: quay.io/opstree/redis:v7.0.5
     imagePullPolicy: Always
   storage:
-    storageClassName: openebs-hostpath
     volumeClaimTemplate:
       spec:
         accessModes: ["ReadWriteOnce"]
