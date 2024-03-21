@@ -4,7 +4,7 @@ metadata:
   name: &app istio-base
   namespace: flux-system
 spec:
-  targetNamespace: data-plane
+  targetNamespace: istio-system
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
