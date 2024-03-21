@@ -12,6 +12,6 @@ spec:
             exact: /convert
       route:
         - destination:
-            host: webhook-service.data-plane.svc.cluster.local
+            host: webhook-service.data-plane.svc.cluster.local/convert
             port:
               number: 443
