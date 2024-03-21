@@ -9,15 +9,15 @@ data:
     defaultConfig:
       discoveryAddress: istiod.istio-system.svc:15012
       tracing:
-        datadog:
-          address: datadog-agent.istio-system.svc:8126
+        zipkin:
+          address: 
     defaultProviders:
       metrics:
         - prometheus
       tracing:
-        - datadog
+        - zipkin
     extentionProvider:
-      datadog:
+      zipkin:
         service:
         port: 
       prometheus:
@@ -29,4 +29,12 @@ data:
     ingressClass: internal
 
   meshNetworks: |
-    networks: {}
+    networks:
+      production:
+        endpoints: ["production/*"]
+      testing:
+        endpoints: ["testing/*"]
+      staging:
+        endpoints: ["staging/*"]
+      data-plane:
+        endpoints: ["data-plane/*"]
