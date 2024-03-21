@@ -8,8 +8,8 @@ spec:
     clusterSize: 3
     clusterVersion: v7
     persistenceEnabled: true
-    secretName: redis-secret
-    secretKey: redis-password
+    # secretName: redis-secret
+    # secretKey: redis-password
   
   externalService:
     enabled: true
