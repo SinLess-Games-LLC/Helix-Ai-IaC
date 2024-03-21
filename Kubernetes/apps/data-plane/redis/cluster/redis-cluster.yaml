@@ -9,18 +9,15 @@ spec:
   persistenceEnabled: true
   # secretName: redis-secret
   # secretKey: redis-password
-  
-  externalService:
-    enabled: true
-    serviceType: LoadBalancer
 
-  serviceMonitor:
-    enabled: true
-  
   redisExporter:
     enabled: true
   
-  storageSpec:
-    storageClassName: openebs-hostpath
-    storageSize: 1Gi
-    accessMode: ReadWriteOnce
+  storage:
+    volumeClaimTemplate:
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
+            storageClassName: openebs-hostpath
