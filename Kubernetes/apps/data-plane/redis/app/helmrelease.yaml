@@ -24,6 +24,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    replicas: 1
+    serviceAccountName: redis-operator
     resources:
       limits:
         cpu: 500m
@@ -35,5 +37,15 @@ spec:
     certificate:
       name: redis-operator
       secretName: redis-operator-tls
+    
+    issuer:
+      type: selfsigned
+      name: redis-operator-issuer
+      email: ${SECRET_ACME_EMAIL}
+      server: https://acme-v02.api.letsencrypt.org/directory
+      privateKeySecretName: letsencrypt-production
+      solver:
+        enabled: true
+        ingressClass: internal
 
     
