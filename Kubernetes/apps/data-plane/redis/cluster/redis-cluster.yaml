@@ -6,7 +6,7 @@ metadata:
 spec:
   clusterSize: 3
   clusterVersion: v7
-   persistenceEnabled: true
+  persistenceEnabled: true
   # secretName: redis-secret
   # secretKey: redis-password
   
