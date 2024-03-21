@@ -23,7 +23,9 @@
 > [!note]
 > 
 > ✅️ denotes if it is implemented but not configured
+>
 > ✅️✅️ denotes if it is implemented and configured
+>
 > 🚧 denotes if it is in progress.
 
 
