@@ -5,6 +5,4 @@ metadata:
   name: data-plane
   labels:
     kustomize.toolkit.fluxcd.io/prune: disabled
-  annotations:
-        sidecar.istio.io/inject: "true"
-        prometheus.io/scrape: "true"
+    istio-injection: enabled

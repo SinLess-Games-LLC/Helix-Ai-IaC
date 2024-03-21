@@ -38,3 +38,5 @@ data:
         endpoints: ["staging/*"]
       data-plane:
         endpoints: ["data-plane/*"]
+      monitoring:
+        endpoints: ["monitoring/*"]
