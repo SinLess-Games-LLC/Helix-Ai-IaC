@@ -7,7 +7,7 @@ spec:
   interval: 1h
   chart:
     spec:
-      version: "25.x.x"
+      version: "25.17.0"
       chart: prometheus
       sourceRef:
         kind: HelmRepository
@@ -32,8 +32,6 @@ spec:
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
   values:
     server:
-      labels:
-        istio-injection: enabled
       ingress:
         enabled: true
         hosts:
@@ -44,8 +42,6 @@ spec:
               - prometheus.${SECRET_DOMAIN}
     
     alertmanager:
-      labels:
-        istio-injection: enabled
       enabled: true
       replicaCount: 2
       ingress:
@@ -62,8 +58,6 @@ spec:
     
     kubeStateMetrics:
       enabled: true
-      labels:
-        istio-injection: enabled
       autosharding:
         enabled: true
       replicas: 4
@@ -75,8 +69,6 @@ spec:
 
     nodeExporter:
       enabled: true
-      labels:
-        istio-injection: enabled
       prometheus:
         monitor:
           enabled: true
