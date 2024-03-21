@@ -22,11 +22,8 @@
     // to change the zsh theme, change the value of strug to the desired theme
     // If you need to install the theme do it before this step.
     "zsh theme": "sed -i 's/ZSH_THEME=\"devcontainers\"/ZSH_THEME=\"strug\"/g' ~/.zshrc",
-    "ssh1": "cp ./.ssh/id_ed25519 ~/.ssh/id_ed25519 && cp ./.ssh/id_ed25519.pub ~/.ssh/id_ed25519.pub",
-    "add gpg key": "cp ./.devcontainer/gpg-pubkey ~/.gnupg/pub.gpg",
-    // sudo is required to change permissions
-    "change perms": "sudo chmod 600 ~/.gnupg/pub.gpg",
-    "import gpg": "gpg --import ~/.gnupg/pub.gpg"
+    "ssh1": "cp ./.ssh/id_ed25519 ~/.ssh/id_ed25519 && cp ./.ssh/id_ed25519.pub ~/.ssh/id_ed25519.pub"
+  
   },
   "postStartCommand": {
     "upgrade-pip": "python3 -m pip install --upgrade pip setuptools wheel",
@@ -35,8 +32,11 @@
     // sudo is required to change permissions
     "ssh2": "sudo chmod 600 ~/.ssh/id_ed25519",
     "install K9S": "go install github.com/derailed/k9s@latest",
-    "install ip utils": "sudo apt update -y && sudo apt-get install iputils-ping -y",
     "git config": "git config --global user.email \"disdainful777@gmail.comn\" && git config --global user.name \"Sinless777\"",
+    "add gpg key": "cp ./.devcontainer/gpg-pubkey ~/.gnupg/pub.gpg",
+    // sudo is required to change permissions
+    "change perms": "sudo chmod 600 ~/.gnupg/pub.gpg",
+    "import gpg": "gpg --import ~/.gnupg/pub.gpg",
     "ssh keys" : "task remove-ssh && task add-ssh"
   },
   // Features to add to the dev container. More info: https://containers.dev/features.
