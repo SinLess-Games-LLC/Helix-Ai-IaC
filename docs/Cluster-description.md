@@ -104,9 +104,9 @@ Istio provides advanced traffic management, security, and observability features
 
 #### Components:
 
-- 8. **[Istio Base]()**: Istio Base is the core component of Istio, providing the foundational features for traffic management, security, and observability. It includes components such as Pilot, Citadel, Galley, Mixer, and the sidecar injector, which are essential for Istio's service mesh capabilities.
+- 8. ✅️✅️ **[Istio Base]()**: Istio Base is the core component of Istio, providing the foundational features for traffic management, security, and observability. It includes components such as Pilot, Citadel, Galley, Mixer, and the sidecar injector, which are essential for Istio's service mesh capabilities.
 
-- 9. **[Istiod](https://istio.io/latest/docs/ops/deployment/architecture/#istiod):** Istiod is the control plane component of Istio, responsible for managing the configuration and operation of the service mesh. It provides a centralized control plane for Istio's traffic management, security, and observability features.
+- 9.✅️✅️ **[Istiod](https://istio.io/latest/docs/ops/deployment/architecture/#istiod):** Istiod is the control plane component of Istio, responsible for managing the configuration and operation of the service mesh. It provides a centralized control plane for Istio's traffic management, security, and observability features.
 
 - 10. **[Istio Pilot](https://istio.io/latest/docs/ops/deployment/architecture/#pilot):** Pilot is responsible for configuring the Envoy proxies deployed alongside your application services. It translates high-level routing rules into Envoy-specific configurations and dynamically propagates them to the Envoy proxies.
 

@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: redis-operator-webhook
+  namespace: data-plane
+spec:
+  hosts:
+    - webhook-service.redis-operator.svc.cluster.local
+  http:
+    - match:
+        - uri:
+            exact: /convert
+      route:
+        - destination:
+            host: webhook-service.data-plane.svc.cluster.local
+            port:
+              number: 443

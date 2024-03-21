@@ -1,0 +1,19 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app istio-redis-networking
+  namespace: flux-system
+spec:
+  targetNamespace: istio-system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  path: ./Kubernetes/apps/istio-system/networking/redis
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: helix-ai-k8s-cluster
+  wait: false
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
