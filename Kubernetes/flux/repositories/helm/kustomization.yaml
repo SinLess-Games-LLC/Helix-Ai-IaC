@@ -9,6 +9,7 @@ resources:
   - ./grafana.yaml
   - ./hashicorp.yaml
   - ./ingress-nginx.yaml
+  - ./istio.yaml
   - ./k8s-gateway.yaml
   - ./jetstack.yaml
   - ./metrics-server.yaml
