@@ -10,6 +10,10 @@ spec:
   # secretName: redis-secret
   # secretKey: redis-password
 
+  kubernetesConfig:
+    image: quay.io/opstree/redis:v7.0.5
+    imagePullPolicy: IfNotPresent
+
   redisExporter:
     enabled: true
     image: quay.io/opstree/redis-exporter:v1.44.0
