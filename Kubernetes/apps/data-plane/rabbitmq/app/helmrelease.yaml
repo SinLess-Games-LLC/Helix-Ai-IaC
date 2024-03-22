@@ -24,7 +24,7 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    replicaCount: 3
+    replicaCount: 2
     podLabels:
       sidecar.istio.io/inject: "true"
     
@@ -38,7 +38,7 @@ spec:
     
     pdb:
       create: true
-      minAvailable: 2
+      minAvailable: 1
     
     ingress:
       ingressClassName: internal

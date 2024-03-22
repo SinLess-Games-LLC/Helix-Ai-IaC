@@ -5,4 +5,4 @@ resources:
   - ./namespace.yaml
   - ./openebs/ks.yaml
   - ./rabbitmq/ks.yaml
-  - ./redis/ks.yaml
+  # - ./redis/ks.yaml
