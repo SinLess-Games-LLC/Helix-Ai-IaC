@@ -27,8 +27,14 @@ spec:
     global:
       podLabels:
         sidecar.istio.io/inject: "false"
+    
     rbac:
       create: true
+
+    rollout_operator:
+      enabled: true
+      podLabels:
+        sidecar.istio.io/inject: "false"
     
     ingress:
       enabled: true
