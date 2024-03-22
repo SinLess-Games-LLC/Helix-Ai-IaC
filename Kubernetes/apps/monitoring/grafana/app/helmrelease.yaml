@@ -5,6 +5,8 @@ metadata:
   name: grafana
   namespace: monitoring
 spec:
+  dependsOn:
+    - name: istiod
   interval: 30m
   chart:
     spec:

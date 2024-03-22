@@ -5,6 +5,8 @@ metadata:
   name: redis-cluster
   namespace: data-plane
 spec:
+  dependsOn:
+    - name: istiod
   interval: 30m
   chart:
     spec:

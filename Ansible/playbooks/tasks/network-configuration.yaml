@@ -27,10 +27,10 @@
     # If it is not commented out comment it out and run the playbook again
     # If it is commented out and the playbook fails at this step uncomment it and run the playbook again
     # if the error persists after trying to run it with it both commented out and uncommented out  then you have a different problem
-    - name: Network Configuration | Remove immutable flag from /etc/resolv.conf
-      ansible.builtin.file:
-        attributes: -i
-        path: /etc/resolv.conf
+    # - name: Network Configuration | Remove immutable flag from /etc/resolv.conf
+    #   ansible.builtin.file:
+    #     attributes: -i
+    #     path: /etc/resolv.conf
         
     - name: Network Configuration | Remove /etc/resolv.conf
       ansible.builtin.file:

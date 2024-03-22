@@ -5,6 +5,8 @@ metadata:
   namespace: monitoring
 
 spec:
+  dependsOn:
+    - name: istiod
   interval: 1h
   chart:
     spec:
