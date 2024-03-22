@@ -40,6 +40,8 @@ spec:
             - mimir.${SECRET_DOMAIN}
     
     minio:
+      labels:
+        sidecar.istio.io/inject: "false"
       enabled: true
       mode: standalone
       rootUser: grafana-mimir
