@@ -39,6 +39,8 @@ spec:
       username: rabbitmq
       existingPasswordSecret: rabbitmq-secret
       existingSecretPasswordKey: password
+      existingErlangSecret: rabbitmq-secret
+      existingSecretErlangKey: erlangCookie
     
     clustering:
       enabled: true
