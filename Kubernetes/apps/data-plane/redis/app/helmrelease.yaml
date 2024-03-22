@@ -24,8 +24,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    commonLabels:
-      sidecar.istio.io/inject: "true"
     global:
       storageClass: openebs-hostpath
 
@@ -38,6 +36,8 @@ spec:
       count: 3
 
     replica: 
+      podLabels: 
+        sidecar.istio.io/inject: "true"
       autoscaling:
         enabled: true
         minReplicas: 8
