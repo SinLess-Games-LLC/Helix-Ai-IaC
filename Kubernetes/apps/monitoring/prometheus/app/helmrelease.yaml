@@ -3,8 +3,7 @@ kind: HelmRelease
 metadata:
   name: prometheus
   namespace: monitoring
-  labels:
-    sidecar.istio.io/inject: "true"
+
 spec:
   interval: 1h
   chart:
@@ -34,6 +33,8 @@ spec:
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
   values:
     server:
+      labels:
+        sidecar.istio.io/inject: "true"
       ingress:
         enabled: true
         hosts:
@@ -45,6 +46,8 @@ spec:
     
     alertmanager:
       enabled: true
+      labels:
+        sidecar.istio.io/inject: "true"
       replicaCount: 2
       ingress:
         enabled: true
@@ -60,6 +63,8 @@ spec:
     
     kubeStateMetrics:
       enabled: true
+      labels:
+        sidecar.istio.io/inject: "true"
       autosharding:
         enabled: true
       replicas: 4
@@ -71,6 +76,8 @@ spec:
 
     nodeExporter:
       enabled: true
+      labels:
+        sidecar.istio.io/inject: "true"
       prometheus:
         monitor:
           enabled: true
