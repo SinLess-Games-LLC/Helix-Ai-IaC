@@ -6,8 +6,8 @@ metadata:
   labels:
     app.kubernetes.io/managed-by: Helm
   annotations:
-    meta.helm.sh/release-name: istiod
-    meta.helm.sh/release-namespace: istio-system
+    helm.sh/release-name: istiod
+    helm.sh/release-namespace: istio-system
 data:
   mesh: |
     enableTracing: true
