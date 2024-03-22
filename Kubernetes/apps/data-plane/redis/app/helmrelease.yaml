@@ -40,7 +40,7 @@ spec:
         sidecar.istio.io/inject: "true"
       autoscaling:
         enabled: true
-        minReplicas: 3
+        minReplicas: 5
         maxReplicas: 10
         targetCPUUtilizationPercentage: 80
     
