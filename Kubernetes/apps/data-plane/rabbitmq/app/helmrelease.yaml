@@ -34,8 +34,8 @@ spec:
     # TODO: setup auth for rabbitmq
     auth: 
       enabled: false
-      existingPasswordSecret: rabbitmq-secret
-      existingSecretPasswordKey: password
+      # existingPasswordSecret: rabbitmq-secret
+      # existingSecretPasswordKey: password
     
     pdb:
       create: true
