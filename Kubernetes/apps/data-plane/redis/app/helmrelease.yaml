@@ -27,10 +27,11 @@ spec:
     global:
       storageClass: openebs-hostpath
 
+    # TODO: setup auth for redis
     auth: 
-      enabled: true
-      existingSecret: redis-cluster-secret
-      password: password
+      enabled: false
+      existingPasswordSecret: redis-cluster-secret
+      existingSecretPasswordKey: password
     
     master: 
       count: 3

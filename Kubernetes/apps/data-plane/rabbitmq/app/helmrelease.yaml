@@ -31,10 +31,11 @@ spec:
     global:
       storageClass: openebs-hostpath
 
+    # TODO: setup auth for rabbitmq
     auth: 
-      enabled: true
-      existingSecret: rabbitmq-secret
-      password: password
+      enabled: false
+      existingPasswordSecret: rabbitmq-secret
+      existingSecretPasswordKey: password
     
     pdb:
       create: true
