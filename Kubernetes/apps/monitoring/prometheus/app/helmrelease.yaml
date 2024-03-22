@@ -32,9 +32,9 @@ spec:
       valuesKey: kube-state-metrics-config.yaml
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
   values:
-    server:
-      labels:
+    labels:
         sidecar.istio.io/inject: "true"
+    server:
       ingress:
         enabled: true
         hosts:
@@ -46,8 +46,6 @@ spec:
     
     alertmanager:
       enabled: true
-      labels:
-        sidecar.istio.io/inject: "true"
       replicaCount: 2
       ingress:
         enabled: true
@@ -63,8 +61,6 @@ spec:
     
     kubeStateMetrics:
       enabled: true
-      labels:
-        sidecar.istio.io/inject: "true"
       autosharding:
         enabled: true
       replicas: 4
@@ -76,8 +72,6 @@ spec:
 
     nodeExporter:
       enabled: true
-      labels:
-        sidecar.istio.io/inject: "true"
       prometheus:
         monitor:
           enabled: true
