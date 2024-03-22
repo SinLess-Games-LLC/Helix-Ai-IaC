@@ -32,7 +32,7 @@
 ## Overview
 This document provides a comprehensive overview of the architecture, components, and configuration of the [Kubernetes](https://kubernetes.io/docs/home/) cluster deployed for the SaaS application, Helix Ai, owned and developed by [SinLess Games LLC](https://sinlessgamesllc.com). The cluster is designed to be highly available, scalable, and secure, supporting the deployment and management of the Helix Ai application.
 
-There is **20** out of **34** services implemented.
+There is **21** out of **34** services implemented.
 
 there is **13** out of **34** services fully configured.
 
@@ -82,7 +82,7 @@ The data-plane namespace is dedicated to housing data plane components, which ar
 
 - 4. **[MySQL](https://github.com/bitnami/charts/tree/main/bitnami/mysql):** Mysql is a popular relational database that can be deployed within the data-plane namespace for data storage and management. It provides features such as ACID compliance, transactions, and indexing, making it suitable for a wide range of applications that require structured data storage.
 
-- 5. **[RabbitMQ](https://github.com/bitnami/charts/tree/main/bitnami/rabbitmq):** RabbitMQ is a popular message broker that can be deployed within the data-plane namespace for messaging and event-driven applications. It provides features such as message queuing, routing, and clustering, making it easier to build scalable and reliable messaging systems.
+- 5. ✅️ **[RabbitMQ](https://github.com/bitnami/charts/tree/main/bitnami/rabbitmq):** RabbitMQ is a popular message broker that can be deployed within the data-plane namespace for messaging and event-driven applications. It provides features such as message queuing, routing, and clustering, making it easier to build scalable and reliable messaging systems.
 
 - 6. **[Velero](https://velero.io/docs/):** Velero is a backup and restore solution for Kubernetes clusters. It provides features such as backup scheduling, retention policies, and disaster recovery, ensuring that critical data and configurations are protected and recoverable in the event of a failure.
 
