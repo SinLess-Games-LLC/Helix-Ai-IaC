@@ -36,8 +36,13 @@ spec:
 
     auth: 
       enabled: true
+      username: rabbitmq
       existingPasswordSecret: rabbitmq-secret
       existingSecretPasswordKey: password
+    
+    clustering:
+      enabled: true
+      name: rabbitmq
     
     pdb:
       create: true
@@ -45,14 +50,23 @@ spec:
     
     ingress:
       ingressClassName: internal
+      existingSecret: helixaibot-com-production-tls
       hostname: rabbitmq.${SECRET_DOMAIN}
 
     metrics:
+      enabled: true
       serviceMonitor:
         enabled: true 
-      
       podMonitor:
         enabled: true
-      
       prometheusRule:
         enabled: true
+    
+    startupProbe:
+      enabled: true
+
+    persistence:
+      enabled: true
+      storageClass: openebs-hostpath
+      size: 8Gi
+      accessMode: ReadWriteOnce
