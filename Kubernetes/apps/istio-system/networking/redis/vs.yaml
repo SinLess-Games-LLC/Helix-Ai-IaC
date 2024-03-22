@@ -5,7 +5,7 @@ metadata:
   namespace: data-plane
 spec:
   hosts:
-    - webhook-service.redis-operator.svc.cluster.local
+    - webhook-service.redis-operator.svc
   http:
     - match:
         - uri:
