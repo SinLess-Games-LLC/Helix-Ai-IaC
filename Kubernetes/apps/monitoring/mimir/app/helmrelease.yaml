@@ -49,5 +49,6 @@ spec:
             - mimir.${SECRET_DOMAIN}
     
     minio:
-      enabled: false
-    
+      enabled: true
+      podLabels:
+        sidecar.istio.io/inject: "false"
