@@ -4,6 +4,8 @@ kind: HelmRelease
 metadata:
   name: grafana-mimir
   namespace: monitoring
+  labels:
+    sidecar.istio.io/inject: "false"
 spec:
   interval: 30m
   chart:
@@ -24,6 +26,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    labels:
+      sidecar.istio.io/inject: "false"
     rbac:
       create: true
     
