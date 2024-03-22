@@ -50,7 +50,7 @@ spec:
     
     pdb:
       create: true
-      maxUnavailable: 1
+      minAvailable: 2
     
     # TODO: add tls configuration for redis
     tls:
