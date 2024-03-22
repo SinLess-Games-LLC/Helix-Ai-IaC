@@ -1,0 +1,7 @@
+apiVersion: v1 
+kind: Secret
+metadata:
+  name: redis-cluster-secret
+  namespace: data-plane
+stringData:
+  redis-password: "kjhd#sfh98-76b90c_xrnhgh8cx9ofbu=7yndprbhg978+ybnzrenl98dyb"
