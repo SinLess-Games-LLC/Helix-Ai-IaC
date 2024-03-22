@@ -29,6 +29,8 @@ spec:
     global:
       istioNamespace: istio-system
     
+    configMap: false
+
     defaults:
       pilot:
         autoscaleEnabled: true
