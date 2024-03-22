@@ -5,9 +5,9 @@ resources:
   - ./namespace.yaml
   - ./configs/ks.yaml
   - ./configs/dashboards/ks.yaml
-  #- ./prometheus/ks.yaml
-  #- ./grafana/ks.yaml
-  #- ./loki/ks.yaml
-  #- ./mimir/ks.yaml
+  - ./prometheus/ks.yaml
+  - ./grafana/ks.yaml
+  - ./loki/ks.yaml
+  - ./mimir/ks.yaml
   # - ./oncall/ks.yaml
-  #- ./tempo/ks.yaml
+  - ./tempo/ks.yaml
