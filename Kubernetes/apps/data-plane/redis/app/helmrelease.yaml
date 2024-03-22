@@ -24,6 +24,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    commonLabels:
+      sidecar.istio.io/inject: "true"
     global:
       storageClass: openebs-hostpath
 
