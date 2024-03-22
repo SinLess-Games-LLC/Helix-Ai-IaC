@@ -4,7 +4,7 @@ metadata:
   name: redis-cluster
   namespace: data-plane
 spec:
-  clusterSize: 6
+  clusterSize: 5
   clusterVersion: v7
   persistenceEnabled: true
   # secretName: redis-secret
