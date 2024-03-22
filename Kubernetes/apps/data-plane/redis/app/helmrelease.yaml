@@ -24,6 +24,9 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    redisOperator:
+      podLabels:
+        sidecar.istio.io/inject: "true"
     replicas: 1
     serviceAccountName: redis-operator
     resources:
@@ -33,6 +36,10 @@ spec:
       requests:
         cpu: 500m
         memory: 500Mi
+    
+    service:
+      name: webhook-service
+      namespace: data-plane
     
     certificate:
       name: redis-operator
