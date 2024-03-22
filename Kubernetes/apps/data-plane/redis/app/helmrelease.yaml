@@ -30,7 +30,7 @@ spec:
     auth: 
       enabled: true
       existingSecret: redis-cluster-secret
-      password: redis-password
+      password: password
     
     master: 
       count: 3
