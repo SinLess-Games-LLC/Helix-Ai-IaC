@@ -36,11 +36,10 @@ spec:
       count: 3
 
     replica: 
-      count: 5
       autoscaling:
         enabled: true
-        minReplicas: 5
-        maxReplicas: 10
+        minReplicas: 8
+        maxReplicas: 15
         targetCPUUtilizationPercentage: 80
     
     sentinel: 

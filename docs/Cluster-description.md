@@ -32,15 +32,15 @@
 ## Overview
 This document provides a comprehensive overview of the architecture, components, and configuration of the [Kubernetes](https://kubernetes.io/docs/home/) cluster deployed for the SaaS application, Helix Ai, owned and developed by [SinLess Games LLC](https://sinlessgamesllc.com). The cluster is designed to be highly available, scalable, and secure, supporting the deployment and management of the Helix Ai application.
 
-There is **19** out of **34** services implemented.
+There is **20** out of **34** services implemented.
 
 there is **13** out of **34** services fully configured.
 
-**55.88%** of the services are implemented.
+**58.824%** of the services are implemented.
 
 **38.23%** of the services are fully configured.
 
-Overall **47.06%** of the services are implemented and configured.
+Overall **48.529%** of the services are implemented and configured.
 
 ## Cluster Management
 
@@ -78,11 +78,13 @@ The data-plane namespace is dedicated to housing data plane components, which ar
 
 - 2. ✅️✅️ **[OpenEBS](https://openebs.io/docs/):** OpenEBS is a popular open-source storage solution for Kubernetes that provides storage management capabilities within the data-plane namespace. It offers features such as dynamic provisioning, snapshots, and storage policies to ensure reliable and scalable storage for application workloads.
 
-- 3. **[Redis Operator](https://ot-redis-operator.netlify.app/docs/):** The Redis Operator manages Redis instances within the data-plane namespace. It automates the deployment, scaling, and management of Redis clusters, making it easier to use Redis for caching and data storage in Kubernetes.
+- 3. ✅️ **[Redis](https://github.com/bitnami/charts/tree/main/bitnami/redis):** The Redis Operator manages Redis instances within the data-plane namespace. It automates the deployment, scaling, and management of Redis clusters, making it easier to use Redis for caching and data storage in Kubernetes.
 
-- 4. **[MySQL Operator](https://dev.mysql.com/doc/mysql-operator/en/mysql-operator-introduction.html):** The MySQL Operator manages MySQL instances within the data-plane namespace. It simplifies the deployment and management of MySQL databases in Kubernetes, providing features such as automated backups, scaling, and high availability configurations.
+- 4. **[MySQL](https://github.com/bitnami/charts/tree/main/bitnami/mysql):** Mysql is a popular relational database that can be deployed within the data-plane namespace for data storage and management. It provides features such as ACID compliance, transactions, and indexing, making it suitable for a wide range of applications that require structured data storage.
 
-- 5. **[Velero](https://velero.io/docs/):** Velero is a backup and restore solution for Kubernetes clusters. It provides features such as backup scheduling, retention policies, and disaster recovery, ensuring that critical data and configurations are protected and recoverable in the event of a failure.
+- 5. **[RabbitMQ](https://github.com/bitnami/charts/tree/main/bitnami/rabbitmq):** RabbitMQ is a popular message broker that can be deployed within the data-plane namespace for messaging and event-driven applications. It provides features such as message queuing, routing, and clustering, making it easier to build scalable and reliable messaging systems.
+
+- 6. **[Velero](https://velero.io/docs/):** Velero is a backup and restore solution for Kubernetes clusters. It provides features such as backup scheduling, retention policies, and disaster recovery, ensuring that critical data and configurations are protected and recoverable in the event of a failure.
 
 <br/>
 <h3>flux-system</h3>
@@ -91,9 +93,9 @@ The flux-system namespace is used to house components related to Flux CD, which 
 
 #### Components:
 
-- 6. ✅️ **[Flux CD](https://fluxcd.io/flux/):** Flux CD is a tool that automates the deployment and lifecycle management of applications in Kubernetes clusters. It works by synchronizing the state of a Git repository with the cluster, ensuring that the cluster's configuration matches the desired state defined in the repository.
+- 7. ✅️ **[Flux CD](https://fluxcd.io/flux/):** Flux CD is a tool that automates the deployment and lifecycle management of applications in Kubernetes clusters. It works by synchronizing the state of a Git repository with the cluster, ensuring that the cluster's configuration matches the desired state defined in the repository.
 
-- 7. **[Flagger](https://docs.flagger.app/):** Flagger is a progressive delivery tool that integrates with Flux CD to automate the promotion of canary deployments. It provides advanced deployment strategies such as canary releases, A/B testing, and blue-green deployments, allowing for safer and more controlled application deployments.
+- 8. **[Flagger](https://docs.flagger.app/):** Flagger is a progressive delivery tool that integrates with Flux CD to automate the promotion of canary deployments. It provides advanced deployment strategies such as canary releases, A/B testing, and blue-green deployments, allowing for safer and more controlled application deployments.
 
 <br/>
 <h3>istio-system</h3>
@@ -104,11 +106,11 @@ Istio provides advanced traffic management, security, and observability features
 
 #### Components:
 
-- 8. ✅️✅️ **[Istio Base]()**: Istio Base is the core component of Istio, providing the foundational features for traffic management, security, and observability. It includes components such as Pilot, Citadel, Galley, Mixer, and the sidecar injector, which are essential for Istio's service mesh capabilities.
+- 9. ✅️✅️ **[Istio Base]()**: Istio Base is the core component of Istio, providing the foundational features for traffic management, security, and observability. It includes components such as Pilot, Citadel, Galley, Mixer, and the sidecar injector, which are essential for Istio's service mesh capabilities.
 
-- 9.✅️✅️ **[Istiod](https://istio.io/latest/docs/ops/deployment/architecture/#istiod):** Istiod is the control plane component of Istio, responsible for managing the configuration and operation of the service mesh. It provides a centralized control plane for Istio's traffic management, security, and observability features.
+- 10.✅️✅️ **[Istiod](https://istio.io/latest/docs/ops/deployment/architecture/#istiod):** Istiod is the control plane component of Istio, responsible for managing the configuration and operation of the service mesh. It provides a centralized control plane for Istio's traffic management, security, and observability features.
 
-- 10. **[Istio Ingress Gateway](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/):** The Ingress Gateway is the entry point for traffic coming into the mesh. It routes external traffic to the appropriate services inside the mesh based on the defined routing rules.
+- 11. **[Istio Ingress Gateway](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/):** The Ingress Gateway is the entry point for traffic coming into the mesh. It routes external traffic to the appropriate services inside the mesh based on the defined routing rules.
 
 <br/>
 <h3>kube-system</h3>
@@ -117,19 +119,17 @@ The kube-system namespace houses essential Kubernetes system components that are
 
 #### Components:
 
-- 11. ✅️✅️ **[Cilium](https://docs.cilium.io/en/stable/):** Cilium provides network security within the kube-system namespace. It offers features such as network policy enforcement, transparent encryption, and API-aware network visibility.
+- 12. ✅️✅️ **[Cilium](https://docs.cilium.io/en/stable/):** Cilium provides network security within the kube-system namespace. It offers features such as network policy enforcement, transparent encryption, and API-aware network visibility.
 
-- 12. ✅️✅️ **[Metrics Server](https://github.com/kubernetes-sigs/metrics-server):** Metrics Server collects resource usage metrics from the cluster, such as CPU and memory usage of pods and nodes. These metrics are used for monitoring and autoscaling purposes.
+- 13. ✅️✅️ **[Metrics Server](https://github.com/kubernetes-sigs/metrics-server):** Metrics Server collects resource usage metrics from the cluster, such as CPU and memory usage of pods and nodes. These metrics are used for monitoring and autoscaling purposes.
 
-- 13. ✅️✅️ **[Stakater Reloader](https://github.com/stakater/Reloader):** Reloader watches changes in ConfigMap and Secret objects and restarts pods that use these resources to apply the changes. This ensures that configuration updates are applied to the running pods.
+- 14. ✅️✅️ **[Stakater Reloader](https://github.com/stakater/Reloader):** Reloader watches changes in ConfigMap and Secret objects and restarts pods that use these resources to apply the changes. This ensures that configuration updates are applied to the running pods.
 
-- 14. **[Falco](https://falco.org/docs/):** Falco is added to the kube-system namespace for runtime security monitoring and anomaly detection. It monitors system calls and detects abnormal behavior in real-time, helping to identify and respond to potential security threats.
+- 15. **[Falco](https://falco.org/docs/):** Falco is added to the kube-system namespace for runtime security monitoring and anomaly detection. It monitors system calls and detects abnormal behavior in real-time, helping to identify and respond to potential security threats.
 
-- 15. **[Trivy Operator](https://aquasecurity.github.io/trivy-operator/latest/):** Trivy Operator is added to the kube-system namespace for vulnerability scanning of containers. It scans container images for known vulnerabilities and provides reports to help ensure that only secure images are deployed in the cluster.
+- 16. **[Trivy Operator](https://aquasecurity.github.io/trivy-operator/latest/):** Trivy Operator is added to the kube-system namespace for vulnerability scanning of containers. It scans container images for known vulnerabilities and provides reports to help ensure that only secure images are deployed in the cluster.
 
-- 16. **[Chaos Mesh](https://chaos-mesh.org/docs/):** Chaos Mesh is used for chaos engineering and testing, ensuring the resilience and reliability of the cluster. It allows users to simulate various failure scenarios, such as network latency, pod failures, and clock skew, to validate the cluster's robustness under adverse conditions.
-
-- 17. **[Kafka operator](https://strimzi.io/docs/operators/latest/overview):** The Kafka operator is deployed in kube-system namespace for messaging and event streaming purposes. It automates the deployment and management of Apache Kafka clusters, making it easier to scale and operate Kafka in Kubernetes.
+- 17. **[Chaos Mesh](https://chaos-mesh.org/docs/):** Chaos Mesh is used for chaos engineering and testing, ensuring the resilience and reliability of the cluster. It allows users to simulate various failure scenarios, such as network latency, pod failures, and clock skew, to validate the cluster's robustness under adverse conditions.
 
 - 18. **[Flagsmith](https://docs.flagsmith.com/deployment/hosting/kubernetes):** Flagsmith is added to the kube-system namespace for feature flag and remote configuration management. It allows developers to manage feature flags and remote configurations in a centralized and scalable manner, enabling them to easily roll out features and control their availability in real-time.
 
