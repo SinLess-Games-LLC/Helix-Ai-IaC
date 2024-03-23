@@ -36,7 +36,6 @@ spec:
 
     auth: 
       enabled: true
-      username: user
       existingPasswordSecret: rabbitmq-secret
       existingSecretPasswordKey: password
       existingErlangSecret: rabbitmq-secret
