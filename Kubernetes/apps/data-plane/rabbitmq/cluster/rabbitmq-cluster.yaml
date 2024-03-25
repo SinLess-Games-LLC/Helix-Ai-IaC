@@ -15,8 +15,6 @@ spec:
       memory: 512Mi
 
   rabbitmq:
-    podLabels:
-      sidecar.istio.io/inject: "true"
     additionalConfig: |
       cluster_partition_handling = pause_minority
       vm_memory_high_watermark_paging_ratio = 0.99

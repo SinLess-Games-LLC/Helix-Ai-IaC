@@ -24,6 +24,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    podLabels:
+      sidecar.istio.io/inject: "false"
     localprovisioner:
       replicas: 3
       hostpathClass:

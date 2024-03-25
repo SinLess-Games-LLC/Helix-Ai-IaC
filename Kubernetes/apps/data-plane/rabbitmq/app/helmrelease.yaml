@@ -31,6 +31,8 @@ spec:
       storageClass: openebs-hostpath
 
     clusterOperator:
+      podLabels:
+        sidecar.istio.io/inject: "false"
       metrics:
         service:
           enabled: true
@@ -38,5 +40,9 @@ spec:
           enabled: true
         podMonitor:
           enabled: true
+    
+    msgTopologyOperator:
+      podLabels:
+        sidecar.istio.io/inject: "false"
 
     useCertManager: true
