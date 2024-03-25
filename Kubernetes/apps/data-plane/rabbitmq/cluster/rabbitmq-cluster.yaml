@@ -6,6 +6,9 @@ metadata:
 spec:
   replicas: 3
 
+  podLabels:
+    sidecar.istio.io/inject: "true"
+
   resources:
     requests:
       cpu: 100m
