@@ -6,4 +6,4 @@
       maxUnavailable: 1
       selector:
         matchLabels:
-          app.kubernetes.io/name: rabbitmq-cluster
+          app: rabbitmq-cluster
