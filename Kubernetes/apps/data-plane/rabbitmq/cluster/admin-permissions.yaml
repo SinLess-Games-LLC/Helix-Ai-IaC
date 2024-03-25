@@ -1,0 +1,15 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: Permission
+metadata:
+  name: rabbitmq-admin-permissions
+  namespace: data-plane
+spec:
+  vhost: /
+  user: rabbit-admin
+  permissions:
+    configure: ".*"
+    write: ".*"
+    read: ".*"
+  rabbitmqClusterReference:
+    namespace: data-plane
+    name: rabbitmq-cluster
