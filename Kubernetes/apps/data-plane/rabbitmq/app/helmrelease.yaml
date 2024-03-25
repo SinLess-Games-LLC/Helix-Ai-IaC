@@ -38,14 +38,5 @@ spec:
           enabled: true
         podMonitor:
           enabled: true
-    
-    msgTopologyOperator:
-      metrics:
-        service:
-          enabled: true
-        serviceMonitor:
-          enabled: true
-        podMonitor:
-          enabled: true
 
     useCertManager: true
