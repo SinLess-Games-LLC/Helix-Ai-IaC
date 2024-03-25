@@ -2,6 +2,7 @@
     kind: PodDisruptionBudget
     metadata:
       name: pdb-rabbitmq
+      namespace: data-plane
     spec:
       maxUnavailable: 1
       selector:
