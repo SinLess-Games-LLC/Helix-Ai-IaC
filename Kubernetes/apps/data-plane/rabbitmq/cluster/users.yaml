@@ -15,4 +15,4 @@ spec:
     - administrator
   
   importCredentialsSecret:
-    secretName: rabbitmq-admin-secret
+    name: rabbitmq-admin-secret
