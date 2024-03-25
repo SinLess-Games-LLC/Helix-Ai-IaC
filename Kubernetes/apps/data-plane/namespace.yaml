@@ -5,5 +5,5 @@ metadata:
   name: data-plane
   labels:
     kustomize.toolkit.fluxcd.io/prune: disabled
-    sidecar.istio.io/inject: "true"
+    istio-injection: enabled
     
