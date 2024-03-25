@@ -1,4 +1,4 @@
-apiVersion: rabbitmqclusters.rabbitmq.com/v1beta1
+apiVersion: rabbitmqcluster.rabbitmq.com/v1beta1
 kind: RabbitmqCluster
 metadata:
   name: rabbitmq-cluster
@@ -33,7 +33,7 @@ spec:
             - key: app.kubernetes.io/name
               operator: In
               values:
-              - production-ready
+              - rabbitmq-cluster
         topologyKey: kubernetes.io/hostname
 
   override:
