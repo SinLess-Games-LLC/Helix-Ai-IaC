@@ -1,0 +1,35 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: Policy
+metadata:
+  name: oncall
+  namespace: data-plane
+spec:
+  name: oncall
+  pattern: "^oncall-"
+  applyTo: queues
+  definition:
+    queue-mode: lazy
+    ha-mode: all
+    ha-sync-mode: automatic
+  rabbitmqClusterReference:
+    namespace: data-plane
+    name: rabbitmq-cluster
+
+---
+
+apiVersion: rabbitmq.com/v1beta1
+kind: Policy
+metadata:
+  name: helix
+  namespace: data-plane
+spec:
+  name: helix
+  pattern: "^helix-"
+  applyTo: queues
+  definition:
+    queue-mode: lazy
+    ha-mode: all
+    ha-sync-mode: automatic
+  rabbitmqClusterReference:
+    namespace: data-plane
+    name: rabbitmq-cluster

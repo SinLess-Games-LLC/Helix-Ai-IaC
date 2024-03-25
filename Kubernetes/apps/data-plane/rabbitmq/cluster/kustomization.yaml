@@ -4,3 +4,6 @@ kind: Kustomization
 resources:
   - ./rabbitmq-cluster.yaml
   - ./secret.sops.yaml
+  - ./disruption-budget.yaml
+  - ./queues.yaml
+  - ./policies.yaml

@@ -1,0 +1,27 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: Queue
+metadata:
+  name: oncall-queue
+  namespace: data-plane
+spec:
+  name: oncall-queue
+  durable: true
+  rabbitmqClusterReference:
+    namespace: data-plane
+    name: rabbitmq-cluster
+  vhost: /oncall
+
+---
+
+apiVersion: rabbitmq.com/v1beta1
+kind: Queue
+metadata:
+  name: helix-queue
+  namespace: data-plane
+spec:
+  name: helix-queue
+  durable: true
+  rabbitmqClusterReference:
+    namespace: data-plane
+    name: rabbitmq-cluster
+  vhost: /helix
