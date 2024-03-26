@@ -33,7 +33,7 @@ spec:
     base_url_protocol: https
 
     engine:
-      replicaCount: 1
+      replicaCount: 2
     
     celery:
       replicaCount: 1
