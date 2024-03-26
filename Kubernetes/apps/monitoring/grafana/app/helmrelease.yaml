@@ -33,6 +33,11 @@ spec:
       minReplicas: 1
       targetCPUUtilizationPercentage: 60
 
+    plugins:
+      - grafana-oncall-app
+      - grafana-clock-panel
+      - digrich-bubblechart-panel
+
     serviceMonitor:
       enabled: true
 
