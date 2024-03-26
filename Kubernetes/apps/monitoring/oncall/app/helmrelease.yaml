@@ -51,7 +51,6 @@ spec:
       tls: 
         - hosts:
             - "{{ .Values.base_url }}"
-          secretName: network/helixaibot-com-production-tls
     
     database:
       # can be either mysql or postgresql
