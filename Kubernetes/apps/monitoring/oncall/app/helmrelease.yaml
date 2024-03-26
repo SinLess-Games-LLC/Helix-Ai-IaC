@@ -49,7 +49,6 @@ spec:
       tls: 
         - hosts:
             - "{{ .Values.base_url }}"
-          secretName: oncall-tls
     
     database:
       # can be either mysql or postgresql
@@ -92,4 +91,4 @@ spec:
       enabled: false
 
     externalGrafana:
-      url: grafana.monitoring.svc.cluster.local
+      url: grafana.${SECRET_DOMAIN}
