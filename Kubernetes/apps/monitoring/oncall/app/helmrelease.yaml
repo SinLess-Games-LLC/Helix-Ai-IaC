@@ -74,6 +74,9 @@ spec:
     
     mariadb:
       enabled: true
+      auth:
+        database: oncall
+        existingSecret: mysql-credentials
     
     redis:
       enabled: true
@@ -83,6 +86,8 @@ spec:
     
     rabbitmq:
       enabled: true
+      auth:
+        existingPasswordSecret: rabbitmq-credentials
     
     ingress-nginx:
       enabled: false
