@@ -87,9 +87,8 @@ spec:
     rabbitmq:
       enabled: true
       auth:
-        existingPasswordSecret: rabbitmq-credentials
-        erlangCookie: hsdfgkjdfghxbxdbnregibubnnu
-    
+        user: rabbit-admin
+        existingPasswordSecret: rabbitmq-credentials    
     ingress-nginx:
       enabled: false
 
