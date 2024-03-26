@@ -60,6 +60,7 @@ spec:
     
     # TODO: switch oncall to use individually managed RabbitMQ instance
     externalRabbitmq:
+      host: rabbitmq-cluster.data-plane.svc.cluster.local
       vhost: oncall-vhost
       existingSecret: rabbitmq-credentials
       passwordKey: rabbitmq-password
