@@ -17,4 +17,5 @@ resources:
   - ./openebs.yaml
   - ./ot.yaml
   - ./prometheus.yaml
+  - ./rancher.yaml
   - ./stakater.yaml
