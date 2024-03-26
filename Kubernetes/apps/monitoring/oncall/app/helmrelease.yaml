@@ -44,7 +44,7 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: internal
-        cert-manager.io/issuer: letsencrypt-production
+        cert-manager.io/cluster-issuer: letsencrypt-production
       className: internal 
       tls: 
         - hosts:
