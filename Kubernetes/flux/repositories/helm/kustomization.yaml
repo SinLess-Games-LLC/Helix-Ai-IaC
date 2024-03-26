@@ -11,9 +11,9 @@ resources:
   - ./ingress-nginx.yaml
   - ./istio.yaml
   - ./k8s-gateway.yaml
+  - ./kubedb.yaml
   - ./jetstack.yaml
   - ./metrics-server.yaml
-  - ./mysql-operator.yaml
   - ./openebs.yaml
   - ./ot.yaml
   - ./prometheus.yaml
