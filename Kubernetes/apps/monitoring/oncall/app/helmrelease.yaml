@@ -29,7 +29,7 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    baseurl: "oncall.${SECRET_DOMAIN}"
+    base_url: oncall.${SECRET_DOMAIN}
     base_url_protocol: https
 
     engine:
@@ -37,6 +37,9 @@ spec:
     
     celery:
       replicaCount: 1
+    
+    service:
+      enabled: true
 
     #TODO: Figure out why the ingress defaults to example.com
     ingress:
@@ -57,7 +60,7 @@ spec:
     # TODO: switch oncall to use individually managed MySQL instance
     externalMysql:
       host: grafana-oncall-mysql.data-plane.svc.cluster.local
-      port: 3306
+      port: "3306"
       db_name: oncall
       # Use an existing secret for the mysql password.
       existingSecret: mysql-credentials
