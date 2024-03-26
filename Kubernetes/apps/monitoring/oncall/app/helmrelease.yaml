@@ -51,7 +51,7 @@ spec:
       tls: 
         - hosts:
             - "{{ .Values.base_url }}"
-          secretName: helixaibot-com-production-tls
+          secretName: network/helixaibot-com-production-tls
     
     database:
       # can be either mysql or postgresql
@@ -88,9 +88,10 @@ spec:
       enabled: true
       auth:
         user: rabbit-admin
-        existingPasswordSecret: rabbitmq-credentials    
+        existingPasswordSecret: rabbitmq-credentials
+ 
     ingress-nginx:
       enabled: false
 
     externalGrafana:
-      url: http://grafana.monitoring.svc.cluster.local
+      url: grafana.monitoring.svc.cluster.local
