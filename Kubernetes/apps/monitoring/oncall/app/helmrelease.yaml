@@ -74,11 +74,6 @@ spec:
       passwordKey: password
       # The key in the secret containing the rabbitmq username
       usernameKey: user
-
-    # TODO: switch oncall to use individually managed Redis instance  
-    externalRedis:
-      host: http://redis-cluster.data-plane.svc.cluster.local
-      port: 6379
     
     broker:
       type: rabbitmq
@@ -93,7 +88,9 @@ spec:
       enabled: false
     
     redis:
-      enabled: false
+      enabled: true
+      auth:
+        existingSecret: redis-cluster-secret
     
     rabbitmq:
       enabled: false

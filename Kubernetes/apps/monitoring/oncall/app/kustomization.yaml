@@ -5,4 +5,5 @@ resources:
   - ./helmrelease.yaml
   - ./mysql-secret.sops.yaml
   - ./rabbitmq-secret.sops.yaml
+  - ./redis-secret.sops.yaml
   
