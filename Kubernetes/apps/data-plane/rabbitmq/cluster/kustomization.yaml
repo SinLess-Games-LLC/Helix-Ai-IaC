@@ -9,3 +9,4 @@ resources:
   - ./rabbitmq-cluster.yaml
   - ./secret.sops.yaml
   - ./users.yaml
+  - ./vhost.yaml
