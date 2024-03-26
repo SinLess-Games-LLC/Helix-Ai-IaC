@@ -8,8 +8,6 @@ spec:
   dependsOn:
     - name: istiod
       namespace: istio-system
-    - name: grafana-oncall-mysql
-      namespace: data-plane
   interval: 30m
   chart:
     spec:
