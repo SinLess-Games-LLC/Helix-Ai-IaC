@@ -83,6 +83,7 @@ spec:
       auth:
         existingSecret: redis-cluster-secret
         existingSecretPasswordKey: password
+        erlangCookie: SW5jcmVkaWJsZS1hZG1pbg==
     
     rabbitmq:
       enabled: true
