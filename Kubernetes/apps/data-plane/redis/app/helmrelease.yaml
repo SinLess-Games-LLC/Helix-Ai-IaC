@@ -32,7 +32,7 @@ spec:
 
     # TODO: setup auth for redis
     auth: 
-      enabled: true
+      enabled: false
       existingPasswordSecret: redis-cluster-secret
       existingSecretPasswordKey: password
     
