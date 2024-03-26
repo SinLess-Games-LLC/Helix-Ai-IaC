@@ -31,7 +31,7 @@
         public: true
       vars:
         k3s_state: installed
-        k3s_release_version: v1.29.1+k3s2
+        k3s_release_version: v1.28.0+k3s2
 
     - name: Kubeconfig
       ansible.builtin.include_tasks: tasks/kubeconfig.yaml
