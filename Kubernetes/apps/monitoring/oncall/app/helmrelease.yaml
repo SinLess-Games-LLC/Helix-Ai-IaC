@@ -54,7 +54,7 @@ spec:
     
     # TODO: switch oncall to use individually managed MySQL instance
     externalMysql:
-      host: http://mysql.dataplane.svc.cluster.local
+      host: mysql.data-plane.svc.cluster.local
       port: 3306
       db_name: oncall
       # Use an existing secret for the mysql password.
@@ -66,7 +66,7 @@ spec:
     
     # TODO: switch oncall to use individually managed RabbitMQ instance
     externalRabbitmq:
-      host: http://rabbitmq-cluster.data-plane.svc.cluster.local
+      host: rabbitmq-cluster.data-plane.svc.cluster.local
       port: 5672
       # Use an existing secret for the rabbitmq password
       existingSecret: rabbitmq-credentials
