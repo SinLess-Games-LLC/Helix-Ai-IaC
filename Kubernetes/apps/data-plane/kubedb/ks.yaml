@@ -5,7 +5,6 @@ metadata:
   name: &app kubedb
   namespace: flux-system
 spec:
-  targetNamespace: data-plane
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
