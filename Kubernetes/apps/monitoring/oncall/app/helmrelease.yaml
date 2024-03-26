@@ -47,7 +47,7 @@ spec:
       className: internal 
       tls: 
         - hosts:
-          - oncall.${SECRET_DOMAIN}
+            - "{{ .Values.base_url }}"
           secretName: helixaibot-com-production-tls
     
     database:
@@ -56,7 +56,7 @@ spec:
     
     # TODO: switch oncall to use individually managed MySQL instance
     externalMysql:
-      host: grafana-oncall-mysql.data-plane.svc.cluster.local:3306
+      host: grafana-oncall-mysql.data-plane.svc.cluster.local
       port: 3306
       db_name: oncall
       # Use an existing secret for the mysql password.
