@@ -41,7 +41,7 @@ spec:
               - rabbitmq-cluster
         topologyKey: kubernetes.io/hostname
   
-  overide:
+  override:
     statefulSet:
       metadata:
         labels:
