@@ -25,7 +25,7 @@ spec:
     keepHistory: false
   values:
     global:
-      licenseSecretName: kubedb-license
+      licenseSecretName: kubedb-license-secret
     
     monitoring:
       agent: prometheus.io

@@ -7,7 +7,7 @@ resources:
   - ./configs/dashboards/ks.yaml
   - ./prometheus/ks.yaml
   - ./grafana/ks.yaml
-  - ./loki/ks.yaml
-  - ./mimir/ks.yaml
+  #- ./loki/ks.yaml
+  #- ./mimir/ks.yaml
   # - ./oncall/ks.yaml
-  - ./tempo/ks.yaml
+  #- ./tempo/ks.yaml
