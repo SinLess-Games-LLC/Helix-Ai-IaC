@@ -35,13 +35,7 @@ spec:
       database: mysql
 
     primary:
-      pdb:
-        create: true
-        minAvailable: 1
-      podLabels:
-        sidecar.istio.io/inject: "true"
-
-    secondary:
+      replicaCount: 2
       pdb:
         create: true
         minAvailable: 1
