@@ -39,7 +39,6 @@ spec:
     service:
       enabled: true
 
-    #TODO: Figure out why the ingress defaults to example.com
     ingress:
       enabled: true
       annotations:
@@ -61,11 +60,14 @@ spec:
     # TODO: switch oncall to use individually managed RabbitMQ instance
     externalRabbitmq:
       host: rabbitmq-cluster.data-plane.svc.cluster.local
+      port: 5672
       vhost: oncall-vhost
       existingSecret: rabbitmq-credentials
       passwordKey: rabbitmq-password
       usernameKey: username
 
+    migrate:
+      enabled: true
     
     broker:
       type: rabbitmq
