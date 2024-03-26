@@ -27,7 +27,7 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    baseurl: ${SECRET_DOMAIN}
+    baseurl: "oncall.${SECRET_DOMAIN}"
     base_url_protocol: https
 
     engine:
@@ -86,6 +86,9 @@ spec:
       enabled: false
     
     mariadb:
+      enabled: false
+    
+    redis:
       enabled: false
 
     externalGrafana:
