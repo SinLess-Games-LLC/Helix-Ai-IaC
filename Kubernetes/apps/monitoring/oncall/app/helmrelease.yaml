@@ -91,6 +91,7 @@ spec:
       enabled: true
       auth:
         existingSecret: redis-cluster-secret
+        existingSecretPasswordKey: password
     
     rabbitmq:
       enabled: false
@@ -99,4 +100,4 @@ spec:
       enabled: false
 
     externalGrafana:
-      url: grafana.monitoring.svc.cluster.local
+      url: http://grafana.monitoring.svc.cluster.local
