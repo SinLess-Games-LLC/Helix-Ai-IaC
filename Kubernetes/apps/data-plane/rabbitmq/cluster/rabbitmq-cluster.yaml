@@ -3,6 +3,8 @@ kind: RabbitmqCluster
 metadata:
   name: rabbitmq-cluster
   namespace: data-plane
+  labels:
+    sidecar.istio.io/inject: "true"
 spec:
   replicas: 3
 
@@ -38,3 +40,9 @@ spec:
               values:
               - rabbitmq-cluster
         topologyKey: kubernetes.io/hostname
+  
+  overide:
+    statefulSet:
+      metadata:
+        labels:
+          sidecar.istio.io/inject: "true"
