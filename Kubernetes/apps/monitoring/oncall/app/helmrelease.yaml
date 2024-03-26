@@ -59,7 +59,12 @@ spec:
     # externalMysql:
     
     # TODO: switch oncall to use individually managed RabbitMQ instance
-    # externalRabbitmq:
+    externalRabbitmq:
+      vhost: oncall-vhost
+      existingSecret: rabbitmq-credentials
+      passwordKey: rabbitmq-password
+      usernameKey: username
+
     
     broker:
       type: rabbitmq
@@ -83,7 +88,7 @@ spec:
         existingSecretPasswordKey: password
     
     rabbitmq:
-      enabled: true
+      enabled: false
       auth:
         username: rabbit-admin
         existingPasswordSecret: rabbitmq-credentials
