@@ -79,7 +79,7 @@ spec:
       enabled: false
     
     mariadb:
-      enabled: true
+      enabled: false
       auth:
         database: oncall
         existingSecret: mysql-credentials
