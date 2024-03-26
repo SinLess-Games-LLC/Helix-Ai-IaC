@@ -37,14 +37,14 @@ spec:
       existingSecretPasswordKey: password
     
     master: 
-      count: 3
+      count: 1
 
     replica: 
       podLabels: 
         sidecar.istio.io/inject: "true"
       autoscaling:
         enabled: true
-        minReplicas: 5
+        minReplicas: 2
         maxReplicas: 10
         targetCPUUtilizationPercentage: 80
     
