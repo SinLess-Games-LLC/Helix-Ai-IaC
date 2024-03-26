@@ -80,7 +80,7 @@ The data-plane namespace is dedicated to housing data plane components, which ar
 
 - 3. ✅️ **[Redis](https://github.com/bitnami/charts/tree/main/bitnami/redis):** The Redis Operator manages Redis instances within the data-plane namespace. It automates the deployment, scaling, and management of Redis clusters, making it easier to use Redis for caching and data storage in Kubernetes.
 
-- 4. ✅️ **[MySQL](https://github.com/bitnami/charts/tree/main/bitnami/mysql):** Mysql is a popular relational database that can be deployed within the data-plane namespace for data storage and management. It provides features such as ACID compliance, transactions, and indexing, making it suitable for a wide range of applications that require structured data storage.
+- 4. **[MySQL](https://github.com/bitnami/charts/tree/main/bitnami/mysql):** Mysql is a popular relational database that can be deployed within the data-plane namespace for data storage and management. It provides features such as ACID compliance, transactions, and indexing, making it suitable for a wide range of applications that require structured data storage.
 
 - 5. ✅️ **[RabbitMQ](https://github.com/bitnami/charts/tree/main/bitnami/rabbitmq):** RabbitMQ is a popular message broker that can be deployed within the data-plane namespace for messaging and event-driven applications. It provides features such as message queuing, routing, and clustering, making it easier to build scalable and reliable messaging systems.
 

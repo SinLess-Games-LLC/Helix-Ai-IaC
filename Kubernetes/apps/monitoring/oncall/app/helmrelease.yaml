@@ -87,7 +87,7 @@ spec:
     rabbitmq:
       enabled: true
       auth:
-        user: rabbit-admin
+        username: rabbit-admin
         existingPasswordSecret: rabbitmq-credentials
  
     ingress-nginx:
