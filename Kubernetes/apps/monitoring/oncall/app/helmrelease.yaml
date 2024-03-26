@@ -58,27 +58,10 @@ spec:
       type: mysql
     
     # TODO: switch oncall to use individually managed MySQL instance
-    externalMysql:
-      host: grafana-oncall-mysql.data-plane.svc.cluster.local
-      port: "3306"
-      db_name: oncall
-      # Use an existing secret for the mysql password.
-      existingSecret: mysql-credentials
-      # The key in the secret containing the mysql username
-      usernameKey: user
-      # The key in the secret containing the mysql password
-      passwordKey: password
+    # externalMysql:
     
     # TODO: switch oncall to use individually managed RabbitMQ instance
-    externalRabbitmq:
-      host: rabbitmq-cluster.data-plane.svc.cluster.local
-      port: 5672
-      # Use an existing secret for the rabbitmq password
-      existingSecret: rabbitmq-credentials
-      # The key in the secret containing the rabbitmq password
-      passwordKey: password
-      # The key in the secret containing the rabbitmq username
-      usernameKey: user
+    # externalRabbitmq:
     
     broker:
       type: rabbitmq
@@ -90,7 +73,7 @@ spec:
       enabled: false
     
     mariadb:
-      enabled: false
+      enabled: true
     
     redis:
       enabled: true
@@ -99,7 +82,7 @@ spec:
         existingSecretPasswordKey: password
     
     rabbitmq:
-      enabled: false
+      enabled: true
     
     ingress-nginx:
       enabled: false
