@@ -30,6 +30,12 @@ spec:
     baseurl: ${SECRET_DOMAIN}
     base_url_protocol: https
 
+    engine:
+      replicaCount: 1
+    
+    celery:
+      replicaCount: 1
+
     #TODO: Figure out why the ingress defaults to example.com
     ingress:
       enabled: true
@@ -43,7 +49,7 @@ spec:
           secretName: helixaibot-com-production-tls
 
     ingress-nginx:
-      enabled: true
+      enabled: false
     
     # TODO: switch oncall to use individually managed MySQL instance
     externalMysql:
