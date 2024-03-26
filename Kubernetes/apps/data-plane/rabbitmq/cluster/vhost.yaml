@@ -2,9 +2,10 @@ apiVersion: rabbitmq.com/v1beta1
 kind: Vhost
 metadata:
   name: oncall-vhost
+  namespace: data-plane
 spec:
   defaultQueueType: classic
   name: oncall-vhost
   rabbitmqClusterReference:
     name: rabbitmq-cluster
-    namespace: data-plane
+    
