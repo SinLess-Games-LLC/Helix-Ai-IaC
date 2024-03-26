@@ -56,7 +56,7 @@ spec:
     
     # TODO: switch oncall to use individually managed MySQL instance
     externalMysql:
-      host: http://grafana-oncall-mysql.data-plane.svc.cluster.local:3306
+      host: grafana-oncall-mysql.data-plane.svc.cluster.local:3306
       port: 3306
       db_name: oncall
       # Use an existing secret for the mysql password.
