@@ -82,7 +82,6 @@ spec:
       enabled: true
       auth:
         database: oncall
-        username: grafana-oncall
         existingSecret: mysql-credentials
     
     redis:
