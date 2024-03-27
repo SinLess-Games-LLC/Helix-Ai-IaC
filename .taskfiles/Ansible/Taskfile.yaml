@@ -101,17 +101,17 @@ tasks:
       - ./scripts/countdown.sh 5
       - 'task ansible:ping group=pihole'
       - ./scripts/countdown.sh 5
-      - 'ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} {{.ANSIBLE_DIR}}/playbooks/home-dns-installation.yaml {{.CLI_ARGS}}'
+      #- 'ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} {{.ANSIBLE_DIR}}/playbooks/home-dns-installation.yaml {{.CLI_ARGS}}'
       - echo "Home DNS is ready..."
       - echo "Preparing cluster for installation..."
       - ./scripts/countdown.sh 5
       - 'task ansible:ping group=kubernetes'
-      - 'ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} {{.ANSIBLE_DIR}}/playbooks/cluster-prepare.yaml {{.CLI_ARGS}}'
+      #- 'ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} {{.ANSIBLE_DIR}}/playbooks/cluster-prepare.yaml {{.CLI_ARGS}}'
       - echo "Cluster is ready for installation..."
       - ./scripts/countdown.sh 10
       - 'ansible-playbook --inventory {{.ANSIBLE_INVENTORY_FILE}} {{.ANSIBLE_DIR}}/playbooks/cluster-installation.yaml {{.CLI_ARGS}}'
       - echo Waiting for nodes to be ready...
-      - ./scripts/countdown.sh 120
+      - ./scripts/countdown.sh 100
       - kubectl get nodes
       - 'flux check --pre'
       - 'task flux:bootstrap'
