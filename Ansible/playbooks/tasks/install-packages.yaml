@@ -16,6 +16,7 @@
           Please note that this may take a while as it is installing a minimum of 40 packages plus whatever the user added
 
     - name: Packages | Install
+      retries: 3
       ansible.builtin.apt:
         name: "{{ packages }}"
         state: present

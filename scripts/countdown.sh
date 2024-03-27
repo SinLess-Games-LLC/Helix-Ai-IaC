@@ -22,7 +22,7 @@ countdown() {
     sleep 1
     ((remaining--))
   done
-  echo "Countdown complete!\nContinuing Script..."
+  echo "Countdown complete!  \nContinuing Script..."
 }
 
 countdown $duration
