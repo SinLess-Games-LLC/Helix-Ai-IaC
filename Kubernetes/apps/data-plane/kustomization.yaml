@@ -5,5 +5,5 @@ resources:
   - ./namespace.yaml
   # - ./kubedb/ks.yaml
   - ./openebs/ks.yaml
-  - ./rabbitmq/ks.yaml
+  # - ./rabbitmq/ks.yaml
   # - ./redis/ks.yaml
