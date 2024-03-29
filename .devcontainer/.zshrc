@@ -2,7 +2,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=/home/vscode/.oh-my-zsh
+
+export PATH=/usr/local/vitess/bin:$PATH
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -72,8 +74,6 @@ ZSH_THEME="strug"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git envrc git-extras history mvn web-search ansible aws docker docker-compose fluxcd helm kubectl sudo suse systemd terraform zsh-autosuggestions zsh-syntax-highlighting)
 
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -111,3 +111,5 @@ countdown() {
     done
     echo "Sleeping for 0 seconds... Done."
 }
+
+source /home/vscode/.oh-my-zsh/oh-my-zsh.sh

@@ -9,15 +9,19 @@
   },
   "containerEnv": {
     "KUBECONFIG": "/workspaces/Helix-Ai-IaC/kubeconfig",
-    "SOPS_AGE_KEY_FILE": "/workspaces/Helix-Ai-IaC/.age.key"
+    "SOPS_AGE_KEY_FILE": "/workspaces/Helix-Ai-IaC/.age.key",
+    "ROOT_FOLDER": "/home/vscode"
   },
+  "remoteEnv": {},
   // Privlaged is required to run sudo
   "privileged": true,
   "postCreateCommand": {
-    "clone zsh-autosuggestions": "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions",
-    "clone zsh-syntax-highlighting": "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting",
-    "clone envrc plugin": "git clone https://github.com/fabiogibson/envrc-zsh-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/envrc",
+    "clone zsh-autosuggestions": "git clone https://github.com/zsh-users/zsh-autosuggestions /home/vscode/.oh-my-zsh/custom/plugins/zsh-autosuggestions",
+    "clone zsh-syntax-highlighting": "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/vscode/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting",
+    "clone envrc plugin": "git clone https://github.com/fabiogibson/envrc-zsh-plugin.git /home/vscode/.oh-my-zsh/custom/plugins/plugins/envrc",
     "ssh1": "cp ./.ssh/id_ed25519 ~/.ssh/id_ed25519 && cp ./.ssh/id_ed25519.pub ~/.ssh/id_ed25519.pub",
+    "add gpg key": "cp ./.devcontainer/gpg-pubkey ~/.gnupg/pub.gpg", // this can not be in the same command list as the changing permissions
+    "zshrc": "cp ./.devcontainer/.zshrc ~/.zshrc",
     "upgrade-pip": "python3 -m pip install --upgrade pip setuptools wheel",
     "install-python-requirements": "python3 -m pip install -r ./requirements.txt",
     "install-ansible-requirements": "ansible-galaxy install --role-file ./requirements.yaml"
@@ -27,13 +31,13 @@
     "ssh2": "sudo chmod 600 ~/.ssh/id_ed25519",
     "install K9S": "go install github.com/derailed/k9s@latest",
     "git config": "git config --global user.email \"disdainful777@gmail.comn\" && git config --global user.name \"Sinless777\"",
-    "add gpg key": "cp ./.devcontainer/gpg-pubkey ~/.gnupg/pub.gpg",
     // sudo is required to change permissions
     "change perms": "sudo chmod 600 ~/.gnupg/pub.gpg",
     "import gpg": "gpg --import ~/.gnupg/pub.gpg",
-    "ssh keys" : "task remove-ssh && task add-ssh",
-    "zshrc": "cp ./.devcontainer/.zshrc ~/.zshrc",
-    "change source": "source ~/.zshrc"
+    "ssh keys" : "task remove-ssh && task add-ssh"
+  },
+  "postAttachCommand": {
+      "Source zshrc": "source ~/.zshrc"
   },
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
@@ -72,7 +76,9 @@
      * - istioctl
      */
     "ghcr.io/jsburckhardt/devcontainer-features/flux:1": {},
-    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+      "version": "1.27.11"
+    },
     "ghcr.io/rio/features/kustomize:1": {},
     "ghcr.io/gickis/devcontainer-features/kubeconform:1": {},
     "ghcr.io/devcontainers-contrib/features/kubectl-asdf:2": {},
@@ -118,7 +124,8 @@
         "GitHub.copilot",
         "BenjaminBenais.copilot-theme",
         "donjayamanne.git-extension-pack",
-        "Actionforge.actionforge"
+        "Actionforge.actionforge",
+        "ms-azuretools.vscode-docker"
       ]
     }
   }

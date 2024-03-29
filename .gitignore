@@ -50,3 +50,4 @@ Terraform/tfplan
 Terraform/variables.auto.tfvars.json
 
 .ssh/.ssh
+/tmp/*

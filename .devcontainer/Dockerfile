@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/base:bullseye
+FROM mcr.microsoft.com/devcontainers/python:1.1.7-3.12-bookworm
 
 # Install apt packages
 RUN sudo apt-get update -y --fix-missing \
@@ -19,5 +19,6 @@ COPY .ssh /root/.ssh
 
 # Download SSH keys and create .ssh directory
 RUN curl -sL 'https://github.com/SinLess-Games.keys' >> /root/.ssh/authorized_keys
+
 
 
