@@ -30,26 +30,10 @@ spec:
             memory: 256Mi
           limits:
             memory: 256Mi
-    
-    - name: zone2
-      gateway:
-        authentication:
-          static:
-            secret:
-              name: vitess-cluster-config
-              key: users.json
-        replicas: 1
-        resources:
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            memory: 256Mi
   
   vitessDashboard:
     cells:
       - zone1
-      - zone2
     extraFlags:
       security_policy: read-only
     replicas: 1
@@ -101,7 +85,7 @@ spec:
             parts: 1
             shardTemplate:
               databaseInitScriptSecret:
-                name: example-cluster-config
+                name: vitess-cluster-config
                 key: init_db.sql
               tabletPools:
                 - cell: zone1
