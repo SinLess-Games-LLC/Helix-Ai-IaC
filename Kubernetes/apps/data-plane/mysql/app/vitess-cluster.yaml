@@ -2,6 +2,7 @@ apiVersion: planetscale.com/v2
 kind: VitessCluster
 metadata:
   name: helix-ai-vitess-cluster
+  namespace: data-plane
 spec:
   images:
     vtctld: vitess/lite:latest
