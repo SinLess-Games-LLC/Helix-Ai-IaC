@@ -50,7 +50,6 @@ spec:
       key: rbac.yaml
     cells:
       - zone1
-    ingressClass: external
     apiAddresses:
       - http://vtadmin.${SECRET_DOMAIN}:14001
     replicas: 1
