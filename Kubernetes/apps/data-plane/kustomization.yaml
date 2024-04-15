@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./openebs/ks.yaml
-  - ./vitess/ks.yaml
+  # - ./vitess/ks.yaml
   # - ./mysql/ks.yaml
   # - ./rabbitmq/ks.yaml
   # - ./redis/ks.yaml
