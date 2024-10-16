@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/python:1.1.11-3.12-bookworm
+FROM mcr.microsoft.com/devcontainers/python:1.1.16-3.12-bookworm
 
 # Install apt packages
 RUN sudo apt-get update -y --fix-missing \
